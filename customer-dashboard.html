@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="midnight-obsidian">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIP Client Sanctuary | Stackly</title>
+  <meta name="description" content="Personalized beauty sanctuary for VIP clients of Stackly. Order tracking, skincare dossiers, and salon reservations.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23191614'/><path d='M50 20 L53 42 L75 50 L53 58 L50 80 L47 58 L25 50 L47 42 Z' fill='%23C5A880'/></svg>">
+
+  <!-- CDNs -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <div class="dashboard-layout">
+
+    <!-- ======================================================================
+         CUSTOMER SIDEBAR (Sticky on Desktop, Collapsible Drawer on Mobile)
+         ====================================================================== -->
+    <aside class="dashboard-sidebar" id="dashboard-sidebar" aria-label="Customer Navigation">
+      <div class="sidebar-top">
+        <div class="sidebar-header">
+          <a href="index.html" class="brand-logo">
+            <img src="logo_0027.webp" alt="Stackly" class="brand-logo-img">
+            <span class="brand-sub">SANCTUAIRE PRIVÉ</span>
+          </a>
+          <a href="index.html" class="sidebar-back-home">
+            <i class="fa-solid fa-arrow-left"></i> Back to Home
+          </a>
+        </div>
+
+        <!-- Role Indicator Pill -->
+        <div class="sidebar-role-indicator">
+          <div class="sidebar-role-info">
+            <span class="sidebar-role-beacon" title="Sanctuary Active"></span>
+            <span class="sidebar-role-title">VIP Client <span class="sidebar-role-tier">Diamond</span></span>
+          </div>
+          <a href="admin-dashboard.html" class="sidebar-role-switch-link" title="Switch to Admin Dashboard">
+            <i class="fa-solid fa-repeat"></i> Admin
+          </a>
+        </div>
+
+        <!-- 8 Customer Sidebar Navigation Menus -->
+        <nav class="sidebar-nav">
+          <button type="button" class="sidebar-nav-item active" data-panel="overview">
+            <div class="sidebar-nav-item-content">
+              <i class="fa-solid fa-house-chimney-window"></i>
+              <span class="sidebar-nav-label">Overview</span>
+            </div>
+          </button>
+
+          <button type="button" class="sidebar-nav-item" data-panel="orders">
+            <div class="sidebar-nav-item-content">
+              <i class="fa-solid fa-box-open"></i>
+              <span class="sidebar-nav-label">My Orders</span>
+            </div>
+            <span class="sidebar-nav-badge" id="sidebar-order-badge">Active</span>
+          </button>
+
+          <button type="button" class="sidebar-nav-item" data-panel="wishlist">
+            <div class="sidebar-nav-item-content">
+              <i class="fa-solid fa-heart"></i>
+              <span class="sidebar-nav-label">My Wishlist</span>
+            </div>
+            <span class="sidebar-nav-badge wishlist-counter-badge">3</span>
+          </button>
+
+          <button type="button" class="sidebar-nav-item" data-panel="reviews">
+            <div class="sidebar-nav-item-content">
+              <i class="fa-solid fa-star"></i>
+              <span class="sidebar-nav-label">My Reviews</span>
+            </div>
+          </button>
+
+          <button type="button" class="sidebar-nav-item" data-panel="addresses">
+            <div class="sidebar-nav-item-content">
+              <i class="fa-solid fa-location-dot"></i>
+              <span class="sidebar-nav-label">My Addresses</span>
+            </div>
+          </button>
+
+          <button type="button" class="sidebar-nav-item" data-panel="payments">
+            <div class="sidebar-nav-item-content">
+              <i class="fa-solid fa-credit-card"></i>
+              <span class="sidebar-nav-label">Payments</span>
+            </div>
+          </button>
+
+          <button type="button" class="sidebar-nav-item" data-panel="profile">
+            <div class="sidebar-nav-item-content">
+              <i class="fa-solid fa-user-circle"></i>
+              <span class="sidebar-nav-label">My Profile</span>
+            </div>
+          </button>
+
+          <button type="button" class="sidebar-nav-item" data-panel="settings">
+            <div class="sidebar-nav-item-content">
+              <i class="fa-solid fa-gear"></i>
+              <span class="sidebar-nav-label">Settings</span>
+            </div>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Sidebar User Footer -->
+      <div class="sidebar-footer">
+        <div class="sidebar-user-summary">
+          <div class="sidebar-user-avatar">CD</div>
+          <div class="sidebar-user-details">
+            <span class="sidebar-user-name">Clara Delacroix</span>
+            <span class="sidebar-user-role">Diamond Privilège</span>
+          </div>
+        </div>
+        <button type="button" class="sidebar-btn-logout" title="Sign Out of Sanctuary">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Mobile Drawer Backdrop -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+    <!-- ======================================================================
+         MAIN CONTENT AREA
+         ====================================================================== -->
+    <div class="dashboard-main">
+
+      <!-- Compact Topbar -->
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button type="button" class="sidebar-toggle-btn" id="sidebar-toggle-btn" aria-label="Toggle Navigation Sidebar">
+            <i class="fa-solid fa-bars-staggered"></i>
+          </button>
+          <div class="topbar-page-info">
+            <span class="topbar-breadcrumb">Stackly Sanctuary / <span id="topbar-current-section">Overview</span></span>
+            <h2 class="topbar-page-title" id="topbar-page-heading">Sanctuary Overview</h2>
+          </div>
+        </div>
+
+        <div class="topbar-center">
+          <div class="topbar-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="dashboard-search-input" placeholder="Search my orders, formulations, or treatments...">
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <!-- Quick Role Switch Pill -->
+          <a href="admin-dashboard.html" class="btn-switch-role" title="Switch to Admin Command View">
+            <i class="fa-solid fa-repeat"></i> <span style="font-size: 0.75rem;">Switch to Admin</span>
+          </a>
+
+          <!-- Theme Palette Customizer Trigger -->
+          <button type="button" class="topbar-icon-btn btn-dash-theme-trigger" id="btn-dash-theme-trigger" title="Change Dashboard Color Palette">
+            <i class="fa-solid fa-palette"></i>
+          </button>
+
+          <!-- Boutique Shopping Bag -->
+          <a href="#" class="topbar-icon-btn header-cart-btn" title="View Shopping Bag">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span class="topbar-badge-count cart-count-badge">2</span>
+          </a>
+
+          <!-- User Chip -->
+          <div class="topbar-user-chip">
+            <div class="topbar-user-initials">CD</div>
+            <div class="topbar-user-meta">
+              <span class="topbar-user-name">Clara Delacroix</span>
+              <span class="topbar-user-role">VIP Member</span>
+            </div>
+            <button type="button" class="btn-topbar-logout" title="Sign out" style="background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 0.2rem 0.4rem; font-size: 0.85rem;">
+              <i class="fa-solid fa-power-off"></i>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Body Panels -->
+      <main class="dashboard-body">
+
+        <!-- ==================================================================
+             PANEL 1: OVERVIEW
+             ================================================================== -->
+        <section class="dash-panel active" id="panel-overview">
+          <!-- Welcome Banner -->
+          <div class="dash-welcome-banner" data-aos="fade-up">
+            <div class="dash-welcome-inner">
+              <div class="dash-welcome-text">
+                <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.6rem; flex-wrap: wrap;">
+                  <span class="badge badge-gold"><i class="fa-solid fa-gem"></i> Diamond Privilège Client</span>
+                  <span style="font-size: 0.72rem; color: var(--accent-gold); font-family: monospace;">MEMBER #EP-89241</span>
+                </div>
+                <h1>Bonjour, <span class="dash-hero-greeting-name">Clara</span> — <em>Your Private Sanctuary</em></h1>
+                <p>Welcome back to your Parisian botanical sanctuary. Track your live formulations dispatch, explore saved beauty rituals, and access exclusive salon reservations.</p>
+              </div>
+              <div class="dash-welcome-actions">
+                <button type="button" class="btn btn-primary" onclick="const p = document.querySelector('[data-panel=\'orders\']'); if (p) p.click();">
+                  <i class="fa-solid fa-box-open"></i> Track Active Order
+                </button>
+                <a href="services.html" class="btn btn-outline" style="border-color: var(--accent-gold); color: #FFFFFF;">
+                  <i class="fa-solid fa-spa"></i> Book Salon Treatment
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4 Metric Cards -->
+          <div class="dash-metrics-grid">
+            <div class="dash-metric-card">
+              <div class="dash-metric-top">
+                <span class="dash-metric-label">Total Orders</span>
+                <div class="dash-metric-icon"><i class="fa-solid fa-box"></i></div>
+              </div>
+              <div class="dash-metric-val">12</div>
+              <div class="dash-metric-sub positive">
+                <i class="fa-solid fa-circle-check"></i> $1,480.00 Lifetime Spend
+              </div>
+            </div>
+
+            <div class="dash-metric-card">
+              <div class="dash-metric-top">
+                <span class="dash-metric-label">Saved Wishlist</span>
+                <div class="dash-metric-icon"><i class="fa-solid fa-heart"></i></div>
+              </div>
+              <div class="dash-metric-val wishlist-counter-badge">3</div>
+              <div class="dash-metric-sub">
+                <i class="fa-solid fa-sparkles"></i> Hand-curated formulations
+              </div>
+            </div>
+
+            <div class="dash-metric-card">
+              <div class="dash-metric-top">
+                <span class="dash-metric-label">Recent Dispatch</span>
+                <div class="dash-metric-icon"><i class="fa-solid fa-truck-fast"></i></div>
+              </div>
+              <div class="dash-metric-val">1 En Route</div>
+              <div class="dash-metric-sub positive">
+                <i class="fa-solid fa-clock"></i> Arriving Oct 17
+              </div>
+            </div>
+
+            <div class="dash-metric-card">
+              <div class="dash-metric-top">
+                <span class="dash-metric-label">Privilège Points</span>
+                <div class="dash-metric-icon"><i class="fa-solid fa-gem"></i></div>
+              </div>
+              <div class="dash-metric-val">3,450 <span style="font-size: 0.85rem; font-weight: 500; color: var(--accent-gold);">pts</span></div>
+              <div class="dash-metric-sub positive">
+                <i class="fa-solid fa-gift"></i> $175 Boutique Credit Available
+              </div>
+            </div>
+          </div>
+
+          <!-- Live Order Activity Card -->
+          <div class="dash-card-box">
+            <div class="dash-card-header">
+              <div class="dash-card-header-left">
+                <h3>Live Order Tracking & Activity</h3>
+                <p>Order #EP-89241 • Dispatched via DHL Express Haute Delivery</p>
+              </div>
+              <span class="status-badge shipped">In Transit</span>
+            </div>
+
+            <div class="order-stepper-steps">
+              <div class="stepper-step completed">
+                <div class="stepper-step-circle"><i class="fa-solid fa-check"></i></div>
+                <div class="stepper-step-label">Order Confirmed</div>
+                <div class="stepper-step-sub">Oct 14, 09:30 CET</div>
+              </div>
+
+              <div class="stepper-step completed">
+                <div class="stepper-step-circle"><i class="fa-solid fa-check"></i></div>
+                <div class="stepper-step-label">Handcrafted & Blended</div>
+                <div class="stepper-step-sub">Oct 14, 14:15 CET</div>
+              </div>
+
+              <div class="stepper-step active">
+                <div class="stepper-step-circle"><i class="fa-solid fa-truck-fast"></i></div>
+                <div class="stepper-step-label">En Route to Paris</div>
+                <div class="stepper-step-sub">Tracking: FR-EXP-89021</div>
+              </div>
+
+              <div class="stepper-step">
+                <div class="stepper-step-circle"><i class="fa-solid fa-house"></i></div>
+                <div class="stepper-step-label">Delivered</div>
+                <div class="stepper-step-sub">Est. Oct 17, 2026</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recommended Beauty Products -->
+          <div class="dash-card-box">
+            <div class="dash-card-header">
+              <div class="dash-card-header-left">
+                <h3>Recommended for Your Skin Profile</h3>
+                <p>Personalized botanical selections tailored to your hydration and radiance goals.</p>
+              </div>
+              <a href="index.html#featured-products" class="btn btn-outline btn-sm" style="border-color: var(--accent-gold); color: #FFF;">
+                Browse All Formulations
+              </a>
+            </div>
+
+            <div class="dash-wishlist-grid">
+              <div class="dash-wishlist-card">
+                <div class="dash-wishlist-img-frame">
+                  <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=400&q=80" alt="Elixir de Rose" loading="lazy">
+                  <span class="badge badge-gold" style="position: absolute; top: 10px; left: 10px;">Bestseller</span>
+                </div>
+                <div class="dash-wishlist-body">
+                  <span style="font-size: 0.72rem; color: var(--accent-gold); text-transform: uppercase;">Skincare</span>
+                  <h4 class="dash-wishlist-title">Elixir de Rose Radiance Serum</h4>
+                  <div class="dash-wishlist-price">$98.00</div>
+                  <button type="button" class="btn btn-primary btn-sm">
+                    <i class="fa-solid fa-bag-shopping"></i> Add to Bag
+                  </button>
+                </div>
+              </div>
+
+              <div class="dash-wishlist-card">
+                <div class="dash-wishlist-img-frame">
+                  <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=400&q=80" alt="Crème Renaissance" loading="lazy">
+                  <span class="badge badge-gold" style="position: absolute; top: 10px; left: 10px;">Award Winner</span>
+                </div>
+                <div class="dash-wishlist-body">
+                  <span style="font-size: 0.72rem; color: var(--accent-gold); text-transform: uppercase;">Face Care</span>
+                  <h4 class="dash-wishlist-title">Crème Renaissance Restorative Face Cream</h4>
+                  <div class="dash-wishlist-price">$125.00</div>
+                  <button type="button" class="btn btn-primary btn-sm">
+                    <i class="fa-solid fa-bag-shopping"></i> Add to Bag
+                  </button>
+                </div>
+              </div>
+
+              <div class="dash-wishlist-card">
+                <div class="dash-wishlist-img-frame">
+                  <img src="https://images.unsplash.com/photo-1608248597359-216a908a8e1b?auto=format&fit=crop&w=400&q=80" alt="Botanical Gold Oil" loading="lazy">
+                  <span class="badge badge-clean" style="position: absolute; top: 10px; left: 10px;">24K Gold</span>
+                </div>
+                <div class="dash-wishlist-body">
+                  <span style="font-size: 0.72rem; color: var(--accent-gold); text-transform: uppercase;">Face Care</span>
+                  <h4 class="dash-wishlist-title">Botanical Gold Illuminating Facial Oil</h4>
+                  <div class="dash-wishlist-price">$110.00</div>
+                  <button type="button" class="btn btn-primary btn-sm">
+                    <i class="fa-solid fa-bag-shopping"></i> Add to Bag
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             PANEL 2: MY ORDERS
+             ================================================================== -->
+        <section class="dash-panel" id="panel-orders">
+          <div class="dash-card-box">
+            <div class="dash-card-header">
+              <div class="dash-card-header-left">
+                <h3>My Client Orders & Tracking</h3>
+                <p>View your complete purchase history, real-time courier tracking, and reorder favourite formulations.</p>
+              </div>
+              <span class="badge badge-gold" id="cust-orders-count-badge">5 Orders</span>
+            </div>
+
+            <!-- Toolbar & Filter Pills -->
+            <div class="dash-toolbar">
+              <div class="dash-filter-pills" id="orders-filter-pills">
+                <button type="button" class="filter-pill active" data-status="all">All Orders</button>
+                <button type="button" class="filter-pill" data-status="active">Active & In Transit</button>
+                <button type="button" class="filter-pill" data-status="delivered">Delivered</button>
+                <button type="button" class="filter-pill" data-status="cancelled">Cancelled</button>
+              </div>
+            </div>
+
+            <!-- Orders Table -->
+            <div class="dash-table-wrapper">
+              <table class="dash-table">
+                <thead>
+                  <tr>
+                    <th>Order Reference</th>
+                    <th>Date</th>
+                    <th>Formulations</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="cust-orders-tbody">
+                  <!-- Rendered dynamically by js/dashboard.js -->
+                </tbody>
+              </table>
+            </div>
+
+            <div id="cust-orders-empty" class="dash-empty-state" style="display: none;">
+              <div class="dash-empty-icon"><i class="fa-solid fa-box-open"></i></div>
+              <h4>No Orders Found</h4>
+              <p>There are no orders matching the selected filter criteria.</p>
+              <a href="index.html#featured-products" class="btn btn-primary">Discover Formulations</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             PANEL 3: MY WISHLIST
+             ================================================================== -->
+        <section class="dash-panel" id="panel-wishlist">
+          <div class="dash-card-box">
+            <div class="dash-card-header">
+              <div class="dash-card-header-left">
+                <h3>My Saved Formulations</h3>
+                <p>Your curated vanity wishlist of bespoke botanical elixirs and skincare essentials.</p>
+              </div>
+              <span class="badge badge-gold" id="cust-wishlist-count-badge">3 Saved</span>
+            </div>
+
+            <div class="dash-wishlist-grid" id="cust-wishlist-grid">
+              <!-- Rendered dynamically by js/dashboard.js -->
+            </div>
+
+            <div id="cust-wishlist-empty" class="dash-empty-state" style="display: none;">
+              <div class="dash-empty-icon"><i class="fa-solid fa-heart"></i></div>
+              <h4>Your Wishlist is Empty</h4>
+              <p>Save your favourite elixirs and formulations to review and reorder at any time.</p>
+              <a href="index.html#featured-products" class="btn btn-primary">Explore Maison Boutique</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             PANEL 4: MY REVIEWS
+             ================================================================== -->
+        <section class="dash-panel" id="panel-reviews">
+          <div class="dash-card-box">
+            <div class="dash-card-header">
+              <div class="dash-card-header-left">
+                <h3>My Product Reviews</h3>
+                <p>Share your authentic experiences and formulation rituals with the Stackly client community.</p>
+              </div>
+              <div style="display: flex; gap: 0.6rem; align-items: center;">
+                <span class="badge badge-gold" id="cust-reviews-count-badge">2 Reviews</span>
+                <button type="button" class="btn btn-primary btn-sm" id="btn-open-add-review-modal">
+                  <i class="fa-solid fa-pen"></i> Write a Review
+                </button>
+              </div>
+            </div>
+
+            <div class="dash-reviews-list" id="cust-reviews-list">
+              <!-- Rendered dynamically by js/dashboard.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             PANEL 5: MY ADDRESSES
+             ================================================================== -->
+        <section class="dash-panel" id="panel-addresses">
+          <div class="dash-card-box">
+            <div class="dash-card-header">
+              <div class="dash-card-header-left">
+                <h3>Saved Shipping Addresses</h3>
+                <p>Manage your luxury White Glove delivery locations in Paris and worldwide.</p>
+              </div>
+              <div style="display: flex; gap: 0.6rem; align-items: center;">
+                <span class="badge badge-gold" id="cust-addresses-count-badge">2 Saved</span>
+                <button type="button" class="btn btn-primary btn-sm" id="btn-open-add-address-modal">
+                  <i class="fa-solid fa-plus"></i> Add New Address
+                </button>
+              </div>
+            </div>
+
+            <div class="dash-addresses-grid" id="cust-addresses-grid">
+              <!-- Rendered dynamically by js/dashboard.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             PANEL 6: PAYMENTS
+             ================================================================== -->
+        <section class="dash-panel" id="panel-payments">
+          <div class="dash-card-box">
+            <div class="dash-card-header">
+              <div class="dash-card-header-left">
+                <h3>Payment Methods & Transaction History</h3>
+                <p>Protected with bank-grade 256-bit encryption. Full card numbers are never stored on client devices.</p>
+              </div>
+              <span class="badge badge-gold"><i class="fa-solid fa-shield-halved"></i> PCI-DSS Encrypted</span>
+            </div>
+
+            <!-- Saved Payment Cards -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 2rem;">
+              <div style="background: rgba(45, 19, 31, 0.7); border: 1.5px solid var(--accent-gold); border-radius: var(--radius-sm); padding: 1.5rem; display: flex; align-items: center; gap: 1rem;">
+                <div style="width: 48px; height: 48px; border-radius: var(--radius-sm); background: rgba(229, 163, 153, 0.15); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--accent-gold);">
+                  <i class="fa-brands fa-cc-visa"></i>
+                </div>
+                <div>
+                  <div style="font-weight: 700; color: #FFF; font-size: 0.95rem;">Visa ending in 4821</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Expires 08/2028 • Default Payment Method</div>
+                </div>
+              </div>
+
+              <div style="background: rgba(36, 14, 24, 0.6); border: 1px solid rgba(229, 163, 153, 0.2); border-radius: var(--radius-sm); padding: 1.5rem; display: flex; align-items: center; gap: 1rem;">
+                <div style="width: 48px; height: 48px; border-radius: var(--radius-sm); background: rgba(229, 163, 153, 0.15); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--text-primary);">
+                  <i class="fa-brands fa-apple-pay"></i>
+                </div>
+                <div>
+                  <div style="font-weight: 700; color: #FFF; font-size: 0.95rem;">Apple Pay Connected</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Biometric 1-Click Checkout Enabled</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Transaction History Table -->
+            <h4 style="font-family: var(--font-serif); font-size: 1.15rem; margin-bottom: 1rem; color: var(--text-primary);">
+              Recent Payment Transactions
+            </h4>
+            <div class="dash-table-wrapper">
+              <table class="dash-table">
+                <thead>
+                  <tr>
+                    <th>Order Ref</th>
+                    <th>Date</th>
+                    <th>Transaction Reference</th>
+                    <th>Payment Method</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="cust-payments-tbody">
+                  <!-- Rendered dynamically by js/dashboard.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             PANEL 7: MY PROFILE
+             ================================================================== -->
+        <section class="dash-panel" id="panel-profile">
+          <div class="dash-card-box">
+            <div class="dash-card-header">
+              <div class="dash-card-header-left">
+                <h3>VIP Client Profile Details</h3>
+                <p>Personalize your client dossier and skincare consultation preferences.</p>
+              </div>
+              <span class="badge badge-gold"><i class="fa-solid fa-gem"></i> Diamond Privilège</span>
+            </div>
+
+            <form id="cust-profile-form">
+              <div class="dash-form-row">
+                <div class="dash-form-group">
+                  <label for="profile-name" class="dash-form-label">Full Name *</label>
+                  <input type="text" id="profile-name" class="dash-form-control" value="Clara Delacroix" required>
+                </div>
+                <div class="dash-form-group">
+                  <label for="profile-email" class="dash-form-label">Email Address *</label>
+                  <input type="email" id="profile-email" class="dash-form-control" value="clara.delacroix@example.com" required>
+                </div>
+              </div>
+
+              <div class="dash-form-row">
+                <div class="dash-form-group">
+                  <label for="profile-phone" class="dash-form-label">Contact Phone</label>
+                  <input type="tel" id="profile-phone" class="dash-form-control" value="+33 (0)6 12 34 56 78">
+                </div>
+                <div class="dash-form-group">
+                  <label for="profile-skintype" class="dash-form-label">Primary Skin Profile</label>
+                  <select id="profile-skintype" class="dash-form-control">
+                    <option value="dry">Dry / Dehydrated Complexion</option>
+                    <option value="sensitive" selected>Sensitive / Delicate Reactive</option>
+                    <option value="combination">Combination Skin</option>
+                    <option value="mature">Mature / Firmness Seeking</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="dash-form-group">
+                <label for="profile-notes" class="dash-form-label">Bespoke Skin Aspirations & Notes</label>
+                <textarea id="profile-notes" class="dash-form-control" rows="3" placeholder="Tell our Paris aesthetician about your preferences, allergies, or preferred aromatic notes...">Prefers cold-pressed Damascus Rose and Edelweiss stem cell formulations. Enjoys complimentary travel deluxe discovery miniatures with every order.</textarea>
+              </div>
+
+              <div style="display: flex; justify-content: flex-end; margin-top: 1.5rem;">
+                <button type="submit" class="btn btn-primary">
+                  <i class="fa-solid fa-floppy-disk"></i> Save Profile Changes
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             PANEL 8: SETTINGS
+             ================================================================== -->
+        <section class="dash-panel" id="panel-settings">
+          <!-- Password & Security -->
+          <div class="dash-card-box">
+            <div class="dash-card-header">
+              <div class="dash-card-header-left">
+                <h3>Security & Password</h3>
+                <p>Update your client sanctuary password to maintain account integrity.</p>
+              </div>
+            </div>
+
+            <form id="cust-password-form">
+              <div class="dash-form-row">
+                <div class="dash-form-group">
+                  <label for="pass-current" class="dash-form-label">Current Password *</label>
+                  <input type="password" id="pass-current" class="dash-form-control" placeholder="••••••••" required>
+                </div>
+                <div class="dash-form-group">
+                  <label for="pass-new" class="dash-form-label">New Password *</label>
+                  <input type="password" id="pass-new" class="dash-form-control" placeholder="At least 6 characters" required>
+                </div>
+              </div>
+
+              <div class="dash-form-row">
+                <div class="dash-form-group">
+                  <label for="pass-confirm" class="dash-form-label">Confirm New Password *</label>
+                  <input type="password" id="pass-confirm" class="dash-form-control" placeholder="Re-enter new password" required>
+                </div>
+                <div style="display: flex; align-items: flex-end; padding-bottom: 1.2rem;">
+                  <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <i class="fa-solid fa-lock"></i> Update Password
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Notification Preferences -->
+          <div class="dash-card-box">
+            <div class="dash-card-header">
+              <div class="dash-card-header-left">
+                <h3>Concierge Notification Preferences</h3>
+                <p>Choose which alerts you wish to receive from our Paris atelier.</p>
+              </div>
+            </div>
+
+            <div class="dash-toggle-wrapper">
+              <div>
+                <strong style="color: var(--text-primary); font-size: 0.95rem;">Order Dispatch & Delivery SMS</strong>
+                <p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0;">Real-time tracking updates when your formulation leaves Paris.</p>
+              </div>
+              <label class="dash-toggle-switch">
+                <input type="checkbox" checked>
+                <span class="dash-slider"></span>
+              </label>
+            </div>
+
+            <div class="dash-toggle-wrapper">
+              <div>
+                <strong style="color: var(--text-primary); font-size: 0.95rem;">Bespoke Atelier Launches</strong>
+                <p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0;">Advance VIP notifications for limited cold-pressed harvests.</p>
+              </div>
+              <label class="dash-toggle-switch">
+                <input type="checkbox" checked>
+                <span class="dash-slider"></span>
+              </label>
+            </div>
+
+            <div class="dash-toggle-wrapper">
+              <div>
+                <strong style="color: var(--text-primary); font-size: 0.95rem;">Salon Appointment Reminders</strong>
+                <p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0;">24-hour reminder before scheduled Paris atelier treatments.</p>
+              </div>
+              <label class="dash-toggle-switch">
+                <input type="checkbox" checked>
+                <span class="dash-slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Account Sign Out -->
+          <div class="dash-card-box" style="border-color: rgba(248, 113, 113, 0.3);">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+              <div>
+                <h4 style="color: #F87171; font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 0.25rem;">Sign Out of Client Sanctuary</h4>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">End your current secure session on this device.</p>
+              </div>
+              <button type="button" class="btn btn-outline" id="btn-logout-settings" style="color: #F87171; border-color: #F87171;">
+                <i class="fa-solid fa-power-off"></i> Sign Out
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODALS: CUSTOMER DASHBOARD
+       ====================================================================== -->
+
+  <!-- Modal 1: Order Details -->
+  <div class="dash-modal-backdrop" id="modal-cust-order-details">
+    <div class="dash-modal-box">
+      <div class="dash-modal-header">
+        <h3 id="modal-order-id-title">Order Details</h3>
+        <button type="button" class="dash-modal-close" data-modal-close><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="dash-modal-body">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(229, 163, 153, 0.15);">
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Status</span>
+            <div><span class="status-badge" id="modal-order-status-badge">Processing</span></div>
+          </div>
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Date</span>
+            <div id="modal-order-date" style="font-weight: 600;">Oct 14, 2026</div>
+          </div>
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Total</span>
+            <div id="modal-order-total" style="font-size: 1.2rem; font-weight: 700; color: var(--accent-gold);">$0.00</div>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <h4 style="font-size: 0.95rem; margin-bottom: 0.6rem; color: var(--text-primary);">Courier & Shipping</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 0.4rem;">
+            <strong>Carrier:</strong> <span id="modal-order-carrier">DHL Express</span><br>
+            <strong>Tracking Number:</strong> <span id="modal-order-tracking-num" style="color: var(--accent-gold); font-family: monospace;">FR-EXP-89021</span><br>
+            <strong>Destination:</strong> <span id="modal-order-address">14 Rue de Rivoli, Paris, France</span>
+          </p>
+        </div>
+
+        <h4 style="font-size: 0.95rem; margin-bottom: 0.6rem; color: var(--text-primary);">Formulation Items</h4>
+        <div id="modal-order-items-list" style="margin-bottom: 1.5rem;">
+          <!-- Items inserted dynamically -->
+        </div>
+      </div>
+      <div class="dash-modal-footer">
+        <button type="button" class="btn btn-outline btn-sm" data-modal-close>Close</button>
+        <button type="button" class="btn btn-primary btn-sm">
+          <i class="fa-solid fa-file-pdf"></i> Download Invoice
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Add Review -->
+  <div class="dash-modal-backdrop" id="modal-add-review">
+    <div class="dash-modal-box">
+      <div class="dash-modal-header">
+        <h3>Write a Client Review</h3>
+        <button type="button" class="dash-modal-close" data-modal-close><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="add-review-form">
+        <div class="dash-modal-body">
+          <div class="dash-form-group">
+            <label for="review-product-select" class="dash-form-label">Select Purchased Formulation *</label>
+            <select id="review-product-select" class="dash-form-control" required>
+              <option value="1">Elixir de Rose Radiance Serum</option>
+              <option value="2">Crème Renaissance Restorative Face Cream</option>
+              <option value="3">Velours Rose Hydrating Lip Nectar</option>
+              <option value="4">Botanical Gold Illuminating Facial Oil</option>
+              <option value="5">Rosewater Essence Balancing Mist</option>
+              <option value="6">Lumière Velvet Matte Lip Couture</option>
+            </select>
+          </div>
+
+          <div class="dash-form-group">
+            <label class="dash-form-label">Star Rating *</label>
+            <div id="star-picker" style="font-size: 1.5rem; color: var(--accent-gold); cursor: pointer; display: flex; gap: 0.4rem;">
+              <i class="fa-solid fa-star star-picker-item" data-star="1"></i>
+              <i class="fa-solid fa-star star-picker-item" data-star="2"></i>
+              <i class="fa-solid fa-star star-picker-item" data-star="3"></i>
+              <i class="fa-solid fa-star star-picker-item" data-star="4"></i>
+              <i class="fa-solid fa-star star-picker-item" data-star="5"></i>
+            </div>
+          </div>
+
+          <div class="dash-form-group">
+            <label for="review-headline" class="dash-form-label">Headline / Title *</label>
+            <input type="text" id="review-headline" class="dash-form-control" placeholder="e.g. Sublime glow that transformed my winter complexion" required>
+          </div>
+
+          <div class="dash-form-group">
+            <label for="review-body" class="dash-form-label">Your Review & Ritual Experience *</label>
+            <textarea id="review-body" class="dash-form-control" rows="4" placeholder="Describe the sensorial texture, scent, and skin results..." required></textarea>
+          </div>
+        </div>
+        <div class="dash-modal-footer">
+          <button type="button" class="btn btn-outline btn-sm" data-modal-close>Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">
+            <i class="fa-solid fa-paper-plane"></i> Submit Review
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 3: Add Address -->
+  <div class="dash-modal-backdrop" id="modal-add-address">
+    <div class="dash-modal-box">
+      <div class="dash-modal-header">
+        <h3>Add Delivery Address</h3>
+        <button type="button" class="dash-modal-close" data-modal-close><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="add-address-form">
+        <div class="dash-modal-body">
+          <div class="dash-form-group">
+            <label for="addr-name" class="dash-form-label">Address Label / Recipient *</label>
+            <input type="text" id="addr-name" class="dash-form-control" placeholder="e.g. Clara Delacroix (Paris Penthouse)" required>
+          </div>
+
+          <div class="dash-form-group">
+            <label for="addr-street" class="dash-form-label">Street Address *</label>
+            <input type="text" id="addr-street" class="dash-form-control" placeholder="e.g. 18 Place Vendôme, Apt 3" required>
+          </div>
+
+          <div class="dash-form-row">
+            <div class="dash-form-group">
+              <label for="addr-city" class="dash-form-label">City *</label>
+              <input type="text" id="addr-city" class="dash-form-control" placeholder="e.g. Paris" required>
+            </div>
+            <div class="dash-form-group">
+              <label for="addr-postal" class="dash-form-label">Postal Code *</label>
+              <input type="text" id="addr-postal" class="dash-form-control" placeholder="e.g. 75001" required>
+            </div>
+          </div>
+
+          <div class="dash-form-row">
+            <div class="dash-form-group">
+              <label for="addr-country" class="dash-form-label">Country *</label>
+              <input type="text" id="addr-country" class="dash-form-control" value="France" required>
+            </div>
+            <div class="dash-form-group">
+              <label for="addr-phone" class="dash-form-label">Delivery Phone *</label>
+              <input type="tel" id="addr-phone" class="dash-form-control" placeholder="+33 (0)6 00 00 00 00" required>
+            </div>
+          </div>
+        </div>
+        <div class="dash-modal-footer">
+          <button type="button" class="btn btn-outline btn-sm" data-modal-close>Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">
+            <i class="fa-solid fa-check"></i> Save Address
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

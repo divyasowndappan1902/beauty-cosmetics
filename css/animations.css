@@ -1,0 +1,877 @@
+/* ==========================================================================
+   STACKLY - ANIMATIONS & MICRO-INTERACTIONS
+   GSAP & AOS Enhancement Stylesheet
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Keyframe Animations
+   -------------------------------------------------------------------------- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes shimmerGold {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(197, 168, 128, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(197, 168, 128, 0.55);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Utility Animation Classes
+   -------------------------------------------------------------------------- */
+.animate-float {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, #1C1815 0%, #C5A880 50%, #1C1815 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmerGold 8s linear infinite;
+}
+
+/* Image Reveal Container */
+.reveal-img-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+.reveal-img-wrap img {
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+}
+
+.reveal-img-wrap:hover img {
+  transform: scale(1.05);
+}
+
+/* Subtle Parallax Class */
+.parallax-layer {
+  transition: transform 0.15s ease-out;
+  will-change: transform;
+}
+
+/* Luxury Glow Card */
+.glow-on-hover {
+  position: relative;
+  transition: box-shadow var(--transition-normal);
+}
+
+.glow-on-hover:hover {
+  box-shadow: 0 12px 35px rgba(197, 168, 128, 0.22);
+}
+
+/* --------------------------------------------------------------------------
+   BEAUTY & COSMETICS DYNAMIC SVG ANIMATION SYSTEM
+   Artisanal Formulations, Skincare Rituals, Cosmetics Artistry & Haute Parfumerie
+   -------------------------------------------------------------------------- */
+.page-hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3.5rem;
+  align-items: center;
+  margin-top: 1.5rem;
+  position: relative;
+}
+
+@media (max-width: 991px) {
+  .page-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.hero-feature-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.85rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.hero-tag i {
+  color: var(--accent-gold);
+  font-size: 0.82rem;
+}
+
+.hero-tag:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(229, 163, 153, 0.2);
+}
+
+.page-hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Master Glassmorphic Frame for Beauty SVG Showcases */
+.beauty-svg-showcase {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.8rem 1.6rem 1.25rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), 0 0 35px rgba(229, 163, 153, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.beauty-svg-showcase:hover {
+  border-color: var(--accent-gold);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65), 0 0 45px rgba(229, 163, 153, 0.28);
+  transform: translateY(-4px);
+}
+
+.beauty-svg-showcase::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+}
+
+.beauty-svg-canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  overflow: visible;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.45));
+}
+
+.beauty-svg-showcase-badge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border-card);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.beauty-svg-showcase-badge .badge-title {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--accent-gold);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+}
+
+.beauty-svg-showcase-badge .badge-status {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+
+.status-dot-pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 8px #10B981;
+  animation: pulseEmerald 2s infinite ease-in-out;
+}
+
+@keyframes pulseEmerald {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.35); opacity: 0.65; }
+}
+
+/* ==========================================================================
+   KEYFRAME ANIMATIONS FOR BEAUTY & COSMETICS SVGS
+   ========================================================================== */
+
+/* 1. Botanical Alembic Distillation (About Page) */
+@keyframes liquidWave {
+  0%, 100% {
+    transform: translateY(0) scaleY(1);
+  }
+  50% {
+    transform: translateY(-3px) scaleY(1.02);
+  }
+}
+
+@keyframes bubbleFloat1 {
+  0% { transform: translateY(0) scale(0.6); opacity: 0; }
+  20% { opacity: 0.8; }
+  80% { opacity: 0.8; }
+  100% { transform: translateY(-45px) scale(1.1); opacity: 0; }
+}
+
+@keyframes bubbleFloat2 {
+  0% { transform: translateY(0) scale(0.5); opacity: 0; }
+  25% { opacity: 0.75; }
+  75% { opacity: 0.75; }
+  100% { transform: translateY(-55px) scale(1.2); opacity: 0; }
+}
+
+@keyframes bubbleFloat3 {
+  0% { transform: translateY(0) scale(0.7); opacity: 0; }
+  30% { opacity: 0.85; }
+  70% { opacity: 0.85; }
+  100% { transform: translateY(-60px) scale(1); opacity: 0; }
+}
+
+@keyframes rosePetalBreathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.045);
+  }
+}
+
+@keyframes leafBreezeLeft {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-4deg); }
+}
+
+@keyframes leafBreezeRight {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(5deg); }
+}
+
+@keyframes elixirDripFall {
+  0% {
+    transform: translateY(0) scale(0.5);
+    opacity: 0;
+  }
+  20% {
+    transform: translateY(6px) scale(1.1);
+    opacity: 1;
+  }
+  65% {
+    transform: translateY(18px) scale(0.95);
+    opacity: 1;
+  }
+  85% {
+    transform: translateY(42px) scale(1, 1.4);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(58px) scale(1.3, 0.3);
+    opacity: 0;
+  }
+}
+
+@keyframes rippleExpansion {
+  0% {
+    transform: scale(0.2);
+    opacity: 0.9;
+  }
+  70% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+@keyframes starGlint {
+  0%, 100% {
+    transform: scale(0.7) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.25) rotate(90deg);
+    opacity: 1;
+  }
+}
+
+/* 2. Haute Skincare Dropper & Gua Sha Ritual (Services Page) */
+@keyframes dropperFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes serumDropletFall {
+  0% {
+    transform: translateY(0) scale(0.4);
+    opacity: 0;
+  }
+  25% {
+    transform: translateY(8px) scale(1);
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(35px) scale(0.9, 1.3);
+    opacity: 1;
+  }
+  90% {
+    transform: translateY(70px) scale(1.2, 0.6);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(85px) scale(1.6, 0.2);
+    opacity: 0;
+  }
+}
+
+@keyframes cellularWaveOut {
+  0% {
+    transform: scale(0.3);
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.75);
+    opacity: 0;
+  }
+}
+
+@keyframes guashaContourGlide {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(12px, -8px) rotate(4deg);
+  }
+  50% {
+    transform: translate(22px, -18px) rotate(7deg);
+  }
+  75% {
+    transform: translate(12px, -8px) rotate(4deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+@keyframes vitalityGlowSweep {
+  0%, 100% {
+    opacity: 0.35;
+    stroke-width: 1.5;
+  }
+  50% {
+    opacity: 0.9;
+    stroke-width: 2.5;
+  }
+}
+
+/* 3. Haute Cosmetics Lipstick Swivel & Powder Compact (Blog Page) */
+@keyframes lipstickBulletRise {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-16px);
+  }
+}
+
+@keyframes metallicGleamSlide {
+  0% {
+    transform: translateX(-40px) skewX(-20deg);
+    opacity: 0;
+  }
+  35% {
+    opacity: 0.85;
+  }
+  65% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateX(45px) skewX(-20deg);
+    opacity: 0;
+  }
+}
+
+@keyframes brushGlowWave {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(-6px, -4px) rotate(-6deg);
+  }
+  50% {
+    transform: translate(8px, -10px) rotate(8deg);
+  }
+  75% {
+    transform: translate(-3px, -5px) rotate(-3deg);
+  }
+}
+
+@keyframes pigmentRibbonFlow {
+  0% {
+    stroke-dashoffset: 240;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -240;
+  }
+}
+
+@keyframes powderDustFloat {
+  0% { transform: translateY(0) scale(0.6); opacity: 0; }
+  30% { opacity: 0.9; }
+  70% { opacity: 0.8; }
+  100% { transform: translateY(-35px) translateX(12px) scale(1.1); opacity: 0; }
+}
+
+/* 4. Vintage Perfume Flacon & Atomizer Mist (Contact Page) */
+@keyframes flaconHover {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes atomizerBulbPress {
+  0%, 100% {
+    transform: scale(1, 1);
+  }
+  18% {
+    transform: scale(0.82, 0.88);
+  }
+  35% {
+    transform: scale(1.04, 1.02);
+  }
+  50% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes perfumeMistExpand1 {
+  0% {
+    transform: translate(0, 0) scale(0.2);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.95;
+  }
+  65% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(55px, -24px) scale(1.45);
+    opacity: 0;
+  }
+}
+
+@keyframes perfumeMistExpand2 {
+  0% {
+    transform: translate(0, 0) scale(0.2);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.9;
+  }
+  70% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(75px, 8px) scale(1.6);
+    opacity: 0;
+  }
+}
+
+@keyframes fragrancePetalDrift1 {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(0.7);
+    opacity: 0;
+  }
+  20% { opacity: 0.9; }
+  60% { transform: translate(45px, -22px) rotate(60deg) scale(1); opacity: 0.8; }
+  100% { transform: translate(90px, -45px) rotate(140deg) scale(0.85); opacity: 0; }
+}
+
+@keyframes fragrancePetalDrift2 {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(0.6);
+    opacity: 0;
+  }
+  25% { opacity: 0.85; }
+  65% { transform: translate(48px, 18px) rotate(-45deg) scale(0.95); opacity: 0.75; }
+  100% { transform: translate(85px, 36px) rotate(-90deg) scale(0.75); opacity: 0; }
+}
+
+@keyframes conciergeWavePulse {
+  0% {
+    transform: scale(0.4);
+    opacity: 0.85;
+  }
+  60% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+/* Specific SVG element class bindings */
+.svg-anim-liquid { animation: liquidWave 4s ease-in-out infinite; transform-origin: center bottom; }
+.svg-anim-bubble-1 { animation: bubbleFloat1 3s ease-in infinite; }
+.svg-anim-bubble-2 { animation: bubbleFloat2 3.6s ease-in infinite 0.7s; }
+.svg-anim-bubble-3 { animation: bubbleFloat3 4.2s ease-in infinite 1.4s; }
+.svg-anim-rose { animation: rosePetalBreathe 4s ease-in-out infinite; transform-origin: 155px 125px; }
+.svg-anim-leaf-left { animation: leafBreezeLeft 5s ease-in-out infinite; transform-origin: 110px 185px; }
+.svg-anim-leaf-right { animation: leafBreezeRight 5s ease-in-out infinite 0.5s; transform-origin: 195px 195px; }
+.svg-anim-elixir-drip { animation: elixirDripFall 3s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite; }
+.svg-anim-ripple-1 { animation: rippleExpansion 3s ease-out infinite 1.8s; transform-origin: 375px 330px; }
+.svg-anim-ripple-2 { animation: rippleExpansion 3s ease-out infinite 2.3s; transform-origin: 375px 330px; }
+.svg-anim-glint-1 { animation: starGlint 3s ease-in-out infinite; transform-origin: 120px 80px; }
+.svg-anim-glint-2 { animation: starGlint 3.5s ease-in-out infinite 0.8s; transform-origin: 395px 145px; }
+.svg-anim-glint-3 { animation: starGlint 4s ease-in-out infinite 1.5s; transform-origin: 240px 60px; }
+
+.svg-anim-dropper { animation: dropperFloat 5s ease-in-out infinite; }
+.svg-anim-serum-drop { animation: serumDropletFall 3.2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+.svg-anim-vitality-1 { animation: cellularWaveOut 3.2s ease-out infinite 1.8s; transform-origin: 240px 300px; }
+.svg-anim-vitality-2 { animation: cellularWaveOut 3.2s ease-out infinite 2.4s; transform-origin: 240px 300px; }
+.svg-anim-guasha { animation: guashaContourGlide 6s ease-in-out infinite; transform-origin: 135px 235px; }
+.svg-anim-vitality-contour { animation: vitalityGlowSweep 4s ease-in-out infinite; }
+
+.svg-anim-lipstick-bullet { animation: lipstickBulletRise 4.5s ease-in-out infinite; }
+.svg-anim-gleam { animation: metallicGleamSlide 4.5s ease-in-out infinite; }
+.svg-anim-brush { animation: brushGlowWave 5s ease-in-out infinite; transform-origin: 350px 170px; }
+.svg-anim-ribbon { animation: pigmentRibbonFlow 7s linear infinite; stroke-dasharray: 240; }
+.svg-anim-powder-1 { animation: powderDustFloat 3.2s ease-out infinite; }
+.svg-anim-powder-2 { animation: powderDustFloat 3.8s ease-out infinite 0.9s; }
+.svg-anim-powder-3 { animation: powderDustFloat 4.2s ease-out infinite 1.6s; }
+
+.svg-anim-flacon { animation: flaconHover 5s ease-in-out infinite; }
+.svg-anim-bulb { animation: atomizerBulbPress 3s ease-in-out infinite; transform-origin: 90px 225px; }
+.svg-anim-mist-1 { animation: perfumeMistExpand1 3s ease-out infinite 0.4s; transform-origin: 285px 175px; }
+.svg-anim-mist-2 { animation: perfumeMistExpand2 3s ease-out infinite 0.7s; transform-origin: 285px 175px; }
+.svg-anim-petal-1 { animation: fragrancePetalDrift1 3s ease-out infinite 0.5s; transform-origin: 295px 165px; }
+.svg-anim-petal-2 { animation: fragrancePetalDrift2 3s ease-out infinite 0.8s; transform-origin: 295px 185px; }
+.svg-anim-concierge-wave-1 { animation: conciergeWavePulse 3s ease-out infinite 0.5s; transform-origin: 240px 175px; }
+.svg-anim-concierge-wave-2 { animation: conciergeWavePulse 3s ease-out infinite 1.2s; transform-origin: 240px 175px; }
+
+/* --------------------------------------------------------------------------
+   HOME PAGE BEAUTY SHOWCASE & HERO ANIMATED SEAL
+   -------------------------------------------------------------------------- */
+.home-beauty-dual-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+@media (max-width: 991px) {
+  .home-beauty-dual-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.home-showcase-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 2.2rem 2rem 1.8rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), 0 0 35px rgba(229, 163, 153, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all var(--transition-normal);
+  overflow: hidden;
+}
+
+.home-showcase-card:hover {
+  border-color: var(--accent-gold);
+  transform: translateY(-5px);
+  box-shadow: 0 25px 65px rgba(0, 0, 0, 0.65), 0 0 45px rgba(229, 163, 153, 0.28);
+}
+
+.home-showcase-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+}
+
+.home-showcase-header {
+  margin-bottom: 1.5rem;
+}
+
+.home-showcase-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.home-showcase-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.home-showcase-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Hero Top Floating Animated Seal */
+.hero-floating-seal {
+  position: absolute;
+  top: 25px;
+  right: -25px;
+  z-index: 10;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: rgba(20, 15, 21, 0.9);
+  border: 1.5px solid var(--accent-gold);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(229, 163, 153, 0.35);
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  .hero-floating-seal {
+    top: 15px;
+    right: 15px;
+    width: 85px;
+    height: 85px;
+  }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.svg-seal-rotate {
+  animation: spinSlow 24s linear infinite;
+  transform-origin: 50px 50px;
+}
+
+/* Hero Mini SVG Flask */
+.hero-mini-svg-flask {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-xs);
+  background: rgba(20, 15, 21, 0.8);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+/* Routine Step SVG Canvas */
+.routine-svg-box {
+  width: 100%;
+  height: 180px;
+  border-radius: var(--radius-sm);
+  background: rgba(20, 15, 21, 0.55);
+  border: 1px solid var(--border-card);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.routine-card:hover .routine-svg-box {
+  border-color: var(--accent-gold);
+  background: rgba(32, 24, 34, 0.7);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(229, 163, 153, 0.2);
+}
+
+.routine-svg-canvas {
+  width: 100%;
+  max-width: 130px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+@keyframes creamGlowPulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.15); opacity: 0.9; }
+}
+
+@keyframes cleanseBubble {
+  0% { transform: translateY(0) scale(0.6); opacity: 0; }
+  30% { opacity: 0.9; }
+  100% { transform: translateY(-28px) scale(1.1); opacity: 0; }
+}
+
+.svg-anim-cleanse-bubble-1 { animation: cleanseBubble 2.5s ease-in infinite; }
+.svg-anim-cleanse-bubble-2 { animation: cleanseBubble 3.2s ease-in infinite 0.8s; }
+.svg-anim-cream-glow { animation: creamGlowPulse 4s ease-in-out infinite; transform-origin: center center; }
+
+/* --------------------------------------------------------------------------
+   GUARANTEE ALL TEXT & CONTENT SHOWING IN VISIBLE VIEW
+   Ensures all headings, paragraphs, cards, badges, descriptions, and text
+   are always 100% visible, crisp, and high-contrast without being hidden
+   by AOS or GSAP scroll triggers or animation delays.
+   -------------------------------------------------------------------------- */
+[data-aos],
+[data-aos].aos-animate,
+.aos-init {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+
+/* All Typography & Content Elements Must Always Be Visible */
+h1, h2, h3, h4, h5, h6,
+p, span, a, li, label, strong, em, b, i, blockquote,
+.section-title, .section-desc, .section-eyebrow,
+.hero-title, .hero-desc, .hero-badge,
+.page-hero-title, .page-hero-desc,
+.philosophy-lead, .mv-heading, .mv-desc, .mv-tag,
+.promise-card-title, .promise-card-text,
+.experience-card-title, .experience-card-desc,
+.craft-stat-num, .craft-stat-label, .craft-stat-sub,
+.botanical-name, .botanical-role, .botanical-origin, .botanical-desc,
+.founder-title, .founder-lead, .founder-quote,
+.services-intro-title, .services-intro-desc,
+.service-cat-title, .service-cat-desc,
+.signature-ritual-name, .signature-ritual-price, .signature-ritual-desc,
+.consult-step-title, .consult-step-desc,
+.atelier-feature-title, .atelier-feature-desc,
+.service-review-quote, .service-review-author,
+.services-cta-title, .services-cta-desc,
+.editorial-title, .editorial-desc, .editorial-tag,
+.trending-story-title, .trending-story-excerpt,
+.routine-step-title, .routine-step-desc,
+.ingredient-title, .ingredient-desc,
+.author-name, .author-title, .author-bio,
+.newsletter-card-title, .newsletter-card-desc,
+.contact-hero-title, .contact-hero-desc,
+.concierge-card-title, .concierge-card-text,
+.flagship-city, .flagship-address, .flagship-hours,
+.accordion-question, .accordion-answer,
+.contact-closing-title, .contact-closing-desc,
+.dash-metric-title, .dash-metric-value, .dash-hero-title, .dash-hero-desc,
+.gsap-reveal-title, .gsap-reveal-sub, .gsap-reveal-desc, .gsap-reveal-btn {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+[data-aos] {
+  pointer-events: auto;
+}
+
+body[data-aos-easing="ease-out-cubic"] [data-aos] {
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   Accessible Reduced Motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

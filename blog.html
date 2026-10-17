@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Beauty Journal | Stackly</title>
+  <meta name="description" content="Discover skincare rituals, active botanical science, and Paris fashion week makeup inspiration.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23191614'/><path d='M50 20 L53 42 L75 50 L53 58 L50 80 L47 58 L25 50 L47 42 Z' fill='%23C5A880'/></svg>">
+
+  <!-- CDNs -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/blog-luxury.css">
+
+  <style>
+    /* Blog specific tab styles */
+    .blog-filters-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .blog-filter-btn {
+      padding: 0.65rem 1.4rem;
+      border-radius: var(--radius-full);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      transition: all var(--transition-fast);
+      cursor: pointer;
+    }
+
+    .blog-filter-btn:hover,
+    .blog-filter-btn.active {
+      background-color: var(--accent-gold);
+      color: #FFFFFF;
+      border-color: var(--accent-gold);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .featured-article-hero {
+      background-color: var(--bg-card);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-card);
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      margin-bottom: 5rem;
+      transition: transform var(--transition-normal);
+    }
+
+    .featured-article-hero:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-4px);
+    }
+
+    @media (max-width: 992px) {
+      .featured-article-hero {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======================================================================
+       HEADER & NAVIGATION
+       ====================================================================== -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo" aria-label="Stackly Home">
+        <img src="logo_0027.webp" alt="Stackly" class="brand-logo-img">
+        <span class="brand-sub">HAUTE BOTANIQUE</span>
+      </a>
+
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="blog.html" class="nav-link active">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="header-icon-btn header-search-btn" aria-label="Open Search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+        <div class="cart-btn-wrapper">
+          <button type="button" class="header-icon-btn header-cart-btn" aria-label="View Shopping Bag">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span class="cart-count-badge">2</span>
+          </button>
+        </div>
+
+        <a href="login.html" class="btn-nav-login">
+          <i class="fa-regular fa-user"></i>
+          <span>Account</span>
+        </a>
+
+        <button type="button" class="hamburger-btn" aria-label="Toggle navigation menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Overlay & Drawer -->
+  <div class="mobile-nav-overlay" aria-hidden="true">
+    <div class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+      <div class="mobile-nav-top">
+        <div class="brand-logo" style="margin-bottom: 2.5rem;">
+          <img src="logo_0027.webp" alt="Stackly" class="brand-logo-img" style="height: 36px;">
+          <span class="brand-sub">HAUTE BOTANIQUE</span>
+        </div>
+        <div class="mobile-nav-links">
+          <a href="index.html" class="mobile-nav-link"><span>Home</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem;"></i></a>
+          <a href="about.html" class="mobile-nav-link"><span>About</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem;"></i></a>
+          <a href="services.html" class="mobile-nav-link"><span>Services</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem;"></i></a>
+          <a href="blog.html" class="mobile-nav-link active"><span>Blog Journal</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem;"></i></a>
+          <a href="contact.html" class="mobile-nav-link"><span>Contact</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem;"></i></a>
+          <a href="login.html" class="mobile-nav-link"><span>Client Login</span> <i class="fa-solid fa-user" style="font-size: 0.9rem;"></i></a>
+        </div>
+      </div>
+      <div class="mobile-nav-footer">
+        <div class="mobile-nav-socials">
+          <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-link" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+          <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+        <p style="font-size: 0.75rem; color: var(--text-muted);">© 2026 STACKLY. ALL RIGHTS RESERVED.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Modal -->
+  <div class="search-modal" role="dialog" aria-modal="true" aria-label="Search">
+    <div class="search-modal-content">
+      <button type="button" class="search-modal-close" aria-label="Close search"><i class="fa-solid fa-xmark"></i></button>
+      <div class="search-input-wrapper">
+        <i class="fa-solid fa-magnifying-glass search-icon-inside"></i>
+        <input type="text" class="search-input" placeholder="Search skincare, makeup, ingredients..." autocomplete="off">
+      </div>
+      <div class="search-results-container"></div>
+    </div>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div class="cart-drawer-overlay" role="dialog" aria-modal="true" aria-label="Shopping Bag">
+    <div class="cart-drawer">
+      <div class="cart-drawer-header">
+        <h3 class="cart-drawer-title"><i class="fa-solid fa-bag-shopping text-gold"></i> Your Shopping Bag</h3>
+        <button type="button" class="cart-drawer-close" aria-label="Close bag"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="cart-free-shipping">Complimentary luxury packaging on all orders.</div>
+      <div class="cart-items-list"></div>
+      <div class="cart-drawer-footer">
+        <div class="cart-subtotal-row">
+          <span>Subtotal</span>
+          <span class="cart-subtotal-val">$0.00</span>
+        </div>
+        <button type="button" class="btn btn-primary cart-checkout-btn" style="width: 100%;">
+          Proceed to Checkout <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- ======================================================================
+         SECTION 1: BLOG HERO
+         ====================================================================== -->
+    <section class="section-padding bg-secondary" style="border-bottom: 1px solid var(--border-subtle); position: relative; overflow: hidden;">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem;"></i>
+          <span class="current">The Beauty Journal</span>
+        </nav>
+
+        <div class="page-hero-grid">
+          <!-- Hero Text Column -->
+          <div class="page-hero-text" data-aos="fade-up">
+            <span class="section-eyebrow no-after">Dispatches from Paris</span>
+            <h1 class="section-title" style="font-size: clamp(2.6rem, 5vw, 4.2rem);">
+              The Beauty <em>Journal</em>
+            </h1>
+            <p class="section-desc text-left" style="font-size: 1.15rem; margin: 0 0 1.5rem 0; max-width: 640px;">
+              Discover skincare rituals, makeup inspiration, and expert beauty insights curated by our master phytochemists and Parisian editorial aestheticians.
+            </p>
+            <div class="hero-feature-tags">
+              <span class="hero-tag"><i class="fa-solid fa-feather-pointed"></i> Haute Editorial</span>
+              <span class="hero-tag"><i class="fa-solid fa-wand-magic-sparkles"></i> Color Theory</span>
+              <span class="hero-tag"><i class="fa-solid fa-book-open"></i> Formulation Dossiers</span>
+            </div>
+          </div>
+
+          <!-- Hero Visual Column: Haute Cosmetics Lipstick Swivel & Powder Compact Animated SVG -->
+          <div class="page-hero-visual" data-aos="fade-left">
+            <div class="beauty-svg-showcase">
+              <svg class="beauty-svg-canvas" viewBox="0 0 480 370" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated Haute Cosmetics Velvet Lipstick Swivel & Powder Compact Artistry">
+                <title>Haute Cosmetics Artistry & Velvet Lipstick</title>
+                <desc>Interactive animation illustrating a luxury Parisian obsidian lipstick bullet swiveling upwards with metallic gleam, an open powder compact, and a floating contour brush releasing shimmering cosmetic dust.</desc>
+                <defs>
+                  <!-- Glow Filter -->
+                  <filter id="cosmeticsGlow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="4" result="blur" />
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+
+                  <!-- Ambient Stardust Aura -->
+                  <radialGradient id="cosmeticsAura" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#E5A399" stop-opacity="0.3" />
+                    <stop offset="60%" stop-color="#D97384" stop-opacity="0.1" />
+                    <stop offset="100%" stop-color="#140F15" stop-opacity="0" />
+                  </radialGradient>
+
+                  <!-- Obsidian Tube Gradient -->
+                  <linearGradient id="obsidianCaseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#080608" />
+                    <stop offset="40%" stop-color="#221A24" />
+                    <stop offset="70%" stop-color="#140F15" />
+                    <stop offset="100%" stop-color="#080608" />
+                  </linearGradient>
+
+                  <!-- Polished Gold Mechanism -->
+                  <linearGradient id="lipstickGoldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#DDA193" />
+                    <stop offset="35%" stop-color="#FFF2EA" />
+                    <stop offset="65%" stop-color="#E5A399" />
+                    <stop offset="100%" stop-color="#9C5245" />
+                  </linearGradient>
+
+                  <!-- Parisian Velvet Crimson Lipstick Bullet -->
+                  <linearGradient id="velvetBulletGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#E63946" />
+                    <stop offset="30%" stop-color="#F25C69" />
+                    <stop offset="70%" stop-color="#B5172B" />
+                    <stop offset="100%" stop-color="#6E0A17" />
+                  </linearGradient>
+
+                  <!-- Powder Compact Rose Gold -->
+                  <linearGradient id="compactGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFF3EB" />
+                    <stop offset="40%" stop-color="#E5A399" />
+                    <stop offset="80%" stop-color="#C5A880" />
+                    <stop offset="100%" stop-color="#84483C" />
+                  </linearGradient>
+
+                  <!-- Pressed Powder Pan -->
+                  <radialGradient id="powderPanGrad" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#FCECE8" />
+                    <stop offset="60%" stop-color="#EABCB2" />
+                    <stop offset="100%" stop-color="#CC8C80" />
+                  </radialGradient>
+
+                  <!-- Brush Bristles -->
+                  <linearGradient id="brushBristleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#FFF0EC" />
+                    <stop offset="25%" stop-color="#E29E8F" />
+                    <stop offset="70%" stop-color="#803D2F" />
+                    <stop offset="100%" stop-color="#2B100B" />
+                  </linearGradient>
+                </defs>
+
+                <!-- Ambient Cosmetic Aura -->
+                <circle cx="240" cy="210" r="150" fill="url(#cosmeticsAura)" />
+
+                <!-- Sparkling Editorial Stardust -->
+                <g class="svg-anim-glint-1">
+                  <path d="M 100 85 Q 105 85 105 80 Q 105 85 110 85 Q 105 85 105 90 Q 105 85 100 85 Z" fill="#FFF2E8" />
+                  <circle cx="105" cy="85" r="1.5" fill="#E5A399" />
+                </g>
+                <g class="svg-anim-glint-2">
+                  <path d="M 400 80 Q 405 80 405 75 Q 405 80 410 80 Q 405 80 405 85 Q 405 80 400 80 Z" fill="#FFF2E8" />
+                  <circle cx="405" cy="80" r="1.5" fill="#E5A399" />
+                </g>
+                <g class="svg-anim-glint-3">
+                  <path d="M 230 45 Q 234 45 234 41 Q 234 45 238 45 Q 234 45 234 49 Q 234 45 230 45 Z" fill="#FFF2E8" />
+                </g>
+
+                <!-- Dynamic Shimmer Pigment Swatch Ribbon (Animated Stroke Flow) -->
+                <path class="svg-anim-ribbon"
+                      d="M 50 260 C 120 170, 200 320, 280 185 C 340 90, 420 180, 445 140"
+                      fill="none" stroke="url(#lipstickGoldGrad)" stroke-width="4.5" stroke-linecap="round" opacity="0.65" />
+                <path class="svg-anim-ribbon"
+                      d="M 50 260 C 120 170, 200 320, 280 185 C 340 90, 420 180, 445 140"
+                      fill="none" stroke="#FFF2EA" stroke-width="1.8" stroke-linecap="round" opacity="0.85" filter="url(#cosmeticsGlow)" />
+
+                <!-- Luxury Golden Powder Compact (Right Side) -->
+                <g>
+                  <!-- Compact Drop Shadow -->
+                  <ellipse cx="340" cy="275" rx="72" ry="24" fill="rgba(0, 0, 0, 0.45)" filter="url(#cosmeticsGlow)" />
+                  <!-- Compact Base Outer Ring -->
+                  <ellipse cx="340" cy="270" rx="68" ry="22" fill="url(#compactGoldGrad)" stroke="#FFE8E0" stroke-width="1" />
+                  <ellipse cx="340" cy="268" rx="62" ry="19" fill="#140F15" />
+
+                  <!-- Pressed Powder Pan -->
+                  <ellipse cx="340" cy="268" rx="55" ry="16" fill="url(#powderPanGrad)" />
+                  <!-- Concentric Pan Emboss Rings -->
+                  <ellipse cx="340" cy="268" rx="42" ry="11" fill="none" stroke="rgba(255, 255, 255, 0.55)" stroke-width="1" stroke-dasharray="6 3" />
+                  <ellipse cx="340" cy="268" rx="28" ry="7" fill="none" stroke="rgba(255, 255, 255, 0.65)" stroke-width="1" />
+                  <!-- Maison Star Emboss in Powder Center -->
+                  <path d="M 340 264 L 341 267 L 344 268 L 341 269 L 340 272 L 339 269 L 336 268 L 339 267 Z" fill="#FFEFEA" opacity="0.8" />
+
+                  <!-- Open Mirror Lid (45-degree Angled Perspective) -->
+                  <path d="M 285 258 C 285 220, 395 220, 395 258 L 388 178 C 388 148, 292 148, 292 178 Z"
+                        fill="url(#compactGoldGrad)" stroke="#FFE8E0" stroke-width="1.2" />
+                  <!-- Inner Beveled Mirror Surface -->
+                  <path d="M 295 180 C 295 158, 385 158, 385 180 L 388 245 C 388 230, 292 230, 292 245 Z"
+                        fill="rgba(255, 255, 255, 0.18)" stroke="rgba(255, 255, 255, 0.5)" stroke-width="0.8" />
+                  <!-- Mirror Specular Flare -->
+                  <line x1="310" y1="165" x2="370" y2="230" stroke="rgba(255, 255, 255, 0.45)" stroke-width="3" stroke-linecap="round" />
+                </g>
+
+                <!-- Floating Shimmering Powder Dust Particles -->
+                <circle class="svg-anim-powder-1" cx="330" cy="235" r="2.8" fill="#FFF2E8" />
+                <circle class="svg-anim-powder-2" cx="355" cy="225" r="2" fill="#E5A399" />
+                <circle class="svg-anim-powder-3" cx="320" cy="245" r="2.5" fill="#F0A89C" />
+                <circle class="svg-anim-powder-1" cx="365" cy="240" r="1.8" fill="#FFF2E8" />
+
+                <!-- Soft Domed Cosmetic Powder Brush (Animated Floating Sweep) -->
+                <g class="svg-anim-brush">
+                  <!-- Fluted Rose Gold Brush Handle -->
+                  <path d="M 378 120 L 398 102 C 402 98, 408 104, 404 108 L 385 127 Z" fill="url(#compactGoldGrad)" />
+                  <!-- Metal Ferrule -->
+                  <path d="M 368 128 L 384 114 L 389 120 L 373 134 Z" fill="url(#lipstickGoldGrad)" stroke="#FFE8E0" stroke-width="0.8" />
+                  <!-- Soft Natural Bristles -->
+                  <path d="M 370 132 C 362 140, 342 165, 348 178 C 354 186, 368 182, 376 166 C 382 154, 382 136, 382 136 Z"
+                        fill="url(#brushBristleGrad)" stroke="rgba(229, 163, 153, 0.4)" stroke-width="1" />
+                  <path d="M 352 172 Q 360 160 366 142" stroke="rgba(255, 240, 236, 0.6)" stroke-width="1" fill="none" />
+                </g>
+
+                <!-- Haute Velvet Lipstick Bullet Assembly (Center Left) -->
+                <!-- Base Case Shadow -->
+                <rect x="155" y="305" width="56" height="15" rx="7" fill="rgba(0, 0, 0, 0.45)" filter="url(#cosmeticsGlow)" />
+
+                <!-- Square Obsidian Outer Case -->
+                <rect x="158" y="195" width="50" height="115" rx="5" fill="url(#obsidianCaseGrad)" stroke="rgba(229, 163, 153, 0.35)" stroke-width="1.2" />
+                <!-- Polished Gold Base Accent Band -->
+                <rect x="158" y="295" width="50" height="15" rx="3" fill="url(#lipstickGoldGrad)" />
+                <!-- Gold Middle Divider Rim -->
+                <rect x="158" y="195" width="50" height="9" fill="url(#lipstickGoldGrad)" stroke="#FFE8E0" stroke-width="0.8" />
+                <!-- Maison Monogram Star Crest on Obsidian -->
+                <circle cx="183" cy="255" r="9" fill="rgba(229, 163, 153, 0.15)" stroke="url(#lipstickGoldGrad)" stroke-width="0.8" />
+                <path d="M 183 249 L 184.5 253.5 L 189 255 L 184.5 256.5 L 183 261 L 181.5 256.5 L 177 255 L 181.5 253.5 Z" fill="url(#lipstickGoldGrad)" />
+
+                <!-- Inner Gold Swivel Chamber -->
+                <rect x="165" y="152" width="36" height="45" rx="2" fill="url(#lipstickGoldGrad)" stroke="#FFE8E0" stroke-width="0.8" />
+                <!-- Specular highlights on inner chamber -->
+                <line x1="172" y1="154" x2="172" y2="195" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" opacity="0.8" />
+
+                <!-- Swiveling Velvet Lipstick Bullet (Animated Upward Extension) -->
+                <g class="svg-anim-lipstick-bullet">
+                  <!-- Bullet Body -->
+                  <path d="M 169 154 L 197 154 L 197 114 C 197 96, 185 75, 175 88 L 169 114 Z"
+                        fill="url(#velvetBulletGrad)" stroke="rgba(255, 255, 255, 0.25)" stroke-width="0.8" />
+                  <!-- Beveled Teardrop Chisel Tip Highlight -->
+                  <path d="M 175 88 C 185 75, 197 96, 197 114 L 178 120 Z" fill="#FF6B7A" opacity="0.85" />
+                  <path d="M 175 88 L 178 120 L 169 114 Z" fill="#961524" />
+
+                  <!-- Metallic Light Gleam Sweep Across Bullet -->
+                  <g class="svg-anim-gleam">
+                    <line x1="175" y1="85" x2="190" y2="150" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.8" />
+                  </g>
+                </g>
+              </svg>
+
+              <!-- Luxury Showcase Bottom Badge -->
+              <div class="beauty-svg-showcase-badge">
+                <span class="badge-title"><i class="fa-solid fa-wand-magic-sparkles"></i> Haute Cosmetics & Editorial Artistry</span>
+                <span class="badge-status"><span class="status-dot-pulse"></span> Velvet Swatch Active</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 1: THE BEAUTY EDITORIAL (Magazine Cover Story)
+         ====================================================================== -->
+    <section class="blog-editorial-section section-padding">
+      <div class="container">
+        <div class="blog-editorial-grid">
+          <!-- Image Column -->
+          <div class="blog-editorial-img-col">
+            <div class="blog-editorial-img-frame">
+              <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=1200&q=80" alt="The Beauty Edit Cover Story" loading="lazy">
+            </div>
+            <div class="blog-editorial-float-badge">
+              <strong>Cover Story</strong>
+              <p>“True skin transformation is a slow, sensorial ritual of reverence.”</p>
+            </div>
+          </div>
+
+          <!-- Text Column -->
+          <div class="blog-editorial-text-col">
+            <span class="section-eyebrow no-after" data-aos="fade-up">The Beauty Edit</span>
+            <div class="blog-editorial-meta">
+              <span class="blog-editorial-badge">Haute Skincare</span>
+              <span>•</span>
+              <span>5 min read</span>
+            </div>
+            <h2 class="blog-editorial-title">
+              The Art of the Parisian <em>Double Cleanse</em>
+            </h2>
+            <p class="blog-editorial-desc">
+              Discover why French biochemists insist that cellular renewal begins with an artisanal oil-first dissolvent followed by an ultra-gentle botanical micro-foam that preserves your skin's acid mantle and delicate microbiome.
+            </p>
+            <p class="blog-editorial-byline">
+              Words by Clara Delacroix, Head Aesthetician • Photographed in Paris
+            </p>
+            <div>
+              <a href="#article-1" class="btn btn-primary">
+                Read Story <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 2: EXPLORE BEAUTY CATEGORIES (Refined Navigation)
+         ====================================================================== -->
+    <section class="blog-categories-section">
+      <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+          <span class="section-eyebrow">Curated Themes</span>
+          <h2 class="section-title">Explore Beauty <em>Categories</em></h2>
+          <p class="section-desc">Delve into our five dedicated pillars of Parisian beauty culture and botanical science.</p>
+        </div>
+
+        <div class="blog-categories-nav">
+          <!-- 1. Skincare -->
+          <a href="#latest-stories" class="blog-category-item">
+            <div class="blog-category-icon">
+              <i class="fa-solid fa-spa"></i>
+            </div>
+            <h3 class="blog-category-name">Skincare</h3>
+            <p class="blog-category-subtext">Barrier Renewal & Floral Hydrosols</p>
+          </a>
+
+          <!-- 2. Makeup & Glam -->
+          <a href="#latest-stories" class="blog-category-item">
+            <div class="blog-category-icon">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <h3 class="blog-category-name">Makeup & Glam</h3>
+            <p class="blog-category-subtext">Parisian Glow & Velvet Textures</p>
+          </a>
+
+          <!-- 3. Hair & Beauty -->
+          <a href="#latest-stories" class="blog-category-item">
+            <div class="blog-category-icon">
+              <i class="fa-solid fa-crown"></i>
+            </div>
+            <h3 class="blog-category-name">Hair & Beauty</h3>
+            <p class="blog-category-subtext">Botanical Scalp & Strand Elixirs</p>
+          </a>
+
+          <!-- 4. Ingredients & Beauty Science -->
+          <a href="#latest-stories" class="blog-category-item">
+            <div class="blog-category-icon">
+              <i class="fa-solid fa-flask"></i>
+            </div>
+            <h3 class="blog-category-name">Ingredients & Science</h3>
+            <p class="blog-category-subtext">Phytotherapy & Bio-Synergy</p>
+          </a>
+
+          <!-- 5. Self-Care Rituals -->
+          <a href="#latest-stories" class="blog-category-item">
+            <div class="blog-category-icon">
+              <i class="fa-solid fa-moon"></i>
+            </div>
+            <h3 class="blog-category-name">Self-Care Rituals</h3>
+            <p class="blog-category-subtext">Gua Sha, Acupressure & Stillness</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 3: LATEST BEAUTY STORIES (3-Column Editorial Grid)
+         ====================================================================== -->
+    <section class="blog-latest-section section-padding" id="latest-stories">
+      <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+          <span class="section-eyebrow">The Journal Archive</span>
+          <h2 class="section-title">Latest Beauty <em>Stories</em></h2>
+          <p class="section-desc">Freshly published perspectives on phytotherapy, backstage cosmetics, and holistic skin wellness.</p>
+        </div>
+
+        <div class="blog-latest-grid">
+          <!-- Story 1 -->
+          <article class="blog-story-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="blog-story-img-wrap">
+              <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" alt="Demystifying Active Botanicals" class="blog-story-img" loading="lazy">
+              <span class="blog-story-tag">Ingredients & Science</span>
+            </div>
+            <div class="blog-story-body">
+              <span class="blog-story-date">October 8, 2026 • 6 min read</span>
+              <h3 class="blog-story-title">
+                <a href="#article-2">Demystifying Active Botanicals: Niacinamide vs. Vitamin C Synergy</a>
+              </h3>
+              <p class="blog-story-excerpt">
+                Separating myth from molecular science: how to layer these two powerhouse brighteners without flushing or destabilizing your lipid barrier.
+              </p>
+              <a href="#article-2" class="blog-story-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+
+          <!-- Story 2 -->
+          <article class="blog-story-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="blog-story-img-wrap">
+              <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80" alt="The Clean Girl Aesthetic Evolves" class="blog-story-img" loading="lazy">
+              <span class="blog-story-tag">Makeup & Glam</span>
+            </div>
+            <div class="blog-story-body">
+              <span class="blog-story-date">October 3, 2026 • 4 min read</span>
+              <h3 class="blog-story-title">
+                <a href="#article-3">The "Clean Girl" Aesthetic Evolves: Fashion Week's Dewy Sculpt</a>
+              </h3>
+              <p class="blog-story-excerpt">
+                Backstage at the Grand Palais: how master makeup artists swapped heavy powder coats for high-refractive botanical dry oils and sheared cream blushes.
+              </p>
+              <a href="#article-3" class="blog-story-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+
+          <!-- Story 3 -->
+          <article class="blog-story-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="blog-story-img-wrap">
+              <img src="https://images.unsplash.com/photo-1608248597359-216a908a8e1b?auto=format&fit=crop&w=800&q=80" alt="Why Botanical Squalane Outperforms Heavy Petroleum" class="blog-story-img" loading="lazy">
+              <span class="blog-story-tag">Ingredients & Science</span>
+            </div>
+            <div class="blog-story-body">
+              <span class="blog-story-date">September 28, 2026 • 7 min read</span>
+              <h3 class="blog-story-title">
+                <a href="#article-4">Why Botanical Squalane Outperforms Heavy Petroleum Emollients</a>
+              </h3>
+              <p class="blog-story-excerpt">
+                An investigative look into bio-fermented Mediterranean olive squalane and its bio-compatibility with human sebum for non-comedogenic hydration.
+              </p>
+              <a href="#article-4" class="blog-story-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+
+          <!-- Story 4 -->
+          <article class="blog-story-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="blog-story-img-wrap">
+              <img src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=800&q=80" alt="Master the Velvet Blurred Lip" class="blog-story-img" loading="lazy">
+              <span class="blog-story-tag">Makeup & Glam</span>
+            </div>
+            <div class="blog-story-body">
+              <span class="blog-story-date">September 22, 2026 • 4 min read</span>
+              <h3 class="blog-story-title">
+                <a href="#article-5">How to Master the Velvet Blurred Lip: A Five-Step Masterclass</a>
+              </h3>
+              <p class="blog-story-excerpt">
+                Achieve that effortless, Parisian just-kissed flush using a subtle finger-tapping technique and rose-infused velvet satin pigments.
+              </p>
+              <a href="#article-5" class="blog-story-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+
+          <!-- Story 5 -->
+          <article class="blog-story-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="blog-story-img-wrap">
+              <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80" alt="Lymphatic Drainage with Gua Sha" class="blog-story-img" loading="lazy">
+              <span class="blog-story-tag">Self-Care Rituals</span>
+            </div>
+            <div class="blog-story-body">
+              <span class="blog-story-date">September 15, 2026 • 6 min read</span>
+              <h3 class="blog-story-title">
+                <a href="#article-6">Lymphatic Drainage with Gua Sha: Techniques That Visibly Lift</a>
+              </h3>
+              <p class="blog-story-excerpt">
+                Step-by-step guidance on angle, pressure, and meridian points to banish morning fluid retention and accentuate natural cheekbone contour.
+              </p>
+              <a href="#article-6" class="blog-story-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+
+          <!-- Story 6 -->
+          <article class="blog-story-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="blog-story-img-wrap">
+              <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=800&q=80" alt="The Circadian Clock of Skin" class="blog-story-img" loading="lazy">
+              <span class="blog-story-tag">Skincare</span>
+            </div>
+            <div class="blog-story-body">
+              <span class="blog-story-date">September 9, 2026 • 5 min read</span>
+              <h3 class="blog-story-title">
+                <a href="#article-7">The Circadian Clock of Skin: Why Your Evening Routine Matters Most</a>
+              </h3>
+              <p class="blog-story-excerpt">
+                While you sleep, transepidermal water evaporation peaks and cellular mitosis accelerates. Here is how to synchronize your nocturnal regimen.
+              </p>
+              <a href="#article-7" class="blog-story-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 4: SKINCARE SECRETS & BEAUTY GUIDES (Split Layout)
+         ====================================================================== -->
+    <section class="blog-guides-section section-padding">
+      <div class="container">
+        <div class="blog-guides-grid">
+          <!-- Image Column with Clip-Path Reveal -->
+          <div class="blog-guides-image-wrap" data-aos="fade-left">
+            <div class="blog-guides-clip-frame">
+              <img src="https://images.unsplash.com/photo-1576426863848-c21f53c60b19?auto=format&fit=crop&w=1000&q=80" alt="Skincare Secrets and Beauty Guides" loading="lazy">
+            </div>
+            <div class="blog-guides-float-card">
+              <strong>Beauty Dossier</strong>
+              <p>“True expertise simplifies complexity into pure, effortless daily harmony.”</p>
+            </div>
+          </div>
+
+          <!-- Content Column -->
+          <div class="blog-guides-content" data-aos="fade-right">
+            <span class="section-eyebrow no-after">Masterclass Guides</span>
+            <h2 class="section-title">Skincare Secrets & <em>Beauty Guides</em></h2>
+            <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem;">
+              Refined educational tutorials curated by our Parisian aesthetic team to help you navigate formulations, active ingredient synergy, and daily self-reverence.
+            </p>
+
+            <div class="blog-guides-list">
+              <!-- 1. Everyday Skincare Routine -->
+              <a href="#article-1" class="blog-guide-item">
+                <span class="blog-guide-num">01</span>
+                <div class="blog-guide-info">
+                  <h4>Everyday Skincare Routine</h4>
+                  <p>Step-by-step AM/PM ritual layering designed to lock in dewy hydration and bolster lipid strength.</p>
+                </div>
+              </a>
+
+              <!-- 2. Makeup Tips & Techniques -->
+              <a href="#article-3" class="blog-guide-item">
+                <span class="blog-guide-num">02</span>
+                <div class="blog-guide-info">
+                  <h4>Makeup Tips & Techniques</h4>
+                  <p>Blending sheer cosmetic textures to allow your skin's natural radiance and undertone to shine through.</p>
+                </div>
+              </a>
+
+              <!-- 3. Understanding Beauty Ingredients -->
+              <a href="#article-2" class="blog-guide-item">
+                <span class="blog-guide-num">03</span>
+                <div class="blog-guide-info">
+                  <h4>Understanding Beauty Ingredients</h4>
+                  <p>How humectants, phytosterols, ceramides, and peptides communicate directly with your dermal barrier.</p>
+                </div>
+              </a>
+
+              <!-- 4. Simple Self-Care Rituals -->
+              <a href="#article-6" class="blog-guide-item">
+                <span class="blog-guide-num">04</span>
+                <div class="blog-guide-info">
+                  <h4>Simple Self-Care Rituals</h4>
+                  <p>Mindful breathwork, warm compress application, and facial acupressure for immediate stress release.</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 5: EDITOR'S SELECTION (Featured + 2 Supporting)
+         ====================================================================== -->
+    <section class="blog-selection-section section-padding">
+      <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+          <span class="section-eyebrow">Editor’s Selection</span>
+          <h2 class="section-title">Handpicked for Your <em>Beauty Journey</em></h2>
+          <p class="section-desc">Three essential reads chosen by our editor-in-chief for their timeless relevance and practical beauty wisdom.</p>
+        </div>
+
+        <div class="blog-selection-grid">
+          <!-- Large Featured Article -->
+          <article class="blog-selection-large">
+            <div class="blog-selection-large-img">
+              <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1000&q=80" alt="Botanical Peptides and Plant Stem Cells" loading="lazy">
+              <span class="blog-story-tag">Editor's Pick</span>
+            </div>
+            <div class="blog-selection-large-body">
+              <span class="blog-story-date">September 18, 2026 • 8 min read</span>
+              <h3 style="font-family: var(--font-serif); font-size: clamp(1.6rem, 2.2vw, 2.1rem); font-weight: 500; margin-bottom: 0.9rem; line-height: 1.3;">
+                <a href="#article-1" style="color: inherit; text-decoration: none;">The Science of Botanical Peptides: How Plant Stem Cells Rejuvenate Mature Skin</a>
+              </h3>
+              <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 1.8rem; flex: 1;">
+                Alpine edelweiss and sea fennel extracts are redefining clean anti-aging. Explore clinical studies revealing how bio-engineered plant peptides reinforce collagen scaffolds without synthetic irritation.
+              </p>
+              <a href="#article-1" class="blog-story-link">Read Full Feature <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+
+          <!-- 2 Supporting Articles -->
+          <div class="blog-selection-side-col">
+            <!-- Supporting 1 -->
+            <a href="#article-9" class="blog-selection-small-card">
+              <div class="blog-selection-small-img">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Cold-Climate Radiance" loading="lazy">
+              </div>
+              <div class="blog-selection-small-body">
+                <span style="font-size: 0.72rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; margin-bottom: 0.3rem;">Seasonal Care</span>
+                <h4 class="blog-selection-small-title">Cold-Climate Radiance: Protecting Skin from Autumn Winds</h4>
+                <p class="blog-selection-small-desc">Lipid replenishment tactics to halt micro-chapping and moisture evaporation before temperatures plummet.</p>
+                <span style="font-size: 0.78rem; color: var(--accent-gold); font-weight: 600;">Read Story →</span>
+              </div>
+            </a>
+
+            <!-- Supporting 2 -->
+            <a href="#article-8" class="blog-selection-small-card">
+              <div class="blog-selection-small-img">
+                <img src="https://images.unsplash.com/photo-1512290900672-1f4864388835?auto=format&fit=crop&w=600&q=80" alt="Minimalist Beauty Capsule" loading="lazy">
+              </div>
+              <div class="blog-selection-small-body">
+                <span style="font-size: 0.72rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; margin-bottom: 0.3rem;">Mindful Living</span>
+                <h4 class="blog-selection-small-title">Minimalist Beauty: How to Curate a 4-Product Capsule</h4>
+                <p class="blog-selection-small-desc">Strip away routine overwhelm. Discover the key four formulas that deliver 95% of your skin's biological needs.</p>
+                <span style="font-size: 0.78rem; color: var(--accent-gold); font-weight: 600;">Read Story →</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 6: THE BEAUTY INSPIRATION BOARD (Mood Board)
+         ====================================================================== -->
+    <section class="blog-inspiration-section section-padding">
+      <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+          <span class="section-eyebrow">Aesthetic Vision</span>
+          <h2 class="section-title">The Beauty <em>Inspiration Board</em></h2>
+          <p class="section-desc">An editorial curation of evocative cosmetic palettes, dewy textures, and seasonal elegance.</p>
+        </div>
+
+        <div class="blog-moodboard-grid">
+          <!-- 1. Soft Glam Looks -->
+          <div class="blog-moodboard-card">
+            <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80" alt="Soft Glam Looks" class="blog-moodboard-img" loading="lazy">
+            <div class="blog-moodboard-overlay"></div>
+            <div class="blog-moodboard-content">
+              <span class="blog-moodboard-tag">Editorial Glam</span>
+              <h3 class="blog-moodboard-title">Soft Glam Looks</h3>
+              <p class="blog-moodboard-desc">Velvet champagne accents, feathery brow styling, and soft rose undertones.</p>
+            </div>
+          </div>
+
+          <!-- 2. Everyday Beauty -->
+          <div class="blog-moodboard-card">
+            <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=800&q=80" alt="Everyday Beauty" class="blog-moodboard-img" loading="lazy">
+            <div class="blog-moodboard-overlay"></div>
+            <div class="blog-moodboard-content">
+              <span class="blog-moodboard-tag">Natural Radiance</span>
+              <h3 class="blog-moodboard-title">Everyday Beauty</h3>
+              <p class="blog-moodboard-desc">Sheer dewy skin tint, curled bare lashes, and a subtle crushed berry lip stain.</p>
+            </div>
+          </div>
+
+          <!-- 3. Lip & Eye Inspiration -->
+          <div class="blog-moodboard-card">
+            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" alt="Lip & Eye Inspiration" class="blog-moodboard-img" loading="lazy">
+            <div class="blog-moodboard-overlay"></div>
+            <div class="blog-moodboard-content">
+              <span class="blog-moodboard-tag">Harmonious Color</span>
+              <h3 class="blog-moodboard-title">Lip & Eye Inspiration</h3>
+              <p class="blog-moodboard-desc">Warm terracotta pigments paired with luminous bronze lids and nourishing gloss.</p>
+            </div>
+          </div>
+
+          <!-- 4. Seasonal Beauty Trends -->
+          <div class="blog-moodboard-card">
+            <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=800&q=80" alt="Seasonal Beauty Trends" class="blog-moodboard-img" loading="lazy">
+            <div class="blog-moodboard-overlay"></div>
+            <div class="blog-moodboard-content">
+              <span class="blog-moodboard-tag">Parisian Mood</span>
+              <h3 class="blog-moodboard-title">Seasonal Beauty Trends</h3>
+              <p class="blog-moodboard-desc">Golden hour botanical reflections and glazed barrier hydration shields.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 7: JOIN THE BEAUTY LETTER (Luxury Newsletter Section)
+         ====================================================================== -->
+    <section class="blog-newsletter-section">
+      <div class="container blog-newsletter-container">
+        <span class="section-eyebrow" style="color: var(--accent-gold); margin-bottom: 0.8rem;">Join the Beauty Letter</span>
+        <h2 class="blog-newsletter-heading">A Little Beauty Inspiration, <em>Just for You</em></h2>
+        <p class="blog-newsletter-desc">
+          Get the latest beauty stories, skincare inspiration, and makeup ideas delivered to your inbox.
+        </p>
+
+        <form class="newsletter-form blog-newsletter-form" novalidate>
+          <div class="blog-newsletter-group">
+            <input type="email" class="newsletter-input blog-newsletter-input" placeholder="Enter your email address..." aria-label="Email address for beauty letter" required>
+            <button type="submit" class="btn btn-primary" style="white-space: nowrap;">
+              Subscribe <i class="fa-solid fa-envelope"></i>
+            </button>
+          </div>
+          <div class="form-feedback" aria-live="polite" style="margin-top: 1rem; font-size: 0.88rem;"></div>
+          <p class="blog-newsletter-privacy">
+            <i class="fa-solid fa-lock text-gold" style="margin-right: 0.3rem;"></i>
+            We respect your privacy. Unsubscribe at any time. Complimentary luxury packaging on your first order.
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================================
+       FOOTER
+       ====================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <img src="logo_0027.webp" alt="Stackly" class="brand-logo-img">
+            <span class="brand-sub">HAUTE BOTANIQUE</span>
+          </a>
+          <p>Botanical cosmetic alchemy crafted with clinical discernment and sustainable luxury principles.</p>
+          <div class="footer-social-list">
+            <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Maison</a></li>
+            <li><a href="services.html">Bespoke Services</a></li>
+            <li><a href="blog.html">The Beauty Journal</a></li>
+            <li><a href="contact.html">Contact & Concierge</a></li>
+            <li><a href="product.html?id=1">Flagship Elixir</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Client Care</h4>
+          <ul class="footer-links">
+            <li><a href="services.html#faq">Consultation FAQ</a></li>
+            <li><a href="contact.html">Shipping & Returns</a></li>
+            <li><a href="about.html#values">Sustainability Promise</a></li>
+            <li><a href="login.html">My Client Portal</a></li>
+            <li><a href="contact.html">Concierge Enquiries</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Haute Atelier</h4>
+          <p class="footer-newsletter-text">
+            18 Place Vendôme, 75001 Paris, France.<br>
+            Private appointments available Tuesday through Saturday.
+          </p>
+          <div style="margin-top: 1.2rem;">
+            <a href="services.html" class="btn btn-outline-light btn-sm" style="width: 100%;">
+              Book Appointment <i class="fa-solid fa-calendar-check"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 STACKLY. ALL RIGHTS RESERVED.</p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Cookie Preferences</a>
+        </div>
+        <a href="#" class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+          Back to Top <i class="fa-solid fa-arrow-up"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/blog.js"></script>
+</body>
+</html>

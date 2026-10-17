@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elixir de Rose Radiance Serum | Stackly</title>
+  <meta name="description" content="Discover our award-winning Elixir de Rose Radiance Serum, formulated with Damascus Rose and micro-molecular hyaluronic acid.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23191614'/><path d='M50 20 L53 42 L75 50 L53 58 L50 80 L47 58 L25 50 L47 42 Z' fill='%23C5A880'/></svg>">
+
+  <!-- CDNs -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    /* Product Details Page (PDP) Specific Component Styles */
+    .product-detail-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 4.5rem;
+      align-items: flex-start;
+    }
+
+    .pdp-gallery-container {
+      position: sticky;
+      top: 110px;
+    }
+
+    .pdp-main-image-wrap {
+      width: 100%;
+      height: 540px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-card);
+      position: relative;
+      box-shadow: var(--shadow-md);
+    }
+
+    .pdp-main-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.25s ease, transform 0.4s ease;
+    }
+
+    .pdp-main-image-wrap:hover .pdp-main-image {
+      transform: scale(1.03);
+    }
+
+    .pdp-thumbnails {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    .pdp-thumb-btn {
+      width: 80px;
+      height: 80px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 2px solid transparent;
+      padding: 0;
+      background: none;
+      cursor: pointer;
+      opacity: 0.65;
+      transition: all var(--transition-fast);
+    }
+
+    .pdp-thumb-btn.active,
+    .pdp-thumb-btn:hover {
+      border-color: var(--accent-gold);
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+
+    .pdp-thumb-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Benefits check list */
+    .pdp-benefits-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+
+    .pdp-benefits-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .pdp-benefits-list li i {
+      margin-top: 4px;
+    }
+
+    /* Stepper and Cart Actions */
+    .pdp-actions-row {
+      display: flex;
+      gap: 1.2rem;
+      margin: 2.2rem 0;
+      align-items: center;
+    }
+
+    .pdp-quantity-stepper {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-full);
+      background-color: var(--bg-card);
+      padding: 0.2rem 0.5rem;
+    }
+
+    .pdp-qty-btn {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+    }
+
+    .pdp-qty-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .pdp-qty-val {
+      font-size: 1rem;
+      font-weight: 600;
+      min-width: 36px;
+      text-align: center;
+    }
+
+    .pdp-wishlist-toggle {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 1px solid var(--border-card);
+      background-color: var(--bg-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      transition: all var(--transition-fast);
+      flex-shrink: 0;
+    }
+
+    .pdp-wishlist-toggle:hover,
+    .pdp-wishlist-toggle.active {
+      color: #C94A4A;
+      border-color: #F87171;
+      background-color: #FEF2F2;
+    }
+
+    /* Tabs Component */
+    .pdp-tabs-nav {
+      display: flex;
+      gap: 2rem;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 2rem;
+    }
+
+    .pdp-tab-nav-btn {
+      padding: 0.8rem 0;
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      background: none;
+      border: none;
+      position: relative;
+      cursor: pointer;
+      transition: color var(--transition-fast);
+    }
+
+    .pdp-tab-nav-btn::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent-gold);
+      transition: width var(--transition-normal);
+    }
+
+    .pdp-tab-nav-btn.active {
+      color: var(--text-primary);
+    }
+
+    .pdp-tab-nav-btn.active::after {
+      width: 100%;
+    }
+
+    .pdp-tab-pane {
+      display: none;
+      font-size: 0.98rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .pdp-tab-pane.active {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+
+    /* Customer Reviews Stream */
+    .customer-review-card {
+      padding: 1.8rem;
+      background-color: var(--bg-card);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-card);
+      margin-bottom: 1.2rem;
+    }
+
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .review-author-title {
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .verified-badge {
+      font-size: 0.72rem;
+      color: #166534;
+      background-color: #DCFCE7;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+    }
+
+    .review-date {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======================================================================
+       HEADER & NAVIGATION
+       ====================================================================== -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo" aria-label="Stackly Home">
+        <img src="logo_0027.webp" alt="Stackly" class="brand-logo-img">
+        <span class="brand-sub">HAUTE BOTANIQUE</span>
+      </a>
+
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="header-icon-btn header-search-btn" aria-label="Open Search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+        <div class="cart-btn-wrapper">
+          <button type="button" class="header-icon-btn header-cart-btn" aria-label="View Shopping Bag">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span class="cart-count-badge">2</span>
+          </button>
+        </div>
+
+        <a href="login.html" class="btn-nav-login">
+          <i class="fa-regular fa-user"></i>
+          <span>Account</span>
+        </a>
+
+        <button type="button" class="hamburger-btn" aria-label="Toggle navigation menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Overlay & Drawer -->
+  <div class="mobile-nav-overlay" aria-hidden="true">
+    <div class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+      <div class="mobile-nav-top">
+        <div class="brand-logo" style="margin-bottom: 2.5rem;">
+          <img src="logo_0027.webp" alt="Stackly" class="brand-logo-img" style="height: 36px;">
+          <span class="brand-sub">HAUTE BOTANIQUE</span>
+        </div>
+        <div class="mobile-nav-links">
+          <a href="index.html" class="mobile-nav-link"><span>Home</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem;"></i></a>
+          <a href="about.html" class="mobile-nav-link"><span>About</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem;"></i></a>
+          <a href="services.html" class="mobile-nav-link"><span>Services</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem;"></i></a>
+          <a href="blog.html" class="mobile-nav-link"><span>Blog Journal</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem;"></i></a>
+          <a href="contact.html" class="mobile-nav-link"><span>Contact</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem;"></i></a>
+          <a href="login.html" class="mobile-nav-link"><span>Client Login</span> <i class="fa-solid fa-user" style="font-size: 0.9rem;"></i></a>
+        </div>
+      </div>
+      <div class="mobile-nav-footer">
+        <div class="mobile-nav-socials">
+          <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-link" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+          <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+        <p style="font-size: 0.75rem; color: var(--text-muted);">© 2026 STACKLY. ALL RIGHTS RESERVED.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Modal -->
+  <div class="search-modal" role="dialog" aria-modal="true" aria-label="Search">
+    <div class="search-modal-content">
+      <button type="button" class="search-modal-close" aria-label="Close search"><i class="fa-solid fa-xmark"></i></button>
+      <div class="search-input-wrapper">
+        <i class="fa-solid fa-magnifying-glass search-icon-inside"></i>
+        <input type="text" class="search-input" placeholder="Search skincare, makeup, ingredients..." autocomplete="off">
+      </div>
+      <div class="search-results-container"></div>
+    </div>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div class="cart-drawer-overlay" role="dialog" aria-modal="true" aria-label="Shopping Bag">
+    <div class="cart-drawer">
+      <div class="cart-drawer-header">
+        <h3 class="cart-drawer-title"><i class="fa-solid fa-bag-shopping text-gold"></i> Your Shopping Bag</h3>
+        <button type="button" class="cart-drawer-close" aria-label="Close bag"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="cart-free-shipping">Complimentary luxury packaging on all orders.</div>
+      <div class="cart-items-list"></div>
+      <div class="cart-drawer-footer">
+        <div class="cart-subtotal-row">
+          <span>Subtotal</span>
+          <span class="cart-subtotal-val">$0.00</span>
+        </div>
+        <button type="button" class="btn btn-primary cart-checkout-btn" style="width: 100%;">
+          Proceed to Checkout <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <main class="product-detail-view section-padding bg-primary" style="padding-top: 3rem;">
+    <div class="container">
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem;"></i>
+        <a href="index.html#bestsellers">Formulations</a>
+        <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem;"></i>
+        <span class="current">Elixir de Rose Radiance Serum</span>
+      </nav>
+
+      <!-- Main Product Details Split -->
+      <div class="product-detail-layout" style="margin-top: 2rem;">
+        <!-- Left: Image Gallery -->
+        <div class="pdp-gallery-container">
+          <div class="pdp-main-image-wrap">
+            <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=800&q=80" alt="Product View" class="pdp-main-image">
+          </div>
+          <div class="pdp-thumbnails">
+            <!-- Dynamic thumbnails from products.js -->
+          </div>
+        </div>
+
+        <!-- Right: Information & Action -->
+        <div class="pdp-info-col">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+            <span class="badge pdp-badge">Bestseller</span>
+            <span class="pdp-size" style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">50 ml / 1.7 fl. oz.</span>
+          </div>
+
+          <h1 class="pdp-title" style="font-size: clamp(2.2rem, 3.2vw, 3rem); font-weight: 400; line-height: 1.15; margin-bottom: 0.6rem;">
+            Elixir de Rose Radiance Serum
+          </h1>
+
+          <p class="pdp-tagline" style="font-size: 1.05rem; color: var(--accent-rose-dark); font-style: italic; margin-bottom: 1.2rem;">
+            Concentrated Damascus Rose & Multi-Molecular Hyaluronic Acid
+          </p>
+
+          <!-- Rating -->
+          <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.5rem;">
+            <div class="pdp-rating-stars" style="color: #D4AF37; font-size: 0.9rem;">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <a href="#reviews-section" class="pdp-reviews-count" style="font-size: 0.85rem; color: var(--text-muted); text-decoration: underline;">
+              (148 verified reviews)
+            </a>
+          </div>
+
+          <!-- Price -->
+          <div style="display: flex; align-items: baseline; gap: 0.8rem; margin-bottom: 1.8rem; padding-bottom: 1.8rem; border-bottom: 1px solid var(--border-subtle);">
+            <span class="pdp-price" style="font-size: 2rem; font-weight: 700; color: var(--text-primary);">$98.00</span>
+            <span class="pdp-old-price" style="font-size: 1.15rem; color: var(--text-muted); text-decoration: line-through;">$120.00</span>
+            <span class="badge badge-gold" style="font-size: 0.7rem;">Complimentary Delivery</span>
+          </div>
+
+          <!-- Short Description -->
+          <p class="pdp-desc" style="font-size: 1rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
+            An ethereal, fast-absorbing elixir that quenches dehydrated skin, accelerates cellular renewal, and imparts an unmistakable Parisian lit-from-within glow.
+          </p>
+
+          <!-- Key Benefits Checklist -->
+          <h4 style="font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem;">Key Benefits</h4>
+          <ul class="pdp-benefits-list">
+            <!-- Populated via products.js -->
+          </ul>
+
+          <!-- Quantity Stepper & Add to Bag -->
+          <div class="pdp-actions-row">
+            <div class="pdp-quantity-stepper">
+              <button type="button" class="pdp-qty-btn pdp-qty-decrease" aria-label="Decrease quantity">−</button>
+              <span class="pdp-qty-val">1</span>
+              <button type="button" class="pdp-qty-btn pdp-qty-increase" aria-label="Increase quantity">+</button>
+            </div>
+
+            <button type="button" class="btn btn-primary pdp-add-to-bag-btn" style="flex: 1; padding: 1rem 1.8rem;">
+              <i class="fa-solid fa-bag-shopping"></i> Add to Bag
+            </button>
+          </div>
+
+          <!-- Trust Badges Block -->
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; padding: 1.5rem; background-color: var(--bg-secondary); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); margin-top: 2rem;">
+            <div style="display: flex; align-items: center; gap: 0.8rem; font-size: 0.82rem;">
+              <i class="fa-solid fa-leaf text-gold" style="font-size: 1.1rem;"></i> <span>100% Vegan & Clean</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.8rem; font-size: 0.82rem;">
+              <i class="fa-solid fa-box-open text-gold" style="font-size: 1.1rem;"></i> <span>Signature Silk Box</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.8rem; font-size: 0.82rem;">
+              <i class="fa-solid fa-truck-fast text-gold" style="font-size: 1.1rem;"></i> <span>Tracked Express Shipping</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.8rem; font-size: 0.82rem;">
+              <i class="fa-solid fa-rotate-left text-gold" style="font-size: 1.1rem;"></i> <span>30-Day Grace Guarantee</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabbed Information Section -->
+      <section style="margin-top: 6rem; padding-top: 4rem; border-top: 1px solid var(--border-subtle);">
+        <div class="pdp-tabs-nav" role="tablist">
+          <button type="button" class="pdp-tab-nav-btn active" data-tab="tab-desc" role="tab">Detailed Description</button>
+          <button type="button" class="pdp-tab-nav-btn" data-tab="tab-ingredients" role="tab">Botanical Ingredients</button>
+          <button type="button" class="pdp-tab-nav-btn" data-tab="tab-howtouse" role="tab">Ritual & Application</button>
+          <button type="button" class="pdp-tab-nav-btn" data-tab="tab-shipping" role="tab">Complimentary Shipping</button>
+        </div>
+
+        <div class="pdp-tab-pane active" id="tab-desc" role="tabpanel">
+          <p id="tab-desc-content" style="max-width: 840px;">
+            Engineered in our Grasse laboratory, this multi-depth cellular elixir harnesses the revitalizing power of cold-pressed organic Damascus roses. Blended with low, medium, and high molecular weight hyaluronic acids, it saturates both superficial stratum corneum layers and deeper cellular junctions with weightless, sustained moisture.
+          </p>
+        </div>
+
+        <div class="pdp-tab-pane" id="tab-ingredients" role="tabpanel">
+          <p id="tab-ingredients-content" style="max-width: 840px; font-family: monospace; font-size: 0.88rem; line-height: 1.8;">
+            Damask Rose Flower Distillate, Aqua (Water), Sodium Hyaluronate (Multi-Weight Micro & Macro), Niacinamide (5%), Camellia Sinensis (White Tea) Leaf Extract, Palmitoyl Tripeptide-5, Squalane (Olive-Derived), Rosa Canina (Rosehip) Seed Oil.
+          </p>
+        </div>
+
+        <div class="pdp-tab-pane" id="tab-howtouse" role="tabpanel">
+          <p id="tab-howtouse-content" style="max-width: 840px;">
+            Dispense 3–4 drops into palms. Inhale the soothing rose aromatics, then gently press into cleansed skin on face and neck using rhythmic upward strokes.
+          </p>
+        </div>
+
+        <div class="pdp-tab-pane" id="tab-shipping" role="tabpanel">
+          <p style="max-width: 840px;">
+            All orders are hand-packaged in our Paris atelier with signature embossed tissue, personalized calligraphy, and two complimentary deluxe discovery miniatures. Orders over $150 receive complimentary priority tracked international delivery.
+          </p>
+        </div>
+      </section>
+
+      <!-- Customer Reviews & Submission Form -->
+      <section id="reviews-section" style="margin-top: 6rem; padding-top: 4rem; border-top: 1px solid var(--border-subtle);">
+        <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem;" class="split-layout">
+          <!-- Left: Submit Review Form -->
+          <div>
+            <span class="section-eyebrow no-after">Client Dialogue</span>
+            <h2 style="font-size: 2.2rem; margin-bottom: 1rem;">Share Your <em>Experience</em></h2>
+            <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 2rem;">
+              We welcome reflections from connoisseurs who incorporate this formula into their daily self-care rituals.
+            </p>
+
+            <form class="pdp-new-review-form" style="background-color: var(--bg-card); padding: 2.2rem; border-radius: var(--radius-sm); border: 1px solid var(--border-card);">
+              <div class="form-group">
+                <label for="review-author-name" class="form-label">Your Name</label>
+                <input type="text" id="review-author-name" class="form-control" placeholder="e.g. Camille Beaumont" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Rating</label>
+                <div style="display: flex; gap: 1rem; color: #D4AF37; font-size: 1.1rem; margin-top: 0.3rem;">
+                  <label><input type="radio" name="rating" value="5" checked style="accent-color: var(--accent-gold);"> ★★★★★</label>
+                  <label><input type="radio" name="rating" value="4" style="accent-color: var(--accent-gold);"> ★★★★☆</label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="review-comment" class="form-label">Your Review</label>
+                <textarea id="review-comment" class="form-control" rows="4" placeholder="How has this formulation transformed your skin?" required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-secondary" style="width: 100%;">
+                Publish Review <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+
+          <!-- Right: Reviews Stream -->
+          <div>
+            <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem;">Verified Client Reviews</h3>
+            <div class="pdp-reviews-stream">
+              <!-- Default Review 1 -->
+              <div class="customer-review-card">
+                <div class="review-header">
+                  <div class="review-stars text-gold">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                  </div>
+                  <span class="review-date">3 days ago</span>
+                </div>
+                <h4 class="review-author-title">Margaux L. <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> Verified Purchase</span></h4>
+                <p class="review-body" style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6;">
+                  “I am on my third flacon. The fragrance is genuine garden roses, never sickly sweet. It gives my skin a glass-like luminosity under foundation.”
+                </p>
+              </div>
+
+              <!-- Default Review 2 -->
+              <div class="customer-review-card">
+                <div class="review-header">
+                  <div class="review-stars text-gold">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                  </div>
+                  <span class="review-date">2 weeks ago</span>
+                </div>
+                <h4 class="review-author-title">Valérie D. <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> Verified Purchase</span></h4>
+                <p class="review-body" style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6;">
+                  “Remarkable reduction in redness around my cheekbones. You only need 3 drops per application so the bottle lasts months.”
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Related Products Grid -->
+      <section style="margin-top: 7rem; padding-top: 4rem; border-top: 1px solid var(--border-subtle);">
+        <div class="section-header text-center" data-aos="fade-up">
+          <span class="section-eyebrow">Harmonious Pairings</span>
+          <h2 class="section-title">Complete Your <em>Ritual</em></h2>
+          <p class="section-desc">Formulations clinically designed to layer seamlessly with this elixir.</p>
+        </div>
+
+        <div class="product-grid related-products-grid">
+          <!-- Populated dynamically via products.js -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ======================================================================
+       FOOTER
+       ====================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <img src="logo_0027.webp" alt="Stackly" class="brand-logo-img">
+            <span class="brand-sub">HAUTE BOTANIQUE</span>
+          </a>
+          <p>Botanical cosmetic alchemy crafted with clinical discernment and sustainable luxury principles.</p>
+          <div class="footer-social-list">
+            <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Maison</a></li>
+            <li><a href="services.html">Bespoke Services</a></li>
+            <li><a href="blog.html">The Beauty Journal</a></li>
+            <li><a href="contact.html">Contact & Concierge</a></li>
+            <li><a href="product.html?id=1">Flagship Elixir</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Client Care</h4>
+          <ul class="footer-links">
+            <li><a href="services.html#faq">Consultation FAQ</a></li>
+            <li><a href="contact.html">Shipping & Returns</a></li>
+            <li><a href="about.html#values">Sustainability Promise</a></li>
+            <li><a href="login.html">My Client Portal</a></li>
+            <li><a href="contact.html">Concierge Enquiries</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Haute Atelier</h4>
+          <p class="footer-newsletter-text">
+            18 Place Vendôme, 75001 Paris, France.<br>
+            Private appointments available Tuesday through Saturday.
+          </p>
+          <div style="margin-top: 1.2rem;">
+            <a href="services.html" class="btn btn-outline-light btn-sm" style="width: 100%;">
+              Book Appointment <i class="fa-solid fa-calendar-check"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 STACKLY. ALL RIGHTS RESERVED.</p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Cookie Preferences</a>
+        </div>
+        <a href="#" class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+          Back to Top <i class="fa-solid fa-arrow-up"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/products.js"></script>
+</body>
+</html>

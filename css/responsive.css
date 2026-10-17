@@ -1,0 +1,349 @@
+/* ==========================================================================
+   STACKLY - RESPONSIVE STYLESHEET
+   Flawless layout from 320px mobile to 1440px+ ultra-wide
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Desktop & Large Screens (max-width: 1200px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1200px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .split-layout {
+    gap: 3rem;
+  }
+
+  .footer-top {
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 2.5rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Tablets & Medium Screens (max-width: 992px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 992px) {
+  :root {
+    --header-height: 76px;
+  }
+
+  .section-padding {
+    padding: 4.8rem 0;
+  }
+
+  /* Navigation: Hide desktop links, show mobile hamburger */
+  .nav-menu {
+    display: none;
+  }
+
+  .btn-nav-login {
+    display: none;
+  }
+
+  .hamburger-btn {
+    display: flex;
+  }
+
+  /* Grids */
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .routine-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.8rem;
+  }
+
+  /* Split layout collapses to stacked */
+  .split-layout {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .split-decorative-badge {
+    right: 1rem;
+    bottom: -1rem;
+    padding: 1.2rem;
+  }
+
+  /* Footer */
+  .footer-top {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+
+  /* Product details split */
+  .product-detail-layout {
+    grid-template-columns: 1fr !important;
+    gap: 3rem !important;
+  }
+
+  /* Login split screen: Keep brand and statement text visible */
+  .login-page-grid {
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+  }
+
+  .login-visual-col {
+    display: flex !important;
+    padding: 2.8rem 2rem !important;
+    min-height: 240px !important;
+  }
+
+  .login-form-col {
+    padding: 3rem 2rem !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Landscape & Large Phones (max-width: 768px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .category-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .category-card {
+    height: 320px;
+  }
+
+  .blog-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1.2rem;
+    text-align: center;
+  }
+
+  .newsletter-box {
+    padding: 3rem 1.5rem;
+  }
+
+  .newsletter-input-group {
+    flex-direction: column;
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+
+  .newsletter-input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: var(--radius-full);
+    padding: 1rem 1.4rem;
+  }
+
+  .newsletter-input-group .btn {
+    width: 100%;
+  }
+
+  /* Hero Section adjustments */
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  /* Cart Drawer */
+  .cart-drawer {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Search modal */
+  .search-modal {
+    padding-top: 5vh;
+  }
+
+  .search-modal-content {
+    padding: 2rem 1.2rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Small Mobile Phones (max-width: 480px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  :root {
+    --header-height: 70px;
+  }
+
+  .container {
+    padding: 0 1.2rem;
+  }
+
+  .section-padding {
+    padding: 3.8rem 0;
+  }
+
+  .brand-name {
+    font-size: 1.35rem;
+  }
+
+  .brand-sub {
+    font-size: 0.52rem;
+  }
+
+  .section-title {
+    font-size: 1.85rem;
+  }
+
+  .section-desc {
+    font-size: 0.95rem;
+  }
+
+  /* Product grid single column on small phones */
+  .product-grid {
+    grid-template-columns: 1fr;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  .product-content {
+    padding: 1.2rem 1rem;
+  }
+
+  .btn {
+    padding: 0.85rem 1.8rem;
+    font-size: 0.8rem;
+  }
+
+  .toast-container {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+  }
+
+  .toast {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.82rem;
+  }
+
+  .login-form-col {
+    padding: 2.5rem 1.2rem !important;
+  }
+
+  .login-card-inner {
+    padding: 0 !important;
+  }
+
+  /* Tab lists */
+  .tabs-nav {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tab-btn {
+    font-size: 0.82rem !important;
+    padding: 0.6rem 1rem !important;
+  }
+
+  /* Theme Switcher Mobile Adaptation */
+  .theme-switcher-pill {
+    bottom: 1.2rem;
+    left: 1.2rem;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.72rem;
+  }
+
+  .theme-switcher-panel {
+    left: 1rem;
+    right: 1rem;
+    width: auto;
+    max-width: calc(100vw - 2rem);
+    bottom: 4.8rem;
+    padding: 1.2rem 1rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Ultra Compact Screens (320px - 360px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 360px) {
+  .brand-name {
+    font-size: 1.15rem;
+  }
+
+  .brand-sub {
+    font-size: 0.48rem;
+    letter-spacing: 0.22em;
+  }
+
+  .header-actions {
+    gap: 0.6rem;
+  }
+
+  .header-icon-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.65rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1.4rem;
+    font-size: 0.75rem;
+  }
+
+  .theme-switcher-pill .theme-pill-label {
+    display: none;
+  }
+
+  .theme-switcher-pill {
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 50%;
+  }
+}

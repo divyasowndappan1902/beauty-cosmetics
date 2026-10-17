@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stackly | Haute Botanique & Luxury Skincare</title>
+  <meta name="description" content="Immerse yourself in Stackly luxury skincare and cosmetics. Handcrafted active botanicals designed to reveal your skin's natural radiance.">
+
+  <!-- Favicon Icon (inline SVG luxury monogram) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23191614'/><path d='M50 20 L53 42 L75 50 L53 58 L50 80 L47 58 L25 50 L47 42 Z' fill='%23C5A880'/></svg>">
+
+  <!-- Font Awesome 6.5.1 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- AOS (Animate on Scroll) CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- ======================================================================
+       HEADER & NAVIGATION
+       ====================================================================== -->
+  <header class="site-header header-transparent">
+    <div class="container header-container">
+      <!-- Luxury Brand Logo -->
+      <a href="index.html" class="brand-logo" aria-label="Stackly Home">
+        <img src="logo_0027.webp" alt="Stackly" class="brand-logo-img">
+        <span class="brand-sub">HAUTE BOTANIQUE</span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Header Action Icons & CTAs -->
+      <div class="header-actions">
+        <!-- Live Search Trigger -->
+        <button type="button" class="header-icon-btn header-search-btn" aria-label="Open Search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+        <!-- Shopping Bag Trigger -->
+        <div class="cart-btn-wrapper">
+          <button type="button" class="header-icon-btn header-cart-btn" aria-label="View Shopping Bag">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span class="cart-count-badge">2</span>
+          </button>
+        </div>
+
+        <!-- Desktop Login CTA -->
+        <a href="login.html" class="btn-nav-login">
+          <i class="fa-regular fa-user"></i>
+          <span>Account</span>
+        </a>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button type="button" class="hamburger-btn" aria-label="Toggle navigation menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Overlay & Drawer -->
+  <div class="mobile-nav-overlay" aria-hidden="true">
+    <div class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+      <div class="mobile-nav-top">
+        <div class="brand-logo" style="margin-bottom: 2.5rem;">
+          <img src="logo_0027.webp" alt="Stackly" class="brand-logo-img" style="height: 36px;">
+          <span class="brand-sub">HAUTE BOTANIQUE</span>
+        </div>
+        <div class="mobile-nav-links">
+          <a href="index.html" class="mobile-nav-link active"><span>Home</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem;"></i></a>
+          <a href="about.html" class="mobile-nav-link"><span>About</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem;"></i></a>
+          <a href="services.html" class="mobile-nav-link"><span>Services</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem;"></i></a>
+          <a href="blog.html" class="mobile-nav-link"><span>Blog Journal</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem;"></i></a>
+          <a href="contact.html" class="mobile-nav-link"><span>Contact</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem;"></i></a>
+          <a href="login.html" class="mobile-nav-link"><span>Client Login</span> <i class="fa-solid fa-user" style="font-size: 0.9rem;"></i></a>
+        </div>
+      </div>
+      <div class="mobile-nav-footer">
+        <div class="mobile-nav-socials">
+          <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-link" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+          <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+        <p style="font-size: 0.75rem; color: var(--text-muted);">© 2026 STACKLY. ALL RIGHTS RESERVED.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Live Search Modal -->
+  <div class="search-modal" role="dialog" aria-modal="true" aria-label="Product and Article Search">
+    <div class="search-modal-content">
+      <button type="button" class="search-modal-close" aria-label="Close search"><i class="fa-solid fa-xmark"></i></button>
+      <div class="search-input-wrapper">
+        <i class="fa-solid fa-magnifying-glass search-icon-inside"></i>
+        <input type="text" class="search-input" placeholder="Search skincare, makeup, ingredients..." autocomplete="off">
+      </div>
+      <div class="search-results-container">
+        <!-- Search items rendered dynamically via main.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Shopping Bag Slide-out Drawer -->
+  <div class="cart-drawer-overlay" role="dialog" aria-modal="true" aria-label="Shopping Bag">
+    <div class="cart-drawer">
+      <div class="cart-drawer-header">
+        <h3 class="cart-drawer-title"><i class="fa-solid fa-bag-shopping text-gold"></i> Your Shopping Bag</h3>
+        <button type="button" class="cart-drawer-close" aria-label="Close bag"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="cart-free-shipping">
+        <!-- Rendered via main.js -->
+        Complimentary luxury packaging on all orders.
+      </div>
+      <div class="cart-items-list">
+        <!-- Items rendered dynamically via main.js -->
+      </div>
+      <div class="cart-drawer-footer">
+        <div class="cart-subtotal-row">
+          <span>Subtotal</span>
+          <span class="cart-subtotal-val">$0.00</span>
+        </div>
+        <button type="button" class="btn btn-primary cart-checkout-btn" style="width: 100%;">
+          Proceed to Checkout <i class="fa-solid fa-arrow-right"></i>
+        </button>
+        <p style="text-align: center; font-size: 0.72rem; color: var(--text-muted); margin-top: 0.8rem;">
+          <i class="fa-solid fa-shield-halved"></i> 256-Bit SSL Encrypted Luxury Checkout (Frontend Demo)
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- ======================================================================
+         SECTION 1: PREMIUM HERO SECTION
+         ====================================================================== -->
+    <section class="hero-section" style="position: relative; min-height: 100vh; display: flex; align-items: center; background: radial-gradient(circle at 75% 30%, rgba(217, 115, 132, 0.18) 0%, transparent 55%), linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-secondary) 100%); color: var(--text-light); overflow: hidden; padding: 7.5rem 0 5rem;">
+      <!-- Hero Background Editorial Artwork -->
+      <div class="hero-bg-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.55; background-image: radial-gradient(circle at 75% 40%, var(--accent-gold-glow) 0%, transparent 60%);"></div>
+
+      <div class="container" style="position: relative; z-index: 2;">
+        <div class="hero-grid" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: center;">
+          <!-- Left Column: Copy & Actions -->
+          <div class="hero-content-col">
+            <!-- Premium Badge -->
+            <div class="hero-badge" style="display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.45rem 1.1rem; background: var(--accent-gold-light); border: 1px solid var(--border-subtle); border-radius: var(--radius-full); margin-bottom: 1.6rem;">
+              <i class="fa-solid fa-sparkles text-gold" style="font-size: 0.8rem;"></i>
+              <span style="font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; color: var(--accent-gold);">Maison de Beauté • Paris</span>
+            </div>
+
+            <!-- Elegant Headline -->
+            <h1 class="hero-title" style="font-size: clamp(2.8rem, 5.2vw, 4.6rem); font-weight: 400; line-height: 1.08; margin-bottom: 1.5rem; letter-spacing: -0.01em;">
+              Reveal Your <br><em style="font-family: var(--font-serif); font-style: italic; color: var(--accent-gold);">Natural Radiance</em>
+            </h1>
+
+            <!-- Supporting Description -->
+            <p class="hero-desc" style="font-size: clamp(1.05rem, 1.3vw, 1.2rem); color: var(--text-light-muted); max-width: 540px; margin-bottom: 2.5rem; line-height: 1.75;">
+              Awaken your skin’s inherent vitality through cold-pressed rare botanicals, bio-fermented peptides, and timeless Parisian skincare rituals crafted for sublime cellular longevity.
+            </p>
+
+            <!-- Buttons & Action Elements -->
+            <div class="hero-actions" style="display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap;">
+              <a href="#bestsellers" class="btn btn-primary">
+                Shop Collection <i class="fa-solid fa-arrow-right"></i>
+              </a>
+              <a href="about.html" class="btn btn-outline-light">
+                Discover Our Story
+              </a>
+            </div>
+
+            <!-- Decorative Trust Callout -->
+            <div style="margin-top: 3.5rem; display: flex; align-items: center; gap: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.12); padding-top: 1.8rem;">
+              <div>
+                <span style="font-family: var(--font-display); font-size: 1.8rem; color: var(--accent-gold); display: block; line-height: 1;">100%</span>
+                <span style="font-size: 0.75rem; color: var(--text-light-muted); letter-spacing: 0.1em; text-transform: uppercase;">Botanical Bio-Actives</span>
+              </div>
+              <div style="width: 1px; height: 35px; background: rgba(255, 255, 255, 0.12);"></div>
+              <div>
+                <span style="font-family: var(--font-display); font-size: 1.8rem; color: var(--accent-gold); display: block; line-height: 1;">98.4%</span>
+                <span style="font-size: 0.75rem; color: var(--text-light-muted); letter-spacing: 0.1em; text-transform: uppercase;">Reported Instant Luminosity</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Editorial Hero Photograph Composition -->
+          <div class="hero-image-col" style="position: relative;">
+            <!-- Floating Animated Botanical Seal Over Hero -->
+            <div class="hero-floating-seal" title="100% Cellular Botanical Bio-Actives • Stackly">
+              <svg viewBox="0 0 100 100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stackly Botanical Formulation Seal">
+                <defs>
+                  <path id="sealPath" d="M 50,50 m -36,0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0" />
+                  <linearGradient id="sealGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFF2E8" />
+                    <stop offset="50%" stop-color="#E5A399" />
+                    <stop offset="100%" stop-color="#C5A880" />
+                  </linearGradient>
+                </defs>
+                <!-- Rotating Circular Text Ring -->
+                <text font-family="'Plus Jakarta Sans', sans-serif" font-size="7.2" font-weight="600" letter-spacing="1.8" fill="url(#sealGoldGrad)" class="svg-seal-rotate">
+                  <textPath href="#sealPath" startOffset="0%">
+                    STACKLY BEAUTÉ • CELLULAR BOTANIQUE •
+                  </textPath>
+                </text>
+                <!-- Inner Glowing Gold Crest -->
+                <circle cx="50" cy="50" r="23" fill="#140F15" stroke="url(#sealGoldGrad)" stroke-width="1.2" />
+                <g class="svg-anim-rose">
+                  <path d="M 50 40 C 44 37, 42 45, 47 48 C 43 51, 46 58, 50 56 C 54 58, 57 51, 53 48 C 58 45, 56 37, 50 40 Z" fill="url(#sealGoldGrad)" />
+                  <circle cx="50" cy="48" r="2" fill="#FFFFFF" />
+                </g>
+                <circle cx="50" cy="50" r="1.5" fill="#FFF2E8" />
+              </svg>
+            </div>
+
+            <div class="hero-img-frame" style="position: relative; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-subtle); box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);">
+              <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1000&q=80" alt="Radiant dewy model showcasing luxury skincare glow" class="hero-img" style="width: 100%; height: 580px; object-fit: cover;">
+              <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 40%; background: linear-gradient(180deg, transparent 0%, rgba(20, 7, 13, 0.88) 100%);"></div>
+            </div>
+
+            <!-- Floating Sub-Card Over Hero -->
+            <div class="hero-floating-card glow-on-hover" style="position: absolute; bottom: -20px; left: -25px; background: rgba(20, 15, 21, 0.94); backdrop-filter: blur(14px); border: 1px solid var(--accent-gold); border-radius: var(--radius-md); padding: 1.1rem 1.4rem; display: flex; align-items: center; gap: 1rem; box-shadow: var(--shadow-lg); max-width: 290px;">
+              <!-- Miniature Animated Luxury Elixir Dropper SVG -->
+              <div class="hero-mini-svg-flask" aria-hidden="true">
+                <svg viewBox="0 0 54 54" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="miniFlaskGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#FFF2E8" />
+                      <stop offset="50%" stop-color="#E5A399" />
+                      <stop offset="100%" stop-color="#C5A880" />
+                    </linearGradient>
+                    <linearGradient id="miniNectar" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#F4C2BA" />
+                      <stop offset="50%" stop-color="#E5A399" />
+                      <stop offset="100%" stop-color="#9C3A4C" />
+                    </linearGradient>
+                  </defs>
+                  <!-- Miniature Bottle -->
+                  <rect x="15" y="20" width="24" height="28" rx="4" fill="rgba(24, 18, 25, 0.7)" stroke="url(#miniFlaskGold)" stroke-width="1.2" />
+                  <!-- Liquid inside with wave -->
+                  <path class="svg-anim-liquid" d="M 16 32 C 20 30, 26 34, 32 31 C 35 30, 38 32, 38 32 L 38 45 C 38 46.5, 36.5 47, 35 47 L 19 47 C 17.5 47, 16 46.5, 16 45 Z" fill="url(#miniNectar)" />
+                  <!-- Gold Collar & Cap -->
+                  <rect x="22" y="14" width="10" height="6" rx="1.5" fill="url(#miniFlaskGold)" />
+                  <ellipse cx="27" cy="11" rx="4" ry="4" fill="url(#miniFlaskGold)" />
+                  <!-- Animated Droplet from pipette -->
+                  <g class="svg-anim-serum-drop">
+                    <circle cx="27" cy="18" r="1.8" fill="#FFF2E8" />
+                  </g>
+                  <!-- Shimmer stars -->
+                  <g class="svg-anim-glint-1">
+                    <circle cx="12" cy="18" r="1.2" fill="#E5A399" />
+                  </g>
+                  <g class="svg-anim-glint-2">
+                    <circle cx="42" cy="38" r="1.2" fill="#FFF2E8" />
+                  </g>
+                </svg>
+              </div>
+              <div>
+                <span style="font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent-gold); font-weight: 600;">Flagship Elixir</span>
+                <h4 style="font-size: 0.95rem; color: #FFFFFF; font-family: var(--font-serif); margin-top: 2px;">Elixir de Rose</h4>
+                <div style="color: #D4AF37; font-size: 0.72rem; margin-top: 2px;"><i class="fa-solid fa-star"></i> 4.9 (148 reviews)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 2: TRUST & BRAND HIGHLIGHTS
+         ====================================================================== -->
+    <section class="section-padding-sm bg-secondary" style="border-bottom: 1px solid var(--border-subtle);">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;" class="trust-grid">
+          <div class="trust-item" data-aos="fade-up" data-aos-delay="0" style="display: flex; align-items: center; gap: 1.2rem;">
+            <div style="width: 54px; height: 54px; border-radius: 50%; background-color: var(--bg-card); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--accent-rose-dark); border: 1px solid var(--border-subtle); flex-shrink: 0;">
+              <i class="fa-solid fa-paw"></i>
+            </div>
+            <div>
+              <h4 style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600;">Cruelty-Free Beauty</h4>
+              <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.4;">Leaping Bunny certified; never tested on animals.</p>
+            </div>
+          </div>
+
+          <div class="trust-item" data-aos="fade-up" data-aos-delay="100" style="display: flex; align-items: center; gap: 1.2rem;">
+            <div style="width: 54px; height: 54px; border-radius: 50%; background-color: var(--bg-card); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--accent-rose-dark); border: 1px solid var(--border-subtle); flex-shrink: 0;">
+              <i class="fa-solid fa-seedling"></i>
+            </div>
+            <div>
+              <h4 style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600;">Skin-Loving Ingredients</h4>
+              <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.4;">Organic, biocompatible and non-comedogenic.</p>
+            </div>
+          </div>
+
+          <div class="trust-item" data-aos="fade-up" data-aos-delay="200" style="display: flex; align-items: center; gap: 1.2rem;">
+            <div style="width: 54px; height: 54px; border-radius: 50%; background-color: var(--bg-card); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--accent-rose-dark); border: 1px solid var(--border-subtle); flex-shrink: 0;">
+              <i class="fa-solid fa-microscope"></i>
+            </div>
+            <div>
+              <h4 style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600;">Dermatologically Tested</h4>
+              <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.4;">Clinically assessed by French cosmetic biologists.</p>
+            </div>
+          </div>
+
+          <div class="trust-item" data-aos="fade-up" data-aos-delay="300" style="display: flex; align-items: center; gap: 1.2rem;">
+            <div style="width: 54px; height: 54px; border-radius: 50%; background-color: var(--bg-card); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--accent-rose-dark); border: 1px solid var(--border-subtle); flex-shrink: 0;">
+              <i class="fa-solid fa-heart"></i>
+            </div>
+            <div>
+              <h4 style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600;">Every Skin Type</h4>
+              <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.4;">Formulated to balance, soothe, and nourish all tones.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 2.5: ATELIER DE BEAUTÉ — THE ALCHEMY OF SENSORIAL RADIANCE
+         ====================================================================== -->
+    <section class="section-padding bg-secondary" style="border-bottom: 1px solid var(--border-subtle); position: relative; overflow: hidden;">
+      <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+          <span class="section-eyebrow">Haute Formulations & Master Artistry</span>
+          <h2 class="section-title">The Living Art of <em>Botanical Beauty</em></h2>
+          <p class="section-desc">Experience our signature dual pillars: biocompatible cellular skincare longevity and opulent Parisian cosmetic color artistry.</p>
+        </div>
+
+        <div class="home-beauty-dual-grid">
+          <!-- Card 1: Skincare Alchemy (24K Botanical Elixir & Active Dropper) -->
+          <div class="home-showcase-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="home-showcase-header">
+              <span class="home-showcase-eyebrow"><i class="fa-solid fa-droplet"></i> Skincare Alchemy</span>
+              <h3 class="home-showcase-title">Elixir de Rose Longevity Ritual</h3>
+              <p class="home-showcase-desc">Micro-infused with pure Damascus rose nectar and bio-fermented peptides. Active golden droplets penetrate the cellular matrix to awaken youthful luminosity.</p>
+            </div>
+
+            <!-- SVG 1: Skincare Alchemy Animated SVG -->
+            <svg class="beauty-svg-canvas" viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated Elixir de Rose Serum Bottle and Active Dropper Ritual">
+              <title>Elixir de Rose Longevity Ritual</title>
+              <defs>
+                <filter id="homeSkinGlow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3.5" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+                <radialGradient id="homeAura1" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#E5A399" stop-opacity="0.28" />
+                  <stop offset="60%" stop-color="#C5A880" stop-opacity="0.08" />
+                  <stop offset="100%" stop-color="#140F15" stop-opacity="0" />
+                </radialGradient>
+                <linearGradient id="homeGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FFF5ED" />
+                  <stop offset="40%" stop-color="#E5A399" />
+                  <stop offset="80%" stop-color="#C5A880" />
+                  <stop offset="100%" stop-color="#8F5E52" />
+                </linearGradient>
+                <linearGradient id="homeSerumLiquid" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#FFF2EC" />
+                  <stop offset="35%" stop-color="#F0A89C" />
+                  <stop offset="70%" stop-color="#E5A399" />
+                  <stop offset="100%" stop-color="#A84434" />
+                </linearGradient>
+                <linearGradient id="homePetalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FCEAE6" />
+                  <stop offset="50%" stop-color="#E5A399" />
+                  <stop offset="100%" stop-color="#C75466" />
+                </linearGradient>
+              </defs>
+
+              <!-- Ambient Glow -->
+              <circle cx="230" cy="180" r="130" fill="url(#homeAura1)" />
+
+              <!-- Stars -->
+              <g class="svg-anim-glint-1">
+                <circle cx="80" cy="65" r="1.5" fill="#FFF2E8" />
+              </g>
+              <g class="svg-anim-glint-2">
+                <circle cx="390" cy="75" r="1.5" fill="#E5A399" />
+              </g>
+
+              <!-- Concentric Vitality Radiance Rings at Bottom -->
+              <ellipse class="svg-anim-vitality-1" cx="230" cy="275" rx="70" ry="22" fill="none" stroke="rgba(229, 163, 153, 0.45)" stroke-width="1.5" />
+              <ellipse class="svg-anim-vitality-2" cx="230" cy="275" rx="70" ry="22" fill="none" stroke="rgba(240, 168, 156, 0.25)" stroke-width="1" />
+
+              <!-- Botanical Stem & Leaves on Left -->
+              <path d="M 110 295 Q 90 230 120 180 Q 135 155 135 130" fill="none" stroke="#3E6B4B" stroke-width="2.5" stroke-linecap="round" />
+              <g class="svg-anim-leaf-left">
+                <path d="M 105 210 C 80 205, 75 180, 95 175 C 112 185, 110 200, 105 210 Z" fill="#4A7C59" />
+              </g>
+              <!-- Blooming Rose Petals on Vine -->
+              <g class="svg-anim-rose">
+                <path d="M 135 125 C 118 110, 110 130, 122 142 C 132 150, 145 145, 150 135 C 158 120, 148 110, 135 125 Z" fill="url(#homePetalGrad)" />
+                <circle cx="135" cy="132" r="2.5" fill="#FFEAE5" />
+              </g>
+
+              <!-- Luxury Cut-Glass Serum Bottle -->
+              <g>
+                <!-- Bottle Base Shadow -->
+                <ellipse cx="230" cy="285" rx="48" ry="12" fill="rgba(0, 0, 0, 0.45)" />
+                <!-- Glass Bottle Body -->
+                <rect x="195" y="165" width="70" height="110" rx="8" fill="rgba(24, 18, 25, 0.65)" stroke="url(#homeGoldGrad)" stroke-width="1.5" />
+                <!-- Nectar Liquid inside Bottle (Animated Wave) -->
+                <path class="svg-anim-liquid" d="M 197 210 C 210 204, 235 216, 250 208 C 258 204, 263 208, 263 208 L 263 268 C 263 272, 259 274, 255 274 L 205 274 C 201 274, 197 272, 197 268 Z" fill="url(#homeSerumLiquid)" opacity="0.9" />
+                <!-- 24K Suspended Gold Leaf Specks inside Liquid -->
+                <circle cx="215" cy="235" r="1.8" fill="#FFF5ED" opacity="0.85" />
+                <circle cx="242" cy="248" r="2.2" fill="#FFE8E2" opacity="0.9" />
+                <circle cx="225" cy="258" r="1.6" fill="#FFF5ED" opacity="0.75" />
+                <!-- Bottle Specular Reflections -->
+                <line x1="202" y1="172" x2="202" y2="265" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" opacity="0.75" />
+                <line x1="258" y1="172" x2="258" y2="265" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" opacity="0.35" />
+                <!-- Gold Label Inscription -->
+                <rect x="210" y="215" width="40" height="24" rx="2" fill="rgba(20, 15, 21, 0.75)" stroke="url(#homeGoldGrad)" stroke-width="0.8" />
+                <line x1="216" y1="223" x2="244" y2="223" stroke="url(#homeGoldGrad)" stroke-width="1" />
+                <line x1="220" y1="229" x2="240" y2="229" stroke="url(#homeGoldGrad)" stroke-width="0.8" />
+                <line x1="224" y1="233" x2="236" y2="233" stroke="url(#homeGoldGrad)" stroke-width="0.8" />
+              </g>
+
+              <!-- Frosted Serum Pipette Dropper (Animated Floating Balance) -->
+              <g class="svg-anim-dropper">
+                <path d="M 223 85 C 223 55, 237 55, 237 85 Z" fill="url(#homeSerumLiquid)" stroke="url(#homeGoldGrad)" stroke-width="1" />
+                <rect x="220" y="85" width="20" height="12" rx="2" fill="url(#homeGoldGrad)" stroke="#FFE8E0" stroke-width="0.8" />
+                <!-- Glass Pipette Barrel -->
+                <path d="M 224 97 L 236 97 L 233 145 L 231 154 L 229 154 L 227 145 Z" fill="rgba(255, 255, 255, 0.25)" stroke="url(#homeGoldGrad)" stroke-width="1" />
+                <line x1="225" y1="102" x2="227" y2="142" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" opacity="0.8" />
+              </g>
+
+              <!-- Radiant Golden Droplet (Animated Cascade into Bottle) -->
+              <g class="svg-anim-serum-drop">
+                <path d="M 230 155 C 227 159, 225 164, 230 169 C 235 164, 233 159, 230 155 Z" fill="url(#homeGoldGrad)" filter="url(#homeSkinGlow)" />
+                <circle cx="229.5" cy="164" r="1.2" fill="#FFFFFF" />
+              </g>
+            </svg>
+
+            <!-- Bottom Badge -->
+            <div class="beauty-svg-showcase-badge">
+              <span class="badge-title"><i class="fa-solid fa-flask"></i> 24K Botanical Elixir</span>
+              <span class="badge-status"><span class="status-dot-pulse"></span> 99.8% Bio-Potency</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Cosmetics Artistry (Haute Velvet Lipstick & Compact Palette) -->
+          <div class="home-showcase-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="home-showcase-header">
+              <span class="home-showcase-eyebrow"><i class="fa-solid fa-wand-magic-sparkles"></i> Cosmetics Artistry</span>
+              <h3 class="home-showcase-title">Le Rouge Parisien Velvet Color</h3>
+              <p class="home-showcase-desc">Crafted from pure mineral pigments and nourishing botanical squalane. The architectural lipstick bullet swivels upward with specular gleams and shimmering cosmetic powder.</p>
+            </div>
+
+            <!-- SVG 2: Cosmetics Artistry Animated SVG -->
+            <svg class="beauty-svg-canvas" viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated Haute Parisian Velvet Lipstick and Golden Powder Compact">
+              <title>Le Rouge Parisien Velvet Color</title>
+              <defs>
+                <filter id="homeCosGlow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3.5" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+                <radialGradient id="homeAura2" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#E5A399" stop-opacity="0.25" />
+                  <stop offset="60%" stop-color="#D97384" stop-opacity="0.08" />
+                  <stop offset="100%" stop-color="#140F15" stop-opacity="0" />
+                </radialGradient>
+                <linearGradient id="homeObsidian" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#080608" />
+                  <stop offset="40%" stop-color="#221A24" />
+                  <stop offset="70%" stop-color="#140F15" />
+                  <stop offset="100%" stop-color="#080608" />
+                </linearGradient>
+                <linearGradient id="homeBulletGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#E63946" />
+                  <stop offset="35%" stop-color="#F25C69" />
+                  <stop offset="70%" stop-color="#B5172B" />
+                  <stop offset="100%" stop-color="#6E0A17" />
+                </linearGradient>
+                <radialGradient id="homePanGrad" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#FCECE8" />
+                  <stop offset="60%" stop-color="#EABCB2" />
+                  <stop offset="100%" stop-color="#CC8C80" />
+                </radialGradient>
+              </defs>
+
+              <!-- Ambient Glow -->
+              <circle cx="230" cy="180" r="130" fill="url(#homeAura2)" />
+
+              <!-- Dynamic Pigment Swatch Ribbon Flow -->
+              <path class="svg-anim-ribbon" d="M 40 240 C 110 160, 180 290, 260 170 C 320 80, 400 160, 420 130" fill="none" stroke="url(#homeGoldGrad)" stroke-width="4" stroke-linecap="round" opacity="0.65" />
+              <path class="svg-anim-ribbon" d="M 40 240 C 110 160, 180 290, 260 170 C 320 80, 400 160, 420 130" fill="none" stroke="#FFEAE5" stroke-width="1.5" stroke-linecap="round" opacity="0.85" filter="url(#homeCosGlow)" />
+
+              <!-- Golden Powder Compact on Right -->
+              <g>
+                <ellipse cx="325" cy="245" rx="60" ry="20" fill="rgba(0, 0, 0, 0.45)" filter="url(#homeCosGlow)" />
+                <ellipse cx="325" cy="240" rx="56" ry="18" fill="url(#homeGoldGrad)" stroke="#FFE8E0" stroke-width="1" />
+                <ellipse cx="325" cy="238" rx="46" ry="14" fill="url(#homePanGrad)" />
+                <ellipse cx="325" cy="238" rx="34" ry="9" fill="none" stroke="rgba(255, 255, 255, 0.55)" stroke-width="1" stroke-dasharray="5 3" />
+                <!-- Open Mirror Lid -->
+                <path d="M 280 230 C 280 195, 370 195, 370 230 L 364 165 C 364 140, 286 140, 286 165 Z" fill="url(#homeGoldGrad)" stroke="#FFE8E0" stroke-width="1" />
+                <path d="M 288 168 C 288 148, 362 148, 362 168 L 364 220 C 364 205, 286 205, 286 220 Z" fill="rgba(255, 255, 255, 0.2)" stroke="rgba(255, 255, 255, 0.5)" stroke-width="0.8" />
+                <line x1="300" y1="155" x2="350" y2="210" stroke="rgba(255, 255, 255, 0.5)" stroke-width="2.5" stroke-linecap="round" />
+              </g>
+
+              <!-- Shimmering Powder Dust -->
+              <circle class="svg-anim-powder-1" cx="315" cy="210" r="2.5" fill="#FFF2E8" />
+              <circle class="svg-anim-powder-2" cx="340" cy="200" r="2" fill="#E5A399" />
+              <circle class="svg-anim-powder-3" cx="305" cy="220" r="2.2" fill="#F0A89C" />
+
+              <!-- Floating Soft Powder Brush -->
+              <g class="svg-anim-brush">
+                <path d="M 358 110 L 375 95 C 378 92, 384 97, 380 101 L 364 116 Z" fill="url(#homeGoldGrad)" />
+                <path d="M 350 117 L 364 105 L 368 110 L 354 122 Z" fill="url(#homeGoldGrad)" stroke="#FFE8E0" stroke-width="0.6" />
+                <path d="M 352 120 C 344 128, 328 148, 332 158 C 337 165, 350 162, 356 148 C 362 138, 362 124, 362 124 Z" fill="url(#homeBulletGrad)" opacity="0.9" />
+              </g>
+
+              <!-- Velvet Lipstick Assembly (Center Left) -->
+              <rect x="145" y="175" width="44" height="100" rx="4" fill="url(#homeObsidian)" stroke="rgba(229, 163, 153, 0.35)" stroke-width="1.2" />
+              <rect x="145" y="260" width="44" height="15" rx="2" fill="url(#homeGoldGrad)" />
+              <rect x="145" y="175" width="44" height="8" fill="url(#homeGoldGrad)" stroke="#FFE8E0" stroke-width="0.8" />
+              <!-- Maison Star Emblem -->
+              <circle cx="167" cy="225" r="8" fill="rgba(229, 163, 153, 0.15)" stroke="url(#homeGoldGrad)" stroke-width="0.8" />
+              <path d="M 167 220 L 168.2 223.5 L 172 225 L 168.2 226.5 L 167 230 L 165.8 226.5 L 162 225 L 165.8 223.5 Z" fill="url(#homeGoldGrad)" />
+
+              <!-- Inner Gold Chamber -->
+              <rect x="151" y="138" width="32" height="38" rx="2" fill="url(#homeGoldGrad)" stroke="#FFE8E0" stroke-width="0.8" />
+              <line x1="157" y1="140" x2="157" y2="174" stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round" opacity="0.8" />
+
+              <!-- Swiveling Lipstick Bullet (Animated Upward Extension) -->
+              <g class="svg-anim-lipstick-bullet">
+                <path d="M 154 140 L 180 140 L 180 105 C 180 88, 168 68, 159 80 L 154 105 Z" fill="url(#homeBulletGrad)" stroke="rgba(255, 255, 255, 0.2)" stroke-width="0.8" />
+                <path d="M 159 80 C 168 68, 180 88, 180 105 L 162 110 Z" fill="#FF6B7A" opacity="0.85" />
+                <g class="svg-anim-gleam">
+                  <line x1="159" y1="78" x2="173" y2="135" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity="0.85" />
+                </g>
+              </g>
+            </svg>
+
+            <!-- Bottom Badge -->
+            <div class="beauty-svg-showcase-badge">
+              <span class="badge-title"><i class="fa-solid fa-wand-magic-sparkles"></i> Haute Cosmetics</span>
+              <span class="badge-status"><span class="status-dot-pulse"></span> Velvet Matte Swatch</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 3: SHOP BY CATEGORY
+         ====================================================================== -->
+    <section class="section-padding bg-primary" id="categories">
+      <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+          <span class="section-eyebrow">Curated Collections</span>
+          <h2 class="section-title">Shop by <em>Category</em></h2>
+          <p class="section-desc">Delve into specialized botanical rituals formulated to elevate every step of your self-care journey.</p>
+        </div>
+
+        <div class="category-grid animate-grid">
+          <!-- 1. Skincare -->
+          <a href="#bestsellers" class="category-card glow-on-hover">
+            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=700&q=80" alt="Skincare Category" class="category-bg-img" loading="lazy">
+            <div class="category-overlay"></div>
+            <div class="category-content">
+              <span style="font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-gold); display: block; margin-bottom: 0.3rem;">Cellular Renewal</span>
+              <h3 class="category-title">Skincare</h3>
+              <span class="category-link">Explore Collection <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+
+          <!-- 2. Makeup -->
+          <a href="#bestsellers" class="category-card glow-on-hover">
+            <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=700&q=80" alt="Makeup Category" class="category-bg-img" loading="lazy">
+            <div class="category-overlay"></div>
+            <div class="category-content">
+              <span style="font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-gold); display: block; margin-bottom: 0.3rem;">Editorial Color</span>
+              <h3 class="category-title">Makeup</h3>
+              <span class="category-link">Explore Collection <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+
+          <!-- 3. Lip Care -->
+          <a href="#bestsellers" class="category-card glow-on-hover">
+            <img src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=700&q=80" alt="Lip Care Category" class="category-bg-img" loading="lazy">
+            <div class="category-overlay"></div>
+            <div class="category-content">
+              <span style="font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-gold); display: block; margin-bottom: 0.3rem;">Hydration & Tint</span>
+              <h3 class="category-title">Lip Care</h3>
+              <span class="category-link">Explore Collection <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+
+          <!-- 4. Face Care -->
+          <a href="#bestsellers" class="category-card glow-on-hover">
+            <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=700&q=80" alt="Face Care Category" class="category-bg-img" loading="lazy">
+            <div class="category-overlay"></div>
+            <div class="category-content">
+              <span style="font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-gold); display: block; margin-bottom: 0.3rem;">Barrier Defense</span>
+              <h3 class="category-title">Face Care</h3>
+              <span class="category-link">Explore Collection <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+
+          <!-- 5. Body Care -->
+          <a href="#bestsellers" class="category-card glow-on-hover">
+            <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=700&q=80" alt="Body Care Category" class="category-bg-img" loading="lazy">
+            <div class="category-overlay"></div>
+            <div class="category-content">
+              <span style="font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-gold); display: block; margin-bottom: 0.3rem;">Nourishing Soufflés</span>
+              <h3 class="category-title">Body Care</h3>
+              <span class="category-link">Explore Collection <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+
+          <!-- 6. Beauty Essentials -->
+          <a href="#bestsellers" class="category-card glow-on-hover">
+            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=700&q=80" alt="Beauty Essentials Category" class="category-bg-img" loading="lazy">
+            <div class="category-overlay"></div>
+            <div class="category-content">
+              <span style="font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-gold); display: block; margin-bottom: 0.3rem;">Daily Indulgence</span>
+              <h3 class="category-title">Beauty Essentials</h3>
+              <span class="category-link">Explore Collection <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 4: BESTSELLER PRODUCTS
+         ====================================================================== -->
+    <section class="section-padding bg-secondary" id="bestsellers">
+      <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+          <span class="section-eyebrow">Client Favorites</span>
+          <h2 class="section-title">Iconic <em>Bestsellers</em></h2>
+          <p class="section-desc">Acclaimed worldwide for transformative results and exquisite sensorial delight.</p>
+        </div>
+
+        <!-- Rendered dynamically by products.js -->
+        <div class="product-grid bestseller-product-grid">
+          <!-- Populated with 8 premium product cards -->
+        </div>
+
+        <div style="text-align: center; margin-top: 3.5rem;" data-aos="fade-up">
+          <a href="product.html?id=1" class="btn btn-outline">
+            Discover Complete Catalog <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 5: OUR BEAUTY PHILOSOPHY
+         ====================================================================== -->
+    <section class="section-padding bg-primary" id="philosophy">
+      <div class="container">
+        <div class="split-layout animate-split">
+          <!-- Image Column -->
+          <div class="split-image-col">
+            <div class="split-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=1000&q=80" alt="Woman experiencing calming botanical facial care" loading="lazy">
+            </div>
+            <div class="split-decorative-badge">
+              <p>“True beauty does not mask; it honours the living architecture of your skin.”</p>
+              <span style="display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-light-muted); margin-top: 0.5rem;">— Maison Philosophy</span>
+            </div>
+          </div>
+
+          <!-- Text Column -->
+          <div class="split-text-col">
+            <span class="section-eyebrow no-after">Haute Phytotherapy</span>
+            <h2 class="section-title" style="margin-bottom: 1.5rem;">Beauty That Begins <em>With Care</em></h2>
+            <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.2rem;">
+              At Stackly, we reject harsh abrasives and fleeting beauty gimmicks. We believe that radiant skin is the byproduct of profound cellular health, barrier integrity, and unhurried daily rituals.
+            </p>
+            <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 2.2rem;">
+              Every droplet is harvested under strict ecological guidelines, cold-pressed to preserve volatile enzymatic bonds, and encased in recyclable UV-protective glass to ensure peak bio-potency until the final application.
+            </p>
+
+            <div style="display: flex; gap: 2rem; margin-bottom: 2.5rem;">
+              <div>
+                <h4 style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--accent-rose-dark);">Cold Extraction</h4>
+                <p style="font-size: 0.85rem; color: var(--text-secondary);">Preserves 99% of delicate botanical antioxidants.</p>
+              </div>
+              <div style="width: 1px; background-color: var(--border-subtle);"></div>
+              <div>
+                <h4 style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--accent-rose-dark);">Zero Fillers</h4>
+                <p style="font-size: 0.85rem; color: var(--text-secondary);">No parabens, phthalates, synthetic dyes, or sulfates.</p>
+              </div>
+            </div>
+
+            <a href="about.html" class="btn btn-secondary">
+              Learn More About Our Philosophy <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 6: SKINCARE ROUTINE
+         ====================================================================== -->
+    <section class="section-padding bg-secondary" id="routine">
+      <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+          <span class="section-eyebrow">The 3-Step Daily Ritual</span>
+          <h2 class="section-title">A Symphony of <em>Nourishment</em></h2>
+          <p class="section-desc">Simplify your beauty ritual with our clinically designed three-step regimen for lasting radiance.</p>
+        </div>
+
+        <div class="routine-grid animate-routine">
+          <!-- Step 1: Cleanse -->
+          <div class="routine-card glow-on-hover" data-aos="fade-up" data-aos-delay="0">
+            <div class="routine-step-num">01</div>
+            <div class="routine-svg-box">
+              <svg class="routine-svg-canvas" viewBox="0 0 160 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Step 1 Cleanse & Purify Botanical Dispenser">
+                <defs>
+                  <linearGradient id="cleanseGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFF5ED" />
+                    <stop offset="50%" stop-color="#E5A399" />
+                    <stop offset="100%" stop-color="#C5A880" />
+                  </linearGradient>
+                  <linearGradient id="cleanseGel" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#E0F2FE" />
+                    <stop offset="50%" stop-color="#BAE6FD" />
+                    <stop offset="100%" stop-color="#7DD3FC" />
+                  </linearGradient>
+                </defs>
+                <!-- Water Ripple Rings at Base -->
+                <ellipse cx="80" cy="112" rx="55" ry="12" fill="none" stroke="rgba(186, 230, 253, 0.45)" stroke-width="1.2" />
+                <ellipse cx="80" cy="112" rx="38" ry="8" fill="none" stroke="rgba(229, 163, 153, 0.4)" stroke-width="1" />
+                <!-- Cleanser Bottle Body -->
+                <rect x="58" y="48" width="44" height="64" rx="8" fill="rgba(24, 18, 25, 0.65)" stroke="url(#cleanseGold)" stroke-width="1.2" />
+                <rect x="61" y="65" width="38" height="44" rx="4" fill="url(#cleanseGel)" opacity="0.45" />
+                <!-- Rising Cleansing Micro-Bubbles -->
+                <circle class="svg-anim-cleanse-bubble-1" cx="72" cy="98" r="2.8" fill="#FFFFFF" opacity="0.8" />
+                <circle class="svg-anim-cleanse-bubble-2" cx="88" cy="92" r="2" fill="#FFFFFF" opacity="0.85" />
+                <circle class="svg-anim-cleanse-bubble-1" cx="80" cy="80" r="3.2" fill="#FFFFFF" opacity="0.75" />
+                <!-- Gold Pump Neck & Actuator Spout -->
+                <rect x="74" y="38" width="12" height="10" rx="2" fill="url(#cleanseGold)" />
+                <path d="M 72 38 L 88 38 L 88 28 L 62 28 C 60 28, 60 33, 64 33 L 72 33 Z" fill="url(#cleanseGold)" />
+                <!-- Lotus Leaf Accent -->
+                <g class="svg-anim-leaf-left">
+                  <path d="M 45 95 C 28 85, 30 68, 48 74 C 55 84, 52 92, 45 95 Z" fill="#3E6B4B" opacity="0.8" />
+                </g>
+              </svg>
+            </div>
+            <h3>Cleanse & Purify</h3>
+            <p>Wash away the day’s environmental pollution, sunscreen, and impurities without stripping vital lipid membranes or upsetting your natural pH mantle.</p>
+          </div>
+
+          <!-- Step 2: Nourish -->
+          <div class="routine-card glow-on-hover" data-aos="fade-up" data-aos-delay="150">
+            <div class="routine-step-num">02</div>
+            <div class="routine-svg-box">
+              <svg class="routine-svg-canvas" viewBox="0 0 160 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Step 2 Nourish & Plump Peptide Dropper">
+                <defs>
+                  <linearGradient id="nourishGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFF5ED" />
+                    <stop offset="50%" stop-color="#E5A399" />
+                    <stop offset="100%" stop-color="#C5A880" />
+                  </linearGradient>
+                  <linearGradient id="nourishRose" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#F4C2BA" />
+                    <stop offset="50%" stop-color="#E5A399" />
+                    <stop offset="100%" stop-color="#9C3A4C" />
+                  </linearGradient>
+                </defs>
+                <!-- Concentric Cellular Vitality Ripples -->
+                <ellipse class="svg-anim-vitality-1" cx="80" cy="110" rx="48" ry="12" fill="none" stroke="rgba(229, 163, 153, 0.45)" stroke-width="1.2" />
+                <ellipse class="svg-anim-vitality-2" cx="80" cy="110" rx="48" ry="12" fill="none" stroke="rgba(240, 168, 156, 0.25)" stroke-width="1" />
+                <!-- Floating Serum Dropper -->
+                <g class="svg-anim-dropper">
+                  <path d="M 75 32 C 75 14, 85 14, 85 32 Z" fill="url(#nourishRose)" stroke="url(#nourishGold)" stroke-width="1" />
+                  <rect x="73" y="32" width="14" height="8" rx="1.5" fill="url(#nourishGold)" />
+                  <path d="M 76 40 L 84 40 L 82 78 L 80 84 L 78 78 Z" fill="rgba(255, 255, 255, 0.3)" stroke="url(#nourishGold)" stroke-width="1" />
+                  <line x1="77" y1="44" x2="78" y2="76" stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round" opacity="0.8" />
+                </g>
+                <!-- Active Falling Elixir Drop -->
+                <g class="svg-anim-serum-drop">
+                  <path d="M 80 84 C 77 88, 76 92, 80 96 C 84 92, 83 88, 80 84 Z" fill="url(#nourishGold)" />
+                  <circle cx="79.5" cy="91" r="1" fill="#FFFFFF" />
+                </g>
+                <!-- Damask Rose Sprig at Right -->
+                <g class="svg-anim-rose">
+                  <path d="M 112 75 C 102 65, 100 78, 108 85 C 114 90, 122 86, 124 78 C 128 68, 120 62, 112 75 Z" fill="url(#nourishRose)" />
+                  <circle cx="112" cy="79" r="1.8" fill="#FFEAE5" />
+                </g>
+              </svg>
+            </div>
+            <h3>Nourish & Plump</h3>
+            <p>Infuse deep epidermal strata with multi-molecular hyaluronic acid, bio-fermented peptides, and pure cold-pressed Damascus Rose extracts.</p>
+          </div>
+
+          <!-- Step 3: Protect -->
+          <div class="routine-card glow-on-hover" data-aos="fade-up" data-aos-delay="300">
+            <div class="routine-step-num">03</div>
+            <div class="routine-svg-box">
+              <svg class="routine-svg-canvas" viewBox="0 0 160 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Step 3 Protect & Seal Ceramide Jar">
+                <defs>
+                  <linearGradient id="protectGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFF5ED" />
+                    <stop offset="50%" stop-color="#E5A399" />
+                    <stop offset="100%" stop-color="#C5A880" />
+                  </linearGradient>
+                  <linearGradient id="protectCream" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#FFFBF7" />
+                    <stop offset="50%" stop-color="#FDF2E9" />
+                    <stop offset="100%" stop-color="#F5DDD8" />
+                  </linearGradient>
+                </defs>
+                <!-- Glowing Sun Barrier Defense Shield Ring -->
+                <circle class="svg-anim-cream-glow" cx="80" cy="78" r="46" fill="none" stroke="rgba(229, 163, 153, 0.35)" stroke-width="1.5" stroke-dasharray="4 4" />
+                <!-- Jar Base Shadow -->
+                <ellipse cx="80" cy="110" rx="42" ry="10" fill="rgba(0, 0, 0, 0.4)" />
+                <!-- Cream Jar Glass Body -->
+                <rect x="52" y="68" width="56" height="40" rx="8" fill="rgba(24, 18, 25, 0.7)" stroke="url(#protectGold)" stroke-width="1.2" />
+                <!-- Cashmere Cream Swirl inside Jar -->
+                <rect x="56" y="76" width="48" height="28" rx="4" fill="url(#protectCream)" opacity="0.85" />
+                <path d="M 64 88 Q 80 82 96 88" stroke="#E5A399" stroke-width="1" fill="none" opacity="0.6" />
+                <!-- Metallic Gold Lid -->
+                <rect x="48" y="58" width="64" height="12" rx="3" fill="url(#protectGold)" stroke="#FFE8E0" stroke-width="0.8" />
+                <ellipse cx="80" cy="58" rx="32" ry="4" fill="url(#protectGold)" />
+                <!-- Star Crest on Lid -->
+                <circle cx="80" cy="58" r="1.5" fill="#FFFFFF" />
+                <!-- Squalane Leaf Accent -->
+                <g class="svg-anim-leaf-right">
+                  <path d="M 112 85 C 128 78, 134 60, 118 64 C 110 72, 110 80, 112 85 Z" fill="#3E6B4B" opacity="0.85" />
+                </g>
+              </svg>
+            </div>
+            <h3>Protect & Seal</h3>
+            <p>Lock in cellular hydration with cashmere-soft ceramides and antioxidant-rich botanicals that shield against blue light and oxidative breakdown.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 7: FEATURED COLLECTION BANNER
+         ====================================================================== -->
+    <section class="featured-collection-banner" style="position: relative; padding: 7.5rem 0; overflow: hidden; background-color: var(--bg-dark); color: #FFFFFF;">
+      <img src="https://images.unsplash.com/photo-1512290900672-1f4864388835?auto=format&fit=crop&w=1400&q=80" alt="Golden Nectar Collection" class="banner-bg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.38; z-index: 1;" loading="lazy">
+
+      <div class="container" style="position: relative; z-index: 2;">
+        <div class="banner-content" style="max-width: 650px;">
+          <span class="badge badge-gold" style="margin-bottom: 1.2rem;">Limited Haute Edition</span>
+          <h2 style="font-size: clamp(2.4rem, 4.5vw, 3.8rem); font-weight: 400; line-height: 1.15; margin-bottom: 1.4rem;">
+            The Golden Nectar <br><em>Collection</em>
+          </h2>
+          <p style="font-size: 1.1rem; color: var(--text-light-muted); line-height: 1.7; margin-bottom: 2.4rem;">
+            A sensory masterwork infused with micro-suspended 24-karat gold flakes and 16 rare cold-pressed botanical oils. Formulated in limited seasonal batches in Provence.
+          </p>
+          <div style="display: flex; gap: 1.2rem; flex-wrap: wrap;">
+            <a href="product.html?id=4" class="btn btn-primary">
+              Explore Collection <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="services.html" class="btn btn-outline-light">
+              Book a Consultation
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 8: CUSTOMER TESTIMONIALS
+         ====================================================================== -->
+    <section class="section-padding bg-primary" id="testimonials">
+      <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+          <span class="section-eyebrow">Client Reflections</span>
+          <h2 class="section-title">Cherished by <em>Connoisseurs</em></h2>
+          <p class="section-desc">Read sincere impressions from clients who have entrusted their skin to our bespoke formulations.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card glow-on-hover" data-aos="fade-up" data-aos-delay="0">
+            <div class="quote-icon">“</div>
+            <div class="testimonial-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-text">
+              “The Elixir de Rose transformed my perennially dull, jet-lagged complexion in less than ten days. It glides on like liquid silk and smells heavenly without overpowering.”
+            </p>
+            <div class="testimonial-author-box">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Geneviève Moreau" class="author-avatar">
+              <div>
+                <h4 class="author-name">Geneviève Moreau</h4>
+                <span class="author-role">Art Director • Paris</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card glow-on-hover" data-aos="fade-up" data-aos-delay="150">
+            <div class="quote-icon">“</div>
+            <div class="testimonial-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-text">
+              “Crème Renaissance is pure alchemy. My dermatologist noticed the change in my skin's elasticity before I even mentioned switching to Stackly. Absolutely irreplaceable.”
+            </p>
+            <div class="testimonial-author-box">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Isabelle Vance" class="author-avatar">
+              <div>
+                <h4 class="author-name">Isabelle Vance</h4>
+                <span class="author-role">Architect • Geneva</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-card glow-on-hover" data-aos="fade-up" data-aos-delay="300">
+            <div class="quote-icon">“</div>
+            <div class="testimonial-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-text">
+              “Their personalized consultation service exceeded every expectation. They designed a regimen tailored to my sensitive skin that delivered genuine, sustained radiance.”
+            </p>
+            <div class="testimonial-author-box">
+              <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=150&q=80" alt="Elena Rostova" class="author-avatar">
+              <div>
+                <h4 class="author-name">Elena Rostova</h4>
+                <span class="author-role">Fashion Editor • London</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 9: BEAUTY JOURNAL PREVIEW
+         ====================================================================== -->
+    <section class="section-padding bg-secondary" id="journal">
+      <div class="container">
+        <div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 3.5rem; flex-wrap: wrap; gap: 1.5rem;" data-aos="fade-up">
+          <div>
+            <span class="section-eyebrow no-after">The Journal</span>
+            <h2 class="section-title" style="margin-bottom: 0;">Beauty Insights & <em>Rituals</em></h2>
+          </div>
+          <a href="blog.html" class="btn btn-outline">
+            View All Articles <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Rendered dynamically by blog.js -->
+        <div class="blog-grid home-journal-grid">
+          <!-- Populated with 3 recent editorial articles -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 10: NEWSLETTER
+         ====================================================================== -->
+    <section class="section-padding bg-primary">
+      <div class="container">
+        <div class="newsletter-box glow-on-hover" data-aos="fade-up">
+          <span class="section-eyebrow" style="color: var(--accent-gold);">Private Invitation</span>
+          <h2 style="font-size: clamp(2.2rem, 3.8vw, 3.2rem); font-weight: 400; margin-bottom: 1rem; color: #FFFFFF;">
+            Join Our Private <em>Beauty Circle</em>
+          </h2>
+          <p style="font-size: 1.05rem; color: var(--text-light-muted); max-width: 580px; margin: 0 auto 2rem; line-height: 1.7;">
+            Receive exclusive seasonal batch invitations, bespoke ritual guides, and complimentary private aesthetician consultations directly in your inbox.
+          </p>
+
+          <form class="newsletter-form" novalidate>
+            <div class="newsletter-input-group">
+              <input type="email" class="newsletter-input" placeholder="Enter your email address..." aria-label="Email Address for newsletter" required>
+              <button type="submit" class="btn btn-primary">
+                Subscribe <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </div>
+            <div class="form-feedback" aria-live="polite"></div>
+          </form>
+
+          <p style="font-size: 0.72rem; color: var(--text-light-muted); margin-top: 1.4rem;">
+            We respect your privacy. Unsubscribe at any time with a single click.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================================
+       SECTION 11: PREMIUM FOOTER
+       ====================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <!-- Brand Info -->
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <img src="logo_0027.webp" alt="Stackly" class="brand-logo-img">
+            <span class="brand-sub">HAUTE BOTANIQUE</span>
+          </a>
+          <p>
+            Botanical cosmetic alchemy crafted with clinical discernment and sustainable luxury principles. Designed to reveal your radiant truth.
+          </p>
+          <div class="footer-social-list">
+            <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Maison</a></li>
+            <li><a href="services.html">Bespoke Services</a></li>
+            <li><a href="blog.html">The Beauty Journal</a></li>
+            <li><a href="contact.html">Contact & Concierge</a></li>
+            <li><a href="product.html?id=1">Flagship Elixir</a></li>
+          </ul>
+        </div>
+
+        <!-- Customer Support -->
+        <div>
+          <h4 class="footer-col-title">Client Care</h4>
+          <ul class="footer-links">
+            <li><a href="services.html#faq">Consultation FAQ</a></li>
+            <li><a href="contact.html">Shipping & Returns</a></li>
+            <li><a href="login.html">Sign In & Role Access</a></li>
+            <li><a href="customer-dashboard.html">Client Sanctuary Dashboard</a></li>
+            <li><a href="admin-dashboard.html">Admin Command Dashboard</a></li>
+            <li><a href="contact.html">Concierge Enquiries</a></li>
+            <li><a href="product.html?id=2">Ingredient Directory</a></li>
+          </ul>
+        </div>
+
+        <!-- Salon & Newsletter -->
+        <div>
+          <h4 class="footer-col-title">Haute Atelier</h4>
+          <p class="footer-newsletter-text">
+            18 Place Vendôme, 75001 Paris, France.<br>
+            Private appointments available Tuesday through Saturday.
+          </p>
+          <div style="margin-top: 1.2rem;">
+            <a href="services.html" class="btn btn-outline-light btn-sm" style="width: 100%;">
+              Book Appointment <i class="fa-solid fa-calendar-check"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p>© 2026 STACKLY. ALL RIGHTS RESERVED.</p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Cookie Preferences</a>
+        </div>
+        <a href="#" class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+          Back to Top <i class="fa-solid fa-arrow-up"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/blog.js"></script>
+</body>
+</html>

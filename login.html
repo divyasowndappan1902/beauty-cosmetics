@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maison Portal & Role Access | Stackly</title>
+  <meta name="description" content="Access your private Stackly portal for VIP client sanctuary or Maison administrative command.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23191614'/><path d='M50 20 L53 42 L75 50 L53 58 L50 80 L47 58 L25 50 L47 42 Z' fill='%23C5A880'/></svg>">
+
+  <!-- CDNs -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+
+  <style>
+    /* Premium Login Layout Styles */
+    .login-page-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      min-height: 100vh;
+      background-color: var(--bg-primary);
+    }
+
+    .login-visual-col {
+      position: relative;
+      overflow: hidden;
+      background-color: var(--bg-dark);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 4.5rem 4rem;
+      color: #FFFFFF;
+    }
+
+    .login-visual-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.45;
+      z-index: 1;
+      transform: scale(1.02);
+      transition: transform 6s ease-out;
+    }
+
+    .login-visual-col:hover .login-visual-bg {
+      transform: scale(1.06);
+    }
+
+    .login-visual-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(28, 10, 18, 0.92) 0%, rgba(39, 16, 26, 0.75) 50%, rgba(229, 163, 153, 0.25) 100%);
+      z-index: 2;
+    }
+
+    .login-visual-content {
+      position: relative;
+      z-index: 3;
+    }
+
+    .login-form-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 3.5rem 4rem;
+      background-color: var(--bg-card-alt);
+      overflow-y: auto;
+    }
+
+    .login-card-inner {
+      max-width: 480px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Input with icon & toggle */
+    .input-with-icon-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-with-icon-wrapper input,
+    .input-with-icon-wrapper select {
+      width: 100%;
+      padding: 0.95rem 2.8rem 0.95rem 1.2rem;
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-card);
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      outline: none;
+      transition: all var(--transition-fast);
+    }
+
+    .input-with-icon-wrapper input::placeholder {
+      color: var(--text-muted);
+      opacity: 0.75;
+    }
+
+    .input-with-icon-wrapper select {
+      padding-right: 2rem;
+      cursor: pointer;
+    }
+
+    .input-with-icon-wrapper input:focus,
+    .input-with-icon-wrapper select:focus {
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 0 3px var(--accent-gold-glow);
+      background-color: var(--bg-card);
+    }
+
+    /* Dynamic Validation States */
+    .input-with-icon-wrapper input.is-invalid {
+      border-color: #E53E3E !important;
+      box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.2) !important;
+    }
+
+    .input-with-icon-wrapper input.is-valid {
+      border-color: #2E7D32 !important;
+      box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2) !important;
+    }
+
+    .field-feedback {
+      font-size: 0.8rem;
+      margin-top: 0.4rem;
+      display: none;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 500;
+      line-height: 1.3;
+      transition: all 0.2s ease;
+    }
+
+    .field-feedback.active {
+      display: flex;
+    }
+
+    .field-feedback.error {
+      color: #E53E3E;
+    }
+
+    .field-feedback.success {
+      color: #2E7D32;
+    }
+
+    .field-feedback.hint {
+      color: var(--accent-gold);
+    }
+
+    .input-status-icon {
+      position: absolute;
+      right: 1rem;
+      font-size: 0.95rem;
+      pointer-events: none;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .input-status-icon.active {
+      display: flex;
+    }
+
+    .input-status-icon.success {
+      color: #2E7D32;
+    }
+
+    .input-status-icon.error {
+      color: #E53E3E;
+    }
+
+    .password-toggle-btn {
+      position: absolute;
+      right: 1rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1rem;
+      background: none;
+      border: none;
+      padding: 0;
+      z-index: 2;
+    }
+
+    .password-toggle-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .auth-alert-message {
+      padding: 0.95rem 1.2rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      margin-bottom: 1.5rem;
+      display: none;
+      line-height: 1.5;
+    }
+
+    .auth-alert-message.error {
+      background-color: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #FCA5A5;
+    }
+
+    .auth-alert-message.success {
+      background-color: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #86EFAC;
+    }
+
+    .btn-google-auth {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.85rem;
+      padding: 0.85rem;
+      border: 1px solid rgba(229, 163, 153, 0.25);
+      border-radius: var(--radius-full);
+      background-color: rgba(28, 10, 18, 0.6);
+      color: var(--text-primary);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .btn-google-auth:hover {
+      border-color: var(--accent-gold);
+      background-color: rgba(45, 19, 31, 0.8);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .divider-or {
+      display: flex;
+      align-items: center;
+      margin: 1.5rem 0;
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .divider-or::before,
+    .divider-or::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background-color: var(--border-subtle);
+    }
+
+    .divider-or span {
+      padding: 0 1rem;
+    }
+
+    @media (max-width: 991px) {
+      .login-page-grid {
+        grid-template-columns: 1fr;
+      }
+      .login-visual-col {
+        display: flex;
+        padding: 2.5rem 1.5rem;
+        min-height: 220px;
+      }
+      .login-form-col {
+        padding: 3rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-page-grid">
+    <!-- ======================================================================
+         LEFT SIDE: LUXURY EDITORIAL VISUAL COMPOSITION
+         ====================================================================== -->
+    <div class="login-visual-col">
+      <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=1200&q=80" alt="Stackly Atelier" class="login-visual-bg">
+      <div class="login-visual-overlay"></div>
+
+      <!-- Top Branding -->
+      <div class="login-visual-content">
+        <a href="index.html" class="brand-logo" style="text-decoration: none;">
+          <img src="logo_0027.webp" alt="Stackly" class="brand-logo-img">
+          <span class="brand-sub" style="color: var(--accent-gold);">HAUTE BOTANIQUE</span>
+        </a>
+      </div>
+
+      <!-- Bottom Editorial Statement -->
+      <div class="login-visual-content" style="max-width: 500px;">
+        <span class="badge badge-gold" style="margin-bottom: 1.2rem;">Maison Architecture</span>
+        <h2 style="font-size: clamp(2.2rem, 3.5vw, 3.2rem); font-weight: 400; line-height: 1.15; margin-bottom: 1.2rem; color: #FFFFFF;">
+          Stackly <br><em style="font-family: var(--font-serif); font-style: italic; color: var(--accent-gold);">Access Gateway</em>
+        </h2>
+        <p style="font-size: 1.05rem; color: var(--text-light-muted); line-height: 1.7; margin-bottom: 2rem;">
+          Whether exploring your personalized client beauty dossier or governing Atelier inventory, orders, and salon appointments — your portal awaits.
+        </p>
+        <div style="padding-left: 1.2rem; border-left: 2px solid var(--accent-gold);">
+          <p style="font-style: italic; font-family: var(--font-serif); font-size: 1.1rem; color: #FFFFFF;">
+            “Precision in formulation, mastery in sanctuary.”
+          </p>
+        </div>
+      </div>
+
+
+    </div>
+
+    <!-- ======================================================================
+         RIGHT SIDE: LUXURY ROLE SELECTOR & AUTHENTICATION FORMS
+         ====================================================================== -->
+    <div class="login-form-col">
+      <div class="login-card-inner">
+        <!-- Back to Home Link -->
+        <a href="index.html" class="btn-text" style="margin-bottom: 2rem; display: inline-flex; color: var(--accent-gold); font-size: 0.85rem;">
+          <i class="fa-solid fa-arrow-left"></i> Back to Maison Home
+        </a>
+
+        <!-- Inline Feedback Box -->
+        <div id="auth-alert-box" class="auth-alert-message" role="alert"></div>
+
+        <!-- ==================================================================
+             VIEW 1: SIGN IN (WITH UNIQUE & EXCELLENT ROLE SELECTOR)
+             ================================================================== -->
+        <div id="login-view-section">
+          <span class="section-eyebrow no-after">Private Access</span>
+          <h1 id="login-main-heading" style="font-size: 2.2rem; margin-bottom: 0.5rem; line-height: 1.2;">
+            Welcome Back, <em style="font-family: var(--font-serif); font-style: italic; color: var(--accent-gold);">Cher Client</em>
+          </h1>
+          <p id="login-main-desc" style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+            Please select your role and enter credentials to enter your private sanctuary or administrative command.
+          </p>
+
+          <!-- UNIQUE & EXCELLENT ROLE SELECTION SLOT -->
+          <div class="role-selection-slot" id="login-role-slot">
+            <div class="role-slot-header">
+              <span class="role-slot-eyebrow"><i class="fa-solid fa-crown"></i> Select Access Role</span>
+              <span class="role-slot-status"><span class="status-dot"></span> Maison Gateway</span>
+            </div>
+            
+            <div class="role-cards-grid">
+              <!-- Customer Role Card -->
+              <div class="role-card active" data-role="customer" tabindex="0" role="button" aria-pressed="true">
+                <div class="role-card-top">
+                  <div class="role-icon-box">
+                    <i class="fa-solid fa-gem"></i>
+                  </div>
+                  <div class="role-check-indicator">
+                    <i class="fa-solid fa-check"></i>
+                  </div>
+                </div>
+                <div class="role-card-title">
+                  VIP Customer
+                  <span class="role-card-badge">Privilège</span>
+                </div>
+                <div class="role-card-desc">Orders, skin diagnostic dossier, beauty bag & salon spa bookings.</div>
+              </div>
+
+              <!-- Admin Role Card -->
+              <div class="role-card" data-role="admin" tabindex="0" role="button" aria-pressed="false">
+                <div class="role-card-top">
+                  <div class="role-icon-box">
+                    <i class="fa-solid fa-shield-halved"></i>
+                  </div>
+                  <div class="role-check-indicator">
+                    <i class="fa-solid fa-check"></i>
+                  </div>
+                </div>
+                <div class="role-card-title">
+                  Maison Admin
+                  <span class="role-card-badge">Executive</span>
+                </div>
+                <div class="role-card-desc">Catalog inventory, revenue stats, VIP order dispatch & CRM.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sign In Form -->
+          <form id="auth-login-form" novalidate>
+            <!-- Email -->
+            <div class="form-group" style="margin-bottom: 1.2rem;">
+              <label for="login-email" class="form-label" style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem; display: block;">Portal Email Address</label>
+              <div class="input-with-icon-wrapper">
+                <input type="email" id="login-email" placeholder="name@example.com" required autocomplete="email">
+                <span class="input-status-icon" id="login-email-status"></span>
+              </div>
+              <div class="field-feedback" id="login-email-feedback"></div>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group" style="margin-bottom: 1.2rem;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.4rem;">
+                <label for="login-password" class="form-label" style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0;">Password</label>
+                <a href="#" class="forgot-password-link" style="font-size: 0.78rem; color: var(--accent-rose-dark); font-weight: 600;">Forgot Password?</a>
+              </div>
+              <div class="input-with-icon-wrapper">
+                <input type="password" id="login-password" placeholder="At least 6 characters" minlength="6" required autocomplete="current-password">
+                <button type="button" class="password-toggle-btn" aria-label="Toggle password visibility">
+                  <i class="fa-regular fa-eye"></i>
+                </button>
+              </div>
+              <div class="field-feedback" id="login-password-feedback"></div>
+            </div>
+
+            <!-- Remember Me -->
+            <div style="display: flex; align-items: center; justify-content: space-between; margin: 1rem 0 1.5rem;">
+              <label style="display: flex; align-items: center; gap: 0.6rem; font-size: 0.82rem; color: var(--text-secondary); cursor: pointer;">
+                <input type="checkbox" id="remember-me" checked style="accent-color: var(--accent-gold); width: 16px; height: 16px;">
+                Remember this trusted device
+              </label>
+            </div>
+
+            <!-- Dynamic Submit Button -->
+            <button type="submit" id="login-submit-btn" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 0.95rem;">
+              Sign In as VIP Client <i class="fa-solid fa-gem" style="font-size: 0.85rem;"></i>
+            </button>
+          </form>
+
+          <div class="divider-or">
+            <span>OR</span>
+          </div>
+
+          <!-- Google Auth Button (Demo) -->
+          <button type="button" class="btn-google-auth">
+            <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#EA4335" d="M12 5c1.54 0 2.94.55 4.04 1.45l3.03-3.03C17.21 1.74 14.77 1 12 1 7.42 1 3.52 3.59 1.63 7.37l3.66 2.84C6.18 7.31 8.85 5 12 5z"/><path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58l3.71 2.88c2.16-1.99 3.71-4.92 3.71-8.7z"/><path fill="#FBBC05" d="M5.29 14.79c-.25-.74-.39-1.53-.39-2.35 0-.82.14-1.61.39-2.35L1.63 7.37C.59 9.45 0 11.66 0 14.06s.59 4.61 1.63 6.69l3.66-2.84z"/><path fill="#34A853" d="M12 23c3.24 0 5.95-1.08 7.93-2.91l-3.71-2.88c-1.08.72-2.45 1.16-4.22 1.16-3.15 0-5.82-2.31-6.71-5.21L1.63 16.06C3.52 19.84 7.42 22.43 12 22.43z"/></svg>
+            Continue with Google One-Click
+          </button>
+
+          <!-- Switch to Register -->
+          <div style="text-align: center; margin-top: 1.8rem; font-size: 0.9rem; color: var(--text-secondary);">
+            Require a new Maison profile?
+            <a href="#" id="switch-to-register" style="color: var(--accent-gold); font-weight: 600; text-decoration: underline;">Create account / Register</a>
+          </div>
+        </div>
+
+        <!-- ==================================================================
+             VIEW 2: CREATE ACCOUNT (WITH DYNAMIC ROLE SELECTOR & RESPECTIVE CONTENTS)
+             ================================================================== -->
+        <div id="register-view-section" style="display: none;">
+          <span class="section-eyebrow no-after">Maison Registration</span>
+          <h1 id="signup-main-heading" style="font-size: 2.2rem; margin-bottom: 0.5rem; line-height: 1.2;">
+            Join the <em style="font-family: var(--font-serif); font-style: italic; color: var(--accent-gold);">Privileged Circle</em>
+          </h1>
+          <p id="signup-main-desc" style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+            Join our private client circle for bespoke formulations and priority salon bookings.
+          </p>
+
+          <!-- UNIQUE & EXCELLENT ROLE SELECTION SLOT FOR SIGNUP -->
+          <div class="role-selection-slot" id="signup-role-slot">
+            <div class="role-slot-header">
+              <span class="role-slot-eyebrow"><i class="fa-solid fa-id-badge"></i> Select Registration Role</span>
+              <span class="role-slot-status"><span class="status-dot"></span> Onboarding Mode</span>
+            </div>
+            
+            <div class="role-cards-grid">
+              <!-- Customer Option -->
+              <div class="role-card active" data-role="customer" tabindex="0" role="button" aria-pressed="true">
+                <div class="role-card-top">
+                  <div class="role-icon-box">
+                    <i class="fa-solid fa-gem"></i>
+                  </div>
+                  <div class="role-check-indicator">
+                    <i class="fa-solid fa-check"></i>
+                  </div>
+                </div>
+                <div class="role-card-title">
+                  VIP Customer
+                  <span class="role-card-badge">Privilège</span>
+                </div>
+                <div class="role-card-desc">Bespoke formulations, private order tracking & +500 reward points.</div>
+              </div>
+
+              <!-- Admin Option -->
+              <div class="role-card" data-role="admin" tabindex="0" role="button" aria-pressed="false">
+                <div class="role-card-top">
+                  <div class="role-icon-box">
+                    <i class="fa-solid fa-shield-halved"></i>
+                  </div>
+                  <div class="role-check-indicator">
+                    <i class="fa-solid fa-check"></i>
+                  </div>
+                </div>
+                <div class="role-card-title">
+                  Maison Admin
+                  <span class="role-card-badge">Executive</span>
+                </div>
+                <div class="role-card-desc">Executive staff pass for inventory control, salon management & CRM.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic Registration Form -->
+          <form id="auth-register-form" novalidate>
+            
+            <!-- --------------------------------------------------------
+                 RESPECTIVE CONTENTS 1: CUSTOMER REGISTRATION FIELDS
+                 -------------------------------------------------------- -->
+            <div id="signup-customer-fields">
+              <div class="form-group" style="margin-bottom: 1.1rem;">
+                <label for="reg-name" class="form-label" style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem; display: block;">Full Client Name</label>
+                <div class="input-with-icon-wrapper">
+                  <input type="text" id="reg-name" placeholder="Clara Delacroix" required>
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 1.1rem;">
+                <label for="reg-email" class="form-label" style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem; display: block;">Email Address</label>
+                <div class="input-with-icon-wrapper">
+                  <input type="email" id="reg-email" placeholder="clara@example.com" required>
+                  <span class="input-status-icon" id="reg-email-status"></span>
+                </div>
+                <div class="field-feedback" id="reg-email-feedback"></div>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 1.1rem;">
+                <label for="reg-password" class="form-label" style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem; display: block;">Password (Min 6 Characters)</label>
+                <div class="input-with-icon-wrapper">
+                  <input type="password" id="reg-password" placeholder="At least 6 characters" minlength="6" required>
+                  <button type="button" class="password-toggle-btn" aria-label="Toggle password visibility">
+                    <i class="fa-regular fa-eye"></i>
+                  </button>
+                </div>
+                <div class="field-feedback" id="reg-password-feedback"></div>
+              </div>
+
+              <!-- Customer Respective Field: Skin Diagnostic Focus -->
+              <div class="form-group" style="margin-bottom: 1.1rem;">
+                <label for="reg-skin-focus" class="form-label" style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem; display: block;">Primary Skin & Beauty Focus</label>
+                <div class="input-with-icon-wrapper">
+                  <select id="reg-skin-focus">
+                    <option value="Radiance & Luminous Glow">Radiance & Lit-From-Within Glow</option>
+                    <option value="Deep Barrier Hydration">Deep Barrier Hydration & Moisture Lock</option>
+                    <option value="Cellular Firming & Anti-Aging">Cellular Firming & Age-Renewal</option>
+                    <option value="Haute Parfumerie & Body Rituals">Haute Parfumerie & Botanical Body</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Customer Respective Field: Flagship Atelier Preference -->
+              <div class="form-group" style="margin-bottom: 1.1rem;">
+                <label for="reg-salon" class="form-label" style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem; display: block;">Preferred Flagship Atelier</label>
+                <div class="input-with-icon-wrapper">
+                  <select id="reg-salon">
+                    <option value="Paris Place Vendôme">Paris — 12 Place Vendôme</option>
+                    <option value="London Mayfair">London — 45 New Bond Street, Mayfair</option>
+                    <option value="New York Madison">New York — 740 Madison Avenue</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Customer Perks & Terms -->
+              <div style="margin: 1rem 0 1.5rem;">
+                <label style="display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.8rem; color: var(--text-secondary); cursor: pointer; margin-bottom: 0.6rem;">
+                  <input type="checkbox" id="reg-perks-enroll" checked style="accent-color: var(--accent-gold); width: 16px; height: 16px; margin-top: 2px;">
+                  <span><strong>Complimentary Privilège Enrollment:</strong> Credit 500 Welcome Points and receive private salon invitations.</span>
+                </label>
+                <label style="display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.8rem; color: var(--text-secondary); cursor: pointer;">
+                  <input type="checkbox" id="reg-customer-agree" required checked style="accent-color: var(--accent-gold); width: 16px; height: 16px; margin-top: 2px;">
+                  <span>I agree to Maison Terms of Service & Privacy Policy.</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- --------------------------------------------------------
+                 RESPECTIVE CONTENTS 2: ADMIN / STAFF REGISTRATION FIELDS
+                 -------------------------------------------------------- -->
+            <div id="signup-admin-fields" style="display: none;">
+              <div class="form-group" style="margin-bottom: 1.1rem;">
+                <label for="reg-admin-name" class="form-label" style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem; display: block;">Executive / Staff Full Name</label>
+                <div class="input-with-icon-wrapper">
+                  <input type="text" id="reg-admin-name" placeholder="Laurent Vaneau">
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 1.1rem;">
+                <label for="reg-admin-email" class="form-label" style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem; display: block;">Corporate Maison Email</label>
+                <div class="input-with-icon-wrapper">
+                  <input type="email" id="reg-admin-email" placeholder="laurent.vaneau@stackly.com">
+                  <span class="input-status-icon" id="reg-admin-email-status"></span>
+                </div>
+                <div class="field-feedback" id="reg-admin-email-feedback"></div>
+              </div>
+
+              <!-- Admin Department Role -->
+              <div class="form-group" style="margin-bottom: 1.1rem;">
+                <label for="reg-admin-dept" class="form-label" style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem; display: block;">Department & Authority Role</label>
+                <div class="input-with-icon-wrapper">
+                  <select id="reg-admin-dept">
+                    <option value="Maison Director / Executive">Maison Director / Executive Command</option>
+                    <option value="Inventory & Supply Operations">Inventory & Supply Chain Lead</option>
+                    <option value="Master Aesthetician Lead">Master Aesthetician & Salon Director</option>
+                    <option value="VIP Client Relations Concierge">VIP Client Relations & CRM Lead</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Admin Security Passkey -->
+              <div class="form-group" style="margin-bottom: 1.1rem;">
+                <label for="reg-admin-key" class="form-label" style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem; display: block;">Maison Security Authorization Key</label>
+                <div class="input-with-icon-wrapper">
+                  <input type="text" id="reg-admin-key" placeholder="Enter authorization key">
+                </div>
+              </div>
+
+              <!-- Admin Passcode -->
+              <div class="form-group" style="margin-bottom: 1.1rem;">
+                <label for="reg-admin-password" class="form-label" style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem; display: block;">Administrative Passcode (Min 6 Characters)</label>
+                <div class="input-with-icon-wrapper">
+                  <input type="password" id="reg-admin-password" placeholder="At least 6 characters" minlength="6">
+                  <button type="button" class="password-toggle-btn" aria-label="Toggle password visibility">
+                    <i class="fa-regular fa-eye"></i>
+                  </button>
+                </div>
+                <div class="field-feedback" id="reg-admin-password-feedback"></div>
+              </div>
+
+              <!-- Admin Protocol Agreement -->
+              <div style="margin: 1rem 0 1.5rem;">
+                <label style="display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.8rem; color: var(--text-secondary); cursor: pointer;">
+                  <input type="checkbox" id="reg-admin-agree" checked style="accent-color: var(--accent-gold); width: 16px; height: 16px; margin-top: 2px;">
+                  <span>I agree to Maison Confidentiality, Security Protocols & Staff Non-Disclosure Agreements.</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Dynamic Submit Button -->
+            <button type="submit" id="signup-submit-btn" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 0.95rem;">
+              Create VIP Client Profile <i class="fa-solid fa-sparkles"></i>
+            </button>
+          </form>
+
+          <div style="text-align: center; margin-top: 1.8rem; font-size: 0.9rem; color: var(--text-secondary);">
+            Already have Maison credentials?
+            <a href="#" id="switch-to-login" style="color: var(--accent-gold); font-weight: 600; text-decoration: underline;">Sign in instead</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/auth-demo.js"></script>
+</body>
+</html>

@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Story & Philosophy | Stackly</title>
+  <meta name="description" content="Discover the origins, phytotherapy philosophy, and clean luxury values behind Stackly.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23191614'/><path d='M50 20 L53 42 L75 50 L53 58 L50 80 L47 58 L25 50 L47 42 Z' fill='%23C5A880'/></svg>">
+
+  <!-- CDNs -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/about-luxury.css">
+</head>
+<body>
+
+  <!-- ======================================================================
+       HEADER & NAVIGATION
+       ====================================================================== -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo" aria-label="Stackly Home">
+        <img src="logo_0027.webp" alt="Stackly" class="brand-logo-img">
+        <span class="brand-sub">HAUTE BOTANIQUE</span>
+      </a>
+
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link active">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="header-icon-btn header-search-btn" aria-label="Open Search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+        <div class="cart-btn-wrapper">
+          <button type="button" class="header-icon-btn header-cart-btn" aria-label="View Shopping Bag">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span class="cart-count-badge">2</span>
+          </button>
+        </div>
+
+        <a href="login.html" class="btn-nav-login">
+          <i class="fa-regular fa-user"></i>
+          <span>Account</span>
+        </a>
+
+        <button type="button" class="hamburger-btn" aria-label="Toggle navigation menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Overlay & Drawer -->
+  <div class="mobile-nav-overlay" aria-hidden="true">
+    <div class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+      <div class="mobile-nav-top">
+        <div class="brand-logo" style="margin-bottom: 2.5rem;">
+          <img src="logo_0027.webp" alt="Stackly" class="brand-logo-img" style="height: 36px;">
+          <span class="brand-sub">HAUTE BOTANIQUE</span>
+        </div>
+        <div class="mobile-nav-links">
+          <a href="index.html" class="mobile-nav-link"><span>Home</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem;"></i></a>
+          <a href="about.html" class="mobile-nav-link active"><span>About</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem;"></i></a>
+          <a href="services.html" class="mobile-nav-link"><span>Services</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem;"></i></a>
+          <a href="blog.html" class="mobile-nav-link"><span>Blog Journal</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem;"></i></a>
+          <a href="contact.html" class="mobile-nav-link"><span>Contact</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem;"></i></a>
+          <a href="login.html" class="mobile-nav-link"><span>Client Login</span> <i class="fa-solid fa-user" style="font-size: 0.9rem;"></i></a>
+        </div>
+      </div>
+      <div class="mobile-nav-footer">
+        <div class="mobile-nav-socials">
+          <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-link" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+          <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+        <p style="font-size: 0.75rem; color: var(--text-muted);">© 2026 STACKLY. ALL RIGHTS RESERVED.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Live Search Modal -->
+  <div class="search-modal" role="dialog" aria-modal="true" aria-label="Product and Article Search">
+    <div class="search-modal-content">
+      <button type="button" class="search-modal-close" aria-label="Close search"><i class="fa-solid fa-xmark"></i></button>
+      <div class="search-input-wrapper">
+        <i class="fa-solid fa-magnifying-glass search-icon-inside"></i>
+        <input type="text" class="search-input" placeholder="Search skincare, makeup, ingredients..." autocomplete="off">
+      </div>
+      <div class="search-results-container"></div>
+    </div>
+  </div>
+
+  <!-- Global Shopping Bag Slide-out Drawer -->
+  <div class="cart-drawer-overlay" role="dialog" aria-modal="true" aria-label="Shopping Bag">
+    <div class="cart-drawer">
+      <div class="cart-drawer-header">
+        <h3 class="cart-drawer-title"><i class="fa-solid fa-bag-shopping text-gold"></i> Your Shopping Bag</h3>
+        <button type="button" class="cart-drawer-close" aria-label="Close bag"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="cart-free-shipping">Complimentary luxury packaging on all orders.</div>
+      <div class="cart-items-list"></div>
+      <div class="cart-drawer-footer">
+        <div class="cart-subtotal-row">
+          <span>Subtotal</span>
+          <span class="cart-subtotal-val">$0.00</span>
+        </div>
+        <button type="button" class="btn btn-primary cart-checkout-btn" style="width: 100%;">
+          Proceed to Checkout <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- ======================================================================
+         SECTION 1: ABOUT HERO
+         ====================================================================== -->
+    <section class="section-padding bg-secondary" style="position: relative; overflow: hidden; border-bottom: 1px solid var(--border-subtle);">
+      <div class="container">
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem;"></i>
+          <span class="current">Our Story</span>
+        </nav>
+
+        <div class="page-hero-grid">
+          <!-- Hero Text Column -->
+          <div class="page-hero-text" data-aos="fade-up">
+            <span class="section-eyebrow no-after">Heritage & Vision</span>
+            <h1 class="section-title" style="font-size: clamp(2.6rem, 5vw, 4.2rem);">
+              Our Story, <br><em>Your Radiance</em>
+            </h1>
+            <p class="section-desc text-left" style="font-size: 1.15rem; margin: 0 0 1.5rem 0; max-width: 640px;">
+              Born at the intersection of classical French botanical wisdom and modern cellular phytotherapy, Stackly was founded to return skincare to a high art of mindful restoration.
+            </p>
+            <div class="hero-feature-tags">
+              <span class="hero-tag"><i class="fa-solid fa-flask-vial"></i> Artisanal Distillation</span>
+              <span class="hero-tag"><i class="fa-solid fa-leaf"></i> 100% Bio-Active Botanicals</span>
+              <span class="hero-tag"><i class="fa-solid fa-award"></i> Parisian Master Lab</span>
+            </div>
+          </div>
+
+          <!-- Hero Visual Column: Botanical Alchemy & Rose Distillation Animated SVG -->
+          <div class="page-hero-visual" data-aos="fade-left">
+            <div class="beauty-svg-showcase">
+              <svg class="beauty-svg-canvas" viewBox="0 0 480 370" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated Botanical Alchemy & Rose Distillation Laboratory">
+                <title>Botanical Alchemy & Rose Distillation Laboratory</title>
+                <desc>Interactive animation illustrating pure French rose essence being extracted via botanical alembic distillation.</desc>
+                <defs>
+                  <!-- Glow Filter -->
+                  <filter id="distillGlow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="4" result="blur" />
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+
+                  <!-- Gradients -->
+                  <radialGradient id="alembicAura" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#E5A399" stop-opacity="0.32" />
+                    <stop offset="60%" stop-color="#D97384" stop-opacity="0.12" />
+                    <stop offset="100%" stop-color="#140F15" stop-opacity="0" />
+                  </radialGradient>
+
+                  <linearGradient id="roseLiquidGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#F4C2BA" />
+                    <stop offset="40%" stop-color="#E5A399" />
+                    <stop offset="85%" stop-color="#B84E60" />
+                    <stop offset="100%" stop-color="#732231" />
+                  </linearGradient>
+
+                  <linearGradient id="goldFlaskGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFF2E8" />
+                    <stop offset="35%" stop-color="#E5A399" />
+                    <stop offset="80%" stop-color="#C5A880" />
+                    <stop offset="100%" stop-color="#8F5E52" />
+                  </linearGradient>
+
+                  <linearGradient id="stemGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+                    <stop offset="0%" stop-color="#2D5A3B" />
+                    <stop offset="60%" stop-color="#4A7C59" />
+                    <stop offset="100%" stop-color="#6DA37D" />
+                  </linearGradient>
+
+                  <linearGradient id="petalOuter" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FCEAE6" />
+                    <stop offset="50%" stop-color="#F4C2BA" />
+                    <stop offset="100%" stop-color="#E5A399" />
+                  </linearGradient>
+
+                  <linearGradient id="petalInner" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#E5A399" />
+                    <stop offset="60%" stop-color="#D97384" />
+                    <stop offset="100%" stop-color="#9C3A4C" />
+                  </linearGradient>
+
+                  <linearGradient id="glassShine" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.5" />
+                    <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.08" />
+                    <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.3" />
+                  </linearGradient>
+
+                  <linearGradient id="condenserFlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#E5A399" />
+                    <stop offset="50%" stop-color="#F0A89C" />
+                    <stop offset="100%" stop-color="#CE867B" />
+                  </linearGradient>
+                </defs>
+
+                <!-- Background Ambient Radiance -->
+                <circle cx="235" cy="210" r="160" fill="url(#alembicAura)" />
+
+                <!-- Star Glints in Background -->
+                <g class="svg-anim-glint-1">
+                  <path d="M 115 75 Q 120 75 120 70 Q 120 75 125 75 Q 120 75 120 80 Q 120 75 115 75 Z" fill="#FFF2E8" />
+                  <circle cx="120" cy="75" r="1.5" fill="#E5A399" />
+                </g>
+                <g class="svg-anim-glint-2">
+                  <path d="M 390 135 Q 395 135 395 130 Q 395 135 400 135 Q 395 135 395 140 Q 395 135 390 135 Z" fill="#FFF2E8" />
+                  <circle cx="395" cy="135" r="1.5" fill="#E5A399" />
+                </g>
+                <g class="svg-anim-glint-3">
+                  <path d="M 240 50 Q 244 50 244 46 Q 244 50 248 50 Q 244 50 244 54 Q 244 50 240 50 Z" fill="#FFF2E8" />
+                </g>
+
+                <!-- Base Crucible / Golden Heating Trivet -->
+                <path d="M 165 315 L 305 315 L 295 325 L 175 325 Z" fill="url(#goldFlaskGrad)" opacity="0.8" />
+                <ellipse cx="235" cy="315" rx="70" ry="6" fill="#1C161D" stroke="url(#goldFlaskGrad)" stroke-width="1.2" />
+                <path d="M 185 325 L 175 345 M 285 325 L 295 345 M 235 325 L 235 346" stroke="url(#goldFlaskGrad)" stroke-width="2.5" stroke-linecap="round" />
+
+                <!-- Botanical Rose Vine & Leaves (Woven around Left of Flask) -->
+                <path d="M 115 330 Q 95 255 135 190 Q 155 155 155 128" fill="none" stroke="url(#stemGrad)" stroke-width="3" stroke-linecap="round" />
+                <!-- Thorns -->
+                <path d="M 107 265 Q 102 260 99 263" stroke="url(#stemGrad)" stroke-width="1.8" stroke-linecap="round" fill="none" />
+                <path d="M 122 220 Q 118 215 115 218" stroke="url(#stemGrad)" stroke-width="1.8" stroke-linecap="round" fill="none" />
+
+                <!-- Left Botanical Leaf -->
+                <g class="svg-anim-leaf-left">
+                  <path d="M 110 185 C 80 185, 70 155, 95 145 C 115 155, 115 175, 110 185 Z" fill="url(#stemGrad)" opacity="0.92" />
+                  <path d="M 110 185 Q 98 165 95 145" stroke="#84BA94" stroke-width="1" fill="none" opacity="0.8" />
+                </g>
+
+                <!-- Right Botanical Leaf -->
+                <g class="svg-anim-leaf-right">
+                  <path d="M 152 165 C 178 160, 185 135, 165 128 C 148 138, 148 155, 152 165 Z" fill="url(#stemGrad)" opacity="0.92" />
+                  <path d="M 152 165 Q 162 148 165 128" stroke="#84BA94" stroke-width="1" fill="none" opacity="0.8" />
+                </g>
+
+                <!-- Blooming French Damask Rose (Animated Breathing) -->
+                <g class="svg-anim-rose">
+                  <!-- Outer Petals Layer -->
+                  <path d="M 155 110 C 130 90, 115 120, 135 140 C 145 150, 165 150, 175 140 C 195 120, 180 90, 155 110 Z" fill="url(#petalOuter)" opacity="0.95" />
+                  <path d="M 135 115 C 120 125, 130 148, 155 146 C 178 148, 188 125, 175 115 C 165 105, 145 105, 135 115 Z" fill="url(#petalOuter)" />
+                  <!-- Mid Petal Swirls -->
+                  <path d="M 142 120 C 136 128, 145 138, 155 137 C 165 138, 174 128, 168 120 C 162 114, 148 114, 142 120 Z" fill="url(#petalInner)" />
+                  <!-- Core Rose Bud Swirl -->
+                  <path d="M 148 123 C 146 128, 154 133, 156 131 C 158 129, 162 126, 159 123 C 156 120, 150 120, 148 123 Z" fill="#801C2E" />
+                  <circle cx="155" cy="126" r="2.5" fill="#FFE2DC" opacity="0.9" />
+                </g>
+
+                <!-- Alembic Distillation Glass Body -->
+                <!-- Back Glass Wall -->
+                <path d="M 172 260 C 160 215, 195 175, 222 155 L 222 105 Q 235 102 248 105 L 248 155 C 275 175, 310 215, 298 260 C 290 295, 180 295, 172 260 Z"
+                      fill="rgba(24, 18, 25, 0.45)" stroke="rgba(229, 163, 153, 0.3)" stroke-width="1.5" />
+
+                <!-- Active Botanical Liquid in Flask (Animated Undulation) -->
+                <g class="svg-anim-liquid">
+                  <path d="M 175 252 C 190 246, 215 258, 235 248 C 255 240, 278 254, 295 252 C 296 278, 276 302, 235 304 C 194 302, 174 278, 175 252 Z"
+                        fill="url(#roseLiquidGrad)" filter="url(#distillGlow)" opacity="0.88" />
+                  <!-- Liquid Surface Meniscus Highlight -->
+                  <path d="M 175 252 C 190 246, 215 258, 235 248 C 255 240, 278 254, 295 252"
+                        stroke="#FFEAE5" stroke-width="1.8" fill="none" opacity="0.75" />
+                </g>
+
+                <!-- Rising Effervescent Micro-Bubbles inside Flask -->
+                <circle class="svg-anim-bubble-1" cx="215" cy="285" r="3.2" fill="#FFE8E2" opacity="0.7" />
+                <circle class="svg-anim-bubble-2" cx="245" cy="292" r="2.2" fill="#FFE8E2" opacity="0.8" />
+                <circle class="svg-anim-bubble-3" cx="230" cy="275" r="4" fill="#FFE8E2" opacity="0.65" />
+                <circle class="svg-anim-bubble-1" cx="260" cy="282" r="2.6" fill="#FFE8E2" opacity="0.7" />
+
+                <!-- Front Glass Reflections & Contours -->
+                <path d="M 182 225 C 176 250, 185 275, 195 285" stroke="url(#glassShine)" stroke-width="2.5" stroke-linecap="round" fill="none" />
+                <path d="M 288 220 C 292 245, 285 270, 275 285" stroke="url(#glassShine)" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.6" />
+                <path d="M 226 115 L 226 150" stroke="url(#glassShine)" stroke-width="1.8" stroke-linecap="round" fill="none" />
+
+                <!-- Alembic Swan Neck & Golden Distillation Arm -->
+                <!-- Cap / Head of Alembic -->
+                <path d="M 218 105 Q 235 96 252 105 L 246 114 L 224 114 Z" fill="url(#goldFlaskGrad)" stroke="#E5A399" stroke-width="1" />
+                <!-- Swan Neck Tube curving rightwards to condenser -->
+                <path d="M 235 98 C 235 60, 310 50, 335 95 C 348 120, 348 145, 375 160"
+                      fill="none" stroke="rgba(229, 163, 153, 0.45)" stroke-width="7" stroke-linecap="round" />
+                <path d="M 235 98 C 235 60, 310 50, 335 95 C 348 120, 348 145, 375 160"
+                      fill="none" stroke="url(#condenserFlow)" stroke-width="3" stroke-linecap="round" opacity="0.9" />
+
+                <!-- Condenser Glass Jacket & Cooling Spiral -->
+                <rect x="360" y="160" width="30" height="110" rx="15" fill="rgba(24, 18, 25, 0.55)" stroke="url(#goldFlaskGrad)" stroke-width="1.5" />
+                <!-- Cooling Spiral Coil inside Jacket -->
+                <path d="M 375 162 C 388 172, 362 185, 375 198 C 388 211, 362 224, 375 237 C 388 250, 365 260, 375 270"
+                      fill="none" stroke="url(#roseLiquidGrad)" stroke-width="3" stroke-linecap="round" />
+                <!-- Water Cooling Ports -->
+                <path d="M 390 180 L 402 180 M 390 240 L 402 240" stroke="url(#goldFlaskGrad)" stroke-width="2" stroke-linecap="round" />
+
+                <!-- Condenser Dripper Spout -->
+                <path d="M 372 270 L 378 270 L 376 280 L 374 280 Z" fill="url(#goldFlaskGrad)" />
+
+                <!-- Pure Active Elixir Droplet (Animated Dripping Loop) -->
+                <g class="svg-anim-elixir-drip">
+                  <path d="M 375 281 C 372 284, 370 288, 375 293 C 380 288, 378 284, 375 281 Z"
+                        fill="url(#goldFlaskGrad)" filter="url(#distillGlow)" />
+                </g>
+
+                <!-- Receiving Crystal Apothecary Flacon at Bottom Right -->
+                <rect x="355" y="322" width="40" height="34" rx="4" fill="rgba(24, 18, 25, 0.7)" stroke="url(#goldFlaskGrad)" stroke-width="1.5" />
+                <!-- Flacon Neck & Lip -->
+                <rect x="365" y="316" width="20" height="7" rx="2" fill="url(#goldFlaskGrad)" opacity="0.8" />
+                <!-- Collected Pure Elixir in Flacon -->
+                <rect x="358" y="332" width="34" height="22" rx="2" fill="url(#roseLiquidGrad)" opacity="0.9" />
+                <!-- Concentric Surface Ripples inside Flacon Upon Drop Impact -->
+                <ellipse class="svg-anim-ripple-1" cx="375" cy="332" rx="14" ry="3" fill="none" stroke="#FFEAE5" stroke-width="1.2" />
+                <ellipse class="svg-anim-ripple-2" cx="375" cy="332" rx="14" ry="3" fill="none" stroke="#E5A399" stroke-width="1" />
+
+                <!-- Flacon Measuring Gauge -->
+                <line x1="360" y1="337" x2="365" y2="337" stroke="rgba(255,255,255,0.6)" stroke-width="1" />
+                <line x1="360" y1="344" x2="367" y2="344" stroke="rgba(255,255,255,0.6)" stroke-width="1" />
+                <line x1="360" y1="350" x2="365" y2="350" stroke="rgba(255,255,255,0.6)" stroke-width="1" />
+              </svg>
+
+              <!-- Luxury Showcase Bottom Badge -->
+              <div class="beauty-svg-showcase-badge">
+                <span class="badge-title"><i class="fa-solid fa-flask-vial"></i> Botanical Alchemy Alembic</span>
+                <span class="badge-status"><span class="status-dot-pulse"></span> Active Distillation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 1: OUR BEAUTY PHILOSOPHY (Split Layout)
+         ====================================================================== -->
+    <section class="philosophy-section section-padding">
+      <div class="container">
+        <div class="philosophy-grid">
+          <!-- Text Column (AOS fade-right) -->
+          <div class="philosophy-text-col" data-aos="fade-right">
+            <span class="section-eyebrow no-after">Our Philosophy</span>
+            <h2 class="section-title">Beauty Is More Than <br><em>Skin Deep</em></h2>
+            <p class="philosophy-lead">
+              At Stackly, we believe true beauty is not a mask or a fleeting trend—it is the radiant outward expression of inner equilibrium, self-reverence, and authentic individuality.
+            </p>
+            <p style="font-size: 0.98rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+              Skincare is our most intimate ritual of self-care. When you take a moment each morning and evening to nourish your skin with biocompatible botanicals, you cultivate confidence from within. Every individual's skin possesses its own unique character, and our artisanal formulations are crafted to harmonize with your complexion rather than conceal it.
+            </p>
+            <div class="philosophy-quote-box">
+              <p class="philosophy-quote-text">
+                “Beauty begins the moment you decide to honor yourself and celebrate your authentic radiance.”
+              </p>
+              <span class="philosophy-quote-author">— The Stackly Aesthetic Principle</span>
+            </div>
+          </div>
+
+          <!-- Image Column (AOS fade-left & GSAP Reveal) -->
+          <div class="philosophy-image-col" data-aos="fade-left">
+            <div class="philosophy-image-frame">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1200&q=80" alt="Luminous natural beauty philosophy" loading="lazy">
+            </div>
+            <div class="philosophy-badge-float">
+              <strong>Holistic Harmony</strong>
+              <p>Mindful botanical self-care tailored to elevate your natural daily aura.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 2: OUR MISSION & VISION (Dual Bespoke Luxury Panels)
+         ====================================================================== -->
+    <section class="mission-vision-section section-padding">
+      <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+          <span class="section-eyebrow">Purpose & Direction</span>
+          <h2 class="section-title">Our Guiding <em>Principles</em></h2>
+          <p class="section-desc">The two foundational pillars shaping every formulation, ritual, and bespoke experience we create.</p>
+        </div>
+
+        <div class="mission-vision-grid">
+          <!-- Mission Panel -->
+          <div class="mv-panel mv-panel-mission">
+            <div>
+              <div class="mv-icon-wrapper">
+                <i class="fa-solid fa-gem"></i>
+              </div>
+              <span class="mv-tag">Our Mission</span>
+              <h3 class="mv-heading">Making Everyday Beauty Feel Extraordinary.</h3>
+              <p class="mv-desc">
+                We transform daily routines into decadent, sensory rituals by combining the purest botanical extracts with refined Parisian craftsmanship. Every drop delivers an elevated touch of luxury to celebrate your innate grace.
+              </p>
+            </div>
+          </div>
+
+          <!-- Vision Panel -->
+          <div class="mv-panel mv-panel-vision">
+            <div>
+              <div class="mv-icon-wrapper">
+                <i class="fa-solid fa-sparkles"></i>
+              </div>
+              <span class="mv-tag">Our Vision</span>
+              <h3 class="mv-heading">Inspiring Confidence Through Self-Care.</h3>
+              <p class="mv-desc">
+                We envision a world where beauty routines are acts of joyful empowerment. By nurturing healthy, glowing skin with biocompatible precision, we inspire individuals everywhere to step forward with unapologetic confidence.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 3: OUR QUALITY PROMISE (4-Feature Line Layout)
+         ====================================================================== -->
+    <section class="promise-section section-padding">
+      <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+          <span class="section-eyebrow">Commitment To Excellence</span>
+          <h2 class="section-title">Our Quality <em>Promise</em></h2>
+          <p class="section-desc">A steadfast pledge to uncompromising craftsmanship, conscious purity, and client well-being.</p>
+        </div>
+
+        <div class="promise-grid">
+          <!-- 1. Carefully Curated Beauty -->
+          <div class="promise-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="promise-icon-box">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <h4 class="promise-card-title">Carefully Curated Beauty</h4>
+            <p class="promise-card-text">
+              Every formula is intentionally selected to deliver maximum synergy, balancing active French botanicals with sublime sensory texture.
+            </p>
+          </div>
+
+          <!-- 2. Quality-Focused Selection -->
+          <div class="promise-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="promise-icon-box">
+              <i class="fa-solid fa-award"></i>
+            </div>
+            <h4 class="promise-card-title">Quality-Focused Selection</h4>
+            <p class="promise-card-text">
+              We insist on cold-pressed floral absolutes, bioactive peptides, and sustainably sourced elixirs free from inert fillers and harsh additives.
+            </p>
+          </div>
+
+          <!-- 3. Thoughtful Self-Care -->
+          <div class="promise-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="promise-icon-box">
+              <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+            <h4 class="promise-card-title">Thoughtful Self-Care</h4>
+            <p class="promise-card-text">
+              Designed to soothe both complexion and spirit, inviting a moment of grounding stillness into your busy modern schedule.
+            </p>
+          </div>
+
+          <!-- 4. Customer-First Experience -->
+          <div class="promise-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="promise-icon-box">
+              <i class="fa-solid fa-crown"></i>
+            </div>
+            <h4 class="promise-card-title">Customer-First Experience</h4>
+            <p class="promise-card-text">
+              From bespoke consultations to complimentary luxury unboxing, your satisfaction and skin comfort remain our utmost priority.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 4: DISCOVER THE BEAUTY EXPERIENCE (3-Image Editorial Showcase)
+         ====================================================================== -->
+    <section class="experience-section section-padding">
+      <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+          <span class="section-eyebrow">Sensorial Rituals</span>
+          <h2 class="section-title">Discover the Beauty <em>Experience</em></h2>
+          <p class="section-desc">Immerse yourself in our holistic approach across skincare, artistry, and mindful rejuvenation.</p>
+        </div>
+
+        <div class="experience-grid">
+          <!-- Card 1: Discover Your Glow -->
+          <a href="product.html?id=1" class="experience-card experience-card-tall">
+            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80" alt="Discover Your Glow Skincare Elixirs" class="experience-card-img" loading="lazy">
+            <div class="experience-overlay"></div>
+            <div class="experience-content">
+              <span class="experience-tag">Skincare Alchemy</span>
+              <h3 class="experience-title">Discover Your Glow</h3>
+              <p class="experience-desc">Hydrating floral serums and lipid-restoring oils tailored for luminous, lasting vitality.</p>
+              <span class="experience-link">Explore Formulations <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+
+          <!-- Card 2: Find Your Beauty Essentials -->
+          <a href="index.html#bestsellers" class="experience-card">
+            <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80" alt="Find Your Beauty Essentials Makeup & Cosmetics" class="experience-card-img" loading="lazy">
+            <div class="experience-overlay"></div>
+            <div class="experience-content">
+              <span class="experience-tag">Cosmetic Artistry</span>
+              <h3 class="experience-title">Find Your Beauty Essentials</h3>
+              <p class="experience-desc">Weightless pigments and nourishing lip elixirs designed to accentuate your authentic features.</p>
+              <span class="experience-link">View Collection <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+
+          <!-- Card 3: Elevate Your Self-Care -->
+          <a href="services.html" class="experience-card experience-card-tall">
+            <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=800&q=80" alt="Elevate Your Self-Care Rituals" class="experience-card-img" loading="lazy">
+            <div class="experience-overlay"></div>
+            <div class="experience-content">
+              <span class="experience-tag">Holistic Wellness</span>
+              <h3 class="experience-title">Elevate Your Self-Care</h3>
+              <p class="experience-desc">Transformative facial rituals and bespoke consultation services crafted for deep restoration.</p>
+              <span class="experience-link">Discover Services <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 5: OUR STORY & INSPIRATION (Asymmetric Storytelling)
+         ====================================================================== -->
+    <section class="story-section section-padding">
+      <div class="container" data-aos="fade-up">
+        <div class="story-grid">
+          <!-- Large Editorial Image with Clip-Path Reveal -->
+          <div class="story-image-wrap">
+            <div class="story-clip-frame">
+              <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=1200&q=80" alt="Botanical laboratory inspiration" loading="lazy">
+            </div>
+            <div class="story-floating-card">
+              <span>Haute Botanique</span>
+              <p>“Where pure flora meets clinical grace in perfect Parisian harmony.”</p>
+            </div>
+          </div>
+
+          <!-- Story Text Content -->
+          <div class="story-text-content">
+            <span class="section-eyebrow no-after">Our Story</span>
+            <h2 class="section-title">A Story Inspired by <em>Beauty</em></h2>
+            <p class="story-body-p">
+              The essence of Stackly was born from a singular passion: to elevate everyday beauty rituals into transcendent moments of quiet luxury and cellular restoration.
+            </p>
+            <p class="story-body-p">
+              Drawing inspiration from historic French apothecaries and the sun-soaked botanical fields of Grasse, our philosophy honors the intelligence of nature. We observed how modern lifestyles often reduced skincare to hurried maintenance and artificial quick fixes. In response, our vision was clear—create a sanctuary of deliberate self-care, where each formulation works synchronously with your body's natural biorhythms.
+            </p>
+            <p class="story-body-p">
+              Today, that initial inspiration continues to guide every small-batch creation. We honor the individuality of every complexion, delivering radiant skin that looks and feels extraordinary.
+            </p>
+            <div style="margin-top: 2rem;">
+              <a href="services.html" class="btn btn-secondary">
+                Experience the Atelier <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 6: WHAT MAKES US DIFFERENT (Unique Asymmetric Layout)
+         ====================================================================== -->
+    <section class="different-section section-padding">
+      <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+          <span class="section-eyebrow">The Stackly Standard</span>
+          <h2 class="section-title">What Makes Us <em>Different</em></h2>
+          <p class="section-desc">Distinguished by an unwavering dedication to mindful curation, transparent formulas, and elevated experiences.</p>
+        </div>
+
+        <div class="different-grid">
+          <!-- Left Column -->
+          <div class="different-col">
+            <!-- 1. Curated Beauty Collections -->
+            <div class="different-item">
+              <div class="different-top-bar">
+                <span class="different-num">01</span>
+                <div class="different-icon">
+                  <i class="fa-solid fa-layer-group"></i>
+                </div>
+              </div>
+              <h4 class="different-title">Curated Beauty Collections</h4>
+              <p class="different-desc">
+                Rather than overwhelming with endless variations, we offer a strictly edited capsule of multi-tasking essentials formulated to work in harmony.
+              </p>
+            </div>
+
+            <!-- 2. Easy Product Discovery -->
+            <div class="different-item">
+              <div class="different-top-bar">
+                <span class="different-num">02</span>
+                <div class="different-icon">
+                  <i class="fa-solid fa-compass"></i>
+                </div>
+              </div>
+              <h4 class="different-title">Easy Product Discovery</h4>
+              <p class="different-desc">
+                Find your bespoke ritual effortlessly with our intuitive skin diagnostic, ingredient transparency breakdowns, and tailored advice.
+              </p>
+            </div>
+          </div>
+
+          <!-- Right Column (Staggered offset) -->
+          <div class="different-col different-col-staggered">
+            <!-- 3. Thoughtful Customer Support -->
+            <div class="different-item">
+              <div class="different-top-bar">
+                <span class="different-num">03</span>
+                <div class="different-icon">
+                  <i class="fa-solid fa-comments"></i>
+                </div>
+              </div>
+              <h4 class="different-title">Thoughtful Customer Support</h4>
+              <p class="different-desc">
+                Receive dedicated guidance from certified beauty concierges available to assist with shade matching, application rituals, and routine refinement.
+              </p>
+            </div>
+
+            <!-- 4. An Elegant Shopping Experience -->
+            <div class="different-item">
+              <div class="different-top-bar">
+                <span class="different-num">04</span>
+                <div class="different-icon">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+              </div>
+              <h4 class="different-title">An Elegant Shopping Experience</h4>
+              <p class="different-desc">
+                Every purchase arrives in our signature champagne-embossed packaging with complimentary artisanal samples and seamless returns.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 7: YOUR BEAUTY JOURNEY STARTS HERE (Full-Width Luxury CTA)
+         ====================================================================== -->
+    <section class="journey-cta-section">
+      <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1600&q=80" alt="Stackly Luxury Cosmetics" class="journey-cta-bg" loading="lazy">
+      <div class="journey-cta-overlay"></div>
+
+      <div class="container journey-cta-content">
+        <span class="section-eyebrow" style="color: var(--accent-gold); margin-bottom: 0.8rem;">Your Beauty Journey Starts Here</span>
+        <h2 class="journey-cta-heading">Discover the Beauty <em>Within</em></h2>
+        <p class="journey-cta-desc">
+          Find the beauty essentials that make your everyday routine feel special.
+        </p>
+        <div class="journey-cta-buttons">
+          <a href="product.html?id=1" class="btn btn-primary">
+            Explore Our Collection <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="contact.html" class="btn btn-outline-light">
+            Get in Touch <i class="fa-solid fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================================
+       FOOTER
+       ====================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <img src="logo_0027.webp" alt="Stackly" class="brand-logo-img">
+            <span class="brand-sub">HAUTE BOTANIQUE</span>
+          </a>
+          <p>Botanical cosmetic alchemy crafted with clinical discernment and sustainable luxury principles.</p>
+          <div class="footer-social-list">
+            <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Maison</a></li>
+            <li><a href="services.html">Bespoke Services</a></li>
+            <li><a href="blog.html">The Beauty Journal</a></li>
+            <li><a href="contact.html">Contact & Concierge</a></li>
+            <li><a href="product.html?id=1">Flagship Elixir</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Client Care</h4>
+          <ul class="footer-links">
+            <li><a href="services.html#faq">Consultation FAQ</a></li>
+            <li><a href="contact.html">Shipping & Returns</a></li>
+            <li><a href="about.html#values">Sustainability Promise</a></li>
+            <li><a href="login.html">My Client Portal</a></li>
+            <li><a href="contact.html">Concierge Enquiries</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Haute Atelier</h4>
+          <p class="footer-newsletter-text">
+            18 Place Vendôme, 75001 Paris, France.<br>
+            Private appointments available Tuesday through Saturday.
+          </p>
+          <div style="margin-top: 1.2rem;">
+            <a href="services.html" class="btn btn-outline-light btn-sm" style="width: 100%;">
+              Book Appointment <i class="fa-solid fa-calendar-check"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 STACKLY. ALL RIGHTS RESERVED.</p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Cookie Preferences</a>
+        </div>
+        <a href="#" class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+          Back to Top <i class="fa-solid fa-arrow-up"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/products.js"></script>
+</body>
+</html>

@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Concierge | Stackly</title>
+  <meta name="description" content="Reach our Paris concierge for private appointments, order queries, or bespoke beauty consultations.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23191614'/><path d='M50 20 L53 42 L75 50 L53 58 L50 80 L47 58 L25 50 L47 42 Z' fill='%23C5A880'/></svg>">
+
+  <!-- CDNs -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/contact-luxury.css">
+
+  <style>
+    /* Contact Form Specific Styles */
+    .form-group {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.95rem 1.2rem;
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-card);
+      color: var(--text-primary);
+      outline: none;
+      transition: all var(--transition-fast);
+    }
+
+    .form-control:focus {
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 0 3px var(--accent-gold-glow);
+    }
+
+    .form-group.has-error .form-control {
+      border-color: #E53E3E;
+      background-color: #FFF5F5;
+    }
+
+    .input-error-msg {
+      font-size: 0.78rem;
+      color: #E53E3E;
+      margin-top: 0.35rem;
+      display: block;
+    }
+
+    .contact-card-box {
+      background-color: var(--bg-card);
+      border-radius: var(--radius-md);
+      padding: 3.5rem 3rem;
+      border: 1px solid var(--border-card);
+      box-shadow: var(--shadow-sm);
+    }
+
+    @media (max-width: 768px) {
+      .contact-card-box {
+        padding: 2.5rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======================================================================
+       HEADER & NAVIGATION
+       ====================================================================== -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo" aria-label="Stackly Home">
+        <img src="logo_0027.webp" alt="Stackly" class="brand-logo-img">
+        <span class="brand-sub">HAUTE BOTANIQUE</span>
+      </a>
+
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="header-icon-btn header-search-btn" aria-label="Open Search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+        <div class="cart-btn-wrapper">
+          <button type="button" class="header-icon-btn header-cart-btn" aria-label="View Shopping Bag">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span class="cart-count-badge">2</span>
+          </button>
+        </div>
+
+        <a href="login.html" class="btn-nav-login">
+          <i class="fa-regular fa-user"></i>
+          <span>Account</span>
+        </a>
+
+        <button type="button" class="hamburger-btn" aria-label="Toggle navigation menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Overlay & Drawer -->
+  <div class="mobile-nav-overlay" aria-hidden="true">
+    <div class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+      <div class="mobile-nav-top">
+        <div class="brand-logo" style="margin-bottom: 2.5rem;">
+          <img src="logo_0027.webp" alt="Stackly" class="brand-logo-img" style="height: 36px;">
+          <span class="brand-sub">HAUTE BOTANIQUE</span>
+        </div>
+        <div class="mobile-nav-links">
+          <a href="index.html" class="mobile-nav-link"><span>Home</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem;"></i></a>
+          <a href="about.html" class="mobile-nav-link"><span>About</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem;"></i></a>
+          <a href="services.html" class="mobile-nav-link"><span>Services</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem;"></i></a>
+          <a href="blog.html" class="mobile-nav-link"><span>Blog Journal</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem;"></i></a>
+          <a href="contact.html" class="mobile-nav-link active"><span>Contact</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem;"></i></a>
+          <a href="login.html" class="mobile-nav-link"><span>Client Login</span> <i class="fa-solid fa-user" style="font-size: 0.9rem;"></i></a>
+        </div>
+      </div>
+      <div class="mobile-nav-footer">
+        <div class="mobile-nav-socials">
+          <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-link" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+          <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+        <p style="font-size: 0.75rem; color: var(--text-muted);">© 2026 STACKLY. ALL RIGHTS RESERVED.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Modal -->
+  <div class="search-modal" role="dialog" aria-modal="true" aria-label="Search">
+    <div class="search-modal-content">
+      <button type="button" class="search-modal-close" aria-label="Close search"><i class="fa-solid fa-xmark"></i></button>
+      <div class="search-input-wrapper">
+        <i class="fa-solid fa-magnifying-glass search-icon-inside"></i>
+        <input type="text" class="search-input" placeholder="Search skincare, makeup, ingredients..." autocomplete="off">
+      </div>
+      <div class="search-results-container"></div>
+    </div>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div class="cart-drawer-overlay" role="dialog" aria-modal="true" aria-label="Shopping Bag">
+    <div class="cart-drawer">
+      <div class="cart-drawer-header">
+        <h3 class="cart-drawer-title"><i class="fa-solid fa-bag-shopping text-gold"></i> Your Shopping Bag</h3>
+        <button type="button" class="cart-drawer-close" aria-label="Close bag"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="cart-free-shipping">Complimentary luxury packaging on all orders.</div>
+      <div class="cart-items-list"></div>
+      <div class="cart-drawer-footer">
+        <div class="cart-subtotal-row">
+          <span>Subtotal</span>
+          <span class="cart-subtotal-val">$0.00</span>
+        </div>
+        <button type="button" class="btn btn-primary cart-checkout-btn" style="width: 100%;">
+          Proceed to Checkout <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- ======================================================================
+         SECTION 1: CONTACT HERO
+         ====================================================================== -->
+    <section class="section-padding bg-secondary" style="border-bottom: 1px solid var(--border-subtle); position: relative; overflow: hidden;">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem;"></i>
+          <span class="current">Contact Concierge</span>
+        </nav>
+
+        <div class="page-hero-grid">
+          <!-- Hero Text Column -->
+          <div class="page-hero-text" data-aos="fade-up">
+            <span class="section-eyebrow no-after">Private Client Services</span>
+            <h1 class="section-title" style="font-size: clamp(2.6rem, 5vw, 4.2rem);">
+              We’d Love to <br><em>Hear From You</em>
+            </h1>
+            <p class="section-desc text-left" style="font-size: 1.15rem; margin: 0 0 1.5rem 0; max-width: 640px;">
+              Whether seeking personalized regimen guidance, order tracking assistance, or private salon reservations, our dedicated client concierge is at your service.
+            </p>
+            <div class="hero-feature-tags">
+              <span class="hero-tag"><i class="fa-solid fa-headset"></i> Dedicated Maison Concierge</span>
+              <span class="hero-tag"><i class="fa-solid fa-spray-can-sparkles"></i> Bespoke Fragrance Consult</span>
+              <span class="hero-tag"><i class="fa-solid fa-clock"></i> Rapid 24hr VIP Response</span>
+            </div>
+          </div>
+
+          <!-- Hero Visual Column: Vintage Perfume Flacon & Scent Atomizer Mist Animated SVG -->
+          <div class="page-hero-visual" data-aos="fade-left">
+            <div class="beauty-svg-showcase">
+              <svg class="beauty-svg-canvas" viewBox="0 0 480 370" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated Vintage French Perfume Flacon & Scent Atomizer Mist Cloud">
+                <title>Haute Parfumerie & Scent Atomizer Mist</title>
+                <desc>Interactive animation illustrating a classic Parisian cut-crystal perfume flacon with a silk squeeze bulb atomizer spraying an aromatic golden scent mist cloud and floating rose petals.</desc>
+                <defs>
+                  <!-- Glow Filter -->
+                  <filter id="perfumeGlow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="4" result="blur" />
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+
+                  <!-- Ambient Fragrance Aura -->
+                  <radialGradient id="perfumeAura" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#E5A399" stop-opacity="0.32" />
+                    <stop offset="55%" stop-color="#C5A880" stop-opacity="0.12" />
+                    <stop offset="100%" stop-color="#140F15" stop-opacity="0" />
+                  </radialGradient>
+
+                  <!-- Antique Gold Hardware -->
+                  <linearGradient id="atomizerGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFF8F0" />
+                    <stop offset="35%" stop-color="#E5A399" />
+                    <stop offset="75%" stop-color="#C5A880" />
+                    <stop offset="100%" stop-color="#8F5E52" />
+                  </linearGradient>
+
+                  <!-- Amber Rose Fragrance Nectar -->
+                  <linearGradient id="perfumeLiquidGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#FFEBE5" />
+                    <stop offset="35%" stop-color="#F0A89C" />
+                    <stop offset="70%" stop-color="#E5A399" />
+                    <stop offset="100%" stop-color="#9C3A2B" />
+                  </linearGradient>
+
+                  <!-- Silk Squeeze Bulb -->
+                  <radialGradient id="silkBulbGrad" cx="40%" cy="40%" r="60%">
+                    <stop offset="0%" stop-color="#FF7584" />
+                    <stop offset="45%" stop-color="#D92D41" />
+                    <stop offset="85%" stop-color="#8A0F21" />
+                    <stop offset="100%" stop-color="#4A0510" />
+                  </radialGradient>
+
+                  <!-- Cut Crystal Glass Facet Gradients -->
+                  <linearGradient id="crystalHighlight" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.65" />
+                    <stop offset="45%" stop-color="#FFFFFF" stop-opacity="0.1" />
+                    <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.4" />
+                  </linearGradient>
+
+                  <!-- Fragrance Petal Gradient -->
+                  <linearGradient id="perfumePetalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFE8E2" />
+                    <stop offset="50%" stop-color="#E5A399" />
+                    <stop offset="100%" stop-color="#C75466" />
+                  </linearGradient>
+                </defs>
+
+                <!-- Ambient Fragrance Radiance -->
+                <circle cx="240" cy="210" r="150" fill="url(#perfumeAura)" />
+
+                <!-- Sparkling Luxury Glints -->
+                <g class="svg-anim-glint-1">
+                  <path d="M 85 90 Q 90 90 90 85 Q 90 90 95 90 Q 90 90 90 95 Q 90 90 85 90 Z" fill="#FFF2E8" />
+                  <circle cx="90" cy="90" r="1.5" fill="#E5A399" />
+                </g>
+                <g class="svg-anim-glint-2">
+                  <path d="M 410 75 Q 415 75 415 70 Q 415 75 420 75 Q 415 75 415 80 Q 415 75 410 75 Z" fill="#FFF2E8" />
+                  <circle cx="415" cy="75" r="1.5" fill="#E5A399" />
+                </g>
+                <g class="svg-anim-glint-3">
+                  <path d="M 235 55 Q 239 55 239 51 Q 239 55 243 55 Q 239 55 239 59 Q 239 55 235 55 Z" fill="#FFF2E8" />
+                </g>
+
+                <!-- Concierge Broadcast Waves (Golden Liaison Radio Chimes) -->
+                <circle class="svg-anim-concierge-wave-1" cx="240" cy="180" r="45" fill="none" stroke="rgba(229, 163, 153, 0.4)" stroke-width="1.2" stroke-dasharray="3 3" />
+                <circle class="svg-anim-concierge-wave-2" cx="240" cy="180" r="75" fill="none" stroke="rgba(240, 168, 156, 0.25)" stroke-width="1" stroke-dasharray="4 4" />
+
+                <!-- Vintage Braided Gold Atomizer Hose & Squeeze Bulb (Left Side) -->
+                <g>
+                  <!-- Braided Hose curving from nozzle base down to bulb -->
+                  <path d="M 188 152 C 145 152, 115 175, 112 215"
+                        fill="none" stroke="url(#atomizerGoldGrad)" stroke-width="3" stroke-linecap="round" />
+                  <path d="M 188 152 C 145 152, 115 175, 112 215"
+                        fill="none" stroke="#2B141E" stroke-width="1" stroke-dasharray="2 3" />
+
+                  <!-- Squeeze Bulb Assembly (Animated Compression & Release) -->
+                  <g class="svg-anim-bulb">
+                    <!-- Gold Ferrule Cap on Bulb -->
+                    <rect x="104" y="212" width="16" height="8" rx="2" fill="url(#atomizerGoldGrad)" />
+                    <!-- Textured Silk Squeeze Bulb -->
+                    <ellipse cx="112" cy="242" rx="22" ry="26" fill="url(#silkBulbGrad)" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1" />
+                    <!-- Silk Weave Rib Texture Lines -->
+                    <path d="M 100 226 C 96 238, 98 252, 102 260" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1" fill="none" />
+                    <path d="M 112 220 L 112 266" stroke="rgba(255, 255, 255, 0.45)" stroke-width="1" />
+                    <path d="M 124 226 C 128 238, 126 252, 122 260" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1" fill="none" />
+
+                    <!-- Hanging Silk Tassel Cord & Fringe -->
+                    <line x1="112" y1="268" x2="112" y2="284" stroke="url(#atomizerGoldGrad)" stroke-width="2.5" />
+                    <circle cx="112" cy="285" r="3.5" fill="url(#atomizerGoldGrad)" />
+                    <path d="M 106 288 L 118 288 L 122 312 L 102 312 Z" fill="url(#silkBulbGrad)" stroke="url(#atomizerGoldGrad)" stroke-width="0.8" />
+                    <!-- Tassel Threads -->
+                    <line x1="105" y1="312" x2="104" y2="322" stroke="url(#atomizerGoldGrad)" stroke-width="1" />
+                    <line x1="109" y1="312" x2="108" y2="324" stroke="url(#atomizerGoldGrad)" stroke-width="1" />
+                    <line x1="112" y1="312" x2="112" y2="325" stroke="url(#atomizerGoldGrad)" stroke-width="1" />
+                    <line x1="115" y1="312" x2="116" y2="324" stroke="url(#atomizerGoldGrad)" stroke-width="1" />
+                    <line x1="119" y1="312" x2="120" y2="322" stroke="url(#atomizerGoldGrad)" stroke-width="1" />
+                  </g>
+                </g>
+
+                <!-- Cut-Crystal French Perfume Flacon (Center) -->
+                <g class="svg-anim-flacon">
+                  <!-- Bottle Shadow -->
+                  <ellipse cx="205" cy="308" rx="55" ry="14" fill="rgba(0, 0, 0, 0.5)" filter="url(#perfumeGlow)" />
+
+                  <!-- Crystal Decanter Body Base -->
+                  <path d="M 165 195 L 245 195 L 255 285 C 255 298, 155 298, 155 285 Z"
+                        fill="rgba(24, 18, 25, 0.55)" stroke="url(#atomizerGoldGrad)" stroke-width="1.5" />
+
+                  <!-- Amber Rose Perfume Liquid inside Crystal -->
+                  <path d="M 168 215 L 242 215 L 251 282 C 251 294, 159 294, 159 282 Z"
+                        fill="url(#perfumeLiquidGrad)" opacity="0.88" />
+                  <!-- Liquid Meniscus Highlight -->
+                  <path d="M 168 215 Q 205 210 242 215" stroke="#FFF0EC" stroke-width="1.8" fill="none" opacity="0.8" />
+
+                  <!-- Refractive Diamond Facet Grid Lines -->
+                  <line x1="182" y1="195" x2="175" y2="285" stroke="url(#crystalHighlight)" stroke-width="1.5" />
+                  <line x1="205" y1="195" x2="205" y2="292" stroke="url(#crystalHighlight)" stroke-width="2" />
+                  <line x1="228" y1="195" x2="235" y2="285" stroke="url(#crystalHighlight)" stroke-width="1.5" />
+                  <line x1="160" y1="240" x2="250" y2="240" stroke="url(#crystalHighlight)" stroke-width="1.2" stroke-dasharray="6 3" />
+                  <line x1="164" y1="265" x2="246" y2="265" stroke="url(#crystalHighlight)" stroke-width="1.2" stroke-dasharray="6 3" />
+
+                  <!-- Flacon Stepped Shoulder & Neck -->
+                  <path d="M 180 195 L 180 180 L 192 170 L 218 170 L 230 180 L 230 195 Z" fill="url(#atomizerGoldGrad)" opacity="0.9" />
+
+                  <!-- Gold Threaded Atomizer Collar & Sprayer Mount -->
+                  <rect x="195" y="152" width="20" height="18" rx="2" fill="url(#atomizerGoldGrad)" stroke="#FFE8E0" stroke-width="0.8" />
+                  <!-- Atomizer Spray Nozzle angled rightwards -->
+                  <path d="M 215 156 L 238 152 L 238 164 L 215 160 Z" fill="url(#atomizerGoldGrad)" stroke="#FFE8E0" stroke-width="0.8" />
+                  <!-- Nozzle Aperture Hole -->
+                  <ellipse cx="238" cy="158" rx="2" ry="4" fill="#2B141E" />
+                </g>
+
+                <!-- Billowing Fragrance Scent Mist Cloud (Animated Dispersion from Nozzle) -->
+                <!-- Mist Plume 1 -->
+                <g class="svg-anim-mist-1">
+                  <path d="M 242 158 C 265 140, 285 110, 330 105 C 375 100, 420 125, 415 160 C 410 195, 360 215, 315 195 C 275 178, 255 165, 242 158 Z"
+                        fill="url(#perfumeAura)" filter="url(#perfumeGlow)" />
+                  <!-- Micro-Droplets inside Plume 1 -->
+                  <circle cx="280" cy="145" r="2.5" fill="#FFE8E2" />
+                  <circle cx="310" cy="130" r="3.2" fill="#E5A399" opacity="0.9" />
+                  <circle cx="345" cy="140" r="2" fill="#FFE8E2" />
+                  <circle cx="370" cy="125" r="3.5" fill="#F0A89C" opacity="0.85" />
+                  <circle cx="395" cy="150" r="2.2" fill="#FFE8E2" />
+                </g>
+
+                <!-- Mist Plume 2 -->
+                <g class="svg-anim-mist-2">
+                  <path d="M 244 160 C 275 155, 310 170, 350 185 C 390 200, 435 185, 440 220 C 445 255, 385 260, 340 240 C 295 220, 260 180, 244 160 Z"
+                        fill="url(#perfumeAura)" opacity="0.75" filter="url(#perfumeGlow)" />
+                  <!-- Micro-Droplets inside Plume 2 -->
+                  <circle cx="295" cy="180" r="2.2" fill="#FFE8E2" />
+                  <circle cx="335" cy="205" r="3" fill="#E5A399" opacity="0.8" />
+                  <circle cx="375" cy="195" r="2.4" fill="#FFE8E2" />
+                  <circle cx="410" cy="225" r="3.8" fill="#F0A89C" opacity="0.8" />
+                </g>
+
+                <!-- Floating Scented Damask Rose Petals (Animated Drifting on Scent Breeze) -->
+                <g class="svg-anim-petal-1">
+                  <path d="M 315 110 C 305 95, 325 80, 335 95 C 345 110, 330 125, 315 110 Z"
+                        fill="url(#perfumePetalGrad)" stroke="rgba(255, 255, 255, 0.4)" stroke-width="0.8" />
+                </g>
+                <g class="svg-anim-petal-2">
+                  <path d="M 360 215 C 345 205, 360 185, 375 198 C 390 210, 378 228, 360 215 Z"
+                        fill="url(#perfumePetalGrad)" stroke="rgba(255, 255, 255, 0.4)" stroke-width="0.8" />
+                </g>
+                <g class="svg-anim-petal-1">
+                  <path d="M 410 165 C 400 155, 415 140, 425 152 C 435 165, 420 178, 410 165 Z"
+                        fill="url(#perfumePetalGrad)" stroke="rgba(255, 255, 255, 0.4)" stroke-width="0.8" opacity="0.85" />
+                </g>
+              </svg>
+
+              <!-- Luxury Showcase Bottom Badge -->
+              <div class="beauty-svg-showcase-badge">
+                <span class="badge-title"><i class="fa-solid fa-spray-can-sparkles"></i> Haute Parfumerie & VIP Concierge</span>
+                <span class="badge-status"><span class="status-dot-pulse"></span> Concierge Liaison Active</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 1: CONNECT WITH OUR BEAUTY TEAM
+         ====================================================================== -->
+    <section class="contact-connect-section section-padding">
+      <div class="container">
+        <div class="contact-connect-grid">
+          <!-- Text Column -->
+          <div class="contact-connect-text-col" data-aos="fade-right">
+            <span class="section-eyebrow no-after">LET’S CONNECT</span>
+            <h2 class="contact-connect-heading">We’re Here for Your <em>Beauty Journey</em></h2>
+            <p class="contact-connect-lead">
+              Every skin ritual is deeply personal. Whether you seek bespoke formula recommendations, assistance with an order, or dedicated beauty advice, our Parisian concierge welcomes you.
+            </p>
+            <p class="contact-connect-desc">
+              Our dedicated client advisors provide attentive, discreet guidance at every stage of your skincare and makeup discovery.
+            </p>
+
+            <div class="contact-info-list">
+              <!-- Email Card -->
+              <a href="mailto:concierge@stackly.com" class="contact-info-card">
+                <div class="contact-info-icon">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="contact-info-text">
+                  <strong>Email Support</strong>
+                  <span>concierge@stackly.com</span>
+                  <p>Dedicated response within one business day</p>
+                </div>
+              </a>
+
+              <!-- Phone Card -->
+              <a href="tel:+33142685500" class="contact-info-card">
+                <div class="contact-info-icon">
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <div class="contact-info-text">
+                  <strong>Private Concierge Line</strong>
+                  <span>+33 (0)1 42 68 55 00</span>
+                  <p>Monday – Saturday, 9:00 to 19:00 CET</p>
+                </div>
+              </a>
+
+              <!-- Atelier Card -->
+              <a href="services.html" class="contact-info-card">
+                <div class="contact-info-icon">
+                  <i class="fa-solid fa-compass"></i>
+                </div>
+                <div class="contact-info-text">
+                  <strong>Flagship Atelier</strong>
+                  <span>18 Place Vendôme, 75001 Paris</span>
+                  <p>Private client consultations & salon reservations</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Image Column -->
+          <div class="contact-connect-img-col" data-aos="fade-left">
+            <div class="contact-connect-img-frame">
+              <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1000&q=80" alt="Stackly Botanical Skincare Formulations" loading="lazy">
+              <div class="contact-connect-float-badge">
+                <strong>Haute Concierge</strong>
+                <p>“Personalized care crafted to reveal your most radiant, timeless skin.”</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 2: GET IN TOUCH – CONTACT FORM
+         ====================================================================== -->
+    <section class="contact-form-section section-padding">
+      <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+          <span class="section-eyebrow">Direct Inquiries</span>
+          <h2 class="section-title">Get in Touch – <em>Send a Message</em></h2>
+          <p class="section-desc">Please share your questions or regimen aspirations below and our concierge team will attend to you promptly.</p>
+        </div>
+
+        <div class="contact-form-container" data-aos="fade-up">
+          <div class="contact-form-card">
+            <!-- Status Alert Banner -->
+            <div id="contact-success-banner" class="contact-status-banner success" role="alert">
+              <h4 style="color: #BBF7D0; font-size: 1.15rem; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.6rem;">
+                <i class="fa-solid fa-circle-check" style="color: var(--accent-gold);"></i> Merci Beaucoup!
+              </h4>
+              <p style="font-size: 0.92rem; line-height: 1.6; color: rgba(255,255,255,0.9);">
+                Your message has been safely received. A dedicated Stackly concierge advisor will review your request and get back to you within 24 business hours.
+              </p>
+            </div>
+
+            <form id="contact-form" novalidate>
+              <div class="contact-form-row">
+                <!-- Full Name -->
+                <div class="form-group contact-form-group">
+                  <label for="contact-name" class="contact-form-label">Full Name <span class="req">*</span></label>
+                  <input type="text" id="contact-name" class="form-control contact-form-control" placeholder="e.g. Clara Delacroix" required autocomplete="name">
+                </div>
+
+                <!-- Email Address -->
+                <div class="form-group contact-form-group">
+                  <label for="contact-email" class="contact-form-label">Email Address <span class="req">*</span></label>
+                  <input type="email" id="contact-email" class="form-control contact-form-control" placeholder="e.g. clara@example.com" required autocomplete="email">
+                </div>
+              </div>
+
+              <div class="contact-form-row">
+                <!-- Subject -->
+                <div class="form-group contact-form-group">
+                  <label for="contact-subject" class="contact-form-label">Subject <span class="req">*</span></label>
+                  <input type="text" id="contact-subject" class="form-control contact-form-control" placeholder="e.g. Personalized Routine Recommendation" required>
+                </div>
+
+                <!-- Inquiry Type -->
+                <div class="form-group contact-form-group">
+                  <label for="contact-enquiry" class="contact-form-label">Inquiry Type <span class="req">*</span></label>
+                  <select id="contact-enquiry" class="form-control contact-form-control" required>
+                    <option value="">Select an inquiry type...</option>
+                    <option value="product">Product Information & Regimen Guidance</option>
+                    <option value="order">Order Tracking & Shipping Assistance</option>
+                    <option value="support">Beauty & Website Support</option>
+                    <option value="consultation">Bespoke Skin Consultation</option>
+                    <option value="press">Press, Editorial & Wholesale Partnerships</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Message -->
+              <div class="form-group contact-form-group">
+                <label for="contact-message" class="contact-form-label">Message <span class="req">*</span></label>
+                <textarea id="contact-message" class="form-control contact-form-control" rows="5" placeholder="Share your skin profile, questions, or assistance needs with our concierge..." required></textarea>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1.15rem 2rem; font-size: 0.95rem; letter-spacing: 0.12em;">
+                Send Message <i class="fa-solid fa-paper-plane" style="margin-left: 0.5rem;"></i>
+              </button>
+
+              <div class="contact-form-reassurance" style="display: flex; align-items: center; justify-content: center; gap: 0.6rem; margin-top: 1.25rem; font-size: 0.8rem; color: var(--text-muted);">
+                <i class="fa-solid fa-lock" style="color: var(--accent-gold);"></i> All inquiries are handled with strict privacy and Parisian discretion.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 3: HOW CAN WE HELP YOU?
+         ====================================================================== -->
+    <section class="contact-help-section section-padding">
+      <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+          <span class="section-eyebrow">Dedicated Channels</span>
+          <h2 class="section-title">How Can We <em>Help You?</em></h2>
+          <p class="section-desc">Choose a dedicated support pathway to find immediate answers, order solutions, or bespoke formulation guidance.</p>
+        </div>
+
+        <div class="contact-help-grid">
+          <!-- Panel 1: Product Information -->
+          <div class="contact-help-card contact-help-card-1">
+            <div class="contact-help-icon-wrap">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <h3 class="contact-help-title">Product Information</h3>
+            <p class="contact-help-desc">
+              Learn about active botanicals, skin compatibility, cold-pressed extraction methods, and how to select ideal formulations for your barrier health.
+            </p>
+            <a href="services.html" class="contact-help-link">
+              <span>Discover Regimens</span> <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <!-- Panel 2: Shopping Assistance -->
+          <div class="contact-help-card contact-help-card-2">
+            <div class="contact-help-icon-wrap">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </div>
+            <h3 class="contact-help-title">Shopping Assistance</h3>
+            <p class="contact-help-desc">
+              Track real-time courier dispatches, explore complimentary worldwide packaging, and request seamless 30-day returns or exchanges.
+            </p>
+            <a href="#contact-faq" class="contact-help-link">
+              <span>View Shipping Info</span> <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <!-- Panel 3: Beauty & Website Support -->
+          <div class="contact-help-card contact-help-card-3">
+            <div class="contact-help-icon-wrap">
+              <i class="fa-solid fa-circle-question"></i>
+            </div>
+            <h3 class="contact-help-title">Beauty & Website Support</h3>
+            <p class="contact-help-desc">
+              Assistance with your client portal, password resets, private appointments reservations, and immediate resolution for technical issues.
+            </p>
+            <a href="login.html" class="contact-help-link">
+              <span>Client Portal Access</span> <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 4: FREQUENTLY ASKED QUESTIONS
+         ====================================================================== -->
+    <section class="contact-faq-section section-padding" id="contact-faq">
+      <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+          <span class="section-eyebrow">Clear Answers</span>
+          <h2 class="section-title">Frequently Asked <em>Questions</em></h2>
+          <p class="section-desc">Find quick resolutions to common inquiries regarding products, order tracking, support channels, and beauty tips.</p>
+        </div>
+
+        <div class="accordion contact-faq-wrapper" data-aos="fade-up">
+          <!-- FAQ Item 1 -->
+          <div class="accordion-item contact-accordion-item active">
+            <button class="accordion-header contact-accordion-header" type="button" aria-expanded="true">
+              <span>How can I find the right beauty products for my skin type?</span>
+              <span class="accordion-icon contact-accordion-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="accordion-content contact-accordion-content" style="max-height: 250px;">
+              <div class="contact-accordion-content-inner">
+                You can explore our curated Collections by skin concern (hydration, radiance, anti-aging, and barrier repair) or use our personalized consultation guide on our <a href="services.html" style="color: var(--accent-gold); text-decoration: underline;">Bespoke Services</a> page. Our client concierge is also available for one-on-one virtual consultations to tailor a daily ritual matching your skin profile.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 2 -->
+          <div class="accordion-item contact-accordion-item">
+            <button class="accordion-header contact-accordion-header" type="button" aria-expanded="false">
+              <span>How can I get assistance with an order?</span>
+              <span class="accordion-icon contact-accordion-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="accordion-content contact-accordion-content">
+              <div class="contact-accordion-content-inner">
+                For assistance with order status, tracking, or modifications, submit an inquiry via our contact form above with your order reference number, or email <a href="mailto:concierge@stackly.com" style="color: var(--accent-gold); text-decoration: underline;">concierge@stackly.com</a>. Orders placed with standard shipping are fulfilled within 24 hours, and tracking details are sent immediately to your registered email.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 3 -->
+          <div class="accordion-item contact-accordion-item">
+            <button class="accordion-header contact-accordion-header" type="button" aria-expanded="false">
+              <span>How do I contact customer support?</span>
+              <span class="accordion-icon contact-accordion-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="accordion-content contact-accordion-content">
+              <div class="contact-accordion-content-inner">
+                Our dedicated client concierge team can be reached via our contact form above, directly by email at <a href="mailto:concierge@stackly.com" style="color: var(--accent-gold); text-decoration: underline;">concierge@stackly.com</a>, or by phone at <a href="tel:+33142685500" style="color: var(--accent-gold); text-decoration: underline;">+33 (0)1 42 68 55 00</a> from Monday through Saturday between 9:00 and 19:00 CET. We respond to all correspondence within one business day.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 4 -->
+          <div class="accordion-item contact-accordion-item">
+            <button class="accordion-header contact-accordion-header" type="button" aria-expanded="false">
+              <span>Where can I find skincare and makeup tips?</span>
+              <span class="accordion-icon contact-accordion-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="accordion-content contact-accordion-content">
+              <div class="contact-accordion-content-inner">
+                Visit <a href="blog.html" style="color: var(--accent-gold); text-decoration: underline;">The Beauty Journal</a> for expert editorial articles, seasonal beauty rituals, dermatological insights, and makeup artist guides crafted by our Parisian formulation specialists. You can also explore our <a href="about.html" style="color: var(--accent-gold); text-decoration: underline;">About Maison</a> page to learn about our ingredients and botanical heritage.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 5 -->
+          <div class="accordion-item contact-accordion-item">
+            <button class="accordion-header contact-accordion-header" type="button" aria-expanded="false">
+              <span>How can I report a website issue?</span>
+              <span class="accordion-icon contact-accordion-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="accordion-content contact-accordion-content">
+              <div class="contact-accordion-content-inner">
+                If you encounter any technical difficulty while navigating our site, completing checkout, or accessing your client portal, please select 'Beauty & Website Support' in the contact form above with details and screenshots if applicable, or email <a href="mailto:support@stackly.com" style="color: var(--accent-gold); text-decoration: underline;">support@stackly.com</a>. Our technical team reviews and resolves website issues promptly.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 5: OUR CUSTOMER CARE PROMISE
+         ====================================================================== -->
+    <section class="contact-promise-section section-padding">
+      <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+          <span class="section-eyebrow">Our Philosophy</span>
+          <h2 class="section-title">Our Customer <em>Care Promise</em></h2>
+          <p class="section-desc">At Stackly, every client relationship is held to the highest standard of luxury care and personalized attention.</p>
+        </div>
+
+        <div class="contact-promise-grid">
+          <!-- Feature 1: Helpful Support -->
+          <div class="contact-promise-card">
+            <div class="contact-promise-card-icon">
+              <i class="fa-solid fa-headset"></i>
+            </div>
+            <h3 class="contact-promise-card-title">Helpful Support</h3>
+            <p class="contact-promise-card-desc">
+              Empathetic, knowledgeable beauty advisors ready to address your inquiries with prompt responsiveness and thoughtful solutions.
+            </p>
+          </div>
+
+          <!-- Feature 2: Clear Communication -->
+          <div class="contact-promise-card">
+            <div class="contact-promise-card-icon">
+              <i class="fa-solid fa-comments"></i>
+            </div>
+            <h3 class="contact-promise-card-title">Clear Communication</h3>
+            <p class="contact-promise-card-desc">
+              Transparent shipping tracking, detailed botanical disclosures, and sincere guidance with zero hidden conditions.
+            </p>
+          </div>
+
+          <!-- Feature 3: Thoughtful Shopping Experience -->
+          <div class="contact-promise-card">
+            <div class="contact-promise-card-icon">
+              <i class="fa-solid fa-gift"></i>
+            </div>
+            <h3 class="contact-promise-card-title">Thoughtful Shopping Experience</h3>
+            <p class="contact-promise-card-desc">
+              Artisanal Parisian packaging, complimentary deluxe discovery samples with every order, and effortless 30-day returns.
+            </p>
+          </div>
+
+          <!-- Feature 4: Beauty Guidance -->
+          <div class="contact-promise-card">
+            <div class="contact-promise-card-icon">
+              <i class="fa-solid fa-sparkles"></i>
+            </div>
+            <h3 class="contact-promise-card-title">Beauty Guidance</h3>
+            <p class="contact-promise-card-desc">
+              Personalized regimen consultations tailored to your individual skin concerns, environmental conditions, and lifestyle.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 6: YOUR BEAUTY JOURNEY STARTS HERE
+         ====================================================================== -->
+    <section class="contact-journey-cta">
+      <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1600&q=80" alt="Stackly Atelier Atmosphere" class="contact-journey-bg" loading="lazy">
+      <div class="contact-journey-overlay"></div>
+      <div class="container contact-journey-content">
+        <span class="section-eyebrow" style="color: var(--accent-gold); margin-bottom: 1rem; display: inline-block;">BEGIN YOUR RITUAL</span>
+        <h2 class="contact-journey-heading">We’d Love to <em>Hear From You</em></h2>
+        <p class="contact-journey-desc">
+          Whether you have a question or need assistance, let’s make your beauty experience a little more special.
+        </p>
+        <div class="contact-journey-buttons">
+          <a href="index.html#featured-products" class="btn btn-primary">
+            Explore Our Collection <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="blog.html" class="btn btn-outline" style="border-color: var(--accent-gold); color: #FFFFFF;">
+            Discover Beauty Tips <i class="fa-solid fa-book-open"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================================
+       FOOTER
+       ====================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <img src="logo_0027.webp" alt="Stackly" class="brand-logo-img">
+            <span class="brand-sub">HAUTE BOTANIQUE</span>
+          </a>
+          <p>Botanical cosmetic alchemy crafted with clinical discernment and sustainable luxury principles.</p>
+          <div class="footer-social-list">
+            <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Maison</a></li>
+            <li><a href="services.html">Bespoke Services</a></li>
+            <li><a href="blog.html">The Beauty Journal</a></li>
+            <li><a href="contact.html">Contact & Concierge</a></li>
+            <li><a href="product.html?id=1">Flagship Elixir</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Client Care</h4>
+          <ul class="footer-links">
+            <li><a href="services.html#faq">Consultation FAQ</a></li>
+            <li><a href="contact.html">Shipping & Returns</a></li>
+            <li><a href="about.html#values">Sustainability Promise</a></li>
+            <li><a href="login.html">My Client Portal</a></li>
+            <li><a href="contact.html">Concierge Enquiries</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Haute Atelier</h4>
+          <p class="footer-newsletter-text">
+            18 Place Vendôme, 75001 Paris, France.<br>
+            Private appointments available Tuesday through Saturday.
+          </p>
+          <div style="margin-top: 1.2rem;">
+            <a href="services.html" class="btn btn-outline-light btn-sm" style="width: 100%;">
+              Book Appointment <i class="fa-solid fa-calendar-check"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 STACKLY. ALL RIGHTS RESERVED.</p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Cookie Preferences</a>
+        </div>
+        <a href="#" class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+          Back to Top <i class="fa-solid fa-arrow-up"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+</html>

@@ -1,0 +1,725 @@
+/* ==========================================================================
+   STACKLY - LUXURY ABOUT PAGE EXTENSION STYLES
+   Custom styles for the 7 new luxury sections on about.html
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   SECTION 1: OUR BEAUTY PHILOSOPHY (Split Layout)
+   -------------------------------------------------------------------------- */
+.philosophy-section {
+  position: relative;
+  background-color: var(--bg-primary);
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.philosophy-text-col {
+  position: relative;
+  z-index: 2;
+}
+
+.philosophy-lead {
+  font-size: 1.12rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.philosophy-quote-box {
+  padding: 1.5rem 1.8rem;
+  background: rgba(45, 19, 31, 0.45);
+  border-left: 2px solid var(--accent-gold);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin: 2rem 0;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.philosophy-quote-text {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.philosophy-quote-author {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent-gold);
+  font-weight: 600;
+}
+
+.philosophy-image-col {
+  position: relative;
+}
+
+.philosophy-image-frame {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(229, 163, 153, 0.2);
+}
+
+.philosophy-image-frame img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  display: block;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.philosophy-image-frame:hover img {
+  transform: scale(1.04);
+}
+
+.philosophy-badge-float {
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  background: rgba(28, 10, 18, 0.92);
+  border: 1px solid var(--accent-gold);
+  padding: 1.2rem 1.6rem;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  max-width: 260px;
+  z-index: 3;
+}
+
+.philosophy-badge-float p {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.philosophy-badge-float strong {
+  color: var(--accent-gold);
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+/* --------------------------------------------------------------------------
+   SECTION 2: OUR MISSION & VISION (Dual Bespoke Luxury Panels)
+   -------------------------------------------------------------------------- */
+.mission-vision-section {
+  position: relative;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.mission-vision-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+.mv-panel {
+  position: relative;
+  padding: 3.5rem 3rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.mv-panel:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(18, 5, 11, 0.6);
+}
+
+.mv-panel-mission {
+  background: linear-gradient(145deg, rgba(36, 14, 24, 0.95), rgba(45, 19, 31, 0.85));
+  border: 1.5px solid rgba(229, 163, 153, 0.25);
+  box-shadow: 0 10px 30px rgba(10, 3, 7, 0.4);
+}
+
+.mv-panel-mission:hover {
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 25px rgba(229, 163, 153, 0.25);
+}
+
+.mv-panel-vision {
+  background: linear-gradient(145deg, rgba(53, 22, 36, 0.9), rgba(28, 10, 18, 0.95));
+  border: 1.5px solid rgba(229, 163, 153, 0.35);
+  box-shadow: 0 10px 30px rgba(10, 3, 7, 0.5);
+}
+
+.mv-panel-vision:hover {
+  border-color: #FAF3F5;
+  box-shadow: 0 0 30px rgba(250, 243, 245, 0.2);
+}
+
+.mv-icon-wrapper {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  font-size: 1.25rem;
+  border: 1px solid rgba(229, 163, 153, 0.3);
+}
+
+.mv-panel-mission .mv-icon-wrapper {
+  background: rgba(229, 163, 153, 0.12);
+  color: var(--accent-gold);
+}
+
+.mv-panel-vision .mv-icon-wrapper {
+  background: linear-gradient(135deg, var(--accent-gold), #CE867B);
+  color: #1C0A12;
+  box-shadow: 0 0 15px rgba(229, 163, 153, 0.4);
+}
+
+.mv-tag {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+.mv-heading {
+  font-family: var(--font-serif);
+  font-size: 2.1rem;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+}
+
+.mv-desc {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   SECTION 3: OUR QUALITY PROMISE (4-Feature Line Layout)
+   -------------------------------------------------------------------------- */
+.promise-section {
+  position: relative;
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.promise-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.promise-card {
+  padding: 2.5rem 1.8rem;
+  background: rgba(45, 19, 31, 0.45);
+  border: 1px solid rgba(229, 163, 153, 0.18);
+  border-radius: var(--radius-md);
+  text-align: left;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.promise-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 1.8rem;
+  right: 1.8rem;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.promise-card:hover {
+  background: rgba(45, 19, 31, 0.8);
+  border-color: rgba(229, 163, 153, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(18, 5, 11, 0.45);
+}
+
+.promise-card:hover::after {
+  opacity: 1;
+}
+
+.promise-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background: rgba(229, 163, 153, 0.12);
+  border: 1px solid rgba(229, 163, 153, 0.25);
+  color: var(--accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.promise-card:hover .promise-icon-box {
+  background: var(--accent-gold);
+  color: #1C0A12;
+  box-shadow: 0 0 15px rgba(229, 163, 153, 0.5);
+  transform: scale(1.08);
+}
+
+.promise-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.promise-card-text {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   SECTION 4: DISCOVER THE BEAUTY EXPERIENCE (3-Image Editorial Showcase)
+   -------------------------------------------------------------------------- */
+.experience-section {
+  position: relative;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1.1fr;
+  gap: 2rem;
+  margin-top: 3.5rem;
+  align-items: stretch;
+}
+
+.experience-card {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  height: 480px;
+  border: 1px solid rgba(229, 163, 153, 0.25);
+  box-shadow: var(--shadow-md);
+  display: block;
+  text-decoration: none;
+  group: hover;
+}
+
+.experience-card-tall {
+  height: 520px;
+}
+
+.experience-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.experience-card:hover .experience-card-img {
+  transform: scale(1.07);
+}
+
+.experience-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(28, 10, 18, 0.15) 0%, rgba(28, 10, 18, 0.55) 55%, rgba(28, 10, 18, 0.95) 100%);
+  z-index: 2;
+  transition: opacity 0.4s ease;
+}
+
+.experience-card:hover .experience-overlay {
+  background: linear-gradient(180deg, rgba(28, 10, 18, 0.1) 0%, rgba(28, 10, 18, 0.45) 50%, rgba(28, 10, 18, 0.98) 100%);
+}
+
+.experience-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2.2rem 2rem;
+  z-index: 3;
+}
+
+.experience-tag {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.experience-title {
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  font-weight: 500;
+  color: #FFFFFF;
+  margin-bottom: 0.6rem;
+  line-height: 1.2;
+}
+
+.experience-desc {
+  font-size: 0.88rem;
+  color: var(--text-light-muted);
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
+
+.experience-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  font-weight: 600;
+  transition: gap 0.25s ease;
+}
+
+.experience-card:hover .experience-link {
+  gap: 0.8rem;
+  color: #FFFFFF;
+}
+
+/* --------------------------------------------------------------------------
+   SECTION 5: OUR STORY & INSPIRATION (Asymmetric Storytelling)
+   -------------------------------------------------------------------------- */
+.story-section {
+  position: relative;
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-subtle);
+  overflow: hidden;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 4.5rem;
+  align-items: center;
+}
+
+.story-image-wrap {
+  position: relative;
+}
+
+.story-clip-frame {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(10, 3, 7, 0.6);
+  border: 1px solid rgba(229, 163, 153, 0.25);
+}
+
+.story-clip-frame img {
+  width: 100%;
+  height: 560px;
+  object-fit: cover;
+  display: block;
+}
+
+.story-floating-card {
+  position: absolute;
+  bottom: 2rem;
+  right: -2rem;
+  background: rgba(36, 14, 24, 0.92);
+  border: 1px solid var(--accent-gold);
+  padding: 1.8rem 2rem;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 15px 35px rgba(10, 3, 7, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  max-width: 320px;
+  z-index: 3;
+}
+
+.story-floating-card span {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.story-floating-card p {
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  font-style: italic;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.story-text-content {
+  position: relative;
+  z-index: 2;
+}
+
+.story-body-p {
+  font-size: 1.02rem;
+  line-height: 1.85;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   SECTION 6: WHAT MAKES US DIFFERENT (Unique Asymmetric Layout)
+   -------------------------------------------------------------------------- */
+.different-section {
+  position: relative;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.different-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-top: 3.5rem;
+}
+
+.different-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.different-col-staggered {
+  margin-top: 2rem;
+}
+
+.different-item {
+  padding: 2.5rem;
+  background: rgba(36, 14, 24, 0.65);
+  border: 1px solid rgba(229, 163, 153, 0.2);
+  border-radius: var(--radius-md);
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.different-item:hover {
+  background: rgba(45, 19, 31, 0.85);
+  border-color: var(--accent-gold);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(18, 5, 11, 0.5);
+}
+
+.different-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.different-num {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--accent-gold);
+  font-weight: 600;
+}
+
+.different-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(229, 163, 153, 0.12);
+  color: var(--accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  border: 1px solid rgba(229, 163, 153, 0.2);
+}
+
+.different-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.different-desc {
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   SECTION 7: YOUR BEAUTY JOURNEY STARTS HERE (Full-Width Luxury CTA)
+   -------------------------------------------------------------------------- */
+.journey-cta-section {
+  position: relative;
+  padding: 8.5rem 0;
+  background-color: var(--bg-dark);
+  color: #FFFFFF;
+  overflow: hidden;
+  text-align: center;
+}
+
+.journey-cta-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.35;
+  z-index: 1;
+  transform: scale(1.05);
+  transition: transform 6s ease-out;
+}
+
+.journey-cta-section:hover .journey-cta-bg {
+  transform: scale(1.08);
+}
+
+.journey-cta-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(36, 14, 24, 0.75) 0%, rgba(18, 5, 11, 0.94) 85%);
+  z-index: 2;
+}
+
+.journey-cta-content {
+  position: relative;
+  z-index: 3;
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+.journey-cta-heading {
+  font-size: clamp(2.4rem, 4.5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #FFFFFF;
+  margin-bottom: 1.25rem;
+}
+
+.journey-cta-heading em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--accent-gold);
+}
+
+.journey-cta-desc {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--text-light-muted);
+  margin-bottom: 2.5rem;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.journey-cta-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE ADJUSTMENTS FOR THE 7 ABOUT SECTIONS
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .philosophy-image-frame img {
+    height: 420px;
+  }
+
+  .philosophy-badge-float {
+    position: static;
+    margin-top: 1.5rem;
+    max-width: 100%;
+  }
+
+  .experience-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-card,
+  .experience-card-tall {
+    height: 380px;
+  }
+
+  .story-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .story-floating-card {
+    position: static;
+    margin-top: 1.5rem;
+    max-width: 100%;
+  }
+
+  .promise-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .different-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .different-col-staggered {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .mission-vision-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .promise-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-cta-section {
+    padding: 5.5rem 0;
+  }
+}
