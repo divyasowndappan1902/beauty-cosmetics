@@ -94,7 +94,7 @@
           <div class="sidebar-user-avatar" style="background: linear-gradient(135deg, #3B82F6, #C5A880);">LV</div>
           <div class="sidebar-user-details">
             <span class="sidebar-user-name">Laurent Vaneau</span>
-            <span class="sidebar-user-role">Maison Director</span>
+            <span class="sidebar-user-role sidebar-user-email">laurent.vaneau@stackly.com</span>
           </div>
         </div>
         <button type="button" class="sidebar-btn-logout" title="Sign Out of Admin Portal">
@@ -137,7 +137,7 @@
             <div class="topbar-user-initials" style="background: linear-gradient(135deg, #3B82F6, #C5A880);">LV</div>
             <div class="topbar-user-meta">
               <span class="topbar-user-name">Laurent Vaneau</span>
-              <span class="topbar-user-role">Maison Director</span>
+              <span class="topbar-user-role topbar-user-email">laurent.vaneau@stackly.com</span>
             </div>
             <button type="button" class="btn-topbar-logout" title="Sign out" style="background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 0.2rem 0.4rem; font-size: 0.85rem;">
               <i class="fa-solid fa-power-off"></i>
@@ -406,7 +406,7 @@
               </button>
             </div>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.4rem;" id="admin-categories-grid">
+            <div class="dash-categories-grid" id="admin-categories-grid">
               <!-- Rendered dynamically by js/dashboard.js -->
             </div>
           </div>
@@ -518,7 +518,7 @@
             </div>
 
             <!-- Inventory Metric Counters -->
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
+            <div class="dash-inv-counters-grid">
               <div style="background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-sm); padding: 1.2rem; text-align: center;">
                 <div style="font-size: 0.72rem; text-transform: uppercase; color: #6EE7B7;">Optimal Stock</div>
                 <div style="font-size: 1.8rem; font-weight: 700; color: #34D399;" id="inv-stat-optimal">4</div>
@@ -663,7 +663,7 @@
              ================================================================== -->
         <section class="dash-panel" id="panel-reports">
           <!-- 3 KPI Cards -->
-          <div class="dash-metrics-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="dash-metrics-grid">
             <div class="dash-metric-card">
               <div class="dash-metric-top">
                 <span class="dash-metric-label">Average Order Value (AOV)</span>

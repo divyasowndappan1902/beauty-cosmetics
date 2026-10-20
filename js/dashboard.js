@@ -287,12 +287,36 @@ function initDashboardRoleAndUser() {
     localStorage.setItem('letoile_user', JSON.stringify(storedUser));
   }
 
+  // Resolve dynamic email ID
+  let userEmail = storedUser.email;
+  if (!userEmail) {
+    try {
+      const regUsers = JSON.parse(localStorage.getItem('letoile_registered_users') || '[]');
+      const match = regUsers.find(u => u.name && u.name.toLowerCase() === (storedUser.name || '').toLowerCase());
+      if (match && match.email) userEmail = match.email;
+    } catch (e) {}
+  }
+  if (!userEmail) {
+    if (storedUser.name && storedUser.name !== 'Clara Delacroix' && storedUser.name !== 'Laurent Vaneau') {
+      userEmail = storedUser.name.toLowerCase().replace(/\s+/g, '.') + '@example.com';
+    } else {
+      userEmail = (storedUser.role === 'admin' || isAdminPage) ? 'laurent.vaneau@stackly.com' : 'clara.delacroix@example.com';
+    }
+  }
+  storedUser.email = userEmail;
+
   // Update DOM user elements
-  const userInitials = (storedUser.name || 'CD').split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+  const userInitials = (storedUser.name || (userEmail ? userEmail.charAt(0) : 'U')).split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
   document.querySelectorAll('.sidebar-user-avatar, .topbar-user-initials').forEach(el => el.textContent = userInitials);
-  document.querySelectorAll('.sidebar-user-name, .topbar-user-name').forEach(el => el.textContent = storedUser.name);
-  document.querySelectorAll('.sidebar-user-role, .topbar-user-role').forEach(el => el.textContent = storedUser.title || (storedUser.role === 'admin' ? 'Maison Director' : 'Diamond Privilege'));
-  document.querySelectorAll('.dash-hero-greeting-name').forEach(el => el.textContent = storedUser.name.split(' ')[0]);
+  document.querySelectorAll('.sidebar-user-name, .topbar-user-name').forEach(el => el.textContent = storedUser.name || userEmail.split('@')[0]);
+
+  // Set dynamic email ID in user chip and sidebar
+  document.querySelectorAll('.sidebar-user-role, .topbar-user-role, .sidebar-user-email, .topbar-user-email').forEach(el => {
+    el.textContent = userEmail;
+    el.setAttribute('title', userEmail);
+  });
+
+  document.querySelectorAll('.dash-hero-greeting-name').forEach(el => el.textContent = (storedUser.name || userEmail.split('@')[0]).split(' ')[0]);
 
   // Logout Listeners
   document.querySelectorAll('.sidebar-btn-logout, .btn-topbar-logout, .btn-dash-logout').forEach(btn => {

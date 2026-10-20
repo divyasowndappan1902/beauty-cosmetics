@@ -703,7 +703,7 @@ select.contact-form-control option {
 
 @media (max-width: 480px) {
   .contact-connect-img-frame img {
-    height: 320px;
+    height: 300px;
   }
 
   .contact-accordion-header {
@@ -717,6 +717,41 @@ select.contact-form-control option {
 
   .contact-journey-buttons .btn {
     width: 100%;
+  }
+
+  .contact-form-card {
+    padding: 1.8rem 1.1rem;
+  }
+
+  .contact-info-card {
+    padding: 1.6rem 1.1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .contact-connect-img-frame img {
+    height: 220px !important;
+  }
+
+  .contact-form-card {
+    padding: 1.4rem 0.85rem !important;
+  }
+
+  .contact-info-card {
+    padding: 1.4rem 0.85rem !important;
+  }
+
+  .contact-help-card {
+    padding: 1.4rem 0.85rem !important;
+  }
+
+  .contact-promise-card {
+    padding: 1.5rem 0.85rem !important;
+  }
+
+  .contact-accordion-header {
+    font-size: 1rem !important;
+    padding: 1rem 0.6rem !important;
   }
 }
 

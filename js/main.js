@@ -1,4 +1,4 @@
-﻿/**
+/**
  * STACKLY - CORE JAVASCRIPT
  * Header scroll, mobile menu, mini-cart, search modal, toast notifications, newsletter validation
  */
@@ -423,15 +423,48 @@ function initSearchModal() {
 }
 
 /* --------------------------------------------------------------------------
-   Newsletter Subscription Handler (Routes to 404)
+   Newsletter Subscription Handler (Validates filled field -> Routes to 404)
    -------------------------------------------------------------------------- */
+function handleNewsletterSubmit(e, triggerEl) {
+  if (e) {
+    e.preventDefault();
+  }
+  const form = triggerEl ? triggerEl.closest('form') : (e && e.target ? e.target.closest('form') : document.querySelector('.newsletter-form'));
+  const input = form ? form.querySelector('.newsletter-input, input[type="email"]') : document.querySelector('.newsletter-input');
+
+  if (input) {
+    const val = input.value.trim();
+    if (!val) {
+      input.focus();
+      if (typeof input.reportValidity === 'function') {
+        input.setCustomValidity('Please fill out this field.');
+        input.reportValidity();
+      }
+      return false;
+    }
+  }
+
+  // Once filled, redirect directly to 404 error page as requested
+  window.location.href = '404.html';
+  return false;
+}
+window.handleNewsletterSubmit = handleNewsletterSubmit;
+
 function initNewsletterForms() {
   const forms = document.querySelectorAll('.newsletter-form');
 
   forms.forEach(form => {
+    const input = form.querySelector('.newsletter-input, input[type="email"]');
+    if (input) {
+      input.addEventListener('input', () => {
+        if (typeof input.setCustomValidity === 'function') {
+          input.setCustomValidity('');
+        }
+      });
+    }
+
     form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      window.location.href = '404.html';
+      handleNewsletterSubmit(e, form);
     });
   });
 }
@@ -612,12 +645,11 @@ function initNavAuthState() {
     if (loginBtn && user) {
       const isAdmin = user.role === 'admin';
       loginBtn.href = isAdmin ? 'admin-dashboard.html' : 'customer-dashboard.html';
-      const firstName = user.name ? user.name.split(' ')[0] : (isAdmin ? 'Admin' : 'Client');
       loginBtn.innerHTML = `
-        <i class="${isAdmin ? 'fa-solid fa-shield-halved' : 'fa-solid fa-gem'}" style="color: var(--accent-gold);"></i>
-        <span>${firstName}</span>
+        <i class="${isAdmin ? 'fa-solid fa-shield-halved' : 'fa-regular fa-user'}"></i>
+        <span>Login</span>
       `;
-      loginBtn.setAttribute('title', isAdmin ? 'Maison Admin Command' : 'VIP Client Sanctuary');
+      loginBtn.setAttribute('title', isAdmin ? `Maison Admin Command (${user.name || 'Admin'})` : `VIP Client Sanctuary (${user.name || 'Client'})`);
     }
 
     if (mobileLoginLinks.length && user) {
@@ -625,8 +657,8 @@ function initNavAuthState() {
       mobileLoginLinks.forEach(link => {
         link.href = isAdmin ? 'admin-dashboard.html' : 'customer-dashboard.html';
         link.innerHTML = `
-          <span>${isAdmin ? 'Admin Dashboard' : 'Client Sanctuary'}</span>
-          <i class="${isAdmin ? 'fa-solid fa-shield-halved' : 'fa-solid fa-gem'}" style="font-size: 0.9rem; color: var(--accent-gold);"></i>
+          <span>Login</span>
+          <i class="${isAdmin ? 'fa-solid fa-shield-halved' : 'fa-solid fa-user'}" style="font-size: 0.9rem;"></i>
         `;
       });
     }
@@ -786,6 +818,7 @@ function initDummyButtonHandler() {
         btn.classList.contains('faq-question') ||
         btn.closest('#contact-form') ||
         btn.closest('.pdp-new-review-form') ||
+        btn.closest('.newsletter-form') ||
         btn.getAttribute('onclick');
 
       if (!isFunctional) {

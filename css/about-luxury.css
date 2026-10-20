@@ -720,6 +720,54 @@
   }
 
   .journey-cta-section {
-    padding: 5.5rem 0;
+    padding: 4.5rem 0;
+  }
+
+  .philosophy-badge-float {
+    position: static !important;
+    max-width: 100% !important;
+    margin-top: 1rem !important;
+  }
+
+  .story-floating-card {
+    position: static !important;
+    max-width: 100% !important;
+    margin-top: 1rem !important;
   }
 }
+
+@media (max-width: 480px) {
+  .philosophy-image-frame img {
+    height: 280px !important;
+  }
+
+  .experience-card,
+  .experience-card-tall {
+    height: 280px !important;
+  }
+
+  .journey-cta-section {
+    padding: 3.5rem 0 !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .philosophy-image-frame img {
+    height: 240px !important;
+  }
+
+  .experience-card,
+  .experience-card-tall {
+    height: 240px !important;
+  }
+
+  .journey-cta-section {
+    padding: 2.8rem 0 !important;
+  }
+
+  .about-story-quote {
+    font-size: 1.15rem !important;
+    line-height: 1.4 !important;
+  }
+}
+

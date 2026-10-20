@@ -1,4 +1,4 @@
-﻿/**
+/**
  * STACKLY - AUTHENTICATION & ROLE SELECTION ENGINE
  * Luxury login & signup interactions with dynamic role selector (Admin & Customer),
  * respective forms, instant demo credentials, and automated redirection to dashboards.
@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPasswordVisibilityToggle();
   initAuthViewToggle();
   initOAuthAndRecoveryDemos();
+  checkSignupFlash();
 });
 
 // Current Active Roles
@@ -555,8 +556,8 @@ function initAuthForm() {
           loginTime: new Date().toISOString()
         };
 
-        // Save active session & add to registered users registry
-        localStorage.setItem('letoile_user', JSON.stringify(newAdminUser));
+        // Clear active session so user logs in on login page
+        localStorage.removeItem('letoile_user');
 
         let registeredUsers = [];
         try {
@@ -566,15 +567,30 @@ function initAuthForm() {
         registeredUsers.push(newAdminUser);
         localStorage.setItem('letoile_registered_users', JSON.stringify(registeredUsers));
 
+        sessionStorage.setItem('letoile_signup_flash', JSON.stringify({
+          role: 'admin',
+          email: newAdminUser.email,
+          name: newAdminUser.name,
+          message: `Maison Admin Account created successfully for <strong>${escapeHTML(newAdminUser.name)}</strong>! Please enter your passcode to sign in.`
+        }));
+
         showAuthFeedback(`
-          <i class="fa-solid fa-shield-check"></i> 
-          Maison Admin Account successfully authorized! Welcome, ${escapeHTML(newAdminUser.name)}. 
-          Redirecting to Admin Command Center...
+          <i class="fa-solid fa-circle-check"></i> 
+          Maison Admin Account created successfully! Redirecting to login page...
         `, 'success');
 
         setTimeout(() => {
-          window.location.href = 'admin-dashboard.html';
-        }, 1100);
+          const loginSection = document.querySelector('#login-view-section');
+          const registerSection = document.querySelector('#register-view-section');
+          if (loginSection && registerSection) {
+            registerSection.style.display = 'none';
+            loginSection.style.display = 'block';
+            window.location.hash = 'login';
+            checkSignupFlash();
+          } else {
+            window.location.href = 'login.html#login';
+          }
+        }, 500);
 
       } else {
         // CUSTOMER SIGNUP FIELDS
@@ -619,8 +635,8 @@ function initAuthForm() {
           loginTime: new Date().toISOString()
         };
 
-        // Save active session & add to registered users registry
-        localStorage.setItem('letoile_user', JSON.stringify(newCustomerUser));
+        // Clear active session so user logs in on login page
+        localStorage.removeItem('letoile_user');
 
         let registeredUsers = [];
         try {
@@ -630,22 +646,37 @@ function initAuthForm() {
         registeredUsers.push(newCustomerUser);
         localStorage.setItem('letoile_registered_users', JSON.stringify(registeredUsers));
 
+        sessionStorage.setItem('letoile_signup_flash', JSON.stringify({
+          role: 'customer',
+          email: newCustomerUser.email,
+          name: newCustomerUser.name,
+          message: `VIP Client Profile created successfully for <strong>${escapeHTML(newCustomerUser.name)}</strong>! Please enter your password to sign in.`
+        }));
+
         showAuthFeedback(`
-          <i class="fa-solid fa-sparkles"></i> 
-          Welcome to the Privileged Circle, ${escapeHTML(newCustomerUser.name)}! 
-          +500 Welcome Points awarded. Redirecting to your personal Sanctuary...
+          <i class="fa-solid fa-circle-check"></i> 
+          VIP Client Profile created successfully! Redirecting to login page...
         `, 'success');
 
         setTimeout(() => {
-          window.location.href = 'customer-dashboard.html';
-        }, 1100);
+          const loginSection = document.querySelector('#login-view-section');
+          const registerSection = document.querySelector('#register-view-section');
+          if (loginSection && registerSection) {
+            registerSection.style.display = 'none';
+            loginSection.style.display = 'block';
+            window.location.hash = 'login';
+            checkSignupFlash();
+          } else {
+            window.location.href = 'login.html#login';
+          }
+        }, 500);
       }
     });
   }
 }
 
 /* --------------------------------------------------------------------------
-   4. Switch Between Login & Register Views
+   5. Switch Between Login & Register Views
    -------------------------------------------------------------------------- */
 function initAuthViewToggle() {
   const showRegisterLink = document.querySelector('#switch-to-register');
@@ -678,6 +709,84 @@ function initAuthViewToggle() {
   if (window.location.hash === '#register' && loginSection && registerSection) {
     loginSection.style.display = 'none';
     registerSection.style.display = 'block';
+  }
+
+  window.addEventListener('hashchange', () => {
+    if (!loginSection || !registerSection) return;
+    if (window.location.hash === '#register') {
+      if (feedbackBox) feedbackBox.style.display = 'none';
+      loginSection.style.display = 'none';
+      registerSection.style.display = 'block';
+    } else {
+      registerSection.style.display = 'none';
+      loginSection.style.display = 'block';
+    }
+  });
+}
+
+/* --------------------------------------------------------------------------
+   6. Signup Flash Notice & Auto-Fill Handler
+   -------------------------------------------------------------------------- */
+function checkSignupFlash() {
+  const flashData = sessionStorage.getItem('letoile_signup_flash');
+  if (!flashData) return;
+
+  try {
+    const flash = JSON.parse(flashData);
+    sessionStorage.removeItem('letoile_signup_flash');
+
+    const loginSection = document.querySelector('#login-view-section');
+    const registerSection = document.querySelector('#register-view-section');
+    if (loginSection && registerSection) {
+      registerSection.style.display = 'none';
+      loginSection.style.display = 'block';
+      if (window.location.hash === '#register') {
+        window.location.hash = 'login';
+      }
+    }
+
+    if (flash.role === 'admin') {
+      const adminRoleCard = document.querySelector('#login-role-slot .role-card[data-role="admin"]');
+      if (adminRoleCard) adminRoleCard.click();
+    } else {
+      const custRoleCard = document.querySelector('#login-role-slot .role-card[data-role="customer"]');
+      if (custRoleCard) custRoleCard.click();
+    }
+
+    const emailInput = document.querySelector('#login-email');
+    if (emailInput && flash.email) {
+      emailInput.value = flash.email;
+      emailInput.classList.remove('is-invalid');
+      emailInput.classList.add('is-valid');
+      const emailFeedback = document.querySelector('#login-email-feedback');
+      if (emailFeedback) {
+        emailFeedback.className = 'field-feedback success active';
+        emailFeedback.innerHTML = '<i class="fa-solid fa-circle-check"></i> <span>Ready to sign in with your credentials</span>';
+      }
+      const emailStatus = document.querySelector('#login-email-status');
+      if (emailStatus) {
+        emailStatus.className = 'input-status-icon success active';
+        emailStatus.innerHTML = '<i class="fa-solid fa-check"></i>';
+      }
+    }
+
+    const feedbackBox = document.querySelector('#auth-alert-box');
+    if (feedbackBox && flash.message) {
+      feedbackBox.innerHTML = `
+        <i class="fa-solid fa-circle-check"></i> 
+        ${flash.message}
+      `;
+      feedbackBox.className = 'auth-alert-message success';
+      feedbackBox.style.display = 'block';
+      feedbackBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    const passInput = document.querySelector('#login-password');
+    if (passInput) {
+      setTimeout(() => passInput.focus(), 250);
+    }
+  } catch (err) {
+    console.error('Error applying signup flash:', err);
   }
 }
 

@@ -883,15 +883,37 @@
   }
 
   .blog-editorial-img-frame img {
-    height: 320px;
+    height: 300px;
   }
 
   .blog-guides-clip-frame img {
-    height: 340px;
+    height: 300px;
   }
 
   .blog-selection-large-img {
-    height: 260px;
+    height: 240px;
+  }
+}
+
+@media (max-width: 360px) {
+  .blog-editorial-img-frame img {
+    height: 220px !important;
+  }
+
+  .blog-guides-clip-frame img {
+    height: 220px !important;
+  }
+
+  .blog-selection-large-img {
+    height: 190px !important;
+  }
+
+  .blog-moodboard-card {
+    height: 240px !important;
+  }
+
+  .blog-story-card {
+    padding: 1.2rem 0.85rem !important;
   }
 }
 

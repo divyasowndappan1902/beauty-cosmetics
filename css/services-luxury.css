@@ -840,7 +840,7 @@
 
 @media (max-width: 480px) {
   .services-intro-image-frame img {
-    height: 320px;
+    height: 300px;
   }
 
   .service-category-title {
@@ -854,6 +854,32 @@
 
   .services-journey-buttons .btn {
     width: 100%;
+  }
+
+  .services-routine-card {
+    padding: 1.5rem 1.1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .services-intro-image-frame img {
+    height: 240px !important;
+  }
+
+  .service-category-img {
+    height: 200px !important;
+  }
+
+  .service-category-content {
+    padding: 1.4rem 0.95rem !important;
+  }
+
+  .services-art-img-wrap img {
+    height: 220px !important;
+  }
+
+  .services-why-card {
+    padding: 1.5rem 1rem !important;
   }
 }
 

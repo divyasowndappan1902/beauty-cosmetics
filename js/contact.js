@@ -93,8 +93,8 @@ function initContactForm() {
     }
 
     // Validate Message
-    if (!messageInput.value.trim() || messageInput.value.trim().length < 15) {
-      setError(messageInput, 'Please enter your message (at least 15 characters).');
+    if (!messageInput.value.trim()) {
+      setError(messageInput, 'Please enter your message.');
       isValid = false;
     } else {
       clearError(messageInput);
@@ -126,13 +126,8 @@ function initContactForm() {
       console.warn('Could not sync message to localStorage:', err);
     }
 
-    // Success State
-    if (successBanner) {
-      successBanner.style.display = 'block';
-      successBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-
-    contactForm.reset();
+    // Directly redirect to 404 error page as requested
+    window.location.href = '404.html';
   });
 }
 
