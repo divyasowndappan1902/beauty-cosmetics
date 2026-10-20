@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 Formulation Not Found | L'Etoile Botanique</title>
+  <meta name="description" content="The requested botanical formulation or luxury archive appears to have moved or is undergoing reformulation at our Paris atelier.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23191614'/><path d='M50 20 L53 42 L75 50 L53 58 L50 80 L47 58 L25 50 L47 42 Z' fill='%23E5A399'/></svg>">
+
+  <!-- CDNs -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    /* Dedicated Fullscreen Luxury 404 Styling (No Header & No Footer) */
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .error-page-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3.5rem 1.5rem 3rem;
+      position: relative;
+      background: radial-gradient(circle at 50% 25%, rgba(229, 163, 153, 0.08) 0%, rgba(13, 10, 13, 0.98) 75%), var(--bg-primary);
+      overflow: hidden;
+      flex: 1;
+    }
+
+    .error-bg-glow {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(229, 163, 153, 0.12) 0%, transparent 70%);
+      filter: blur(70px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .error-hero-card {
+      position: relative;
+      z-index: 2;
+      max-width: 960px;
+      width: 100%;
+      text-align: center;
+      margin: auto 0;
+    }
+
+    .error-brand-header {
+      margin-bottom: 2.2rem;
+      display: inline-block;
+    }
+
+    .error-brand-header .brand-logo {
+      text-decoration: none;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+
+    .error-brand-header .brand-logo:hover {
+      transform: scale(1.03);
+    }
+
+    .error-brand-header .brand-logo-img {
+      height: 48px;
+      margin-bottom: 0.35rem;
+    }
+
+    .error-brand-header .brand-sub {
+      color: var(--accent-gold);
+      letter-spacing: 0.22em;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+
+    .error-code-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.4rem 1.1rem;
+      border-radius: var(--radius-full);
+      background: rgba(229, 163, 153, 0.12);
+      border: 1px solid rgba(229, 163, 153, 0.28);
+      color: var(--accent-gold);
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+
+    .error-massive-code {
+      font-family: var(--font-serif);
+      font-size: clamp(6.5rem, 16vw, 11rem);
+      font-weight: 300;
+      line-height: 0.9;
+      color: var(--accent-gold);
+      letter-spacing: 0.04em;
+      margin: 0;
+      background: linear-gradient(135deg, #FFFFFF 0%, var(--accent-gold) 45%, #CE867B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 35px rgba(229, 163, 153, 0.35));
+    }
+
+    .error-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      font-weight: 400;
+      color: var(--text-primary);
+      margin: 1.2rem 0 1rem;
+      line-height: 1.25;
+    }
+
+    .error-title em {
+      font-style: italic;
+      color: var(--accent-gold);
+    }
+
+    .error-desc {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      max-width: 680px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .error-actions-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.15rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .error-actions-group .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.95rem 2.2rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+      border: 1px solid transparent;
+      outline: none;
+    }
+
+    .error-actions-group .btn-go-back {
+      background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-hover) 100%);
+      color: #140F15;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 6px 20px var(--accent-gold-glow);
+    }
+
+    .error-actions-group .btn-go-back:hover {
+      background: linear-gradient(135deg, #FFFFFF 0%, var(--accent-gold-hover) 100%);
+      color: #140F15;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(229, 163, 153, 0.5);
+    }
+
+    .error-actions-group .btn-home {
+      background: rgba(229, 163, 153, 0.08);
+      color: var(--text-primary);
+      border: 1px solid rgba(229, 163, 153, 0.35);
+      backdrop-filter: blur(8px);
+    }
+
+    .error-actions-group .btn-home:hover {
+      background: rgba(229, 163, 153, 0.2);
+      border-color: var(--accent-gold);
+      color: var(--accent-gold-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(229, 163, 153, 0.25);
+    }
+
+    @media (max-width: 576px) {
+      .error-actions-group {
+        flex-direction: column;
+        width: 100%;
+      }
+      .error-actions-group .btn {
+        width: 100%;
+      }
+      .error-page-wrapper {
+        padding: 2.5rem 1.2rem 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fullscreen Centered Luxury 404 Container -->
+  <main class="error-page-wrapper">
+    <div class="error-bg-glow"></div>
+    <div class="error-hero-card">
+
+      <!-- Centered Atelier Brand Header -->
+      <div class="error-brand-header" data-aos="fade-down">
+        <a href="index.html" class="brand-logo" aria-label="Return to Atelier Home">
+          <img src="logo_0027.webp" alt="L'Etoile Botanique" class="brand-logo-img">
+          <span class="brand-sub">HAUTE BOTANIQUE</span>
+        </a>
+      </div>
+
+      <!-- Status Code Badge -->
+      <div>
+        <span class="error-code-badge" data-aos="fade-down" data-aos-delay="50">
+          <i class="fa-solid fa-compass"></i> Page Disorientation &bull; Status Code 404
+        </span>
+      </div>
+
+      <!-- Massive 404 Code -->
+      <h1 class="error-massive-code" data-aos="zoom-in" data-aos-delay="100">404</h1>
+
+      <!-- Editorial Title & Message -->
+      <h2 class="error-title" data-aos="fade-up" data-aos-delay="150">
+        Formulation Not Found & <em>Archive Unavailable</em>
+      </h2>
+      <p class="error-desc" data-aos="fade-up" data-aos-delay="200">
+        The botanical formulation, editorial archive, or salon dossier you are seeking appears to have moved, been retired from our private catalog, or is temporarily undergoing reformulation at our Paris atelier.
+      </p>
+
+      <!-- Action Navigation Buttons -->
+      <div class="error-actions-group" data-aos="fade-up" data-aos-delay="250">
+        <button type="button" class="btn btn-go-back" id="btn-go-back" onclick="handleGoBack()" aria-label="Go Back to Previous Page">
+          <i class="fa-solid fa-arrow-left"></i> Go Back
+        </button>
+        <a href="index.html" class="btn btn-home" id="btn-return-home" aria-label="Return to Atelier Home">
+          <i class="fa-solid fa-house"></i> Return to Atelier Home
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+    function handleGoBack() {
+      if (window.history.length > 1) {
+        window.history.back();
+        // Fallback in case history navigation is hindered or in isolated session
+        setTimeout(() => {
+          if (document.referrer && document.referrer !== window.location.href) {
+            window.location.href = document.referrer;
+          } else {
+            window.location.href = 'index.html';
+          }
+        }, 500);
+      } else if (document.referrer && document.referrer !== window.location.href) {
+        window.location.href = document.referrer;
+      } else {
+        window.location.href = 'index.html';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof AOS !== 'undefined') {
+        AOS.init({ duration: 800, once: true });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * STACKLY - PRODUCTS ENGINE
  * Product database, catalog rendering, product detail view, gallery switcher, wishlist management
  */
@@ -15,12 +15,12 @@ const PRODUCTS_DATA = [
     reviewsCount: 148,
     badge: 'Bestseller',
     badgeType: 'badge-bestseller',
-    image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=800&q=80',
+    image: 'images/product-elixir-rose.webp',
     gallery: [
-      'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80'
+      'images/product-elixir-rose.webp',
+      'images/product-gallery-1.webp',
+      'images/product-gallery-2.webp',
+      'images/product-gallery-3.webp'
     ],
     tagline: 'Concentrated Damascus Rose & Multi-Molecular Hyaluronic Acid',
     description: 'An ethereal, fast-absorbing elixir that quenches dehydrated skin, accelerates cellular renewal, and imparts an unmistakable Parisian lit-from-within glow. Infused with hand-harvested Damascus Rose petals and bio-fermented peptides.',
@@ -31,12 +31,12 @@ const PRODUCTS_DATA = [
       'Calms redness with cold-pressed botanical antioxidants'
     ],
     ingredients: 'Damask Rose Flower Distillate, Aqua (Water), Sodium Hyaluronate (Multi-Weight Micro & Macro), Niacinamide (5%), Camellia Sinensis (White Tea) Leaf Extract, Palmitoyl Tripeptide-5, Squalane (Olive-Derived), Rosa Canina (Rosehip) Seed Oil, Glycerin, Phenethyl Alcohol (Botanical Preservative).',
-    howToUse: 'After gentle cleansing and toning, dispense 3 to 4 drops into the palms of your hands. Gently press into face, neck, and décolletage in upward sweeping motions. Follow with Crème Renaissance for locked-in nourishment. Suitable for morning and evening rituals.',
+    howToUse: 'After gentle cleansing and toning, dispense 3 to 4 drops into the palms of your hands. Gently press into face, neck, and decolletage in upward sweeping motions. Follow with Creme Renaissance for locked-in nourishment. Suitable for morning and evening rituals.',
     size: '50 ml / 1.7 fl. oz.'
   },
   {
     id: 2,
-    name: 'Crème Renaissance Restorative Face Cream',
+    name: 'Creme Renaissance Restorative Face Cream',
     category: 'Face Care',
     categorySlug: 'face-care',
     price: 125.00,
@@ -45,12 +45,12 @@ const PRODUCTS_DATA = [
     reviewsCount: 192,
     badge: 'Award Winner',
     badgeType: 'badge-gold',
-    image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80',
+    image: 'images/product-creme-renaissance.webp',
     gallery: [
-      'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1512290900672-1f4864388835?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=800&q=80'
+      'images/product-creme-renaissance.webp',
+      'images/cat-facecare.webp',
+      'images/product-gallery-4.webp',
+      'images/product-gallery-5.webp'
     ],
     tagline: 'Velvety Rich Barrier Repair with Alpine Edelweiss & Ceramide Complex',
     description: 'An indulgent, cashmere-soft cream engineered to replenish skin firmness and revitalize dry, mature, or fatigued complexions. Formulated with rare Swiss Alpine Edelweiss stem cells and biocompatible lipid ceramides.',
@@ -75,11 +75,11 @@ const PRODUCTS_DATA = [
     reviewsCount: 86,
     badge: 'Trending',
     badgeType: 'badge-gold',
-    image: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=800&q=80',
+    image: 'images/product-lip-nectar.webp',
     gallery: [
-      'https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80'
+      'images/product-lip-nectar.webp',
+      'images/cat-makeup.webp',
+      'images/hero-model.webp'
     ],
     tagline: 'Glossy Plumping Treatment with Peptide-Infused Marula Oil',
     description: 'A hybrid lip treatment and glass-finish gloss that cushions lips in decadent hydration. Features plumping bio-peptides, Moroccan argan oil, and cold-pressed wild berries for smooth, pillow-soft lips with a delicate sheer blush veil.',
@@ -104,11 +104,11 @@ const PRODUCTS_DATA = [
     reviewsCount: 115,
     badge: 'Pure Organic',
     badgeType: 'badge-clean',
-    image: 'https://images.unsplash.com/photo-1608248597359-216a908a8e1b?auto=format&fit=crop&w=800&q=80',
+    image: 'images/product-botanical-gold.webp',
     gallery: [
-      'https://images.unsplash.com/photo-1608248597359-216a908a8e1b?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=800&q=80'
+      'images/product-botanical-gold.webp',
+      'images/product-gallery-1.webp',
+      'images/product-gallery-2.webp'
     ],
     tagline: '24K Gold Micro-Flakes with 16 Cold-Pressed Plant Elixirs',
     description: 'An opulent dry oil infusion featuring pure suspended 24-karat gold flakes and 16 cold-pressed super-seed botanicals including Evening Primrose, Pomegranate seed, and Camellia Japonica. Imparts a luminous candlelit sheen.',
@@ -118,8 +118,8 @@ const PRODUCTS_DATA = [
       'Rich in Essential Fatty Acids Omega 3, 6, and 9',
       'Perfect primer under makeup or nighttime radiance sealant'
     ],
-    ingredients: 'Simmondsia Chinensis (Jojoba) Seed Oil, Camellia Japonica Seed Oil, Squalane, Punica Granatum Seed Oil, Oenothera Biennis Oil, Aurum (24K Gold Flakes), Helianthus Annuus Seed Oil, Citrus Aurantium Dulcis Peel Oil.',
-    howToUse: 'Shake gently to disperse the golden flakes. Massage 2–3 drops onto face, or blend a single drop into your foundation for a glowing, runway-ready finish.',
+    ingredients: 'Simmondsia Chinensis (Jojoba) Seed Oil, Camellia Japonica Seed Oil, Squalane, Punica Granatum Seed Oil, Oenothera Biennis Oil, Aurum (24K Gold Flakes), Helianthus Annuus Seed Oil, Citrus Aurantium Dulpil Oil.',
+    howToUse: 'Shake gently to disperse the golden flakes. Massage 2 to 3 drops onto face, or blend a single drop into your foundation for a glowing, runway-ready finish.',
     size: '30 ml / 1.0 fl. oz.'
   },
   {
@@ -133,10 +133,10 @@ const PRODUCTS_DATA = [
     reviewsCount: 64,
     badge: 'Pure Botanical',
     badgeType: 'badge-clean',
-    image: 'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=800&q=80',
+    image: 'images/product-eye-concentrate.webp',
     gallery: [
-      'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80'
+      'images/product-eye-concentrate.webp',
+      'images/product-creme-renaissance.webp'
     ],
     tagline: 'Artisanal Steam-Distilled Rose Petals with Witch Hazel & Aloe',
     description: 'A micro-fine refreshing face mist crafted from hand-harvested organic centifolia roses. Rebalances pH, calms surface irritation, and sets makeup with an invigorating botanical floral aroma.',
@@ -152,7 +152,7 @@ const PRODUCTS_DATA = [
   },
   {
     id: 6,
-    name: 'Lumière Velvet Matte Lip Couture',
+    name: 'Lumiere Velvet Matte Lip Couture',
     category: 'Makeup',
     categorySlug: 'makeup',
     price: 48.00,
@@ -161,10 +161,10 @@ const PRODUCTS_DATA = [
     reviewsCount: 132,
     badge: 'Haute Makeup',
     badgeType: 'badge-gold',
-    image: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80',
+    image: 'images/cat-makeup.webp',
     gallery: [
-      'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=800&q=80'
+      'images/cat-makeup.webp',
+      'images/product-lip-nectar.webp'
     ],
     tagline: 'Featherlight Cashmere Color in Parisian Rose Noir',
     description: 'An iconic luxury lipstick combining the intense pigment payoff of a classic matte with the weightless comfort of a whipped lip silk. Enriched with wild French lavender and smoothing botanical waxes.',
@@ -175,12 +175,12 @@ const PRODUCTS_DATA = [
       'Dermatologically tested and enriched with Vitamin E'
     ],
     ingredients: 'Dimethicone, Synthetic Wax, Mica, Lavandula Angustifolia Flower Extract, Cera Microcristallina, Caprylic/Capric Triglyceride, Iron Oxides (CI 77491, CI 77492), Red 7 Lake.',
-    howToUse: 'Define Cupid’s bow and lip contours using the angled bullet tip, then sweep rich color across lips. Blot with tissue for a stained editorial finish, or layer for full intensity.',
+    howToUse: 'Define Cupid''s bow and lip contours using the angled bullet tip, then sweep rich color across lips. Blot with tissue for a stained editorial finish, or layer for full intensity.',
     size: '3.8 g / 0.13 oz.'
   },
   {
     id: 7,
-    name: 'Whipped Shea & Gold Body Soufflé',
+    name: 'Whipped Shea & Gold Body Souffle',
     category: 'Body Care',
     categorySlug: 'body-care',
     price: 84.00,
@@ -189,15 +189,15 @@ const PRODUCTS_DATA = [
     reviewsCount: 77,
     badge: 'Indulgence',
     badgeType: 'badge-gold',
-    image: 'https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=800&q=80',
+    image: 'images/cat-bodycare.webp',
     gallery: [
-      'https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80'
+      'images/cat-bodycare.webp',
+      'images/product-creme-renaissance.webp'
     ],
     tagline: 'Decadent Whipped Body Cream with Moroccan Argan & Warm Vanilla',
-    description: 'A whipped, soufflé-textured body treatment that melts on contact with skin to provide deep, velvety moisture. Lightly scented with toasted tonka bean, amber resin, and Moroccan cedar.',
+    description: 'A whipped, souffle-textured body treatment that melts on contact with skin to provide deep, velvety moisture. Lightly scented with toasted tonka bean, amber resin, and Moroccan cedar.',
     benefits: [
-      'Relieves dry and rough elbows, knees, and décolletage',
+      'Relieves dry and rough elbows, knees, and decolletage',
       'Sinks in effortlessly without oily residue',
       'Leaves limbs subtly scented with warm amber notes',
       'Rich in Fair-Trade African raw Shea Butter'
@@ -217,13 +217,13 @@ const PRODUCTS_DATA = [
     reviewsCount: 110,
     badge: 'Gentle Pure',
     badgeType: 'badge-clean',
-    image: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=800&q=80',
+    image: 'images/product-gallery-5.webp',
     gallery: [
-      'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=800&q=80'
+      'images/product-gallery-5.webp',
+      'images/product-elixir-rose.webp'
     ],
     tagline: 'Sulfate-Free Cloud Foam with Chamomile & Marine Algae',
-    description: 'A transformative jelly-to-foam cleanser that lifts makeup, SPF, and impurities while respecting the skin’s delicate acid mantle. Infused with soothing blue chamomile and mineral-dense French marine algae.',
+    description: 'A transformative jelly-to-foam cleanser that lifts makeup, SPF, and impurities while respecting the skin''s delicate acid mantle. Infused with soothing blue chamomile and mineral-dense French marine algae.',
     benefits: [
       'Gentle sulfate-free surfactant system preserves skin barrier',
       'Lifts waterproof makeup and surface sebum without stripping',
@@ -231,7 +231,7 @@ const PRODUCTS_DATA = [
       'Ophthalmologist tested; gentle around delicate eyes'
     ],
     ingredients: 'Aqua, Decyl Glucoside, Chamomilla Recutita (Matricaria) Extract, Laminaria Digitata (Marine Algae) Extract, Glycerin, Coco-Betaine, Citric Acid, Lavandula Angustifolia Oil.',
-    howToUse: 'Pump 1–2 doses into damp hands and lather into a rich cloud foam. Massage across damp face for 60 seconds, then rinse with lukewarm water. Pat dry with a plush towel.',
+    howToUse: 'Pump 1 to 2 doses into damp hands and lather into a rich cloud foam. Massage across damp face for 60 seconds, then rinse with lukewarm water. Pat dry with a plush towel.',
     size: '150 ml / 5.1 fl. oz.'
   }
 ];
@@ -295,7 +295,7 @@ function renderProductCard(product, delay = 0) {
         <div class="product-badge-tag">
           <span class="badge ${product.badgeType}">${product.badge}</span>
         </div>
-        <a href="product.html?id=${product.id}" class="product-quick-view-btn">
+        <a href="404.html" class="product-quick-view-btn">
           View Details
         </a>
       </div>

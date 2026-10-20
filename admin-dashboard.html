@@ -29,39 +29,25 @@
     <aside class="dashboard-sidebar" id="dashboard-sidebar" aria-label="Admin Navigation">
       <div class="sidebar-top">
         <div class="sidebar-header">
-          <a href="index.html" class="brand-logo">
-            <img src="logo_0027.webp" alt="Stackly" class="brand-logo-img">
-            <span class="brand-sub">ATELIER COMMAND</span>
-          </a>
+          <div class="sidebar-header-main">
+            <a href="index.html" class="brand-logo">
+              <img src="logo_0027.webp" alt="Stackly" class="brand-logo-img">
+            </a>
+            <button type="button" class="sidebar-close-btn" id="sidebar-close-btn" aria-label="Close navigation sidebar">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
           <a href="index.html" class="sidebar-back-home">
             <i class="fa-solid fa-arrow-left"></i> Back to Home
           </a>
         </div>
 
-        <!-- Role Indicator Pill -->
-        <div class="sidebar-role-indicator">
-          <div class="sidebar-role-info">
-            <span class="sidebar-role-beacon" style="background: #3B82F6; box-shadow: 0 0 8px #3B82F6;" title="Admin Online"></span>
-            <span class="sidebar-role-title">Maison Admin <span class="sidebar-role-tier" style="color: #93C5FD; background: rgba(59, 130, 246, 0.2);">Executive</span></span>
-          </div>
-          <a href="customer-dashboard.html" class="sidebar-role-switch-link" title="Switch to Customer Sanctuary View">
-            <i class="fa-solid fa-repeat"></i> Client
-          </a>
-        </div>
-
-        <!-- 11 Admin Sidebar Navigation Menus -->
+        <!-- Admin Sidebar Navigation Menus -->
         <nav class="sidebar-nav">
           <button type="button" class="sidebar-nav-item active" data-panel="overview">
             <div class="sidebar-nav-item-content">
               <i class="fa-solid fa-gauge-high"></i>
               <span class="sidebar-nav-label">Overview</span>
-            </div>
-          </button>
-
-          <button type="button" class="sidebar-nav-item" data-panel="products">
-            <div class="sidebar-nav-item-content">
-              <i class="fa-solid fa-bottle-droplet"></i>
-              <span class="sidebar-nav-label">Products</span>
             </div>
           </button>
 
@@ -97,35 +83,6 @@
             <div class="sidebar-nav-item-content">
               <i class="fa-solid fa-comments"></i>
               <span class="sidebar-nav-label">Reviews</span>
-            </div>
-          </button>
-
-          <button type="button" class="sidebar-nav-item" data-panel="blog">
-            <div class="sidebar-nav-item-content">
-              <i class="fa-solid fa-newspaper"></i>
-              <span class="sidebar-nav-label">Blog Management</span>
-            </div>
-          </button>
-
-          <button type="button" class="sidebar-nav-item" data-panel="messages">
-            <div class="sidebar-nav-item-content">
-              <i class="fa-solid fa-envelope-open-text"></i>
-              <span class="sidebar-nav-label">Messages</span>
-            </div>
-            <span class="sidebar-nav-badge alert messages-counter-badge">1</span>
-          </button>
-
-          <button type="button" class="sidebar-nav-item" data-panel="reports">
-            <div class="sidebar-nav-item-content">
-              <i class="fa-solid fa-chart-pie"></i>
-              <span class="sidebar-nav-label">Reports & Analytics</span>
-            </div>
-          </button>
-
-          <button type="button" class="sidebar-nav-item" data-panel="settings">
-            <div class="sidebar-nav-item-content">
-              <i class="fa-solid fa-sliders"></i>
-              <span class="sidebar-nav-label">Settings</span>
             </div>
           </button>
         </nav>
@@ -174,21 +131,6 @@
         </div>
 
         <div class="topbar-right">
-          <!-- Quick Role Switch Pill -->
-          <a href="customer-dashboard.html" class="btn-switch-role" title="Switch to Customer Sanctuary View">
-            <i class="fa-solid fa-repeat"></i> <span style="font-size: 0.75rem;">Switch to Customer</span>
-          </a>
-
-          <!-- Theme Palette Customizer Trigger -->
-          <button type="button" class="topbar-icon-btn btn-dash-theme-trigger" id="btn-dash-theme-trigger" title="Change Dashboard Color Palette">
-            <i class="fa-solid fa-palette"></i>
-          </button>
-
-          <!-- Notifications Bell -->
-          <button type="button" class="topbar-icon-btn" title="Maison Notifications">
-            <i class="fa-regular fa-bell"></i>
-            <span class="topbar-badge-count">3</span>
-          </button>
 
           <!-- User Chip -->
           <div class="topbar-user-chip">
@@ -217,16 +159,16 @@
               <div class="dash-welcome-text">
                 <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.6rem; flex-wrap: wrap;">
                   <span class="badge badge-gold"><i class="fa-solid fa-crown"></i> Maison Command Center</span>
-                  <span style="font-size: 0.72rem; color: var(--accent-gold); font-family: monospace;">PARIS ATELIER • 18 PLACE VENDÔME</span>
+            <span style="font-size: 0.72rem; color: var(--accent-gold); font-family: monospace;">PARIS ATELIER &bull; 18 PLACE VEND&Ocirc;ME</span>
                 </div>
                 <h1>Executive Operations & <em>Maison Analytics</em></h1>
                 <p>Live centralized control of cold-pressed formulations inventory, White Glove courier fulfillment, VIP client dossiers, and boutique revenue streams.</p>
               </div>
               <div class="dash-welcome-actions">
-                <button type="button" class="btn btn-primary" id="btn-open-add-product">
+                <button type="button" class="btn btn-primary" id="btn-open-add-product" onclick="window.location.href='404.html'; return false;">
                   <i class="fa-solid fa-plus"></i> Add Formulation
                 </button>
-                <button type="button" class="btn btn-outline" id="btn-admin-export-csv" style="border-color: var(--accent-gold); color: #FFF;">
+                <button type="button" class="btn btn-outline" id="btn-admin-export-csv" onclick="window.location.href='404.html'; return false;" style="border-color: var(--accent-gold); color: #FFF;">
                   <i class="fa-solid fa-download"></i> Export Sales CSV
                 </button>
               </div>
@@ -341,7 +283,7 @@
                 <h3>Latest Client Orders & Logistics</h3>
                 <p>Real-time order queue for atelier packaging and White Glove courier preparation.</p>
               </div>
-              <button type="button" class="btn btn-outline btn-sm" onclick="const p = document.querySelector('[data-panel=\'orders\']'); if(p) p.click();">
+              <button type="button" class="btn btn-outline btn-sm" onclick="window.location.href='404.html'; return false;">
                 View All Orders <i class="fa-solid fa-arrow-right"></i>
               </button>
             </div>
@@ -380,7 +322,7 @@
                   </tr>
                   <tr>
                     <td><strong style="color: var(--accent-gold);">EP-89239</strong></td>
-                    <td>Élodie Fontaine</td>
+                  <td>&Eacute;lodie Fontaine</td>
                     <td>Sep 28, 2026</td>
                     <td>2 items</td>
                     <td><strong>$220.00</strong></td>
@@ -405,7 +347,7 @@
               </div>
               <div style="display: flex; gap: 0.6rem; align-items: center;">
                 <span class="badge badge-gold" id="admin-products-count-badge">6 Items</span>
-                <button type="button" class="btn btn-primary btn-sm" onclick="document.querySelector('#btn-open-add-product').click();">
+                <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='404.html'; return false;">
                   <i class="fa-solid fa-plus"></i> Add Formulation
                 </button>
               </div>
@@ -459,7 +401,7 @@
                 <h3>Botanical Categories & Taxonomies</h3>
                 <p>Manage skincare, makeup, and personal beauty ritual classifications.</p>
               </div>
-              <button type="button" class="btn btn-primary btn-sm" id="btn-open-add-category">
+              <button type="button" class="btn btn-primary btn-sm" id="btn-open-add-category" onclick="window.location.href='404.html'; return false;">
                 <i class="fa-solid fa-plus"></i> Add Category
               </button>
             </div>
@@ -544,7 +486,7 @@
                   <tr>
                     <th>Client Name</th>
                     <th>Email Address</th>
-                    <th>Privilège Tier</th>
+                  <th>Privil&egrave;ge Tier</th>
                     <th>Orders</th>
                     <th>Lifetime Spend</th>
                     <th>Client Since</th>
@@ -787,15 +729,15 @@
                     <td>Skincare</td>
                     <td>680 units</td>
                     <td><strong>$66,640.00</strong></td>
-                    <td><span style="color: var(--accent-gold);">★ 4.9</span> (148 reviews)</td>
+                  <td><span style="color: var(--accent-gold);">&#9733; 4.9</span> (148 reviews)</td>
                   </tr>
                   <tr>
                     <td><strong style="color: var(--accent-gold);">#2</strong></td>
-                    <td>Crème Renaissance Restorative Cream</td>
+                  <td>Cr&egrave;me Renaissance Restorative Cream</td>
                     <td>Face Care</td>
                     <td>420 units</td>
                     <td><strong>$52,500.00</strong></td>
-                    <td><span style="color: var(--accent-gold);">★ 5.0</span> (192 reviews)</td>
+                  <td><span style="color: var(--accent-gold);">&#9733; 5.0</span> (192 reviews)</td>
                   </tr>
                   <tr>
                     <td><strong style="color: var(--accent-gold);">#3</strong></td>
@@ -803,7 +745,7 @@
                     <td>Face Care</td>
                     <td>310 units</td>
                     <td><strong>$34,100.00</strong></td>
-                    <td><span style="color: var(--accent-gold);">★ 4.9</span> (115 reviews)</td>
+                  <td><span style="color: var(--accent-gold);">&#9733; 4.9</span> (115 reviews)</td>
                   </tr>
                 </tbody>
               </table>
@@ -831,7 +773,7 @@
                 </div>
                 <div class="dash-form-group">
                   <label for="admin-store-address" class="dash-form-label">Flagship Atelier Address</label>
-                  <input type="text" id="admin-store-address" class="dash-form-control" value="18 Place Vendôme, 75001 Paris, France">
+                    <input type="text" id="admin-store-address" class="dash-form-control" value="18 Place Vend&ocirc;me, 75001 Paris, France">
                 </div>
               </div>
 
@@ -843,9 +785,9 @@
                 <div class="dash-form-group">
                   <label for="admin-currency" class="dash-form-label">Operating Currency</label>
                   <select id="admin-currency" class="dash-form-control">
-                    <option value="USD" selected>USD ($) — United States Dollar</option>
-                    <option value="EUR">EUR (€) — Euro</option>
-                    <option value="GBP">GBP (£) — British Pound</option>
+                    <option value="USD" selected>USD ($) &mdash; United States Dollar</option>
+                    <option value="EUR">EUR (&euro;) &mdash; Euro</option>
+                    <option value="GBP">GBP (&pound;) &mdash; British Pound</option>
                   </select>
                 </div>
               </div>
@@ -951,7 +893,7 @@
             </div>
             <div class="dash-form-group">
               <label for="prod-image" class="dash-form-label">Image URL</label>
-              <input type="url" id="prod-image" class="dash-form-control" placeholder="https://images.unsplash.com/...">
+              <input type="text" id="prod-image" class="dash-form-control" placeholder="e.g. images/product-creme-renaissance.webp or image URL">
             </div>
           </div>
 
@@ -1075,7 +1017,7 @@
 
           <div class="dash-form-group">
             <label for="blog-img" class="dash-form-label">Cover Image URL</label>
-            <input type="url" id="blog-img" class="dash-form-control" placeholder="https://images.unsplash.com/...">
+            <input type="text" id="blog-img" class="dash-form-control" placeholder="e.g. images/blog-cover.webp or image URL">
           </div>
 
           <div class="dash-form-group">
@@ -1103,8 +1045,8 @@
       <div class="dash-modal-body">
         <span id="preview-blog-cat" class="badge badge-gold" style="margin-bottom: 0.6rem;">Category</span>
         <h2 id="preview-blog-title" style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-primary); margin-bottom: 0.5rem; line-height: 1.3;">Article Title</h2>
-        <p id="preview-blog-author" style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.2rem;">By Author • Date</p>
-        <img id="preview-blog-img" src="" alt="Cover" style="width: 100%; height: 260px; object-fit: cover; border-radius: var(--radius-sm); margin-bottom: 1.2rem;">
+          <p id="preview-blog-author" style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.2rem;">By Author &bull; Date</p>
+        <img id="preview-blog-img" src="images/blog-cover.webp" alt="Cover" style="width: 100%; height: 260px; object-fit: cover; border-radius: var(--radius-sm); margin-bottom: 1.2rem;">
         <p id="preview-blog-body" style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8;">Article content excerpt...</p>
       </div>
       <div class="dash-modal-footer">
@@ -1139,7 +1081,7 @@
       </div>
       <div class="dash-modal-footer">
         <button type="button" class="btn btn-outline btn-sm" data-modal-close>Close</button>
-        <button type="button" class="btn btn-primary btn-sm" id="btn-modal-msg-reply">
+        <button type="button" class="btn btn-primary btn-sm" id="btn-modal-msg-reply" data-modal-close>
           <i class="fa-solid fa-reply"></i> Dispatch Concierge Reply
         </button>
       </div>
@@ -1150,7 +1092,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="js/products.js"></script>
-  <script src="js/main.js"></script>
   <script src="js/dashboard.js"></script>
 </body>
 </html>

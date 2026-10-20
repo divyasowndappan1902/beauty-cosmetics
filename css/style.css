@@ -2061,21 +2061,10 @@ h1, h2, h3, h4, h5, h6 {
   color: rgba(255, 255, 255, 0.5);
 }
 
-.form-feedback {
-  font-size: 0.85rem;
-  text-align: left;
-  padding-left: 1.2rem;
-  display: none;
-}
-
-.form-feedback.error {
-  display: block;
-  color: #F87171;
-}
-
+.form-feedback,
+.form-feedback.error,
 .form-feedback.success {
-  display: block;
-  color: #4ADE80;
+  display: none !important;
 }
 
 /* --------------------------------------------------------------------------

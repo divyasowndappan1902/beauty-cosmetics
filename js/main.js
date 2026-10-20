@@ -1,4 +1,4 @@
-/**
+﻿/**
  * STACKLY - CORE JAVASCRIPT
  * Header scroll, mobile menu, mini-cart, search modal, toast notifications, newsletter validation
  */
@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initImageFallbackHandler();
   updateActiveNavLink();
   initNavAuthState();
+  initDummyButtonHandler();
 });
 
 /* --------------------------------------------------------------------------
@@ -123,14 +124,14 @@ const DEFAULT_CART_ITEMS = [
     name: 'Elixir de Rose Radiance Serum',
     price: 98.00,
     quantity: 1,
-    image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=300&q=80'
+    image: 'images/product-elixir-rose.webp'
   },
   {
     id: 2,
-    name: 'Crème Renaissance Restorative Face Cream',
+    name: 'Creme Renaissance Restorative Face Cream',
     price: 125.00,
     quantity: 1,
-    image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=300&q=80'
+    image: 'images/product-creme-renaissance.webp'
   }
 ];
 
@@ -189,8 +190,9 @@ function initMiniCart() {
   });
 
   if (checkoutBtn) {
-    checkoutBtn.addEventListener('click', () => {
-      // Proceeding to luxury checkout (demo mode)
+    checkoutBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = '404.html';
     });
   }
 
@@ -218,16 +220,9 @@ function renderCart() {
         <i class="fa-solid fa-bag-shopping"></i>
         <h4 style="font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 0.5rem;">Your Shopping Bag is Empty</h4>
         <p style="font-size: 0.9rem; margin-bottom: 1.5rem;">Indulge in our exquisite skincare and botanical formulations.</p>
-        <a href="index.html#bestsellers" class="btn btn-outline btn-sm cart-drawer-close-link">Discover Bestsellers</a>
+        <a href="404.html" class="btn btn-outline btn-sm">Discover Bestsellers</a>
       </div>
     `;
-    const closeLink = listContainer.querySelector('.cart-drawer-close-link');
-    if (closeLink) {
-      closeLink.addEventListener('click', () => {
-        document.querySelector('.cart-drawer-overlay').classList.remove('active');
-        document.body.style.overflow = '';
-      });
-    }
     if (subtotalEl) subtotalEl.textContent = '$0.00';
     if (freeShippingText) freeShippingText.textContent = 'Complimentary luxury packaging on all orders.';
     return;
@@ -256,7 +251,7 @@ function renderCart() {
         <div class="cart-item-price">$${item.price.toFixed(2)}</div>
         <div class="cart-item-actions">
           <div class="cart-qty-ctrl">
-            <button type="button" class="cart-qty-btn decrease-qty" data-id="${item.id}" aria-label="Decrease quantity">−</button>
+              <button type="button" class="cart-qty-btn decrease-qty" data-id="${item.id}" aria-label="Decrease quantity">&minus;</button>
             <span class="cart-qty-val">${item.quantity}</span>
             <button type="button" class="cart-qty-btn increase-qty" data-id="${item.id}" aria-label="Increase quantity">+</button>
           </div>
@@ -335,14 +330,14 @@ function addToCart(product, quantity = 1) {
    Global Search Modal & Live Filtering
    -------------------------------------------------------------------------- */
 const SEARCHABLE_ITEMS = [
-  { title: 'Elixir de Rose Radiance Serum', category: 'Skincare', url: 'product.html?id=1', price: '$98.00', image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=150&q=80' },
-  { title: 'Crème Renaissance Restorative Face Cream', category: 'Skincare', url: 'product.html?id=2', price: '$125.00', image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=150&q=80' },
-  { title: 'Velours Rose Hydrating Lip Nectar', category: 'Lip Care', url: 'product.html?id=3', price: '$42.00', image: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=150&q=80' },
-  { title: 'Botanical Gold Illuminating Facial Oil', category: 'Face Care', url: 'product.html?id=4', price: '$110.00', image: 'https://images.unsplash.com/photo-1608248597359-216a908a8e1b?auto=format&fit=crop&w=150&q=80' },
-  { title: 'Rosewater Essence Balancing Mist', category: 'Face Care', url: 'product.html?id=5', price: '$56.00', image: 'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=150&q=80' },
-  { title: 'Lumière Velvet Matte Lip Couture', category: 'Makeup', url: 'product.html?id=6', price: '$48.00', image: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=150&q=80' },
-  { title: 'The Secrets of Parisian Skincare Rituals', category: 'Article', url: 'blog.html', price: 'Skincare Guide', image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=150&q=80' },
-  { title: 'Niacinamide vs. Vitamin C: The Definitive Guide', category: 'Article', url: 'blog.html', price: 'Ingredients', image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=150&q=80' }
+  { title: 'Elixir de Rose Radiance Serum', category: 'Skincare', url: 'product.html?id=1', price: '$98.00', image: 'images/product-elixir-rose.webp' },
+  { title: 'Creme Renaissance Restorative Face Cream', category: 'Skincare', url: 'product.html?id=2', price: '.00', image: 'images/product-creme-renaissance.webp' },
+  { title: 'Velours Rose Hydrating Lip Nectar', category: 'Lip Care', url: 'product.html?id=3', price: '$42.00', image: 'images/product-lip-nectar.webp' },
+  { title: 'Botanical Gold Illuminating Facial Oil', category: 'Face Care', url: 'product.html?id=4', price: '$110.00', image: 'images/product-botanical-gold.webp' },
+  { title: 'Rosewater Essence Balancing Mist', category: 'Face Care', url: 'product.html?id=5', price: '$56.00', image: 'images/product-eye-concentrate.webp' },
+  { title: 'Lumiere Velvet Matte Lip Couture', category: 'Makeup', url: 'product.html?id=6', price: '.00', image: 'images/cat-makeup.webp' },
+  { title: 'The Secrets of Parisian Skincare Rituals', category: 'Article', url: 'blog.html', price: 'Skincare Guide', image: 'images/cat-skincare.webp' },
+  { title: 'Niacinamide vs. Vitamin C: The Definitive Guide', category: 'Article', url: 'blog.html', price: 'Ingredients', image: 'images/hero-model.webp' }
 ];
 
 function initSearchModal() {
@@ -420,7 +415,7 @@ function initSearchModal() {
         <img src="${item.image}" alt="${item.title}" class="search-result-thumb">
         <div class="search-result-info">
           <h4>${item.title}</h4>
-          <span>${item.category} • ${item.price}</span>
+        <span>${item.category} &bull; ${item.price}</span>
         </div>
       </a>
     `).join('');
@@ -428,7 +423,7 @@ function initSearchModal() {
 }
 
 /* --------------------------------------------------------------------------
-   Newsletter Subscription Validation
+   Newsletter Subscription Handler (Routes to 404)
    -------------------------------------------------------------------------- */
 function initNewsletterForms() {
   const forms = document.querySelectorAll('.newsletter-form');
@@ -436,38 +431,7 @@ function initNewsletterForms() {
   forms.forEach(form => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const input = form.querySelector('.newsletter-input');
-      const feedback = form.querySelector('.form-feedback');
-
-      if (!input) return;
-
-      const email = input.value.trim();
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-      if (!email) {
-        if (feedback) {
-          feedback.textContent = 'Please enter your email address.';
-          feedback.className = 'form-feedback error';
-        }
-        input.focus();
-        return;
-      }
-
-      if (!emailRegex.test(email)) {
-        if (feedback) {
-          feedback.textContent = 'Please enter a valid email address (e.g., name@domain.com).';
-          feedback.className = 'form-feedback error';
-        }
-        input.focus();
-        return;
-      }
-
-      // Valid submission
-      if (feedback) {
-        feedback.textContent = 'Merci! You are now subscribed to our private beauty salon dispatches.';
-        feedback.className = 'form-feedback success';
-      }
-      input.value = '';
+      window.location.href = '404.html';
     });
   });
 }
@@ -671,3 +635,164 @@ function initNavAuthState() {
   }
 }
 
+/* --------------------------------------------------------------------------
+   Global Dummy Buttons & Placeholder Links -> 404 Error Page Handler
+   -------------------------------------------------------------------------- */
+function initDummyButtonHandler() {
+  // CRITICAL: Dashboards must remain 100% free of 404 redirections!
+  const isDashboardPage =
+    document.querySelector('.dashboard-layout') !== null ||
+    document.querySelector('.dashboard-sidebar') !== null ||
+    document.querySelector('.sidebar-nav') !== null ||
+    document.body.classList.contains('dashboard-body') ||
+    window.location.pathname.toLowerCase().includes('dashboard');
+
+  if (isDashboardPage) {
+    return;
+  }
+
+  const DUMMY_PHRASES = [
+    'shop collection',
+    'discover our story',
+    'explore collection',
+    'explore our collection',
+    'view details',
+    'learn more about our philosophy',
+    'book a consultation',
+    'discover complete catalog',
+    'book appointment',
+    'view all articles',
+    'get in touch',
+    'discover beauty tips',
+    'explore formulations',
+    'view collection',
+    'discover services',
+    'read article',
+    'read story',
+    'read more',
+    'read full feature',
+    'explore skincare',
+    'discover glam',
+    'view essentials',
+    'explore rituals',
+    'discover bestsellers',
+    'proceed to checkout',
+    'continue with google one-click'
+  ];
+
+  document.addEventListener('click', (e) => {
+    // Completely ignore clicks originating from any dashboard element or on dashboard pages
+    if (
+      document.querySelector('.dashboard-layout') ||
+      document.querySelector('.dashboard-sidebar') ||
+      document.querySelector('.sidebar-nav') ||
+      document.body.classList.contains('dashboard-body') ||
+      window.location.pathname.toLowerCase().includes('dashboard') ||
+      e.target.closest('.dashboard-sidebar') ||
+      e.target.closest('.sidebar-nav') ||
+      e.target.closest('.sidebar-nav-item') ||
+      e.target.closest('.dashboard-layout') ||
+      e.target.closest('.dashboard-main') ||
+      e.target.closest('.dash-panel') ||
+      e.target.closest('[data-panel]') ||
+      e.target.closest('.modal-overlay') ||
+      e.target.closest('.dash-modal')
+    ) {
+      return;
+    }
+
+    // 1. Text-based detection on clickable elements (buttons, links, or CTAs)
+    const clickable = e.target.closest('a, button, [role="button"], .category-card, .experience-card');
+    if (clickable) {
+      const text = (clickable.innerText || clickable.textContent || '').trim().toLowerCase();
+      const isDummyText = DUMMY_PHRASES.some(phrase => text.includes(phrase));
+      if (isDummyText) {
+        // Exclude legitimate interactive form submit buttons or quantity controls
+        if (
+          !clickable.classList.contains('pdp-add-to-bag-btn') &&
+          clickable.id !== 'login-submit-btn' &&
+          clickable.id !== 'signup-submit-btn'
+        ) {
+          e.preventDefault();
+          e.stopPropagation();
+          window.location.href = '404.html';
+          return;
+        }
+      }
+    }
+
+    // 2. Check for unlinked placeholder anchors
+    const anchor = e.target.closest('a');
+    if (anchor) {
+      const href = anchor.getAttribute('href');
+      // If href is empty, '#', 'javascript:void(0)', or placeholder anchors
+      if (href === '#' || href === 'javascript:void(0)' || href === '' || href === 'index.html#featured-products') {
+        // Exclude elements that have specific functional triggers or inline handlers
+        if (
+          anchor.classList.contains('back-to-top-btn') ||
+          anchor.classList.contains('header-cart-btn') ||
+          anchor.classList.contains('cart-trigger') ||
+          anchor.classList.contains('header-search-btn') ||
+          anchor.classList.contains('search-trigger') ||
+          anchor.id === 'switch-to-register' ||
+          anchor.id === 'switch-to-login' ||
+          anchor.getAttribute('onclick')
+        ) {
+          return;
+        }
+        e.preventDefault();
+        window.location.href = '404.html';
+        return;
+      }
+      if (anchor.classList.contains('btn-dummy') || anchor.hasAttribute('data-dummy')) {
+        e.preventDefault();
+        window.location.href = '404.html';
+        return;
+      }
+    }
+
+    // 3. Check for dummy buttons
+    const btn = e.target.closest('button');
+    if (btn) {
+      // Explicit dummy triggers
+      if (
+        btn.classList.contains('cart-checkout-btn') ||
+        btn.classList.contains('btn-google-auth') ||
+        btn.classList.contains('btn-dummy') ||
+        btn.hasAttribute('data-dummy')
+      ) {
+        e.preventDefault();
+        window.location.href = '404.html';
+        return;
+      }
+
+      // Check whether button has active functional role
+      const isFunctional =
+        btn.classList.contains('header-search-btn') ||
+        btn.classList.contains('header-cart-btn') ||
+        btn.classList.contains('hamburger-btn') ||
+        btn.classList.contains('search-modal-close') ||
+        btn.classList.contains('cart-drawer-close') ||
+        btn.classList.contains('cart-qty-btn') ||
+        btn.classList.contains('cart-remove-btn') ||
+        btn.classList.contains('password-toggle-btn') ||
+        btn.id === 'login-submit-btn' ||
+        btn.id === 'signup-submit-btn' ||
+        btn.classList.contains('pdp-qty-btn') ||
+        btn.classList.contains('pdp-add-to-bag-btn') ||
+        btn.classList.contains('pdp-tab-nav-btn') ||
+        btn.classList.contains('contact-accordion-header') ||
+        btn.classList.contains('accordion-header') ||
+        btn.classList.contains('faq-question') ||
+        btn.closest('#contact-form') ||
+        btn.closest('.pdp-new-review-form') ||
+        btn.getAttribute('onclick');
+
+      if (!isFunctional) {
+        e.preventDefault();
+        window.location.href = '404.html';
+        return;
+      }
+    }
+  });
+}

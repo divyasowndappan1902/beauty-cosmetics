@@ -29,27 +29,21 @@
     <aside class="dashboard-sidebar" id="dashboard-sidebar" aria-label="Customer Navigation">
       <div class="sidebar-top">
         <div class="sidebar-header">
-          <a href="index.html" class="brand-logo">
-            <img src="logo_0027.webp" alt="Stackly" class="brand-logo-img">
-            <span class="brand-sub">SANCTUAIRE PRIVÉ</span>
-          </a>
+          <div class="sidebar-header-main">
+            <a href="index.html" class="brand-logo">
+              <img src="logo_0027.webp" alt="Stackly" class="brand-logo-img">
+            </a>
+            <button type="button" class="sidebar-close-btn" id="sidebar-close-btn" aria-label="Close navigation sidebar">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
           <a href="index.html" class="sidebar-back-home">
             <i class="fa-solid fa-arrow-left"></i> Back to Home
           </a>
         </div>
 
-        <!-- Role Indicator Pill -->
-        <div class="sidebar-role-indicator">
-          <div class="sidebar-role-info">
-            <span class="sidebar-role-beacon" title="Sanctuary Active"></span>
-            <span class="sidebar-role-title">VIP Client <span class="sidebar-role-tier">Diamond</span></span>
-          </div>
-          <a href="admin-dashboard.html" class="sidebar-role-switch-link" title="Switch to Admin Dashboard">
-            <i class="fa-solid fa-repeat"></i> Admin
-          </a>
-        </div>
 
-        <!-- 8 Customer Sidebar Navigation Menus -->
+        <!-- Customer Sidebar Navigation Menus -->
         <nav class="sidebar-nav">
           <button type="button" class="sidebar-nav-item active" data-panel="overview">
             <div class="sidebar-nav-item-content">
@@ -64,14 +58,6 @@
               <span class="sidebar-nav-label">My Orders</span>
             </div>
             <span class="sidebar-nav-badge" id="sidebar-order-badge">Active</span>
-          </button>
-
-          <button type="button" class="sidebar-nav-item" data-panel="wishlist">
-            <div class="sidebar-nav-item-content">
-              <i class="fa-solid fa-heart"></i>
-              <span class="sidebar-nav-label">My Wishlist</span>
-            </div>
-            <span class="sidebar-nav-badge wishlist-counter-badge">3</span>
           </button>
 
           <button type="button" class="sidebar-nav-item" data-panel="reviews">
@@ -117,7 +103,7 @@
           <div class="sidebar-user-avatar">CD</div>
           <div class="sidebar-user-details">
             <span class="sidebar-user-name">Clara Delacroix</span>
-            <span class="sidebar-user-role">Diamond Privilège</span>
+            <span class="sidebar-user-role">Diamond Privil&egrave;ge</span>
           </div>
         </div>
         <button type="button" class="sidebar-btn-logout" title="Sign Out of Sanctuary">
@@ -154,21 +140,7 @@
         </div>
 
         <div class="topbar-right">
-          <!-- Quick Role Switch Pill -->
-          <a href="admin-dashboard.html" class="btn-switch-role" title="Switch to Admin Command View">
-            <i class="fa-solid fa-repeat"></i> <span style="font-size: 0.75rem;">Switch to Admin</span>
-          </a>
 
-          <!-- Theme Palette Customizer Trigger -->
-          <button type="button" class="topbar-icon-btn btn-dash-theme-trigger" id="btn-dash-theme-trigger" title="Change Dashboard Color Palette">
-            <i class="fa-solid fa-palette"></i>
-          </button>
-
-          <!-- Boutique Shopping Bag -->
-          <a href="#" class="topbar-icon-btn header-cart-btn" title="View Shopping Bag">
-            <i class="fa-solid fa-bag-shopping"></i>
-            <span class="topbar-badge-count cart-count-badge">2</span>
-          </a>
 
           <!-- User Chip -->
           <div class="topbar-user-chip">
@@ -196,19 +168,19 @@
             <div class="dash-welcome-inner">
               <div class="dash-welcome-text">
                 <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.6rem; flex-wrap: wrap;">
-                  <span class="badge badge-gold"><i class="fa-solid fa-gem"></i> Diamond Privilège Client</span>
+              <span class="badge badge-gold"><i class="fa-solid fa-gem"></i> Diamond Privil&egrave;ge Client</span>
                   <span style="font-size: 0.72rem; color: var(--accent-gold); font-family: monospace;">MEMBER #EP-89241</span>
                 </div>
-                <h1>Bonjour, <span class="dash-hero-greeting-name">Clara</span> — <em>Your Private Sanctuary</em></h1>
+              <h1>Bonjour, <span class="dash-hero-greeting-name">Clara</span> &mdash; <em>Your Private Sanctuary</em></h1>
                 <p>Welcome back to your Parisian botanical sanctuary. Track your live formulations dispatch, explore saved beauty rituals, and access exclusive salon reservations.</p>
               </div>
               <div class="dash-welcome-actions">
-                <button type="button" class="btn btn-primary" onclick="const p = document.querySelector('[data-panel=\'orders\']'); if (p) p.click();">
+                <button type="button" class="btn btn-primary" onclick="window.location.href='404.html'; return false;">
                   <i class="fa-solid fa-box-open"></i> Track Active Order
                 </button>
-                <a href="services.html" class="btn btn-outline" style="border-color: var(--accent-gold); color: #FFFFFF;">
+                <button type="button" class="btn btn-outline" style="border-color: var(--accent-gold); color: #FFFFFF;" onclick="window.location.href='404.html'; return false;">
                   <i class="fa-solid fa-spa"></i> Book Salon Treatment
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -250,7 +222,7 @@
 
             <div class="dash-metric-card">
               <div class="dash-metric-top">
-                <span class="dash-metric-label">Privilège Points</span>
+              <span class="dash-metric-label">Privil&egrave;ge Points</span>
                 <div class="dash-metric-icon"><i class="fa-solid fa-gem"></i></div>
               </div>
               <div class="dash-metric-val">3,450 <span style="font-size: 0.85rem; font-weight: 500; color: var(--accent-gold);">pts</span></div>
@@ -265,7 +237,7 @@
             <div class="dash-card-header">
               <div class="dash-card-header-left">
                 <h3>Live Order Tracking & Activity</h3>
-                <p>Order #EP-89241 • Dispatched via DHL Express Haute Delivery</p>
+                    <p>Order #EP-89241 &bull; Dispatched via DHL Express Haute Delivery</p>
               </div>
               <span class="status-badge shipped">In Transit</span>
             </div>
@@ -304,22 +276,22 @@
                 <h3>Recommended for Your Skin Profile</h3>
                 <p>Personalized botanical selections tailored to your hydration and radiance goals.</p>
               </div>
-              <a href="index.html#featured-products" class="btn btn-outline btn-sm" style="border-color: var(--accent-gold); color: #FFF;">
+              <button type="button" class="btn btn-outline btn-sm" style="border-color: var(--accent-gold); color: #FFF;" onclick="window.location.href='404.html'; return false;">
                 Browse All Formulations
-              </a>
+              </button>
             </div>
 
             <div class="dash-wishlist-grid">
               <div class="dash-wishlist-card">
                 <div class="dash-wishlist-img-frame">
-                  <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=400&q=80" alt="Elixir de Rose" loading="lazy">
+                  <img src="images/product-elixir-rose.webp" alt="Elixir de Rose" loading="lazy">
                   <span class="badge badge-gold" style="position: absolute; top: 10px; left: 10px;">Bestseller</span>
                 </div>
                 <div class="dash-wishlist-body">
                   <span style="font-size: 0.72rem; color: var(--accent-gold); text-transform: uppercase;">Skincare</span>
                   <h4 class="dash-wishlist-title">Elixir de Rose Radiance Serum</h4>
                   <div class="dash-wishlist-price">$98.00</div>
-                  <button type="button" class="btn btn-primary btn-sm">
+                  <button type="button" class="btn btn-primary btn-sm btn-wishlist-add-cart" onclick="window.location.href='404.html'; return false;">
                     <i class="fa-solid fa-bag-shopping"></i> Add to Bag
                   </button>
                 </div>
@@ -327,14 +299,14 @@
 
               <div class="dash-wishlist-card">
                 <div class="dash-wishlist-img-frame">
-                  <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=400&q=80" alt="Crème Renaissance" loading="lazy">
+                <img src="images/product-creme-renaissance.webp" alt="Cr&egrave;me Renaissance" loading="lazy">
                   <span class="badge badge-gold" style="position: absolute; top: 10px; left: 10px;">Award Winner</span>
                 </div>
                 <div class="dash-wishlist-body">
                   <span style="font-size: 0.72rem; color: var(--accent-gold); text-transform: uppercase;">Face Care</span>
-                  <h4 class="dash-wishlist-title">Crème Renaissance Restorative Face Cream</h4>
+                <h4 class="dash-wishlist-title">Cr&egrave;me Renaissance Restorative Face Cream</h4>
                   <div class="dash-wishlist-price">$125.00</div>
-                  <button type="button" class="btn btn-primary btn-sm">
+                  <button type="button" class="btn btn-primary btn-sm btn-wishlist-add-cart" onclick="window.location.href='404.html'; return false;">
                     <i class="fa-solid fa-bag-shopping"></i> Add to Bag
                   </button>
                 </div>
@@ -342,14 +314,14 @@
 
               <div class="dash-wishlist-card">
                 <div class="dash-wishlist-img-frame">
-                  <img src="https://images.unsplash.com/photo-1608248597359-216a908a8e1b?auto=format&fit=crop&w=400&q=80" alt="Botanical Gold Oil" loading="lazy">
+                  <img src="images/product-botanical-gold.webp" alt="Botanical Gold Oil" loading="lazy">
                   <span class="badge badge-clean" style="position: absolute; top: 10px; left: 10px;">24K Gold</span>
                 </div>
                 <div class="dash-wishlist-body">
                   <span style="font-size: 0.72rem; color: var(--accent-gold); text-transform: uppercase;">Face Care</span>
                   <h4 class="dash-wishlist-title">Botanical Gold Illuminating Facial Oil</h4>
                   <div class="dash-wishlist-price">$110.00</div>
-                  <button type="button" class="btn btn-primary btn-sm">
+                  <button type="button" class="btn btn-primary btn-sm btn-wishlist-add-cart" onclick="window.location.href='404.html'; return false;">
                     <i class="fa-solid fa-bag-shopping"></i> Add to Bag
                   </button>
                 </div>
@@ -405,7 +377,7 @@
               <div class="dash-empty-icon"><i class="fa-solid fa-box-open"></i></div>
               <h4>No Orders Found</h4>
               <p>There are no orders matching the selected filter criteria.</p>
-              <a href="index.html#featured-products" class="btn btn-primary">Discover Formulations</a>
+              <button type="button" class="btn btn-primary" onclick="const p = document.querySelector('[data-panel=\'overview\']'); if (p) p.click();">Discover Formulations</button>
             </div>
           </div>
         </section>
@@ -431,7 +403,7 @@
               <div class="dash-empty-icon"><i class="fa-solid fa-heart"></i></div>
               <h4>Your Wishlist is Empty</h4>
               <p>Save your favourite elixirs and formulations to review and reorder at any time.</p>
-              <a href="index.html#featured-products" class="btn btn-primary">Explore Maison Boutique</a>
+              <button type="button" class="btn btn-primary" onclick="const p = document.querySelector('[data-panel=\'overview\']'); if (p) p.click();">Explore Maison Boutique</button>
             </div>
           </div>
         </section>
@@ -448,7 +420,7 @@
               </div>
               <div style="display: flex; gap: 0.6rem; align-items: center;">
                 <span class="badge badge-gold" id="cust-reviews-count-badge">2 Reviews</span>
-                <button type="button" class="btn btn-primary btn-sm" id="btn-open-add-review-modal">
+                <button type="button" class="btn btn-primary btn-sm" id="btn-open-add-review-modal" onclick="window.location.href='404.html'; return false;">
                   <i class="fa-solid fa-pen"></i> Write a Review
                 </button>
               </div>
@@ -472,7 +444,7 @@
               </div>
               <div style="display: flex; gap: 0.6rem; align-items: center;">
                 <span class="badge badge-gold" id="cust-addresses-count-badge">2 Saved</span>
-                <button type="button" class="btn btn-primary btn-sm" id="btn-open-add-address-modal">
+                <button type="button" class="btn btn-primary btn-sm" id="btn-open-add-address-modal" onclick="window.location.href='404.html'; return false;">
                   <i class="fa-solid fa-plus"></i> Add New Address
                 </button>
               </div>
@@ -494,7 +466,7 @@
                 <h3>Payment Methods & Transaction History</h3>
                 <p>Protected with bank-grade 256-bit encryption. Full card numbers are never stored on client devices.</p>
               </div>
-              <span class="badge badge-gold"><i class="fa-solid fa-shield-halved"></i> PCI-DSS Encrypted</span>
+              <span class="badge badge-gold" role="button" tabindex="0" onclick="window.location.href='404.html'; return false;" style="cursor: pointer;"><i class="fa-solid fa-shield-halved"></i> PCI-DSS Encrypted</span>
             </div>
 
             <!-- Saved Payment Cards -->
@@ -505,7 +477,7 @@
                 </div>
                 <div>
                   <div style="font-weight: 700; color: #FFF; font-size: 0.95rem;">Visa ending in 4821</div>
-                  <div style="font-size: 0.75rem; color: var(--text-muted);">Expires 08/2028 • Default Payment Method</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">Expires 08/2028 &bull; Default Payment Method</div>
                 </div>
               </div>
 
@@ -555,7 +527,7 @@
                 <h3>VIP Client Profile Details</h3>
                 <p>Personalize your client dossier and skincare consultation preferences.</p>
               </div>
-              <span class="badge badge-gold"><i class="fa-solid fa-gem"></i> Diamond Privilège</span>
+              <span class="badge badge-gold"><i class="fa-solid fa-gem"></i> Diamond Privil&egrave;ge</span>
             </div>
 
             <form id="cust-profile-form">
@@ -617,7 +589,7 @@
               <div class="dash-form-row">
                 <div class="dash-form-group">
                   <label for="pass-current" class="dash-form-label">Current Password *</label>
-                  <input type="password" id="pass-current" class="dash-form-control" placeholder="••••••••" required>
+                <input type="password" id="pass-current" class="dash-form-control" placeholder="********" required>
                 </div>
                 <div class="dash-form-group">
                   <label for="pass-new" class="dash-form-label">New Password *</label>
@@ -689,7 +661,7 @@
                 <h4 style="color: #F87171; font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 0.25rem;">Sign Out of Client Sanctuary</h4>
                 <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">End your current secure session on this device.</p>
               </div>
-              <button type="button" class="btn btn-outline" id="btn-logout-settings" style="color: #F87171; border-color: #F87171;">
+              <button type="button" class="btn btn-outline" id="btn-logout-settings" onclick="window.location.href='404.html'; return false;" style="color: #F87171; border-color: #F87171;">
                 <i class="fa-solid fa-power-off"></i> Sign Out
               </button>
             </div>
@@ -743,7 +715,7 @@
       </div>
       <div class="dash-modal-footer">
         <button type="button" class="btn btn-outline btn-sm" data-modal-close>Close</button>
-        <button type="button" class="btn btn-primary btn-sm">
+        <button type="button" class="btn btn-primary btn-sm" data-modal-close>
           <i class="fa-solid fa-file-pdf"></i> Download Invoice
         </button>
       </div>
@@ -763,11 +735,11 @@
             <label for="review-product-select" class="dash-form-label">Select Purchased Formulation *</label>
             <select id="review-product-select" class="dash-form-control" required>
               <option value="1">Elixir de Rose Radiance Serum</option>
-              <option value="2">Crème Renaissance Restorative Face Cream</option>
+              <option value="2">Cr&egrave;me Renaissance Restorative Face Cream</option>
               <option value="3">Velours Rose Hydrating Lip Nectar</option>
               <option value="4">Botanical Gold Illuminating Facial Oil</option>
               <option value="5">Rosewater Essence Balancing Mist</option>
-              <option value="6">Lumière Velvet Matte Lip Couture</option>
+              <option value="6">Lumi&egrave;re Velvet Matte Lip Couture</option>
             </select>
           </div>
 
@@ -818,7 +790,7 @@
 
           <div class="dash-form-group">
             <label for="addr-street" class="dash-form-label">Street Address *</label>
-            <input type="text" id="addr-street" class="dash-form-control" placeholder="e.g. 18 Place Vendôme, Apt 3" required>
+              <input type="text" id="addr-street" class="dash-form-control" placeholder="e.g. 18 Place Vend&ocirc;me, Apt 3" required>
           </div>
 
           <div class="dash-form-row">
@@ -857,7 +829,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="js/products.js"></script>
-  <script src="js/main.js"></script>
   <script src="js/dashboard.js"></script>
 </body>
 </html>

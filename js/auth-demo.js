@@ -1,4 +1,4 @@
-/**
+﻿/**
  * STACKLY - AUTHENTICATION & ROLE SELECTION ENGINE
  * Luxury login & signup interactions with dynamic role selector (Admin & Customer),
  * respective forms, instant demo credentials, and automated redirection to dashboards.
@@ -477,7 +477,7 @@ function initAuthForm() {
         name: displayName,
         email: emailVal,
         title: isAdmin ? 'Maison Director' : 'VIP Client',
-        tier: existingProfile?.tier || 'Diamond Privilège',
+        tier: existingProfile?.tier || 'Diamond Privilege',
         points: existingProfile?.points || 3450,
         loginTime: new Date().toISOString()
       };
@@ -613,8 +613,8 @@ function initAuthForm() {
           name: custName.value.trim(),
           email: custEmail.value.trim(),
           skinFocus: custSkin ? custSkin.value : 'Radiance & Anti-Aging',
-          preferredSalon: custSalon ? custSalon.value : 'Paris Place Vendôme',
-          tier: 'Diamond Privilège',
+          preferredSalon: custSalon ? custSalon.value : 'Paris Place Vendome',
+          tier: 'Diamond Privilege',
           points: 500, // Welcome points
           loginTime: new Date().toISOString()
         };
@@ -696,7 +696,7 @@ function initOAuthAndRecoveryDemos() {
         name: 'Clara Delacroix (Google Verified)',
         email: 'clara.delacroix@gmail.com',
         title: currentLoginRole === 'admin' ? 'Maison Director' : 'VIP Client',
-        tier: 'Diamond Privilège',
+        tier: 'Diamond Privilege',
         points: 3450
       };
 

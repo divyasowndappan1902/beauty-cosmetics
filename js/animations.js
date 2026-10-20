@@ -1040,7 +1040,7 @@ function initBlogPageLuxuryAnimations() {
     }
   }
 
-  // Section 5: Editor’s Selection (Varied entrance directions)
+  // Section 5: Editor's Selection (Varied entrance directions)
   const selectSection = document.querySelector('.blog-selection-section');
   if (selectSection) {
     const largeCard = selectSection.querySelector('.blog-selection-large');
@@ -1259,7 +1259,7 @@ function initContactPageLuxuryAnimations() {
     }
   }
 
-  // Section 2: Get in Touch – Contact Form (Staggered form field entrance)
+  // Section 2: Get in Touch - Contact Form (Staggered form field entrance)
   const formSection = document.querySelector('.contact-form-section');
   if (formSection) {
     const formFields = formSection.querySelectorAll('.contact-form-group, .contact-form-row, .btn-primary, .contact-form-reassurance');

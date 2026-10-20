@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCustomerDashboardFeatures();
   initAdminDashboardFeatures();
   initGlobalDashboardSearch();
+  initDashboardDummyHandler();
 });
 
 /* --------------------------------------------------------------------------
@@ -45,12 +46,12 @@ function initDefaultStore() {
           description: p.description || p.tagline || 'Parisian botanical formulation crafted with pure cold-pressed elixirs.'
         }))
       : [
-          { id: 1, name: 'Elixir de Rose Radiance Serum', category: 'Skincare', price: 98.00, stock: 24, rating: 4.9, reviewsCount: 148, image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=400&q=80', description: 'Concentrated Damascus Rose & Multi-Molecular Hyaluronic Acid.' },
-          { id: 2, name: 'Crème Renaissance Face Cream', category: 'Face Care', price: 125.00, stock: 18, rating: 5.0, reviewsCount: 192, image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=400&q=80', description: 'Velvety Rich Barrier Repair with Alpine Edelweiss & Ceramide Complex.' },
-          { id: 3, name: 'Velours Rose Lip Nectar', category: 'Lip Care', price: 42.00, stock: 35, rating: 4.8, reviewsCount: 86, image: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=400&q=80', description: 'Glossy Plumping Treatment with Peptide-Infused Marula Oil.' },
-          { id: 4, name: 'Botanical Gold Facial Oil', category: 'Face Care', price: 110.00, stock: 12, rating: 4.9, reviewsCount: 115, image: 'https://images.unsplash.com/photo-1608248597359-216a908a8e1b?auto=format&fit=crop&w=400&q=80', description: '24K Gold Micro-Flakes with 16 Cold-Pressed Plant Elixirs.' },
-          { id: 5, name: 'Rosewater Essence Balancing Mist', category: 'Skincare', price: 56.00, stock: 28, rating: 4.7, reviewsCount: 64, image: 'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=400&q=80', description: 'Artisanal Steam-Distilled Rose Petals with Witch Hazel & Aloe.' },
-          { id: 6, name: 'Lumière Velvet Matte Lip Couture', category: 'Makeup', price: 48.00, stock: 4, rating: 4.9, reviewsCount: 78, image: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=400&q=80', description: 'Weightless Longwear Lipstick in Parisian Rose.' }
+          { id: 1, name: 'Elixir de Rose Radiance Serum', category: 'Skincare', price: 98.00, stock: 24, rating: 4.9, reviewsCount: 148, image: 'images/product-elixir-rose.webp', description: 'Concentrated Damascus Rose & Multi-Molecular Hyaluronic Acid.' },
+  { id: 2, name: 'Creme Renaissance Face Cream', category: 'Face Care', price: 125.00, stock: 18, rating: 5.0, reviewsCount: 192, image: 'images/product-creme-renaissance.webp', description: 'Velvety Rich Barrier Repair with Alpine Edelweiss & Ceramide Complex.' },
+          { id: 3, name: 'Velours Rose Lip Nectar', category: 'Lip Care', price: 42.00, stock: 35, rating: 4.8, reviewsCount: 86, image: 'images/product-lip-nectar.webp', description: 'Glossy Plumping Treatment with Peptide-Infused Marula Oil.' },
+          { id: 4, name: 'Botanical Gold Facial Oil', category: 'Face Care', price: 110.00, stock: 12, rating: 4.9, reviewsCount: 115, image: 'images/product-botanical-gold.webp', description: '24K Gold Micro-Flakes with 16 Cold-Pressed Plant Elixirs.' },
+          { id: 5, name: 'Rosewater Essence Balancing Mist', category: 'Skincare', price: 56.00, stock: 28, rating: 4.7, reviewsCount: 64, image: 'images/product-eye-concentrate.webp', description: 'Artisanal Steam-Distilled Rose Petals with Witch Hazel & Aloe.' },
+  { id: 6, name: 'Lumiere Velvet Matte Lip Couture', category: 'Makeup', price: 48.00, stock: 4, rating: 4.9, reviewsCount: 78, image: 'images/cat-makeup.webp', description: 'Weightless Longwear Lipstick in Parisian Rose.' },
         ];
     localStorage.setItem('letoile_products', JSON.stringify(initialProducts));
   }
@@ -64,15 +65,15 @@ function initDefaultStore() {
         customerName: 'Clara Delacroix',
         customerEmail: 'clara.delacroix@example.com',
         items: [
-          { id: 1, name: 'Elixir de Rose Radiance Serum', price: 98.00, qty: 1, image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=400&q=80' },
-          { id: 3, name: 'Velours Rose Lip Nectar', price: 42.00, qty: 1, image: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=400&q=80' }
+          { id: 1, name: 'Elixir de Rose Radiance Serum', price: 98.00, qty: 1, image: 'images/product-elixir-rose.webp' },
+          { id: 3, name: 'Velours Rose Lip Nectar', price: 42.00, qty: 1, image: 'images/product-lip-nectar.webp' }
         ],
         total: 140.00,
         status: 'Shipped',
         trackingNumber: 'FR-EXP-89021-PARIS',
         carrier: 'DHL Express Haute Delivery',
         estimatedDelivery: 'Oct 17, 2026',
-        paymentMethod: 'Visa •••• 4821',
+    paymentMethod: 'Visa **** 4821',
         paymentStatus: 'Paid',
         txnRef: 'TXN-PARIS-89241',
         shippingAddress: '14 Rue de Rivoli, Apt 4B, 75001 Paris, France'
@@ -83,12 +84,12 @@ function initDefaultStore() {
         customerName: 'Clara Delacroix',
         customerEmail: 'clara.delacroix@example.com',
         items: [
-          { id: 2, name: 'Crème Renaissance Face Cream', price: 125.00, qty: 1, image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=400&q=80' }
+      { id: 2, name: 'Creme Renaissance Face Cream', price: 125.00, qty: 1, image: 'images/product-creme-renaissance.webp' }
         ],
         total: 125.00,
         status: 'Delivered',
         trackingNumber: 'FR-EXP-88914-PARIS',
-        carrier: 'La Poste Colissimo Privilège',
+    carrier: 'La Poste Colissimo Privilege',
         estimatedDelivery: 'Oct 13, 2026',
         paymentMethod: 'Apple Pay',
         paymentStatus: 'Paid',
@@ -98,17 +99,17 @@ function initDefaultStore() {
       {
         id: 'EP-89239',
         date: 'Sep 28, 2026',
-        customerName: 'Élodie Fontaine',
+    customerName: 'Elodie Fontaine',
         customerEmail: 'elodie.fontaine@example.com',
         items: [
-          { id: 4, name: 'Botanical Gold Facial Oil', price: 110.00, qty: 2, image: 'https://images.unsplash.com/photo-1608248597359-216a908a8e1b?auto=format&fit=crop&w=400&q=80' }
+          { id: 4, name: 'Botanical Gold Facial Oil', price: 110.00, qty: 2, image: 'images/product-botanical-gold.webp' }
         ],
         total: 220.00,
         status: 'Delivered',
         trackingNumber: 'FR-EXP-88742-PARIS',
         carrier: 'DHL Express Haute Delivery',
         estimatedDelivery: 'Oct 01, 2026',
-        paymentMethod: 'Mastercard •••• 1092',
+    paymentMethod: 'Mastercard **** 1092',
         paymentStatus: 'Paid',
         txnRef: 'TXN-PARIS-89239',
         shippingAddress: '28 Boulevard Saint-Germain, 75005 Paris, France'
@@ -119,15 +120,15 @@ function initDefaultStore() {
         customerName: 'Margaux Laurent',
         customerEmail: 'margaux.l@example.com',
         items: [
-          { id: 5, name: 'Rosewater Essence Balancing Mist', price: 56.00, qty: 1, image: 'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=400&q=80' },
-          { id: 6, name: 'Lumière Velvet Matte Lip Couture', price: 48.00, qty: 1, image: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=400&q=80' }
+          { id: 5, name: 'Rosewater Essence Balancing Mist', price: 56.00, qty: 1, image: 'images/product-eye-concentrate.webp' },
+      { id: 6, name: 'Lumiere Velvet Matte Lip Couture', price: 48.00, qty: 1, image: 'images/cat-makeup.webp' }
         ],
         total: 104.00,
         status: 'Processing',
         trackingNumber: 'FR-EXP-88610-PARIS',
         carrier: 'Atelier Private Courier',
         estimatedDelivery: 'Oct 19, 2026',
-        paymentMethod: 'Visa •••• 9921',
+    paymentMethod: 'Visa **** 9921',
         paymentStatus: 'Paid',
         txnRef: 'TXN-PARIS-89238',
         shippingAddress: '9 Avenue Montaigne, 75008 Paris, France'
@@ -138,7 +139,7 @@ function initDefaultStore() {
         customerName: 'Camille Dupont',
         customerEmail: 'camille.d@example.com',
         items: [
-          { id: 1, name: 'Elixir de Rose Radiance Serum', price: 98.00, qty: 1, image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=400&q=80' }
+          { id: 1, name: 'Elixir de Rose Radiance Serum', price: 98.00, qty: 1, image: 'images/product-elixir-rose.webp' }
         ],
         total: 98.00,
         status: 'Cancelled',
@@ -168,7 +169,7 @@ function initDefaultStore() {
         productName: 'Elixir de Rose Radiance Serum',
         rating: 5,
         headline: 'Sublime glow that lasts all day',
-        text: 'The Damascus Rose infusion gave my skin an immediate supple bounce. Highly recommend pairing with Crème Renaissance for winter.',
+    text: 'The Damascus Rose infusion gave my skin an immediate supple bounce. Highly recommend pairing with Creme Renaissance for winter.',
         date: 'Oct 12, 2026',
         verified: true,
         status: 'Approved'
@@ -176,7 +177,7 @@ function initDefaultStore() {
       {
         id: 'REV-102',
         productId: 2,
-        productName: 'Crème Renaissance Face Cream',
+    productName: 'Creme Renaissance Face Cream',
         rating: 5,
         headline: 'Cashmere texture that transforms dry skin',
         text: 'An indispensable barrier repair cream. The texture melts in like velvet and does not pill under makeup.',
@@ -203,7 +204,7 @@ function initDefaultStore() {
       },
       {
         id: 'ADDR-2',
-        name: 'Clara Delacroix (Villa Côte d’Azur)',
+    name: "Clara Delacroix (Villa Cote d'Azur)",
         street: '27 Promenade des Anglais',
         city: 'Nice',
         postalCode: '06000',
@@ -230,11 +231,11 @@ function initDefaultStore() {
   // 7. Customers
   if (!localStorage.getItem('letoile_customers')) {
     const initialCustomers = [
-      { id: 'CUST-1', name: 'Clara Delacroix', email: 'clara.delacroix@example.com', tier: 'Diamond Privilège', orders: 12, spent: 1480.00, joined: 'Jan 2025', status: 'VIP' },
-      { id: 'CUST-2', name: 'Élodie Fontaine', email: 'elodie.fontaine@example.com', tier: 'Gold Couture', orders: 6, spent: 840.00, joined: 'Mar 2025', status: 'Active' },
+  { id: 'CUST-1', name: 'Clara Delacroix', email: 'clara.delacroix@example.com', tier: 'Diamond Privilege', orders: 12, spent: 1480.00, joined: 'Jan 2025', status: 'VIP' },
+  { id: 'CUST-2', name: 'Elodie Fontaine', email: 'elodie.fontaine@example.com', tier: 'Gold Couture', orders: 6, spent: 840.00, joined: 'Mar 2025', status: 'Active' },
       { id: 'CUST-3', name: 'Margaux Laurent', email: 'margaux.l@example.com', tier: 'Gold Couture', orders: 5, spent: 720.00, joined: 'May 2025', status: 'Active' },
       { id: 'CUST-4', name: 'Camille Dupont', email: 'camille.d@example.com', tier: 'Silver Stackly', orders: 2, spent: 290.00, joined: 'Aug 2025', status: 'Active' },
-      { id: 'CUST-5', name: 'Sébastien Moreau', email: 's.moreau@example.com', tier: 'Diamond Privilège', orders: 15, spent: 2150.00, joined: 'Nov 2024', status: 'VIP' }
+  { id: 'CUST-5', name: 'Sebastien Moreau', email: 's.moreau@example.com', tier: 'Diamond Privilege', orders: 15, spent: 2150.00, joined: 'Nov 2024', status: 'VIP' }
     ];
     localStorage.setItem('letoile_customers', JSON.stringify(initialCustomers));
   }
@@ -242,9 +243,9 @@ function initDefaultStore() {
   // 8. Messages
   if (!localStorage.getItem('letoile_messages')) {
     const initialMessages = [
-      { id: 'MSG-9021', name: 'Geneviève Renaud', email: 'g.renaud@example.com', subject: 'Custom Parisian Regimen for Sensitive Skin', enquiry: 'product', message: 'Bonjour, I would like to know if the Elixir de Rose is suitable for rosacea-prone skin or if I should begin with Crème Renaissance first.', date: 'Oct 14, 2026', read: false },
+  { id: 'MSG-9021', name: 'Genevieve Renaud', email: 'g.renaud@example.com', subject: 'Custom Parisian Regimen for Sensitive Skin', enquiry: 'product', message: 'Bonjour, I would like to know if the Elixir de Rose is suitable for rosacea-prone skin or if I should begin with Creme Renaissance first.', date: 'Oct 14, 2026', read: false },
       { id: 'MSG-9020', name: 'Marc Vaugirard', email: 'marc.v@example.com', subject: 'Courier Tracking on Luxury Gift Flacon', enquiry: 'order', message: 'Hello Concierge, I placed order #EP-89240 and requested signature gift wrapping. Could you confirm delivery timeline for Saturday?', date: 'Oct 13, 2026', read: true },
-      { id: 'MSG-9019', name: 'Hélène Bonnet', email: 'helene@vogue-paris.fr', subject: 'Editorial Feature in Vogue Beauté Fall Edition', enquiry: 'press', message: 'We are preparing our November botanical formulations spread and would love high-resolution asset previews of the 24K Botanical Gold Oil.', date: 'Oct 11, 2026', read: true }
+  { id: 'MSG-9019', name: 'Helene Bonnet', email: 'helene@vogue-paris.fr', subject: 'Editorial Feature in Vogue Beaute Fall Edition', enquiry: 'press', message: 'We are preparing our November botanical formulations spread and would love high-resolution asset previews of the 24K Botanical Gold Oil.', date: 'Oct 11, 2026', read: true },
     ];
     localStorage.setItem('letoile_messages', JSON.stringify(initialMessages));
   }
@@ -252,9 +253,9 @@ function initDefaultStore() {
   // 9. Blog Articles
   if (!localStorage.getItem('letoile_blogs')) {
     const initialBlogs = [
-      { id: 'BLOG-1', title: 'The Alchemy of Cold-Pressed Botanical Elixirs', category: 'Ingredients & Science', author: 'Dr. Vivienne Moreau', date: 'Oct 10, 2026', status: 'Published', views: '2,420', excerpt: 'How low-temperature extraction preserves volatile flavonoids, cellular lipids, and enzymatic vitality for unprecedented radiance.', image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=800&q=80' },
-      { id: 'BLOG-2', title: 'Winter Barrier Architecture: Edelweiss Stem Cells', category: 'Skincare', author: 'Élise Gautier', date: 'Sep 28, 2026', status: 'Published', views: '1,890', excerpt: 'Deep-dive into biocompatible ceramides and alpine antioxidants that shield vulnerable complexions against sub-zero dehydration.', image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80' },
-      { id: 'BLOG-3', title: 'Mindful Evening Rhythms: The Parisian Ritual', category: 'Self-Care Rituals', author: 'Clara Delacroix', date: 'Sep 14, 2026', status: 'Draft', views: '0', excerpt: 'Elevating evening skincare from a routine chore into a quiet sanctuary of sensory intention and lymphatic massage.', image: 'https://images.unsplash.com/photo-1512290900672-1f4864388835?auto=format&fit=crop&w=800&q=80' }
+      { id: 'BLOG-1', title: 'The Alchemy of Cold-Pressed Botanical Elixirs', category: 'Ingredients & Science', author: 'Dr. Vivienne Moreau', date: 'Oct 10, 2026', status: 'Published', views: '2,420', excerpt: 'How low-temperature extraction preserves volatile flavonoids, cellular lipids, and enzymatic vitality for unprecedented radiance.', image: 'images/services-hero.webp' },
+  { id: 'BLOG-2', title: 'Winter Barrier Architecture: Edelweiss Stem Cells', category: 'Skincare', author: 'Elise Gautier', date: 'Sep 28, 2026', status: 'Published', views: '1,890', excerpt: 'Deep-dive into biocompatible ceramides and alpine antioxidants that shield vulnerable complexions against sub-zero dehydration.', image: 'images/product-creme-renaissance.webp' },
+      { id: 'BLOG-3', title: 'Mindful Evening Rhythms: The Parisian Ritual', category: 'Self-Care Rituals', author: 'Clara Delacroix', date: 'Sep 14, 2026', status: 'Draft', views: '0', excerpt: 'Elevating evening skincare from a routine chore into a quiet sanctuary of sensory intention and lymphatic massage.', image: 'images/cat-skincare.webp' }
     ];
     localStorage.setItem('letoile_blogs', JSON.stringify(initialBlogs));
   }
@@ -280,7 +281,7 @@ function initDashboardRoleAndUser() {
       name: isAdminPage ? 'Laurent Vaneau' : 'Clara Delacroix',
       email: isAdminPage ? 'laurent.vaneau@stackly.com' : 'clara.delacroix@example.com',
       title: isAdminPage ? 'Maison Director' : 'VIP Client',
-      tier: 'Diamond Privilège',
+    tier: 'Diamond Privilege',
       points: 3450
     };
     localStorage.setItem('letoile_user', JSON.stringify(storedUser));
@@ -290,17 +291,25 @@ function initDashboardRoleAndUser() {
   const userInitials = (storedUser.name || 'CD').split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
   document.querySelectorAll('.sidebar-user-avatar, .topbar-user-initials').forEach(el => el.textContent = userInitials);
   document.querySelectorAll('.sidebar-user-name, .topbar-user-name').forEach(el => el.textContent = storedUser.name);
-  document.querySelectorAll('.sidebar-user-role, .topbar-user-role').forEach(el => el.textContent = storedUser.title || (storedUser.role === 'admin' ? 'Maison Director' : 'Diamond Privilège'));
+  document.querySelectorAll('.sidebar-user-role, .topbar-user-role').forEach(el => el.textContent = storedUser.title || (storedUser.role === 'admin' ? 'Maison Director' : 'Diamond Privilege'));
   document.querySelectorAll('.dash-hero-greeting-name').forEach(el => el.textContent = storedUser.name.split(' ')[0]);
 
   // Logout Listeners
-  document.querySelectorAll('.sidebar-btn-logout, .btn-topbar-logout, .btn-dash-logout, #btn-logout-settings').forEach(btn => {
+  document.querySelectorAll('.sidebar-btn-logout, .btn-topbar-logout, .btn-dash-logout').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       localStorage.removeItem('letoile_user');
       window.location.href = 'login.html';
     });
   });
+
+  const settingsLogoutBtn = document.querySelector('#btn-logout-settings');
+  if (settingsLogoutBtn) {
+    settingsLogoutBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = '404.html';
+    });
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -310,6 +319,7 @@ function initSidebarNavigation() {
   const sidebar = document.querySelector('#dashboard-sidebar');
   const backdrop = document.querySelector('#sidebar-backdrop');
   const toggleBtn = document.querySelector('#sidebar-toggle-btn');
+  const closeBtn = document.querySelector('#sidebar-close-btn');
   const navItems = document.querySelectorAll('.sidebar-nav-item');
   const panels = document.querySelectorAll('.dash-panel');
   const breadcrumbSection = document.querySelector('#topbar-current-section');
@@ -317,7 +327,8 @@ function initSidebarNavigation() {
 
   // Mobile sidebar drawer toggles
   if (toggleBtn && sidebar && backdrop) {
-    toggleBtn.addEventListener('click', () => {
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
       sidebar.classList.toggle('open');
       backdrop.classList.toggle('active');
     });
@@ -327,6 +338,22 @@ function initSidebarNavigation() {
       backdrop.classList.remove('active');
     });
   }
+
+  // Mobile sidebar close button
+  if (closeBtn && sidebar && backdrop) {
+    closeBtn.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      backdrop.classList.remove('active');
+    });
+  }
+
+  // Close mobile drawer on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sidebar && sidebar.classList.contains('open')) {
+      sidebar.classList.remove('open');
+      backdrop?.classList.remove('active');
+    }
+  });
 
   // Switch Panel Helper
   const activatePanel = (panelId, itemText) => {
@@ -369,15 +396,33 @@ function initSidebarNavigation() {
     }
   };
 
-  // Bind clicks
+  // Expose globally for quick actions
+  window.switchDashboardPanel = activatePanel;
+
+  // Bind clicks on sidebar nav buttons
   navItems.forEach(item => {
     item.addEventListener('click', (e) => {
       e.preventDefault();
+      e.stopPropagation();
       const panelId = item.getAttribute('data-panel');
       const itemTitle = item.querySelector('.sidebar-nav-label')?.textContent.trim() || panelId;
       activatePanel(panelId, itemTitle);
       history.replaceState(null, '', `#${panelId}`);
     });
+  });
+
+  // Delegated handler for in-panel quick switch triggers
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('[data-switch-panel]');
+    if (trigger) {
+      e.preventDefault();
+      e.stopPropagation();
+      const panelId = trigger.getAttribute('data-switch-panel');
+      const matchingItem = Array.from(navItems).find(i => i.getAttribute('data-panel') === panelId);
+      const itemTitle = matchingItem?.querySelector('.sidebar-nav-label')?.textContent.trim() || panelId;
+      activatePanel(panelId, itemTitle);
+      history.replaceState(null, '', `#${panelId}`);
+    }
   });
 
   // Check URL hash on load
@@ -389,6 +434,18 @@ function initSidebarNavigation() {
       activatePanel(currentHash, itemTitle);
     }
   }
+
+  // Handle browser back/forward history navigation
+  window.addEventListener('hashchange', () => {
+    const hash = window.location.hash.replace('#', '');
+    if (hash) {
+      const matchingItem = Array.from(navItems).find(i => i.getAttribute('data-panel') === hash);
+      if (matchingItem) {
+        const itemTitle = matchingItem.querySelector('.sidebar-nav-label')?.textContent.trim() || hash;
+        activatePanel(hash, itemTitle);
+      }
+    }
+  });
 }
 
 /* --------------------------------------------------------------------------
@@ -437,7 +494,7 @@ function renderCustomerOrders(filterStatus = 'all') {
       <td>${order.date}</td>
       <td>
         <div style="display: flex; align-items: center; gap: 0.75rem;">
-          <img src="${order.items[0]?.image || 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=80&q=80'}" alt="${order.items[0]?.name}" style="width: 36px; height: 36px; border-radius: var(--radius-xs); object-fit: cover;">
+          <img src="${order.items[0]?.image || 'images/product-elixir-rose.webp'}" alt="${order.items[0]?.name}" style="width: 36px; height: 36px; border-radius: var(--radius-xs); object-fit: cover;">
           <div>
             <div style="font-weight: 600; font-size: 0.88rem;">${order.items[0]?.name}</div>
             <div style="font-size: 0.74rem; color: var(--text-muted);">${order.items.length > 1 ? `+${order.items.length - 1} additional item(s)` : 'Single Formulation'}</div>
@@ -514,7 +571,7 @@ function openOrderDetailsModal(orderId) {
           <img src="${item.image}" alt="${item.name}" style="width: 44px; height: 44px; border-radius: var(--radius-xs); object-fit: cover;">
           <div>
             <div style="font-weight: 600; font-size: 0.9rem;">${item.name}</div>
-            <div style="font-size: 0.76rem; color: var(--text-muted);">Qty: ${item.qty} × $${item.price.toFixed(2)}</div>
+      <div style="font-size: 0.76rem; color: var(--text-muted);">Qty: ${item.qty} &times; $${item.price.toFixed(2)}</div>
           </div>
         </div>
         <strong>$${(item.qty * item.price).toFixed(2)}</strong>
@@ -560,10 +617,10 @@ function renderCustomerWishlist() {
         <h4 class="dash-wishlist-title">${p.name}</h4>
         <div class="dash-wishlist-price">$${p.price.toFixed(2)}</div>
         <div class="dash-wishlist-actions">
-          <button type="button" class="btn btn-primary btn-sm btn-wishlist-add-cart" data-id="${p.id}" style="flex: 1;">
+          <button type="button" class="btn btn-primary btn-sm btn-wishlist-add-cart" onclick="window.location.href='404.html'; return false;" data-id="${p.id}" style="flex: 1;">
             <i class="fa-solid fa-bag-shopping"></i> Add to Bag
           </button>
-          <button type="button" class="btn-action-icon btn-wishlist-remove" data-id="${p.id}" title="Remove from Wishlist">
+          <button type="button" class="btn-action-icon btn-wishlist-remove" onclick="window.location.href='404.html'; return false;" data-id="${p.id}" title="Remove from Wishlist">
             <i class="fa-solid fa-trash-can"></i>
           </button>
         </div>
@@ -573,23 +630,17 @@ function renderCustomerWishlist() {
 
   // Add to Bag from Wishlist
   grid.querySelectorAll('.btn-wishlist-add-cart').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const pid = parseInt(btn.getAttribute('data-id'));
-      const product = allProducts.find(p => p.id === pid);
-      if (product && typeof addToCart === 'function') {
-        addToCart(product, 1);
-      }
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = '404.html';
     });
   });
 
   // Remove from Wishlist
   grid.querySelectorAll('.btn-wishlist-remove').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const pid = parseInt(btn.getAttribute('data-id'));
-      let ids = JSON.parse(localStorage.getItem('letoile_wishlist') || '[]');
-      ids = ids.filter(id => id !== pid);
-      localStorage.setItem('letoile_wishlist', JSON.stringify(ids));
-      renderCustomerWishlist();
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = '404.html';
     });
   });
 }
@@ -621,24 +672,21 @@ function renderCustomerReviews() {
         </div>
         <div style="display: flex; align-items: center; gap: 0.6rem;">
           <span class="badge badge-gold"><i class="fa-solid fa-circle-check"></i> Verified Client</span>
-          <button type="button" class="btn-action-icon btn-delete-review" data-id="${rev.id}" title="Delete Review">
+          <button type="button" class="btn-action-icon btn-delete-review" onclick="window.location.href='404.html'; return false;" data-id="${rev.id}" title="Delete Review">
             <i class="fa-solid fa-trash-can"></i>
           </button>
         </div>
       </div>
-      <p style="font-size: 0.95rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.4rem;">“${rev.headline}”</p>
+    <p style="font-size: 0.95rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.4rem;">&ldquo;${rev.headline}&rdquo;</p>
       <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">${rev.text}</p>
     </div>
   `).join('');
 
   // Delete review handler
   list.querySelectorAll('.btn-delete-review').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const rid = btn.getAttribute('data-id');
-      let revs = JSON.parse(localStorage.getItem('letoile_reviews') || '[]');
-      revs = revs.filter(r => r.id !== rid);
-      localStorage.setItem('letoile_reviews', JSON.stringify(revs));
-      renderCustomerReviews();
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = '404.html';
     });
   });
 }
@@ -667,8 +715,8 @@ function renderCustomerAddresses() {
         <p style="font-size: 0.82rem; color: var(--text-muted);"><i class="fa-solid fa-phone" style="font-size: 0.75rem;"></i> ${addr.phone}</p>
       </div>
       <div style="display: flex; gap: 0.5rem; margin-top: 1.2rem; border-top: 1px solid rgba(229, 163, 153, 0.12); padding-top: 1rem;">
-        ${!addr.isDefault ? `<button type="button" class="btn btn-outline btn-sm btn-set-default-address" data-id="${addr.id}">Set Default</button>` : ''}
-        <button type="button" class="btn btn-outline btn-sm btn-delete-address" data-id="${addr.id}" style="color: #F87171; border-color: rgba(248, 113, 113, 0.3);">
+        ${!addr.isDefault ? `<button type="button" class="btn btn-outline btn-sm btn-set-default-address" onclick="window.location.href='404.html'; return false;" data-id="${addr.id}">Set Default</button>` : ''}
+        <button type="button" class="btn btn-outline btn-sm btn-delete-address" onclick="window.location.href='404.html'; return false;" data-id="${addr.id}" style="color: #F87171; border-color: rgba(248, 113, 113, 0.3);">
           <i class="fa-solid fa-trash-can"></i> Remove
         </button>
       </div>
@@ -677,27 +725,17 @@ function renderCustomerAddresses() {
 
   // Set default address
   grid.querySelectorAll('.btn-set-default-address').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const aid = btn.getAttribute('data-id');
-      const addrs = JSON.parse(localStorage.getItem('letoile_addresses') || '[]');
-      addrs.forEach(a => a.isDefault = (a.id === aid));
-      localStorage.setItem('letoile_addresses', JSON.stringify(addrs));
-      renderCustomerAddresses();
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = '404.html';
     });
   });
 
   // Delete address
   grid.querySelectorAll('.btn-delete-address').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const aid = btn.getAttribute('data-id');
-      let addrs = JSON.parse(localStorage.getItem('letoile_addresses') || '[]');
-      if (addrs.length <= 1) {
-        return;
-      }
-      addrs = addrs.filter(a => a.id !== aid);
-      if (!addrs.some(a => a.isDefault)) addrs[0].isDefault = true;
-      localStorage.setItem('letoile_addresses', JSON.stringify(addrs));
-      renderCustomerAddresses();
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = '404.html';
     });
   });
 }
@@ -714,16 +752,23 @@ function renderCustomerPayments() {
       <td><strong>${ord.id}</strong></td>
       <td>${ord.date}</td>
       <td><span style="font-family: monospace; font-size: 0.85rem; color: var(--accent-gold);">${ord.txnRef || 'TXN-PARIS-' + ord.id}</span></td>
-      <td>${ord.paymentMethod || 'Visa •••• 4821'}</td>
+      <td>${ord.paymentMethod || 'Visa **** 4821'}</td>
       <td><strong>$${ord.total.toFixed(2)}</strong></td>
       <td><span class="status-badge ${ord.paymentStatus === 'Paid' ? 'optimal' : 'cancelled'}">${ord.paymentStatus}</span></td>
       <td>
-        <button type="button" class="btn btn-outline btn-sm">
+        <button type="button" class="btn btn-outline btn-sm btn-customer-receipt" onclick="window.location.href='404.html'; return false;">
           <i class="fa-solid fa-receipt"></i> Receipt
         </button>
       </td>
     </tr>
   `).join('');
+
+  tbody.querySelectorAll('.btn-customer-receipt').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = '404.html';
+    });
+  });
 }
 
 // 4.6 Profile Form
@@ -819,10 +864,13 @@ function initCustomerModals() {
   // Open Add Review Modal
   const openReviewBtn = document.querySelector('#btn-open-add-review-modal');
   const reviewModal = document.querySelector('#modal-add-review');
-  if (openReviewBtn && reviewModal) {
-    openReviewBtn.addEventListener('click', () => {
-      reviewModal.classList.add('active');
+  if (openReviewBtn) {
+    openReviewBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = '404.html';
     });
+  }
+  if (reviewModal) {
 
     // Star selection
     let selectedRating = 5;
@@ -880,11 +928,13 @@ function initCustomerModals() {
   // Open Add Address Modal
   const openAddressBtn = document.querySelector('#btn-open-add-address-modal');
   const addressModal = document.querySelector('#modal-add-address');
-  if (openAddressBtn && addressModal) {
-    openAddressBtn.addEventListener('click', () => {
-      addressModal.classList.add('active');
+  if (openAddressBtn) {
+    openAddressBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = '404.html';
     });
-
+  }
+  if (addressModal) {
     const addressForm = addressModal.querySelector('#add-address-form');
     if (addressForm) {
       addressForm.addEventListener('submit', (e) => {
@@ -1088,7 +1138,7 @@ function renderAdminCategories() {
         </div>
         <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">${cat.desc}</p>
         <div style="display: flex; gap: 0.5rem; justify-content: flex-end;">
-          <button type="button" class="btn btn-outline btn-sm btn-delete-category" data-slug="${cat.slug}" data-count="${assignedCount}" style="color: #F87171; border-color: rgba(248, 113, 113, 0.3);">
+          <button type="button" class="btn btn-outline btn-sm btn-delete-category" onclick="window.location.href='404.html'; return false;" data-slug="${cat.slug}" data-count="${assignedCount}" style="color: #F87171; border-color: rgba(248, 113, 113, 0.3);">
             <i class="fa-solid fa-trash-can"></i> Remove
           </button>
         </div>
@@ -1098,16 +1148,9 @@ function renderAdminCategories() {
 
   // Delete Category with safe guard
   container.querySelectorAll('.btn-delete-category').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const slug = btn.getAttribute('data-slug');
-      const count = parseInt(btn.getAttribute('data-count'));
-      if (count > 0) {
-        return;
-      }
-      let cats = JSON.parse(localStorage.getItem('letoile_categories') || '[]');
-      cats = cats.filter(c => c.slug !== slug);
-      localStorage.setItem('letoile_categories', JSON.stringify(cats));
-      renderAdminCategories();
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = '404.html';
     });
   });
 }
@@ -1145,7 +1188,7 @@ function renderAdminOrdersTable(statusFilter = 'all', searchKeyword = '') {
         </select>
       </td>
       <td>
-        <button type="button" class="btn btn-outline btn-sm btn-admin-order-inspect" data-id="${o.id}">
+        <button type="button" class="btn btn-outline btn-sm btn-admin-order-inspect" onclick="window.location.href='404.html'; return false;" data-id="${o.id}">
           <i class="fa-solid fa-eye"></i> View
         </button>
       </td>
@@ -1168,9 +1211,9 @@ function renderAdminOrdersTable(statusFilter = 'all', searchKeyword = '') {
 
   // Inspect order details
   tbody.querySelectorAll('.btn-admin-order-inspect').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const oid = btn.getAttribute('data-id');
-      openAdminOrderModal(oid);
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = '404.html';
     });
   });
 
@@ -1224,7 +1267,7 @@ function openAdminOrderModal(orderId) {
       <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 0; border-bottom: 1px solid rgba(229, 163, 153, 0.1);">
         <div>
           <strong>${item.name}</strong>
-          <div style="font-size: 0.74rem; color: var(--text-muted);">Qty: ${item.qty} × $${item.price.toFixed(2)}</div>
+      <div style="font-size: 0.74rem; color: var(--text-muted);">Qty: ${item.qty} &times; $${item.price.toFixed(2)}</div>
         </div>
         <strong>$${(item.qty * item.price).toFixed(2)}</strong>
       </div>
@@ -1261,7 +1304,7 @@ function renderAdminCustomersTable(searchTerm = '') {
       <td><strong>$${c.spent.toFixed(2)}</strong></td>
       <td>${c.joined}</td>
       <td>
-        <button type="button" class="btn btn-outline btn-sm btn-inspect-cust" data-id="${c.id}">
+        <button type="button" class="btn btn-outline btn-sm btn-inspect-cust" onclick="window.location.href='404.html'; return false;" data-id="${c.id}">
           Dossier
         </button>
       </td>
@@ -1270,12 +1313,9 @@ function renderAdminCustomersTable(searchTerm = '') {
 
   // Inspect customer dossier
   tbody.querySelectorAll('.btn-inspect-cust').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const cid = btn.getAttribute('data-id');
-      const cust = customers.find(c => c.id === cid);
-      if (cust) {
-        console.log(`VIP CLIENT DOSSIER - Name: ${cust.name}, Tier: ${cust.tier}, Orders: ${cust.orders}, Spent: $${cust.spent.toFixed(2)}`);
-      }
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = '404.html';
     });
   });
 
@@ -1481,7 +1521,7 @@ function renderAdminBlogTable() {
         if (modal) {
           modal.querySelector('#preview-blog-title').textContent = blg.title;
           modal.querySelector('#preview-blog-cat').textContent = blg.category;
-          modal.querySelector('#preview-blog-author').textContent = `By ${blg.author} • ${blg.date}`;
+    modal.querySelector('#preview-blog-author').textContent = `By ${blg.author} &bull; ${blg.date}`;
           modal.querySelector('#preview-blog-img').src = blg.image;
           modal.querySelector('#preview-blog-body').textContent = blg.excerpt || 'Full editorial article preview in Stackly Journal.';
           modal.classList.add('active');
@@ -1570,21 +1610,9 @@ function renderAdminReports() {
   const exportBtn = document.querySelector('#btn-admin-export-csv');
   if (exportBtn && !exportBtn.dataset.bound) {
     exportBtn.dataset.bound = 'true';
-    exportBtn.addEventListener('click', () => {
-      let csvContent = 'data:text/csv;charset=utf-8,';
-      csvContent += 'Order ID,Date,Customer,Total,Status,Payment Method,Transaction Reference\n';
-
-      orders.forEach(o => {
-        csvContent += `"${o.id}","${o.date}","${o.customerName}","${o.total.toFixed(2)}","${o.status}","${o.paymentMethod || 'Visa'}","${o.txnRef || ''}"\n`;
-      });
-
-      const encodedUri = encodeURI(csvContent);
-      const link = document.createElement('a');
-      link.setAttribute('href', encodedUri);
-      link.setAttribute('download', `stackly-sales-report-${Date.now()}.csv`);
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+    exportBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = '404.html';
     });
   }
 }
@@ -1605,14 +1633,13 @@ function initAdminModals() {
   // Add Product Modal
   const openAddProdBtn = document.querySelector('#btn-open-add-product');
   const prodModal = document.querySelector('#modal-admin-product');
-  if (openAddProdBtn && prodModal) {
-    openAddProdBtn.addEventListener('click', () => {
-      prodModal.querySelector('#prod-modal-title').textContent = 'Add New Formulation';
-      prodModal.querySelector('#prod-edit-id').value = '';
-      prodModal.querySelector('#add-product-form').reset();
-      prodModal.classList.add('active');
+  if (openAddProdBtn) {
+    openAddProdBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = '404.html';
     });
-
+  }
+  if (prodModal) {
     const prodForm = prodModal.querySelector('#add-product-form');
     if (prodForm) {
       prodForm.addEventListener('submit', (e) => {
@@ -1653,7 +1680,7 @@ function initAdminModals() {
             stock: stock,
             rating: 5.0,
             reviewsCount: 1,
-            image: image || 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=400&q=80',
+            image: image || 'images/product-elixir-rose.webp',
             description: desc
           });
         }
@@ -1670,11 +1697,13 @@ function initAdminModals() {
   // Add Category Modal
   const openCatBtn = document.querySelector('#btn-open-add-category');
   const catModal = document.querySelector('#modal-admin-category');
-  if (openCatBtn && catModal) {
-    openCatBtn.addEventListener('click', () => {
-      catModal.classList.add('active');
+  if (openCatBtn) {
+    openCatBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = '404.html';
     });
-
+  }
+  if (catModal) {
     const catForm = catModal.querySelector('#add-category-form');
     if (catForm) {
       catForm.addEventListener('submit', (e) => {
@@ -1734,7 +1763,7 @@ function initAdminModals() {
           date: 'Just now',
           status: 'Published',
           views: '1',
-          image: img || 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=800&q=80',
+          image: img || 'images/blog-cover.webp',
           excerpt: excerpt || 'Parisian beauty editorial feature.'
         });
 
@@ -1790,4 +1819,11 @@ function initGlobalDashboardSearch() {
       }
     }
   });
+}
+
+/* --------------------------------------------------------------------------
+   Dashboard Navigation Handler (404 Disabled - Seamless Sidebar Operation)
+   -------------------------------------------------------------------------- */
+function initDashboardDummyHandler() {
+  // 404 redirection disabled for dashboards: all sidebar menus and actions operate within the dashboard
 }
