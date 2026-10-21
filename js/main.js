@@ -72,9 +72,21 @@ function updateActiveNavLink() {
 function initMobileNavigation() {
   const hamburgerBtn = document.querySelector('.hamburger-btn');
   const mobileOverlay = document.querySelector('.mobile-nav-overlay');
+  const mobileDrawer = document.querySelector('.mobile-nav-drawer');
   const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 
   if (!hamburgerBtn || !mobileOverlay) return;
+
+  // Ensure a close button exists inside the full-screen drawer
+  let closeBtn = mobileOverlay.querySelector('.mobile-nav-close');
+  if (!closeBtn && mobileDrawer) {
+    closeBtn = document.createElement('button');
+    closeBtn.type = 'button';
+    closeBtn.className = 'mobile-nav-close';
+    closeBtn.setAttribute('aria-label', 'Close navigation menu');
+    closeBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+    mobileDrawer.prepend(closeBtn);
+  }
 
   const toggleMenu = (open) => {
     const shouldOpen = open !== undefined ? open : !hamburgerBtn.classList.contains('active');
@@ -84,6 +96,10 @@ function initMobileNavigation() {
   };
 
   hamburgerBtn.addEventListener('click', () => toggleMenu());
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => toggleMenu(false));
+  }
 
   mobileOverlay.addEventListener('click', (e) => {
     if (e.target === mobileOverlay) {

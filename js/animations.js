@@ -122,9 +122,10 @@ function initGSAPAnimations() {
     const rightCol = section.querySelector('.split-text-col');
 
     if (typeof ScrollTrigger !== 'undefined' && leftCol && rightCol) {
+      const isMobile = window.innerWidth <= 992;
       const isReversed = section.classList.contains('split-reversed');
-      const imageFromX = isReversed ? 60 : -60;
-      const textFromX = isReversed ? -60 : 60;
+      const imageFromX = isMobile ? 0 : (isReversed ? 60 : -60);
+      const textFromX = isMobile ? 0 : (isReversed ? -60 : 60);
 
       gsap.fromTo(leftCol, 
         { opacity: 1, x: imageFromX },
@@ -846,6 +847,7 @@ function initServicesPageLuxuryAnimations() {
    -------------------------------------------------------------------------- */
 function initBlogPageLuxuryAnimations() {
   if (typeof ScrollTrigger === 'undefined') return;
+  const isMobile = window.innerWidth <= 992;
 
   // Section 1: The Beauty Editorial (Image entrance & staggered text)
   const editSection = document.querySelector('.blog-editorial-section');
@@ -856,7 +858,7 @@ function initBlogPageLuxuryAnimations() {
 
     if (imgFrame) {
       gsap.fromTo(imgFrame,
-        { opacity: 1, x: -50, scale: 0.95 },
+        { opacity: 1, x: isMobile ? 0 : -50, scale: 0.95 },
         {
           opacity: 1,
           x: 0,
@@ -1005,7 +1007,7 @@ function initBlogPageLuxuryAnimations() {
 
     if (floatCard) {
       gsap.fromTo(floatCard,
-        { opacity: 1, x: 30 },
+        { opacity: 1, x: isMobile ? 0 : 30 },
         {
           opacity: 1,
           x: 0,
@@ -1023,7 +1025,7 @@ function initBlogPageLuxuryAnimations() {
 
     if (guideItems.length) {
       gsap.fromTo(guideItems,
-        { opacity: 1, x: 25 },
+        { opacity: 1, x: isMobile ? 0 : 25 },
         {
           opacity: 1,
           x: 0,
@@ -1048,7 +1050,7 @@ function initBlogPageLuxuryAnimations() {
 
     if (largeCard) {
       gsap.fromTo(largeCard,
-        { opacity: 1, x: -50 },
+        { opacity: 1, x: isMobile ? 0 : -50 },
         {
           opacity: 1,
           x: 0,
@@ -1065,7 +1067,7 @@ function initBlogPageLuxuryAnimations() {
 
     if (smallCards.length) {
       gsap.fromTo(smallCards,
-        { opacity: 1, x: 50 },
+        { opacity: 1, x: isMobile ? 0 : 50 },
         {
           opacity: 1,
           x: 0,

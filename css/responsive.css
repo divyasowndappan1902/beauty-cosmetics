@@ -89,6 +89,26 @@
     gap: 2.5rem !important;
   }
 
+  .hero-grid > *,
+  .split-layout > *,
+  .product-grid > *,
+  .category-grid > *,
+  .blog-grid > *,
+  .routine-grid > *,
+  .testimonials-grid > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .hero-floating-card {
+    position: static !important;
+    margin-top: 1.2rem !important;
+    max-width: 100% !important;
+    transform: none !important;
+    left: auto !important;
+    bottom: auto !important;
+  }
+
   .trust-grid {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 1.5rem !important;
@@ -213,9 +233,22 @@
     bottom: auto !important;
   }
 
+  .split-decorative-badge {
+    position: static !important;
+    margin-top: 1.2rem !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+
   .split-stats-row {
     flex-direction: column !important;
     gap: 1.2rem !important;
+  }
+
+  .split-stats-divider {
+    display: none !important;
   }
 
   .pdp-actions-row {
@@ -270,13 +303,46 @@
   }
 
   .section-title {
-    font-size: 1.85rem;
-    line-height: 1.2;
+    font-size: 1.85rem !important;
+    line-height: 1.2 !important;
     word-break: break-word;
   }
 
   .section-desc {
-    font-size: 0.95rem;
+    font-size: 0.95rem !important;
+  }
+
+  .section-eyebrow {
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .section-eyebrow::before,
+  .section-eyebrow::after {
+    width: 14px;
+  }
+
+  .hero-stats-row {
+    gap: 1rem !important;
+    margin-top: 2rem !important;
+    padding-top: 1.2rem !important;
+  }
+
+  .home-showcase-card {
+    padding: 1.4rem 1.15rem 1.2rem !important;
+  }
+
+  .beauty-svg-showcase {
+    padding: 1.3rem 1.1rem 1rem !important;
+    max-width: 100% !important;
+  }
+
+  .beauty-svg-showcase-badge {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.4rem !important;
   }
 
   /* Hero Section */
@@ -452,8 +518,17 @@
   }
 
   .mobile-nav-drawer {
-    width: 92% !important;
-    padding: 4.2rem 1.1rem 2rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 1.8rem 1.25rem 1.8rem !important;
+  }
+
+  .mobile-nav-close {
+    top: 1.4rem;
+    right: 1.25rem;
+    width: 36px;
+    height: 36px;
+    font-size: 1.05rem;
   }
 
   .mobile-nav-link {
@@ -472,12 +547,17 @@
 
   .section-eyebrow {
     font-size: 0.68rem !important;
-    letter-spacing: 0.15em !important;
+    letter-spacing: 0.14em !important;
+  }
+
+  .section-eyebrow::before,
+  .section-eyebrow::after {
+    display: none !important;
   }
 
   /* Hero Section 320px Typography & Media */
   .hero-section {
-    padding: 5.2rem 0 3rem !important;
+    padding: 5.8rem 0 2.8rem !important;
   }
 
   .hero-title {
@@ -502,20 +582,77 @@
     right: 8px !important;
   }
 
+  .hero-floating-card {
+    padding: 0.85rem 0.95rem !important;
+    gap: 0.75rem !important;
+    width: 100% !important;
+  }
+
+  .hero-stats-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.85rem !important;
+    margin-top: 1.6rem !important;
+    padding-top: 1.1rem !important;
+  }
+
+  .hero-stats-divider {
+    display: none !important;
+  }
+
   .hero-badge {
-    padding: 0.35rem 0.85rem !important;
-    font-size: 0.68rem !important;
+    padding: 0.35rem 0.75rem !important;
+    font-size: 0.65rem !important;
+    max-width: 100% !important;
   }
 
   .hero-badge span {
-    font-size: 0.66rem !important;
+    font-size: 0.64rem !important;
+    letter-spacing: 0.1em !important;
+    white-space: normal !important;
   }
 
   /* Compact Buttons */
   .btn {
-    padding: 0.72rem 1.2rem !important;
-    font-size: 0.75rem !important;
-    letter-spacing: 0.08em !important;
+    padding: 0.72rem 1.1rem !important;
+    font-size: 0.74rem !important;
+    letter-spacing: 0.06em !important;
+    white-space: normal !important;
+    text-align: center !important;
+  }
+
+  /* Home Showcase & SVG Cards at 320px */
+  .home-showcase-card {
+    padding: 1.15rem 0.9rem 1rem !important;
+  }
+
+  .home-showcase-title {
+    font-size: 1.28rem !important;
+  }
+
+  .home-showcase-desc {
+    font-size: 0.82rem !important;
+  }
+
+  .beauty-svg-showcase {
+    padding: 1.1rem 0.85rem 0.9rem !important;
+  }
+
+  .routine-card {
+    padding: 1.4rem 1rem !important;
+  }
+
+  .routine-svg-box {
+    height: 140px !important;
+    padding: 0.8rem !important;
+  }
+
+  .testimonial-card {
+    padding: 1.5rem 1rem !important;
+  }
+
+  .testimonial-text {
+    font-size: 0.98rem !important;
   }
 
   /* Split & Highlight sections */
@@ -528,7 +665,16 @@
   }
 
   .category-card {
-    height: 260px !important;
+    height: 240px !important;
+    padding: 1.35rem 1.1rem !important;
+  }
+
+  .category-title {
+    font-size: 1.45rem !important;
+  }
+
+  .featured-collection-banner {
+    padding: 3.5rem 0 !important;
   }
 
   /* Newsletter Box */
