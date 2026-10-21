@@ -7,9 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // Check user preference for reduced motion
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReducedMotion) {
+    const preloader = document.getElementById('page-preloader');
+    if (preloader) preloader.classList.add('preloader-hidden');
     console.log('Reduced motion preferred: animations disabled for accessibility.');
     return;
   }
+
+  // Initialize Luxury Page Preloader
+  initPagePreloader();
 
   // Initialize AOS
   initAOS();
@@ -20,9 +25,247 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof ScrollTrigger !== 'undefined') {
       gsap.registerPlugin(ScrollTrigger);
     }
+    initGSAPSectionHeadingAnimations();
     initGSAPAnimations();
   }
 });
+
+/* --------------------------------------------------------------------------
+   Luxury Page Preloader Animation (GSAP + Fallback)
+   -------------------------------------------------------------------------- */
+function initPagePreloader() {
+  const preloader = document.getElementById('page-preloader');
+  if (!preloader) return;
+
+  const chars = preloader.querySelectorAll('.preloader-char');
+  const subtitle = preloader.querySelector('.preloader-subtitle');
+  const bar = document.getElementById('preloader-bar');
+  const counter = document.getElementById('preloader-counter');
+
+  let dismissed = false;
+  const dismissPreloader = () => {
+    if (dismissed) return;
+    dismissed = true;
+
+    if (typeof gsap !== 'undefined') {
+      gsap.to(preloader, {
+        yPercent: -100,
+        opacity: 0,
+        duration: 0.7,
+        ease: 'power3.inOut',
+        onComplete: () => {
+          preloader.classList.add('preloader-hidden');
+          if (typeof ScrollTrigger !== 'undefined') {
+            ScrollTrigger.refresh();
+          }
+        }
+      });
+    } else {
+      preloader.classList.add('preloader-hidden');
+    }
+  };
+
+  if (typeof gsap !== 'undefined') {
+    const tl = gsap.timeline({
+      onComplete: () => {
+        dismissPreloader();
+      }
+    });
+
+    if (chars.length) {
+      tl.fromTo(
+        chars,
+        { opacity: 0, y: 22, rotateX: -45 },
+        {
+          opacity: 1,
+          y: 0,
+          rotateX: 0,
+          stagger: 0.055,
+          duration: 0.55,
+          ease: 'power3.out'
+        },
+        0.05
+      );
+    }
+
+    if (subtitle) {
+      tl.fromTo(
+        subtitle,
+        { opacity: 0, y: 8 },
+        { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out' },
+        0.25
+      );
+    }
+
+    const progressObj = { val: 0 };
+    tl.to(
+      progressObj,
+      {
+        val: 100,
+        duration: 0.85,
+        ease: 'power2.inOut',
+        onUpdate: () => {
+          const pct = Math.round(progressObj.val);
+          if (bar) bar.style.width = `${pct}%`;
+          if (counter) counter.textContent = `${pct}%`;
+        }
+      },
+      0.1
+    );
+  } else {
+    if (bar) bar.style.width = '100%';
+    if (counter) counter.textContent = '100%';
+    setTimeout(dismissPreloader, 600);
+  }
+
+  // Failsafe so the preloader never blocks interaction
+  setTimeout(dismissPreloader, 1600);
+}
+
+/* --------------------------------------------------------------------------
+   GSAP Text Animations for Section Headings (Masked Word Reveal)
+   -------------------------------------------------------------------------- */
+function splitNodeIntoWords(node) {
+  if (node.nodeType === Node.TEXT_NODE) {
+    const text = node.textContent;
+    if (!text || !text.trim()) {
+      return document.createTextNode(text);
+    }
+    const frag = document.createDocumentFragment();
+    const parts = text.split(/(\s+)/);
+    parts.forEach(part => {
+      if (!part) return;
+      if (/^\s+$/.test(part)) {
+        frag.appendChild(document.createTextNode(' '));
+      } else {
+        const mask = document.createElement('span');
+        mask.className = 'gsap-word-mask';
+        const word = document.createElement('span');
+        word.className = 'gsap-word';
+        word.textContent = part;
+        mask.appendChild(word);
+        frag.appendChild(mask);
+      }
+    });
+    return frag;
+  }
+
+  if (node.nodeType === Node.ELEMENT_NODE) {
+    if (node.tagName === 'BR') {
+      return node.cloneNode(false);
+    }
+    const clone = node.cloneNode(false);
+    Array.from(node.childNodes).forEach(child => {
+      clone.appendChild(splitNodeIntoWords(child));
+    });
+    return clone;
+  }
+
+  return node.cloneNode(true);
+}
+
+function initGSAPSectionHeadingAnimations() {
+  if (typeof gsap === 'undefined') return;
+
+  const headingSelectors = [
+    'main h1',
+    'main h2',
+    '.section-title',
+    '.hero-title',
+    '.journey-cta-heading',
+    '.services-intro-heading',
+    '.services-journey-heading',
+    '.blog-editorial-title',
+    '.blog-newsletter-heading',
+    '.contact-connect-heading',
+    '.contact-journey-heading',
+    '.banner-content h2',
+    '.newsletter-box h2'
+  ].join(', ');
+
+  const headings = document.querySelectorAll(headingSelectors);
+
+  headings.forEach(heading => {
+    if (heading.dataset.gsapSplit === 'true') return;
+    heading.dataset.gsapSplit = 'true';
+    heading.classList.add('gsap-heading-animated');
+
+    // Split text nodes into masked words while preserving <em>, <br>, and inline spans
+    const fragment = document.createDocumentFragment();
+    Array.from(heading.childNodes).forEach(child => {
+      fragment.appendChild(splitNodeIntoWords(child));
+    });
+    heading.innerHTML = '';
+    heading.appendChild(fragment);
+
+    const words = heading.querySelectorAll('.gsap-word');
+    if (!words.length) return;
+
+    const isHeroHeading =
+      heading.tagName === 'H1' ||
+      heading.classList.contains('hero-title') ||
+      heading.closest('.hero-section') !== null;
+
+    // Optional accompanying eyebrow above heading
+    const parentHeader = heading.closest('.section-header, .banner-content, .newsletter-box, .split-text-col, .story-text-content, .services-intro-text, .blog-editorial-text-col, .contact-connect-text');
+    const eyebrow = parentHeader ? parentHeader.querySelector('.section-eyebrow, .badge-gold') : null;
+
+    if (isHeroHeading || typeof ScrollTrigger === 'undefined') {
+      gsap.fromTo(
+        words,
+        { yPercent: 105, opacity: 0, rotateZ: 2 },
+        {
+          yPercent: 0,
+          opacity: 1,
+          rotateZ: 0,
+          stagger: 0.055,
+          duration: 0.85,
+          delay: 0.55,
+          ease: 'power3.out',
+          clearProps: 'transform'
+        }
+      );
+    } else {
+      if (eyebrow && !eyebrow.dataset.gsapEyebrow) {
+        eyebrow.dataset.gsapEyebrow = 'true';
+        gsap.fromTo(
+          eyebrow,
+          { y: 14, opacity: 0.2 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.65,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: heading,
+              start: 'top 90%',
+              once: true
+            }
+          }
+        );
+      }
+
+      gsap.fromTo(
+        words,
+        { yPercent: 105, opacity: 0, rotateZ: 2 },
+        {
+          yPercent: 0,
+          opacity: 1,
+          rotateZ: 0,
+          stagger: 0.05,
+          duration: 0.8,
+          ease: 'power3.out',
+          clearProps: 'transform',
+          scrollTrigger: {
+            trigger: heading,
+            start: 'top 90%',
+            once: true
+          }
+        }
+      );
+    }
+  });
+}
 
 /* --------------------------------------------------------------------------
    AOS (Animate On Scroll) Configuration

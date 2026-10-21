@@ -715,8 +715,8 @@
 /* Hero Top Floating Animated Seal */
 .hero-floating-seal {
   position: absolute;
-  top: 25px;
-  right: -25px;
+  top: 16px;
+  right: 16px;
   z-index: 10;
   width: 110px;
   height: 110px;
@@ -811,10 +811,163 @@
 .svg-anim-cream-glow { animation: creamGlowPulse 4s ease-in-out infinite; transform-origin: center center; }
 
 /* --------------------------------------------------------------------------
+   LUXURY PAGE PRELOADER ANIMATION
+   -------------------------------------------------------------------------- */
+.page-preloader {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 99999;
+  background: radial-gradient(circle at 50% 45%, #1E151F 0%, #0D0A0D 75%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.page-preloader.preloader-hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.preloader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  max-width: 90vw;
+}
+
+.preloader-emblem-wrap {
+  width: 104px;
+  height: 104px;
+  margin-bottom: 1.25rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preloader-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 0 22px rgba(229, 163, 153, 0.35));
+}
+
+.preloader-ring-outer {
+  transform-origin: 60px 60px;
+  animation: spinSlow 14s linear infinite;
+}
+
+.preloader-ring-progress {
+  transform-origin: 60px 60px;
+  stroke-dasharray: 276;
+  stroke-dashoffset: 276;
+  animation: preloaderRingFill 1.1s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+
+.preloader-star {
+  transform-origin: 60px 60px;
+  animation: preloaderStarPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes preloaderRingFill {
+  0% { stroke-dashoffset: 276; transform: rotate(-90deg); }
+  100% { stroke-dashoffset: 0; transform: rotate(0deg); }
+}
+
+@keyframes preloaderStarPulse {
+  0%, 100% { transform: scale(0.92) rotate(0deg); }
+  50% { transform: scale(1.08) rotate(12deg); }
+}
+
+.preloader-brand-text {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.28rem, 1.5vw, 0.65rem);
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 4.5vw, 2.35rem);
+  font-weight: 500;
+  color: #FAF5F0;
+  letter-spacing: 0.14em;
+  margin-bottom: 0.35rem;
+}
+
+.preloader-char {
+  display: inline-block;
+  color: #FAF5F0;
+  text-shadow: 0 4px 18px rgba(229, 163, 153, 0.35);
+  will-change: transform, opacity;
+}
+
+.preloader-subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent-gold, #E5A399);
+  margin-bottom: 1.5rem;
+}
+
+.preloader-progress-wrap {
+  width: min(200px, 70vw);
+  height: 2px;
+  background: rgba(229, 163, 153, 0.18);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 0.65rem;
+}
+
+.preloader-progress-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #C5A880, #E5A399, #FFF5ED);
+  border-radius: 999px;
+  box-shadow: 0 0 12px rgba(229, 163, 153, 0.8);
+  transition: width 0.15s ease-out;
+}
+
+.preloader-counter {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: rgba(250, 245, 240, 0.7);
+}
+
+/* --------------------------------------------------------------------------
+   GSAP SECTION HEADING WORD & CHARACTER ANIMATION SYSTEM
+   -------------------------------------------------------------------------- */
+.gsap-heading-animated {
+  perspective: 800px;
+}
+
+.gsap-word-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+  max-width: 100%;
+}
+
+.gsap-word {
+  display: inline-block;
+  will-change: transform, opacity;
+  transform-origin: left bottom;
+}
+
+/* --------------------------------------------------------------------------
    GUARANTEE ALL TEXT & CONTENT SHOWING IN VISIBLE VIEW
-   Ensures all headings, paragraphs, cards, badges, descriptions, and text
-   are always 100% visible, crisp, and high-contrast without being hidden
-   by AOS or GSAP scroll triggers or animation delays.
    -------------------------------------------------------------------------- */
 [data-aos],
 [data-aos].aos-animate,
@@ -824,9 +977,9 @@
   visibility: visible !important;
 }
 
-/* All Typography & Content Elements Must Always Be Visible */
+/* All Typography & Content Elements Must Always Be Visible (allowing GSAP word reveals & preloader transitions) */
 h1, h2, h3, h4, h5, h6,
-p, span, a, li, label, strong, em, b, i, blockquote,
+p, span:not(.gsap-word):not(.preloader-char), a, li, label, strong, em, b, i, blockquote,
 .section-title, .section-desc, .section-eyebrow,
 .hero-title, .hero-desc, .hero-badge,
 .page-hero-title, .page-hero-desc,

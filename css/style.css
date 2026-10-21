@@ -659,9 +659,10 @@ h1, h2, h3, h4, h5, h6 {
    Header & Navigation
    -------------------------------------------------------------------------- */
 .site-header {
-  position: sticky;
+  position: fixed !important;
   top: 0;
   left: 0;
+  right: 0;
   width: 100%;
   height: var(--header-height);
   z-index: 1000;
@@ -670,13 +671,20 @@ h1, h2, h3, h4, h5, h6 {
   transition: all var(--transition-normal);
 }
 
+.site-header:not(.header-transparent) ~ main {
+  padding-top: var(--header-height);
+}
+
 /* Transparent Header (Homepage Hero state) */
 .header-transparent {
-  background-color: transparent;
+  background-color: rgba(13, 10, 13, 0.85);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   border-bottom-color: rgba(255, 255, 255, 0.15);
-  position: absolute;
+  position: fixed !important;
   top: 0;
   left: 0;
+  right: 0;
 }
 
 .header-transparent .brand-name,
@@ -703,10 +711,10 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Scrolled Header state (Standard & Transparent) */
 .site-header.scrolled {
-  background-color: rgba(13, 10, 13, 0.95);
+  background-color: rgba(13, 10, 13, 0.96);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
-  height: 74px;
+  height: var(--header-height);
   box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
   border-bottom: 1px solid rgba(229, 163, 153, 0.2);
 }
@@ -805,13 +813,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .brand-sub {
-  font-family: var(--font-sans);
-  font-size: 0.6rem;
-  letter-spacing: 0.34em;
-  text-transform: uppercase;
-  color: var(--accent-gold-hover);
-  margin-top: 3px;
-  font-weight: 600;
+  display: none !important;
 }
 
 /* Navigation Links */
