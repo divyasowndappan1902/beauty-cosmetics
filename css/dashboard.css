@@ -180,10 +180,7 @@
 }
 
 .role-card-desc {
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  line-height: 1.4;
-  margin-top: 0.2rem;
+  display: none !important;
 }
 
 /* Quick Demo Autofill Bar */
@@ -381,6 +378,7 @@
 
 .dock-switch-btn:hover {
   background: #FFF;
+  color: #0D0A0D !important;
   box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
   transform: translateY(-1px);
 }

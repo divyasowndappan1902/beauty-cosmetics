@@ -274,6 +274,8 @@ function initDynamicValidation() {
 
   const regPass = document.querySelector('#reg-password');
   const regPassFeedback = document.querySelector('#reg-password-feedback');
+  const regConfirmPass = document.querySelector('#reg-confirm-password');
+  const regConfirmPassFeedback = document.querySelector('#reg-confirm-password-feedback');
 
   if (regPass && regPassFeedback) {
     regPass.addEventListener('input', () => {
@@ -284,6 +286,29 @@ function initDynamicValidation() {
         setFeedback(regPass, regPassFeedback, false, `Password must be at least 6 characters (${val.length}/6 entered)`);
       } else {
         setFeedback(regPass, regPassFeedback, true, `Password requirement satisfied (${val.length} characters)`);
+      }
+      if (regConfirmPass && regConfirmPass.value && regConfirmPassFeedback) {
+        if (regConfirmPass.value !== val) {
+          setFeedback(regConfirmPass, regConfirmPassFeedback, false, 'Passwords do not match.');
+        } else {
+          setFeedback(regConfirmPass, regConfirmPassFeedback, true, 'Passwords match.');
+        }
+      }
+    });
+  }
+
+  if (regConfirmPass && regConfirmPassFeedback) {
+    regConfirmPass.addEventListener('input', () => {
+      const val = regConfirmPass.value;
+      const passVal = regPass ? regPass.value : '';
+      if (!val) {
+        setFeedback(regConfirmPass, regConfirmPassFeedback, null, '');
+      } else if (val !== passVal) {
+        setFeedback(regConfirmPass, regConfirmPassFeedback, false, 'Passwords do not match.');
+      } else if (val.length < 6) {
+        setFeedback(regConfirmPass, regConfirmPassFeedback, false, `Password must be at least 6 characters (${val.length}/6 entered)`);
+      } else {
+        setFeedback(regConfirmPass, regConfirmPassFeedback, true, 'Passwords match.');
       }
     });
   }
@@ -308,6 +333,8 @@ function initDynamicValidation() {
 
   const regAdminPass = document.querySelector('#reg-admin-password');
   const regAdminPassFeedback = document.querySelector('#reg-admin-password-feedback');
+  const regAdminConfirmPass = document.querySelector('#reg-admin-confirm-password');
+  const regAdminConfirmPassFeedback = document.querySelector('#reg-admin-confirm-password-feedback');
 
   if (regAdminPass && regAdminPassFeedback) {
     regAdminPass.addEventListener('input', () => {
@@ -318,6 +345,29 @@ function initDynamicValidation() {
         setFeedback(regAdminPass, regAdminPassFeedback, false, `Passcode must be at least 6 characters (${val.length}/6 entered)`);
       } else {
         setFeedback(regAdminPass, regAdminPassFeedback, true, `Passcode requirement satisfied (${val.length} characters)`);
+      }
+      if (regAdminConfirmPass && regAdminConfirmPass.value && regAdminConfirmPassFeedback) {
+        if (regAdminConfirmPass.value !== val) {
+          setFeedback(regAdminConfirmPass, regAdminConfirmPassFeedback, false, 'Passcodes do not match.');
+        } else {
+          setFeedback(regAdminConfirmPass, regAdminConfirmPassFeedback, true, 'Passcodes match.');
+        }
+      }
+    });
+  }
+
+  if (regAdminConfirmPass && regAdminConfirmPassFeedback) {
+    regAdminConfirmPass.addEventListener('input', () => {
+      const val = regAdminConfirmPass.value;
+      const passVal = regAdminPass ? regAdminPass.value : '';
+      if (!val) {
+        setFeedback(regAdminConfirmPass, regAdminConfirmPassFeedback, null, '');
+      } else if (val !== passVal) {
+        setFeedback(regAdminConfirmPass, regAdminConfirmPassFeedback, false, 'Passcodes do not match.');
+      } else if (val.length < 6) {
+        setFeedback(regAdminConfirmPass, regAdminConfirmPassFeedback, false, `Passcode must be at least 6 characters (${val.length}/6 entered)`);
+      } else {
+        setFeedback(regAdminConfirmPass, regAdminConfirmPassFeedback, true, 'Passcodes match.');
       }
     });
   }
@@ -516,6 +566,7 @@ function initAuthForm() {
         const adminDept = registerForm.querySelector('#reg-admin-dept');
         const adminKey = registerForm.querySelector('#reg-admin-key');
         const adminPass = registerForm.querySelector('#reg-admin-password');
+        const adminConfirmPass = registerForm.querySelector('#reg-admin-confirm-password');
         const adminAgree = registerForm.querySelector('#reg-admin-agree');
 
         if (!adminName.value.trim()) {
@@ -539,6 +590,12 @@ function initAuthForm() {
         if (!adminPass.value || adminPass.value.length < 6) {
           showAuthFeedback('Administrative passcode must be at least 6 characters.');
           adminPass.focus();
+          return;
+        }
+
+        if (adminConfirmPass && adminConfirmPass.value !== adminPass.value) {
+          showAuthFeedback('Administrative passcodes do not match. Please confirm your passcode.');
+          adminConfirmPass.focus();
           return;
         }
 
@@ -597,6 +654,7 @@ function initAuthForm() {
         const custName = registerForm.querySelector('#reg-name');
         const custEmail = registerForm.querySelector('#reg-email');
         const custPass = registerForm.querySelector('#reg-password');
+        const custConfirmPass = registerForm.querySelector('#reg-confirm-password');
         const custSkin = registerForm.querySelector('#reg-skin-focus');
         const custSalon = registerForm.querySelector('#reg-salon');
         const custAgree = registerForm.querySelector('#reg-customer-agree');
@@ -619,7 +677,13 @@ function initAuthForm() {
           return;
         }
 
-        if (!custAgree.checked) {
+        if (custConfirmPass && custConfirmPass.value !== custPass.value) {
+          showAuthFeedback('Passwords do not match. Please confirm your password.');
+          custConfirmPass.focus();
+          return;
+        }
+
+        if (custAgree && !custAgree.checked) {
           showAuthFeedback('Please accept the Maison Terms of Service and Privacy Policy.');
           return;
         }

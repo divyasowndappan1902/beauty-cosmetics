@@ -529,14 +529,20 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-secondary {
   background-color: var(--text-primary);
-  color: #FFFFFF;
+  color: var(--bg-primary) !important;
+  font-weight: 700;
   border: 1px solid var(--text-primary);
+}
+
+.btn-secondary i,
+.btn-secondary span {
+  color: inherit !important;
 }
 
 .btn-secondary:hover {
   background-color: var(--accent-gold-hover);
   border-color: var(--accent-gold-hover);
-  color: #FFFFFF;
+  color: #0D0A0D !important;
   transform: translateY(-2px);
 }
 
@@ -548,9 +554,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-outline:hover {
   background-color: var(--text-primary);
-  color: #FFFFFF;
+  color: var(--bg-primary) !important;
   border-color: var(--text-primary);
   transform: translateY(-2px);
+}
+
+.btn-outline:hover i,
+.btn-outline:hover span {
+  color: inherit !important;
 }
 
 .btn-outline-light {
@@ -561,9 +572,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-outline-light:hover {
   background: #FFFFFF;
-  color: var(--text-primary);
+  color: #0D0A0D !important;
   border-color: #FFFFFF;
   transform: translateY(-2px);
+}
+
+.btn-outline-light:hover i,
+.btn-outline-light:hover span {
+  color: #0D0A0D !important;
 }
 
 .btn-text {

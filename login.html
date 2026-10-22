@@ -365,7 +365,6 @@
                   VIP Customer
                 <span class="role-card-badge">Privil&egrave;ge</span>
                 </div>
-                <div class="role-card-desc">Orders, skin diagnostic dossier, beauty bag & salon spa bookings.</div>
               </div>
 
               <!-- Admin Role Card -->
@@ -382,7 +381,6 @@
                   Maison Admin
                   <span class="role-card-badge">Executive</span>
                 </div>
-                <div class="role-card-desc">Catalog inventory, revenue stats, VIP order dispatch & CRM.</div>
               </div>
             </div>
           </div>
@@ -479,7 +477,6 @@
                   VIP Customer
                 <span class="role-card-badge">Privil&egrave;ge</span>
                 </div>
-                <div class="role-card-desc">Bespoke formulations, private order tracking & +500 reward points.</div>
               </div>
 
               <!-- Admin Option -->
@@ -496,7 +493,6 @@
                   Maison Admin
                   <span class="role-card-badge">Executive</span>
                 </div>
-                <div class="role-card-desc">Executive staff pass for inventory control, salon management & CRM.</div>
               </div>
             </div>
           </div>
@@ -535,8 +531,19 @@
                 <div class="field-feedback" id="reg-password-feedback"></div>
               </div>
 
-              <!-- Customer Respective Field: Skin Diagnostic Focus -->
               <div class="form-group" style="margin-bottom: 1.1rem;">
+                <label for="reg-confirm-password" class="form-label" style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem; display: block;">Confirm Password</label>
+                <div class="input-with-icon-wrapper">
+                  <input type="password" id="reg-confirm-password" placeholder="Re-enter your password" minlength="6" required>
+                  <button type="button" class="password-toggle-btn" aria-label="Toggle password visibility">
+                    <i class="fa-regular fa-eye"></i>
+                  </button>
+                </div>
+                <div class="field-feedback" id="reg-confirm-password-feedback"></div>
+              </div>
+
+              <!-- Customer Respective Field: Skin Diagnostic Focus -->
+              <div class="form-group" style="margin-bottom: 1.5rem;">
                 <label for="reg-skin-focus" class="form-label" style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem; display: block;">Primary Skin & Beauty Focus</label>
                 <div class="input-with-icon-wrapper">
                   <select id="reg-skin-focus">
@@ -546,30 +553,6 @@
                     <option value="Haute Parfumerie & Body Rituals">Haute Parfumerie & Botanical Body</option>
                   </select>
                 </div>
-              </div>
-
-              <!-- Customer Respective Field: Flagship Atelier Preference -->
-              <div class="form-group" style="margin-bottom: 1.1rem;">
-                <label for="reg-salon" class="form-label" style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem; display: block;">Preferred Flagship Atelier</label>
-                <div class="input-with-icon-wrapper">
-                  <select id="reg-salon">
-                  <option value="Paris Place Vend&ocirc;me">Paris &mdash; 12 Place Vend&ocirc;me</option>
-                  <option value="London Mayfair">London &mdash; 45 New Bond Street, Mayfair</option>
-                  <option value="New York Madison">New York &mdash; 740 Madison Avenue</option>
-                  </select>
-                </div>
-              </div>
-
-              <!-- Customer Perks & Terms -->
-              <div style="margin: 1rem 0 1.5rem;">
-                <label style="display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.8rem; color: var(--text-secondary); cursor: pointer; margin-bottom: 0.6rem;">
-                  <input type="checkbox" id="reg-perks-enroll" checked style="accent-color: var(--accent-gold); width: 16px; height: 16px; margin-top: 2px;">
-              <span><strong>Complimentary Privil&egrave;ge Enrollment:</strong> Credit 500 Welcome Points and receive private salon invitations.</span>
-                </label>
-                <label style="display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.8rem; color: var(--text-secondary); cursor: pointer;">
-                  <input type="checkbox" id="reg-customer-agree" required checked style="accent-color: var(--accent-gold); width: 16px; height: 16px; margin-top: 2px;">
-                  <span>I agree to Maison Terms of Service & Privacy Policy.</span>
-                </label>
               </div>
             </div>
 
@@ -624,6 +607,18 @@
                   </button>
                 </div>
                 <div class="field-feedback" id="reg-admin-password-feedback"></div>
+              </div>
+
+              <!-- Admin Confirm Passcode -->
+              <div class="form-group" style="margin-bottom: 1.1rem;">
+                <label for="reg-admin-confirm-password" class="form-label" style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem; display: block;">Confirm Administrative Passcode</label>
+                <div class="input-with-icon-wrapper">
+                  <input type="password" id="reg-admin-confirm-password" placeholder="Re-enter your passcode" minlength="6">
+                  <button type="button" class="password-toggle-btn" aria-label="Toggle password visibility">
+                    <i class="fa-regular fa-eye"></i>
+                  </button>
+                </div>
+                <div class="field-feedback" id="reg-admin-confirm-password-feedback"></div>
               </div>
 
               <!-- Admin Protocol Agreement -->
